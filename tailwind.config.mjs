@@ -73,10 +73,15 @@ export default {
           from: { opacity: "1", transform: "scale(1)" },
           to: { opacity: "0", transform: "scale(0.9)" },
         },
+        "rotate-slow": {
+          from: { rotate: "0deg" },
+          to: { rotate: "360deg" },
+        },
       },
       animation: {
         "scale-in": "scale-in 150ms ease-out",
         "scale-out": "scale-out 150ms ease-out",
+        "rotate-slow": "rotate-slow 15s linear infinite",
       },
     },
   },
