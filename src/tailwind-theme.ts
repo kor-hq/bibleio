@@ -1,8 +1,20 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ["Lora", "var(--font-lora)"],
-      mono: ["", "var(--font-jetbrains-mono)"],
+      serif: [
+        "'Lora Variable'",
+        "'Lora'",
+        "var(--font-lora)",
+        ...defaultTheme.fontFamily.sans,
+      ],
+      mono: [
+        "'JetBrains Mono Variable'",
+        "'JetBrains Mono'",
+        "var(--font-jetbrains-mono)",
+        ...defaultTheme.fontFamily.mono,
+      ],
     },
     fontSize: {
       sub: "0.75rem",
@@ -14,6 +26,8 @@ module.exports = {
       h1: "3.125rem",
     },
     colors: {
+      white: "#fff",
+      black: "#000",
       light: {
         "bg-1": "rgba(204, 204, 204, 1)",
         "fg-1": "rgba(212, 212, 212, 1)",
@@ -98,10 +112,16 @@ module.exports = {
       4: "4px",
       0: "0px",
     },
+    transitionDuration: {
+      "150": "150ms",
+    },
+    transitionTimingFunction: {
+      out: "cubic-bezier(0, 0, 0.2, 1);",
+    },
     extend: {
       keyframes: {
         "scale-in": {
-          from: { opacity: "0", transform: "scale(0.95)" },
+          from: { opacity: "0", transform: "scale(0.9)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
         "scale-out": {
