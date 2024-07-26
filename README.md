@@ -1,2 +1,3 @@
-# bibleio-design
- UI and component kit for Bibleio.
+# Bibleio Design
+
+UI kit for Bibleio, including React components and Tailwind configuration with colour styles.
