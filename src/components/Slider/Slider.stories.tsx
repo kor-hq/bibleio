@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Slider } from "./Slider";
+import type { SliderProps } from "./Slider";
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
@@ -25,7 +26,7 @@ export default meta;
 type Story = StoryObj<typeof Slider>;
 
 export const Default: Story = {
-  render: (args) => <Slider {...args} />,
+  render: (args: SliderProps) => <Slider {...args} />,
 };
 Default.args = {
   inverted: false,

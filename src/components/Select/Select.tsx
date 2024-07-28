@@ -1,14 +1,16 @@
 import React, { ReactNode } from "react";
 import * as RadixSelect from "@radix-ui/react-select";
-import { IconChevronDown, IconChevronUp, IconCheck } from "@tabler/icons-react";
-import { SelectItemProps, SelectProps } from "@radix-ui/react-select";
+import {
+  SelectItemProps as RadixSelectItemProps,
+  SelectProps as RadixSelectProps,
+} from "@radix-ui/react-select";
 
 interface CustomSelectProps {
   label: string;
 }
 
-type ExtendedSelectProps = CustomSelectProps & SelectProps;
-export const Select = ({ label, children, ...props }: ExtendedSelectProps) => {
+export type SelectProps = CustomSelectProps & RadixSelectProps;
+export const Select = ({ label, children, ...props }: SelectProps) => {
   return (
     <RadixSelect.Root {...props}>
       <RadixSelect.Trigger
@@ -40,22 +42,24 @@ export const Select = ({ label, children, ...props }: ExtendedSelectProps) => {
   );
 };
 
-export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <RadixSelect.Item
-        className={` body px-32 text-light-text dark:text-dark-text font-serif flex items-center h-fit relative select-none cursor-pointer data-[disabled]:text-light-text-subtle dark:data-[disabled]:text-dark-text-subtle data-[disabled]:pointer-events-none outline-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-light-accent duration-150 ease-out`}
-        {...props}
-        ref={forwardedRef}
-      >
-        <RadixSelect.ItemIndicator className="inline-flex absolute left-0 justify-center items-center w-24">
-          <IconCheck />
-        </RadixSelect.ItemIndicator>
-        <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
-      </RadixSelect.Item>
-    );
-  }
-);
+export type SelectItemProps = RadixSelectItemProps;
+export const SelectItem = React.forwardRef<
+  HTMLDivElement,
+  RadixSelectItemProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <RadixSelect.Item
+      className={` body px-32 text-light-text dark:text-dark-text font-serif flex items-center h-fit relative select-none cursor-pointer data-[disabled]:text-light-text-subtle dark:data-[disabled]:text-dark-text-subtle data-[disabled]:pointer-events-none outline-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-light-accent duration-150 ease-out`}
+      {...props}
+      ref={forwardedRef}
+    >
+      <RadixSelect.ItemIndicator className="inline-flex absolute left-0 justify-center items-center w-24">
+        <IconCheck />
+      </RadixSelect.ItemIndicator>
+      <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
+    </RadixSelect.Item>
+  );
+});
 
 export const SelectGroup = ({ children }: { children: ReactNode }) => {
   return (
@@ -76,5 +80,64 @@ export const SelectLabel = ({ children }: { children: ReactNode }) => {
 export const SelectSeparator = () => {
   return (
     <RadixSelect.Separator className="h-[1px] w-full bg-light-stroke dark:bg-dark-stroke" />
+  );
+};
+
+const IconChevronDown = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M6 9l6 6l6 -6" />
+    </svg>
+  );
+};
+const IconChevronUp = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M6 15l6 -6l6 6" />
+    </svg>
+  );
+};
+
+const IconCheck = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-check"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M5 12l5 5l10 -10" />
+    </svg>
   );
 };

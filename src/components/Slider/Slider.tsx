@@ -1,7 +1,9 @@
 import * as RadixSlider from "@radix-ui/react-slider";
-import type { SliderProps } from "@radix-ui/react-slider";
+import type { SliderProps as RadixSliderProps } from "@radix-ui/react-slider";
 
-export const Slider = ({ ...props }: SliderProps) => {
+export type SliderProps = RadixSliderProps;
+
+export const Slider = ({ ...props }: RadixSliderProps) => {
   return (
     <RadixSlider.Root
       {...props}
