@@ -3,22 +3,32 @@
 @tailwind utilities;
 
 @layer base {
-  h1 {
+  :root {
+    --light-accent: #00507c;
+    --dark-accent: #00a3ff;
+  }
+  h1,
+  .h1 {
     @apply text-h1 font-semibold leading-[115%];
   }
-  h2 {
+  h2,
+  .h2 {
     @apply text-h2 font-medium leading-[115%];
   }
-  h3 {
+  h3,
+  .h3 {
     @apply text-h3 font-medium leading-[115%];
   }
-  h4 {
+  h4,
+  .h4 {
     @apply text-h4 font-normal leading-[115%];
   }
-  p {
+  p,
+  .body {
     @apply text-body font-normal leading-[100%];
   }
-  code {
+  code,
+  .code {
     @apply text-mono font-mono leading-[140%];
   }
   .paragraph {
@@ -28,6 +38,12 @@
     @apply font-bold;
   }
   .sub {
-    @apply text-sub;
+    @apply text-sub leading-[100%];
+  }
+}
+
+@layer utilities {
+  .component-hover-effect {
+    @apply hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out;
   }
 }

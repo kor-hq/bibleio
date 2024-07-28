@@ -11,10 +11,6 @@ const meta: Meta<typeof Button> = {
       options: ["primary", "secondary", "success", "warning", "danger"],
       control: { type: "radio" },
     },
-    fullWidth: {
-      options: [false, true],
-      control: { type: "radio" },
-    },
   },
 };
 
@@ -22,9 +18,10 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  render: (args: ButtonProps) => <Button {...args}>Bibleio</Button>,
+  render: (args: ButtonProps) => <Button {...args}>Button</Button>,
 };
 Default.args = {
   variant: "primary",
   fullWidth: false,
+  disabled: false,
 };

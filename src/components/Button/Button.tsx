@@ -1,29 +1,30 @@
 import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import "@fontsource-variable/lora";
 
 const variants = cva(
   [
-    "text-body px-16 py-8 h-[40px] flex justify-center flex-center font-serif text-white dark:text-black rounded-12 border",
-    "hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out",
-    " disabled:pointer-events-none disabled:cursor-not-allowed",
+    "text-body px-16 py-8 h-[40px] flex justify-center flex-center font-serif rounded-12 border border-light-stroke dark:border-dark-stroke",
+    "component-hover-effect",
+    "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
   ],
   {
     variants: {
       variant: {
         primary: [
-          "bg-dark-blue border-light-stroke dark:border-dark-stroke dark:bg-light-blue",
+          "bg-dark-blue text-white dark:text-black dark:bg-light-blue shadow-light-coloured-component dark:shadow-dark-coloured-component",
         ],
         secondary: [
-          "bg-light-fg-2 text-black border-light-stroke dark:bg-dark-fg-2 dark:border-dark-stroke dark:text-white",
+          "bg-light-fg-2 text-black dark:bg-dark-fg-2 dark:text-white shadow-light-material-component dark:shadow-dark-material-component",
         ],
         success: [
-          "bg-dark-green border-light-stroke dark:border-dark-stroke dark:bg-light-green",
+          "bg-dark-green text-white dark:text-black dark:bg-light-green shadow-light-coloured-component dark:shadow-dark-coloured-component",
         ],
         warning: [
-          "bg-dark-yellow border-light-stroke dark:border-dark-stroke dark:bg-light-yellow",
+          "bg-dark-yellow text-white dark:text-black dark:bg-light-yellow shadow-light-coloured-component dark:shadow-dark-coloured-component",
         ],
         danger: [
-          "bg-dark-red border-light-stroke dark:border-dark-stroke dark:bg-light-red",
+          "bg-dark-red text-white dark:text-black dark:bg-light-red shadow-light-coloured-component dark:shadow-dark-coloured-component",
         ],
       },
       fullWidth: {
@@ -52,7 +53,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={variants({ variant })}
+      className={variants({ variant, fullWidth })}
       onClick={onClick}
       disabled={disabled}
     >

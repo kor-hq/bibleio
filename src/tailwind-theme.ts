@@ -66,25 +66,23 @@ module.exports = {
       },
     },
     boxShadow: {
-      light: {
-        "coloured-component":
-          "0px -9px 12.2px 0px rgba(255, 255, 255, 0.10) inset, 0px 3px 4.7px 0px rgba(255, 255, 255, 0.10) inset, 0px 0px 3.7px 1px rgba(255, 255, 255, 0.10) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20)",
-        "material-component":
-          "0px -6px 8.6px 2px rgba(0, 0, 0, 0.10) inset, 0px 1px 6.3px 0px rgba(0, 0, 0, 0.25) inset, 0px 2px 9.4px 0px rgba(0, 0, 0, 0.10)",
-      },
-      dark: {
-        "coloured-component":
-          "0px -9px 12.2px 0px rgba(0, 0, 0, 0.20) inset, 0px 3px 4.7px 0px rgba(0, 0, 0, 0.20) inset, 0px 0px 3.7px 1px rgba(0, 0, 0, 0.20) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20);",
-        "material-component":
-          "0px -6px 8.6px 2px rgba(0, 0, 0, 0.10) inset, 0px 1px 6.3px 0px rgba(0, 0, 0, 0.25) inset, 0px 2px 9.4px 0px rgba(0, 0, 0, 0.10)",
-      },
+      "light-coloured-component":
+        "0px -9px 12.2px 0px rgba(255, 255, 255, 0.10) inset, 0px 3px 4.7px 0px rgba(255, 255, 255, 0.10) inset, 0px 0px 3.7px 1px rgba(255, 255, 255, 0.10) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20)",
+      "light-material-component":
+        "0px -6px 8.6px 2px rgba(0, 0, 0, 0.10) inset, 0px 1px 6.3px 0px rgba(0, 0, 0, 0.25) inset, 0px 2px 9.4px 0px rgba(0, 0, 0, 0.10)",
+      "dark-coloured-component":
+        "0px -9px 12.2px 0px rgba(0, 0, 0, 0.20) inset, 0px 3px 4.7px 0px rgba(0, 0, 0, 0.20) inset, 0px 0px 3.7px 1px rgba(0, 0, 0, 0.20) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20);",
+      "dark-material-component":
+        "0px -6px 8.6px 2px rgba(0, 0, 0, 0.10) inset, 0px 1px 6.3px 0px rgba(0, 0, 0, 0.25) inset, 0px 2px 9.4px 0px rgba(0, 0, 0, 0.10)",
     },
     borderRadius: {
+      4: "4px",
       8: "8px",
       12: "12px",
       16: "16px",
       24: "24px",
       32: "32px",
+      full: "9999px",
     },
     spacing: {
       256: "256px",
@@ -121,12 +119,12 @@ module.exports = {
     extend: {
       keyframes: {
         "scale-in": {
-          from: { opacity: "0", transform: "scale(0.9)" },
+          from: { opacity: "0", transform: "scale(0.95)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
         "scale-out": {
           from: { opacity: "1", transform: "scale(1)" },
-          to: { opacity: "0", transform: "scale(0.9)" },
+          to: { opacity: "0", transform: "scale(0.95)" },
         },
       },
       animation: {
