@@ -3,16 +3,10 @@ import defaultTheme from "tailwindcss/defaultTheme";
 module.exports = {
   theme: {
     fontFamily: {
-      serif: [
-        "'Lora Variable'",
-        "'Lora'",
-        "var(--font-lora)",
-        ...defaultTheme.fontFamily.sans,
-      ],
+      serif: ["'Lora Variable'", "'Lora'", ...defaultTheme.fontFamily.sans],
       mono: [
         "'JetBrains Mono Variable'",
         "'JetBrains Mono'",
-        "var(--font-jetbrains-mono)",
         ...defaultTheme.fontFamily.mono,
       ],
     },

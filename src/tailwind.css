@@ -9,23 +9,23 @@
   }
   h1,
   .h1 {
-    @apply text-h1 font-semibold leading-[115%];
+    @apply text-h1 font-serif font-semibold leading-[115%];
   }
   h2,
   .h2 {
-    @apply text-h2 font-medium leading-[115%];
+    @apply text-h2 font-serif font-medium leading-[115%];
   }
   h3,
   .h3 {
-    @apply text-h3 font-medium leading-[115%];
+    @apply text-h3 font-serif font-medium leading-[115%];
   }
   h4,
   .h4 {
-    @apply text-h4 font-normal leading-[115%];
+    @apply text-h4 font-serif font-normal leading-[115%];
   }
   p,
   .body {
-    @apply text-body font-normal leading-[100%];
+    @apply text-body font-serif font-normal leading-[100%];
   }
   code,
   .code {
