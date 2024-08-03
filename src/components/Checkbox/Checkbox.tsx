@@ -1,15 +1,16 @@
 import * as RadixCheckbox from "@radix-ui/react-checkbox";
 import type { CheckboxProps as RadixCheckboxProps } from "@radix-ui/react-checkbox";
+import React from "react";
 
 export type CheckboxProps = RadixCheckboxProps;
 
 export const Checkbox = ({ ...props }: RadixCheckboxProps) => {
   return (
     <RadixCheckbox.Root
-      className="flex items-center justify-center size-[30px] bg-light-fg-2 rounded-8 border border-light-stroke shadow-light-material-component dark:bg-dark-fg-2 dark:border-dark-stroke dark:shadow-dark-material-component"
+      className="flex items-center justify-center size-[30px] bg-light-fg-2 rounded-8 border border-light-stroke shadow-light-material-component dark:bg-dark-fg-2 dark:border-dark-stroke dark:shadow-dark-material-component data-[disabled]:bg-light-fg-disabled data-[disabled]:border-light-stroke-disabled"
       {...props}
     >
-      <RadixCheckbox.Indicator className="text-light-accent dark:text-dark-accent data-[state='checked']:animate-scale-in data-[state='unchecked']:animate-scale-out">
+      <RadixCheckbox.Indicator className="text-light-accent dark:text-dark-accent data-[state='checked']:animate-scale-in data-[state='unchecked']:animate-scale-out data-[disabled]:opacity-30">
         <IconCheck />
       </RadixCheckbox.Indicator>
     </RadixCheckbox.Root>

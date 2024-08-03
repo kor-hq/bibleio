@@ -1,13 +1,27 @@
-import defaultTheme from "tailwindcss/defaultTheme";
-
-module.exports = {
+export const tailwindCore = {
   theme: {
     fontFamily: {
-      serif: ["'Lora Variable'", "'Lora'", ...defaultTheme.fontFamily.sans],
+      serif: [
+        "'Lora Variable'",
+        "'Lora'",
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        "'Times New Roman'",
+        "Times",
+        "serif",
+      ],
       mono: [
         "'JetBrains Mono Variable'",
         "'JetBrains Mono'",
-        ...defaultTheme.fontFamily.mono,
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "'Liberation Mono'",
+        "'Courier New'",
+        "monospace",
       ],
     },
     fontSize: {

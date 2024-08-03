@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/react";
 import "@fontsource-variable/lora";
 import "@fontsource-variable/jetbrains-mono";
-import "../src/tailwind.css";
+import "../tailwind.css";
 import BibleioTheme from "./bibleio-theme";
 import {
   withThemeByDataAttribute,

@@ -1,6 +1,5 @@
 import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
-import "@fontsource-variable/lora";
 
 const variants = cva(
   [
@@ -43,7 +42,9 @@ export type ButtonVariantProps = VariantProps<typeof variants>;
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof variants> {}
+    VariantProps<typeof variants> {
+  variant?: "primary" | "secondary" | "success" | "warning" | "danger";
+}
 export const Button = ({
   children,
   variant,

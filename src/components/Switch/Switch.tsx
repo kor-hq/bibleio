@@ -1,5 +1,6 @@
 import * as RadixSwitch from "@radix-ui/react-switch";
 import { SwitchProps as RadixSwitchProps } from "@radix-ui/react-switch";
+import React from "react";
 
 export type SwitchProps = RadixSwitchProps;
 

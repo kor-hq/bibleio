@@ -1,5 +1,6 @@
 import * as RadixSlider from "@radix-ui/react-slider";
 import type { SliderProps as RadixSliderProps } from "@radix-ui/react-slider";
+import React from "react";
 
 export type SliderProps = RadixSliderProps;
 
