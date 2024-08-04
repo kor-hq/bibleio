@@ -4,7 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 const variants = cva(
   [
     "text-body px-16 py-8 h-[40px] flex justify-center flex-center font-serif rounded-12 border border-light-stroke dark:border-dark-stroke",
-    "component-hover-effect",
+    "hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
   ],
   {
@@ -35,7 +35,7 @@ const variants = cva(
       variant: "primary",
       fullWidth: false,
     },
-  }
+  },
 );
 
 export type ButtonVariantProps = VariantProps<typeof variants>;

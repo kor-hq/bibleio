@@ -51,23 +51,15 @@ const config: Config = {
 };
 ```
 
-Add Tailwind css file in your global css file:
-
-```css
-/* Base.css example */
-
-@import url("@bibleio/design/dist/tailwind.css");
-```
-
 ## Setup fonts
 
 We use Lora for our main font.
 
-**Feel free to get rid of JetBrains Mono imports if you don't plan on using a monospace font.**
-
 Here are guides to setup fonts based on your framework.
 
-### Next.js
+### Next.js (plus JetBrains Mono)
+
+Skip to the next section if you don't need JetBrains Mono.
 
 Import Google fonts in `layout.tsx`:
 
@@ -85,20 +77,44 @@ const jetBrainsMono = JetBrains_Mono({
 Set css variables in your main body layout:
 
 ```html
-<body className="{`${lora.variable}" ${jetBrainsMono.variable}`}></body>
+<body className={`${lora.variable} ${jetBrainsMono.variable}`}></body>
 ```
 
-In `tailwind.config.ts` add the special Next.js font declarations:
+In `tailwind.config.ts` override the default font theme to add variables:
 
 ```ts
-import { tailwindFontsNext } from "@bibleio/design/dist"; // Add font import
+import defaultTheme from "tailwindcss/defaultTheme"; // Add default theme import
 
 const config: Config = {
-  presets: [tailwindCore, tailwindFontsNext], // Add font preset after core theme
+  presets: [tailwindCore],
+  theme: {
+    fontFamily: {
+      serif: ["var(--font-lora)", ...defaultTheme.fontFamily.serif],
+      mono: ["var(--font-jetbrains-mono)", ...defaultTheme.fontFamily.mono],
+    },
+  }
 };
 ```
 
+### Next.js (just Lora)
+
+Import Google fonts in `layout.tsx`:
+
+```tsx
+import { Lora } from "next/font/google"; // Import fonts
+
+const lora = Lora({ subsets: ["latin"] });
+```
+
+Set main font as Lora in your main layout (layout.tsx):
+
+```html
+<body className={`${lora.classname}`}></body>
+```
+
 ### Astro / Any other framework that supports Fontsource
+
+**Feel free to get rid of JetBrains Mono if you don't plan on using it.**
 
 Install Fontsource fonts:
 
@@ -125,10 +141,6 @@ import "@fontsource-variable/jetbrains-mono";
 ```
 
 No extra Tailwind config is needed for Fontsource.
-
-# Types
-
-The button `variant` prop doesn't seem to have types for some reason. But the avaliable ones are: `primary`, `secondary`, `success`, `warning`, `danger`.
 
 # Contributing / License
 

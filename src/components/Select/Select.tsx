@@ -14,7 +14,7 @@ export const Select = ({ label, children, ...props }: SelectProps) => {
   return (
     <RadixSelect.Root {...props}>
       <RadixSelect.Trigger
-        className="flex gap-12 justify-between px-16 py-8 font-serif border outline-1 text-light-text dark:text-dark-text bg-light-fg-2 dark:bg-dark-fg-2 border-light-stroke dark:border-dark-stroke shadow-light-material-component dark:shadow-dark-material-component rounded-12 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:bg-light-fg-disabled data-[disabled]:border-light-stroke-disabled data-[disabled]:text-light-text-subtle dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:text-dark-text-subtle data-[state='open']:rounded-b-4 component-hover-effect"
+        className="flex gap-12 justify-between px-16 py-8 font-serif border outline-1 text-light-text dark:text-dark-text bg-light-fg-2 dark:bg-dark-fg-2 border-light-stroke dark:border-dark-stroke shadow-light-material-component dark:shadow-dark-material-component rounded-12 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:bg-light-fg-disabled data-[disabled]:border-light-stroke-disabled data-[disabled]:text-light-text-subtle dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:text-dark-text-subtle data-[state='open']:rounded-b-4 hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out"
         aria-label={label}
       >
         <RadixSelect.Value placeholder={label} />

@@ -1,7 +1,8 @@
 import type { Preview } from "@storybook/react";
+import React from "react";
 import "@fontsource-variable/lora";
 import "@fontsource-variable/jetbrains-mono";
-import "../tailwind.css";
+import "../src/tailwind.css";
 import BibleioTheme from "./bibleio-theme";
 import {
   withThemeByDataAttribute,
@@ -24,6 +25,11 @@ export const decorators = [
     },
     defaultTheme: "light",
   }),
+  (Story) => (
+    <div className="font-serif">
+      <Story />
+    </div>
+  ),
 ];
 
 const preview: Preview = {

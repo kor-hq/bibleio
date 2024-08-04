@@ -43,8 +43,8 @@ export const tailwindCore = {
         "fg-disabled": "rgba(212, 212, 212, 0.5)",
         stroke: "rgba(0, 0, 0, 1)",
         "stroke-disabled": "rgba(0, 0, 0, 0.25)",
-        "stroke-active": "var(--light-accent)",
-        accent: "var(--light-accent)",
+        "stroke-active": "rgba(0, 80, 124, 1)", // Accent
+        accent: "rgba(0, 80, 124, 1)", // Soon we'll add support for a dynamic theme accent switcher
         text: "rgba(0, 0, 0, 1)",
         "text-subtle": "rgba(0, 0, 0, 0.33)",
         red: "rgba(244, 82, 82, 1)",
@@ -61,8 +61,8 @@ export const tailwindCore = {
         "fg-disabled": "rgba(33, 33, 33, 0.5)",
         stroke: "rgba(255, 255, 255, 0.1)",
         "stroke-disabled": "rgba(255, 255, 255, 0.04)",
-        "stroke-active": "var(--dark-accent)",
-        accent: "var(--dark-accent)",
+        "stroke-active": "rgba(0, 163, 255, 1)", // Accent
+        accent: "rgba(0, 163, 255, 1)", // Soon we'll add support for a dynamic theme accent switcher
         text: "rgba(222, 222, 222, 1)",
         "text-subtle": "rgba(222, 222, 222, 0.3)",
         red: "rgba(128, 37, 37, 1)",
