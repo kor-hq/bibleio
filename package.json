@@ -1,6 +1,7 @@
 {
   "name": "@bibleio/design",
   "description": "A React component and Tailwind style library for Bibleio.",
+  "repository": "https://github.com/bibleio/bibleio-design",
   "keywords": [
     "react",
     "ui-kit",
