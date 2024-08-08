@@ -1,7 +1,5 @@
 ![Banner](/public/github-cover.png)
 
-### 1.0-release
-
 UI kit for Bibleio, including React components and Tailwind configuration with colour styles.
 
 Built with Radix Primitives, and Tailwind CSS. Built using tsup.
