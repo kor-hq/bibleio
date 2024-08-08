@@ -8,7 +8,8 @@ export default create({
 
   brandTitle: "Bibleio Design",
   brandImage: "/storybook-brand-logo.png",
-  brandTarget: "_self",
+  brandTarget: "_blank",
+  brandUrl: "https://dev.bibleio.com/docs/design",
 
   //
   colorPrimary: "#00507C",

@@ -1,4 +1,4 @@
-import { tailwindCore } from "./dist";
+import { tailwindCore } from "./src/tailwind-core";
 
 /** @type {import('tailwindcss').Config} */
 export default {

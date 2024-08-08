@@ -14,7 +14,7 @@ export const Select = ({ label, children, ...props }: SelectProps) => {
   return (
     <RadixSelect.Root {...props}>
       <RadixSelect.Trigger
-        className="flex gap-12 justify-between px-16 py-8 font-serif border outline-1 text-light-text dark:text-dark-text bg-light-fg-2 dark:bg-dark-fg-2 border-light-stroke dark:border-dark-stroke shadow-light-material-component dark:shadow-dark-material-component rounded-12 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:bg-light-fg-disabled data-[disabled]:border-light-stroke-disabled data-[disabled]:text-light-text-subtle dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:text-dark-text-subtle data-[state='open']:rounded-b-4 hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out"
+        className="flex gap-12 justify-between px-16 py-8 font-serif border outline-1 text-light-text dark:text-dark-text bg-light-fg-2 dark:bg-dark-fg-2 border-light-stroke dark:border-dark-stroke shadow-light-material-component dark:shadow-dark-material-component rounded-12 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:bg-light-fg-disabled data-[disabled]:border-light-stroke-disabled data-[disabled]:text-light-text-subtle dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:text-dark-text-subtle data-[state='open']:rounded-b-4 hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out focus-visible:outline-light-accent"
         aria-label={label}
       >
         <RadixSelect.Value placeholder={label} />
@@ -49,7 +49,7 @@ export const SelectItem = React.forwardRef<
 >(({ children, ...props }, forwardedRef) => {
   return (
     <RadixSelect.Item
-      className={` body px-32 text-light-text dark:text-dark-text font-serif flex items-center h-fit relative select-none cursor-pointer data-[disabled]:text-light-text-subtle dark:data-[disabled]:text-dark-text-subtle data-[disabled]:pointer-events-none outline-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-light-accent duration-150 ease-out`}
+      className={` body leading-none px-32 text-light-text dark:text-dark-text font-serif flex items-center h-fit relative select-none cursor-pointer data-[disabled]:text-light-text-subtle dark:data-[disabled]:text-dark-text-subtle data-[disabled]:pointer-events-none outline-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-light-accent duration-150 ease-out`}
       {...props}
       ref={forwardedRef}
     >
@@ -71,7 +71,7 @@ export const SelectGroup = ({ children }: { children: ReactNode }) => {
 
 export const SelectLabel = ({ children }: { children: ReactNode }) => {
   return (
-    <RadixSelect.Label className="px-24 sub text-light-text/80 dark:text-dark-text/80">
+    <RadixSelect.Label className="px-24 text-sub text-light-text/80 dark:text-dark-text/80">
       {children}
     </RadixSelect.Label>
   );

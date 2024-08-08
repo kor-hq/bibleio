@@ -51,6 +51,12 @@ const config: Config = {
 };
 ```
 
+Import main styles in your main layout:
+
+```tsx
+import "@bibleio/design/dist/index.css"; // Import styles
+```
+
 ## Setup fonts
 
 We use Lora for our main font.
