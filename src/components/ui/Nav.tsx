@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "./Button";
 
 export default function Nav({ path }: { path: string }) {
   const [navOpen, setNavOpen] = useState(false);
+  console.log(path);
   function handleNavOpen() {
     setNavOpen(!navOpen);
   }
@@ -14,10 +14,11 @@ export default function Nav({ path }: { path: string }) {
     { text: "App", link: "https://app.bibleio.com" },
     { text: "Products", link: "/products" },
     { text: "About", link: "/about" },
+    { text: "Blog", link: "/blog" },
     { text: "Why Believe?", link: "/why-believe" },
   ];
   return (
-    <nav className="sticky top-0 flex flex-col w-screen h-fit gap-8">
+    <nav className="sticky top-0 flex flex-col w-screen h-fit gap-8 z-50">
       <div className="bg-light-fg-1 flex justify-between items-center px-32 py-12 border border-b-black">
         <a href="/">
           <img
@@ -33,7 +34,11 @@ export default function Nav({ path }: { path: string }) {
             <a
               key={index}
               href={item.link}
-              className={path === item.link ? "strong-body" : "body"}
+              className={
+                path === item.link
+                  ? "font-semibold text-body text-light-text"
+                  : "text-body text-light-text"
+              }
             >
               {item.text}
             </a>
@@ -66,7 +71,11 @@ export default function Nav({ path }: { path: string }) {
           <a
             key={index}
             href={item.link}
-            className={path === item.link ? "strong-body" : "body"}
+            className={
+              path === item.link
+                ? "font-semibold text-body text-light-text"
+                : "text-body text-light-text"
+            }
             onClick={() => {
               clickedLink();
             }}

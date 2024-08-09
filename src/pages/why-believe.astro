@@ -4,19 +4,52 @@ import { Image } from "astro:assets";
 ---
 
 <Layout title="Why Believe? - Bibleio">
-  <div class="flex h-screen p-32 flex-col justify-center">
-    <h1 class="text-[21vw] leading-none w-screen whitespace-normal">
+  <script>
+    import { atom } from "nanostores";
+    import { gsap } from "gsap";
+
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const blobColour = atom("#00A3FF");
+
+    gsap.to("#blobPath", {
+      scrollTrigger: "#chapter1head",
+      x: 500,
+      start: "50%",
+      fill: "#17007C",
+      ease: "power3.out",
+      duration: 2,
+    });
+  </script>
+  <section
+    id="landing"
+    class="flex h-screen max-h-screen min-h-screen p-32 flex-col justify-center"
+  >
+    <h1 class="text-[19vw] leading-none w-screen whitespace-normal">
       Why<br />Believe?
     </h1>
-    <p class="body leading-none">
-      Why believe in a God, or that Jesus is God? (FULL PAGE COMING SOON)
-    </p>
-    <Image
-      class="absolute -z-10 w-[80vw] h-[80vh] blur-[256px]"
-      src="/blob.svg"
-      width={1372.71}
-      height={1234.27}
-      alt=""
-    />
-  </div>
+    <p class="body leading-none">Why believe in God, or that Jesus is God?</p>
+  </section>
+  <section
+    id="chapter1head"
+    class="flex h-screen max-h-screen min-h-screen p-32 -z-50 flex-col justify-center bg-[#1B1B1B]"
+  >
+  </section>
+  <svg
+    width="1269"
+    height="1089"
+    viewBox="0 0 1269 1089"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-fit h-fit fixed origin-center animate-rotate-slow blur-[20vmax] -z-50"
+    id="blob"
+  >
+    <path
+      d="M423.703 51.4302L169.104 282.976C143.604 306.168 138.947 344.543 158.162 373.16C173.203 395.562 173.923 424.644 160.007 447.763L29.2687 664.973C-33.7337 769.645 12.1595 905.838 125.663 951.033L435.776 1074.52C524.491 1109.84 625.78 1076.81 676.623 995.987L732.379 907.349C763.642 857.649 815.35 824.387 873.539 816.547L1097.29 786.401C1200.94 772.435 1275.86 680.252 1268.33 575.928L1251.14 337.574C1243.16 226.95 1145.88 144.456 1035.44 154.66L895.383 167.6C825.125 174.091 756.798 142.326 716.475 84.4263C648.846 -12.6824 511.25 -28.1898 423.703 51.4302Z"
+      fill="#00A3FF"
+      id="blobPath"
+      class="origin-center"></path>
+  </svg>
 </Layout>

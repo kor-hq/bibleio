@@ -1,81 +1,50 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button";
+import Landing from "../components/sections/Landing";
 import { Image } from "astro:assets";
+import ProductCarousel from "../components/sections/ProductsCarousel";
+import { Button } from "@bibleio/design";
 ---
 
-<Layout title="Bibleio">
-  <main
-    class="grid grid-cols-2 grid-rows-2 max-[1000px]:grid-rows-3 max-[1000px]:grid-cols-1 divide-x-[1px] divide-y-[1px] h-[150vh] max-[1000px]:h-[270vh] divide-black"
-  >
-    <div
-      class="col-span-1 row-span-1 flex items-center justify-center flex-col gap-32 p-64 max-[1380px]:p-24 overflow-clip"
-    >
-      <h1
-        class="leading-none text-[256px] font-lora font-normal max-[1700px]:text-[128px] max-[450px]:text-[96px]"
-      >
-        Bibleio
-      </h1>
-      <p class="body text-center">
-        Useful tools to connect with the Bible, and to spread the gospel.
+<Layout title="Home - Bibleio">
+  <Landing client:load />
+  <div id="products" class="p-32 border-b border-b-black">
+    <ProductCarousel client:load />
+  </div>
+  <div class="flex flex-col gap-24 items-center justify-center p-72">
+    <h1 class="italic text-[128px] leading-none">About</h1>
+    <h4 class="text-h4">Bibleio is in alpha. Not feature complete.</h4>
+    <div class="grid grid-cols-2 w-[800px] gap-24">
+      <p class="text-body leading-[220%]">
+        Bibleio is a ministry organization based on innovating the industry of
+        Bible technology, with design, and modern features. We want the Bible to
+        be accessible to everyone online, and that includes developers! We want
+        to include accessability features, reading features, and more in the
+        future.
       </p>
-      <div class="absolute bg-[#00A3FF] w-[30%] h-[25%] -z-10 blur-[192px]">
-      </div>
+      <p class="text-body leading-[220%]">
+        All of Bibleio’s products are free, open-source, licensed under GPL-3.
+        All of our backends are written in Rust. We prioritize design, security,
+        privacy, and freedom. We have so many plans for Bibleio, such as a
+        mobile app, desktop app, Discord bot, CLI, testimony sharing, a free
+        Bible API featuring major translations, and even more! View the full
+        to-do list of ideas on Notion.
+      </p>
     </div>
-    <div
-      class="col-span-1 min-[1000px]:row-span-2 grid grid-rows-2 divide-y-[1px] divide-black"
-    >
+    <div class="flex gap-12">
       <a
-        href="https://app.bibleio.com"
-        class="p-64 max-[1000px]:p-24 flex justify-start items-end overflow-clip group"
+        href="https://dukc.notion.site/Bibleio-781f29eb2433420d8dbd98feaa584237?pvs=74"
+        target="_blank"
       >
-        <h1 class="h1">Bible App</h1>
-        <Image
-          src="/index/bible.svg"
-          alt="Bible book"
-          width={1024}
-          height={1024}
-          class="w-[423px] h-[354px] max-[1000px]:w-[211px] max-[1000px]:h-[177px] absolute -z-10 left-[77%] max-[1000px]:left-[60%] group-hover:-translate-y-24 duration-150 ease-out"
-        />
+        <Button variant="primary"> Notion </Button>
       </a>
-      <a
-        href="/why-believe"
-        class="p-64 max-[1000px]:p-24 flex justify-start items-end overflow-clip group"
-      >
-        <h1 class="h1">Why Believe?</h1>
-        <Image
-          src="/index/cross.svg"
-          alt="Cross"
-          width={1024}
-          height={1024}
-          class="w-[292px] h-[453px] max-[1000px]:w-[146px] max-[1000px]:h-[226px] absolute -z-10 left-[80%] max-[1000px]:left-[64%] group-hover:-translate-y-24 duration-150 ease-out"
-        />
+      <a href="https://github.com/bibleio" target="_blank">
+        <Button variant="secondary">GitHub</Button>
+      </a>
+
+      <a href="https://discord.gg/7eVCyQ5GGb" target="_blank">
+        <Button variant="secondary">Discord </Button>
       </a>
     </div>
-    <div
-      class="col-span-1 row-span-1 grid grid-cols-2 max-[1000px]:grid-cols-1 max-[1000px]:grid-rows-2 divide-x-[1px] max-[1000px]:divide-y-[1px] max-[1000px]:h-[150%] divide-black"
-    >
-      <div class="flex flex-col p-64 max-[1380px]:p-24 gap-24">
-        <h1 class="h1">About</h1>
-        <p class="body-paragraph">
-          Bibleio is a product focused on spreading the gospel, and making the
-          Bible accessible for everyone. I wanted to express God through my
-          skills, and find a unique way to spread the gospel through a simple
-          link. so I founded Bibleio. Bibleio is also very design focused, and I
-          plan to make it unique. And Bibleio is 100% free and open-source.
-        </p>
-        <Button text="Source Code" link="https://github.com/bibleio" newTab />
-      </div>
-      <div class="flex flex-col p-64 max-[1380px]:p-24 gap-24">
-        <h1 class="h1">Features & Plans</h1>
-        <p class="body-paragraph">
-          Bibleio is currently in alpha stages. Currently it can access the
-          Bible, and you can format the text. I plan to add a "Why Believe?"
-          page, search dialog, testimony sharing system, definition system,
-          share system, bookmarks, a mobile app, a Discord bot, a Bible CLI, and
-          a YouTube channel with helpful videos.
-        </p>
-      </div>
-    </div>
-  </main>
-</Layout>
+  </div></Layout
+>
