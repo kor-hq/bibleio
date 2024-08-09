@@ -7,7 +7,57 @@ import ProductCard from "../components/ui/ProductCard.astro";
 ---
 
 <Layout title="Home - Bibleio">
-  <Landing client:load />
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.from(".shape", {
+        duration: 1.2,
+        delay: 0.1,
+        y: 100,
+        opacity: 0,
+        scale: 0.8,
+        stagger: 0.05,
+        ease: "power4.out",
+      });
+      gsap.from(".product", {
+        duration: 1,
+        scale: 0.75,
+        opacity: 0,
+        stagger: 0.05,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: "#products",
+          start: "center bottom",
+        },
+      });
+    });
+  </script>
+  <Landing client:load>
+    <img
+      src="/shapes/circle.svg"
+      class="fill-light-blue stroke-1 stroke-light-stroke size-[23vmax] absolute bottom-[57%] left-[40%] max-[700px]:bottom-[80%] max-[450px]:left-[20%] shape"
+    />
+    <img
+      src="/shapes/cross.svg"
+      class="fill-light-yellow stroke-1 stroke-light-stroke size-[30vmax] absolute left-[50%] top-[50%] max-[700px]:top-[25%] max-[450px]:left-[30%] shape"
+    />
+    <img
+      src="/shapes/bible.svg"
+      class="fill-light-gray stroke-1 stroke-light-stroke size-[27vmax] absolute bottom-[50%] max-[700px]:bottom-[60%] max-[700px]:right-[75%] max-[450px]:right-[85%] shape"
+    />
+    <img
+      src="/shapes/hexagon.svg"
+      class="fill-light-purple stroke-1 stroke-light-stroke size-[29vmax] absolute top-[60%] left-[80%] shape"
+    />
+    <img
+      src="/shapes/star.svg"
+      class="fill-light-green stroke-1 stroke-light-stroke size-[27vmax] absolute bottom-[50%] left-[70%] max-[700px]:left-[85%] max-[700px]:bottom-[70%] shape"
+    /></Landing
+  >
   <div
     id="products"
     class="grid grid-cols-3 max-[1200px]:grid-cols-2 max-[950px]:grid-cols-1 p-32 max-[480px]:p-16 max-[480px]:gap-12 gap-24 border-b border-b-black"

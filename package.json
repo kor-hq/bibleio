@@ -16,7 +16,6 @@
     "@bibleio/design": "^1.0.2",
     "@fontsource/lora": "^5.0.17",
     "@gsap/react": "^2.1.1",
-    "@studio-freight/react-lenis": "^0.0.47",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.13.2",

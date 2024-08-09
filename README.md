@@ -1,8 +1,8 @@
 # Bibleio Website
 
-The main website for Bibleio. It will include the main site, links to products, about, etc, then a "Why Believe?" page, and maybe a blog soon.
+The main website for Bibleio. It will include the main site, links to products, about, etc, then a "Why Believe?" page, and a blog.
 
-Uses astro, mdx, tailwind
+Uses astro, mdx, tailwind, react, and gsap.
 
 ### Dev
 
