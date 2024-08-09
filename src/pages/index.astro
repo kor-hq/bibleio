@@ -2,19 +2,46 @@
 import Layout from "../layouts/Layout.astro";
 import Landing from "../components/sections/Landing";
 import { Image } from "astro:assets";
-import ProductCarousel from "../components/sections/ProductsCarousel";
 import { Button } from "@bibleio/design";
+import ProductCard from "../components/ui/ProductCard.astro";
 ---
 
 <Layout title="Home - Bibleio">
   <Landing client:load />
-  <div id="products" class="p-32 border-b border-b-black">
-    <ProductCarousel client:load />
+  <div
+    id="products"
+    class="grid grid-cols-3 max-[1200px]:grid-cols-2 max-[950px]:grid-cols-1 p-32 max-[480px]:p-16 max-[480px]:gap-12 gap-24 border-b border-b-black"
+  >
+    <ProductCard
+      title="Web App"
+      description="A simple web app for viewing the Bible. In alpha."
+    >
+      <a href="https://app.bibleio.com">
+        <Button variant="primary">Visit</Button>
+      </a>
+    </ProductCard>
+    <ProductCard
+      title="Design"
+      description="The design system for Bibleio. With Figma and React components."
+    >
+      <a href="https://github.com/bibleio/design">
+        <Button variant="primary">Use it</Button>
+      </a>
+    </ProductCard>
   </div>
-  <div class="flex flex-col gap-24 items-center justify-center p-72">
-    <h1 class="italic text-[128px] leading-none">About</h1>
-    <h4 class="text-h4">Bibleio is in alpha. Not feature complete.</h4>
-    <div class="grid grid-cols-2 w-[800px] gap-24">
+  <div
+    id="about"
+    class="flex flex-col gap-24 items-center justify-center p-32 max-[480px]:p-16 max-[480px]:pt-64"
+  >
+    <h1 class="italic text-[128px] max-[460px]:text-[64px] leading-none">
+      About
+    </h1>
+    <h4 class="text-h4 text-center">
+      Bibleio is in alpha. Not feature complete.
+    </h4>
+    <div
+      class="grid grid-cols-2 max-[870px]:grid-cols-1 w-[800px] max-[870px]:w-full gap-24"
+    >
       <p class="text-body leading-[220%]">
         Bibleio is a ministry organization based on innovating the industry of
         Bible technology, with design, and modern features. We want the Bible to
@@ -24,14 +51,14 @@ import { Button } from "@bibleio/design";
       </p>
       <p class="text-body leading-[220%]">
         All of Bibleio’s products are free, open-source, licensed under GPL-3.
-        All of our backends are written in Rust. We prioritize design, security,
-        privacy, and freedom. We have so many plans for Bibleio, such as a
-        mobile app, desktop app, Discord bot, CLI, testimony sharing, a free
-        Bible API featuring major translations, and even more! View the full
-        to-do list of ideas on Notion.
+        We plan to write all of our backends in Rust. We prioritize design,
+        security, privacy, and freedom. And we have so many plans for Bibleio,
+        such as a mobile app, desktop app, Discord bot, CLI, testimony sharing,
+        a free Bible API featuring major translations, and even more! View the
+        full to-do list of ideas on Notion.
       </p>
     </div>
-    <div class="flex gap-12">
+    <div class="flex gap-12 flex-wrap justify-center w-full">
       <a
         href="https://dukc.notion.site/Bibleio-781f29eb2433420d8dbd98feaa584237?pvs=74"
         target="_blank"

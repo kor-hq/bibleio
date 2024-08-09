@@ -2,9 +2,9 @@ export const Circle = ({ className }: { className: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="435"
-      height="436"
       viewBox="0 0 435 436"
+      width="491"
+      height="469"
       fill="none"
     >
       <path

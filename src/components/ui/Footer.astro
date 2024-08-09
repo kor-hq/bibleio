@@ -3,20 +3,27 @@ import { Button } from "@bibleio/design";
 ---
 
 <footer
-  class="relative grid grid-cols-4 items-center px-256 divide-x divide-black border-t border-t-black"
+  class="relative grid grid-cols-4 max-[950px]:grid-cols-1 items-center divide-x max-[950px]:divide-y divide-black border-t border-t-black max-[950px]:border-none mt-32"
 >
-  <div
-    class="absolute bottom-[86%] left-1/2 -translate-x-1/2 size-72 rounded-full bg-light-bg-1 flex justify-center items-center border border-light-stroke"
+  <a
+    class="absolute bottom-[85%] max-[950px]:bottom-[96%] left-1/2 -translate-x-1/2 size-72 rounded-full bg-light-bg-1 flex justify-center items-center border border-light-stroke hover:drop-shadow-xl hover:-translate-y-6 duration-[200ms] ease-out"
+    href="/"
   >
     <img src="/brand/logo-light.svg" class="size-[56px]" />
-  </div>
+  </a>
   <div class="flex flex-col h-full p-32 gap-16">
     <div class="flex justify-between items-center">
       <h2 class="text-h2 font-medium">Bibleio</h2>
-      <p class="text-body leading-none">0.3-alpha 2024</p>
+      <p class="text-body leading-none text-right">0.3-alpha 2024</p>
     </div>
     <p class="text-body leading-[220%]">
-      Innovating the industry of Bible software. By dukc.
+      Innovating the industry of Bible software. <a
+        href="https://dukc.dev"
+        target="_blank"
+        class="hover:text-light-accent duration-150 ease-out"
+      >
+        By dukc.
+      </a>
     </p>
     <div class="flex gap-24">
       <a
@@ -38,7 +45,7 @@ import { Button } from "@bibleio/design";
             stroke-linejoin="round"></path>
         </svg>
       </a>
-      <a href="#" target="_blank">
+      <a href="https://www.youtube.com/@bibleio" target="_blank">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -98,24 +105,62 @@ import { Button } from "@bibleio/design";
   <div class="flex flex-col h-full p-32 gap-16">
     <h2 class="text-h2 font-medium">Products</h2>
     <div class="flex flex-col gap-24">
-      <a href="#" target="_blank"> Web App </a>
-      <a href="#" target="_blank"> Why Believe? </a>
+      <a
+        href="https://app.bibleio.com"
+        class="hover:text-light-accent duration-150 ease-out"
+      >
+        Web App
+      </a>
+      <a
+        href="/why-believe"
+        class="hover:text-light-accent duration-150 ease-out"
+      >
+        Why Believe?
+      </a>
     </div>
   </div>
-  <div class="flex flex-col h-full p-32 gap-16">
+  <div
+    class="flex flex-col h-full p-32 gap-16 items-end max-[950px]:items-start"
+  >
     <h2 class="text-h2 font-medium">Developers</h2>
-    <div class="flex flex-col gap-24">
-      <a href="#" target="_blank"> Bible API </a>
-      <a href="#" target="_blank"> Bibleio Design </a>
-      <a href="#" target="_blank"> Bibleio GitHub </a>
+    <div class="flex flex-col gap-24 items-end max-[950px]:items-start">
+      <a
+        href="https://dev.bibleio.com/docs/api"
+        class="hover:text-light-accent duration-150 ease-out"
+      >
+        Bibleio API
+      </a>
+      <a
+        href="https://dev.bibleio.com/docs/design"
+        class="hover:text-light-accent duration-150 ease-out"
+      >
+        Bibleio Design
+      </a>
+      <a
+        href="https://github.com/bibleio"
+        class="hover:text-light-accent duration-150 ease-out"
+      >
+        Bibleio GitHub
+      </a>
     </div>
   </div>
-  <div class="flex flex-col h-full p-32 gap-16">
+  <div
+    class="flex flex-col h-full p-32 gap-16 items-end max-[950px]:items-start border-r border-r-light-stroke"
+  >
     <h2 class="text-h2 font-medium">Other</h2>
-    <div class="flex flex-col gap-24">
-      <a href="#" target="_blank"> Blog </a>
-      <a href="#" target="_blank"> Contact </a>
-      <a href="#" target="_blank"> Privacy & Terms </a>
+    <div class="flex flex-col gap-24 items-end max-[950px]:items-start">
+      <a href="/blog" class="hover:text-light-accent duration-150 ease-out">
+        Blog
+      </a>
+      <a href="/contact" class="hover:text-light-accent duration-150 ease-out">
+        Contact
+      </a>
+      <a
+        href="/privacy-terms"
+        class="hover:text-light-accent duration-150 ease-out"
+      >
+        Privacy & Terms
+      </a>
     </div>
   </div>
 </footer>

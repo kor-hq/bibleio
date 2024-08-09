@@ -1,0 +1,15 @@
+---
+import { Button } from "@bibleio/design";
+
+const { title, description } = Astro.props;
+---
+
+<div
+  class="w-full h-auto aspect-[2/1] bg-light-fg-1 border border-light-stroke flex min-w-0 flex-col p-32 justify-end items-start gap-16 rounded-[44px]"
+>
+  <h2 class="text-h2 font-medium">{title}</h2>
+  <p class="text-body leading-none">{description}</p>
+  <div class="flex gap-24 w-fit">
+    <slot />
+  </div>
+</div>
