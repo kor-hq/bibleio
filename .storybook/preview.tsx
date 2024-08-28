@@ -1,29 +1,30 @@
-import type { Preview } from "@storybook/react";
-import React from "react";
-import "@fontsource-variable/lora";
-import "@fontsource-variable/jetbrains-mono";
-import "../src/index.css";
-import BibleioTheme from "./bibleio-theme";
+import type { Preview } from '@storybook/react';
+import React from 'react';
+import '@fontsource-variable/lora';
+import '@fontsource-variable/lora/wght-italic.css';
+import '@fontsource-variable/jetbrains-mono';
+import '../src/index.css';
+import BibleioTheme from './bibleio-theme';
 import {
   withThemeByDataAttribute,
   withThemeByClassName,
-} from "@storybook/addon-themes";
+} from '@storybook/addon-themes';
 
 export const decorators = [
   withThemeByDataAttribute({
     themes: {
-      light: "light",
-      dark: "dark",
+      light: 'light',
+      dark: 'dark',
     },
-    defaultTheme: "light",
-    attributeName: "data-mode",
+    defaultTheme: 'light',
+    attributeName: 'data-mode',
   }),
   withThemeByClassName({
     themes: {
-      light: "light",
-      dark: "dark",
+      light: 'light',
+      dark: 'dark',
     },
-    defaultTheme: "light",
+    defaultTheme: 'light',
   }),
   (Story) => (
     <div className="font-serif">
@@ -43,17 +44,17 @@ const preview: Preview = {
     docs: {
       theme: BibleioTheme,
     },
-    layout: ["centered"],
+    layout: ['centered'],
     backgrounds: {
-      default: "light",
+      default: 'light',
       values: [
         {
-          name: "light",
-          value: "#CCCCCC",
+          name: 'light',
+          value: '#CCCCCC',
         },
         {
-          name: "dark",
-          value: "#1B1B1B",
+          name: 'dark',
+          value: '#1B1B1B',
         },
       ],
     },

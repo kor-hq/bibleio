@@ -1,8 +1,8 @@
-import { tailwindCore } from "./src/tailwind-core";
+import { tailwindCore } from './src/tailwind-core';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ['./src/**/*.{ts,tsx}'],
   presets: [tailwindCore],
-  darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: ['class', '[data-mode="dark"]'],
 };

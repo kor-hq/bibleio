@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 import {
   Select,
@@ -7,13 +7,13 @@ import {
   SelectItem,
   SelectLabel,
   SelectSeparator,
-} from "./Select";
-import { SelectProps } from "../Select";
+} from './Select';
+import { SelectProps } from '../Select';
 
 const meta: Meta<typeof Select> = {
   component: Select,
-  title: "Select",
-  tags: ["autodocs"],
+  title: 'Select',
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -53,6 +53,6 @@ export const Default: Story = {
   ),
 };
 Default.args = {
-  label: "Select a food",
+  label: 'Select a food',
   disabled: false,
 };
