@@ -65,7 +65,7 @@ export const ListItemCollapsible = ({
           }
         >
           {text}
-          {open ? <IconChevronDown /> : <IconChevronUp />}
+          {open ? <IconChevronUp /> : <IconChevronDown />}
         </div>
       </RadixCollapsible.Trigger>
       <RadixCollapsible.Content className="flex flex-col gap-0 pl-16">

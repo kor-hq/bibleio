@@ -12,6 +12,7 @@ export const Progress = ({ value = 50, ...props }: ProgressProps) => {
     >
       <RadixProgress.Indicator
         className="h-full w-full bg-light-accent shadow-light-coloured-component transition-transform duration-[300ms] ease-out dark:bg-dark-accent dark:shadow-dark-coloured-component"
+        // @ts-expect-error - The value is literally defined above so idk why this error is here
         style={{ transform: `translateX(-${100 - value}%)` }}
       />
     </RadixProgress.Root>
