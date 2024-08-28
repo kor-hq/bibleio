@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import * as RadixSelect from "@radix-ui/react-select";
+import React, { ReactNode } from 'react';
+import * as RadixSelect from '@radix-ui/react-select';
 import {
   SelectItemProps as RadixSelectItemProps,
   SelectProps as RadixSelectProps,
-} from "@radix-ui/react-select";
+} from '@radix-ui/react-select';
 
 interface CustomSelectProps {
   label: string;
@@ -14,7 +14,7 @@ export const Select = ({ label, children, ...props }: SelectProps) => {
   return (
     <RadixSelect.Root {...props}>
       <RadixSelect.Trigger
-        className="flex gap-12 justify-between px-16 py-8 font-serif border outline-1 text-light-text dark:text-dark-text bg-light-fg-2 dark:bg-dark-fg-2 border-light-stroke dark:border-dark-stroke shadow-light-material-component dark:shadow-dark-material-component rounded-12 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:bg-light-fg-disabled data-[disabled]:border-light-stroke-disabled data-[disabled]:text-light-text-subtle dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:text-dark-text-subtle data-[state='open']:rounded-b-4 hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out focus-visible:outline-light-accent"
+        className="flex justify-between gap-12 rounded-12 border border-light-stroke bg-light-fg-2 px-16 py-8 font-serif text-light-text shadow-light-material-component outline-1 duration-150 ease-out hover:-translate-y-[2px] focus-visible:outline-light-accent active:translate-y-4 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[state='open']:rounded-b-4 data-[disabled]:border-light-stroke-disabled data-[disabled]:bg-light-fg-disabled data-[disabled]:text-light-text-subtle dark:border-dark-stroke dark:bg-dark-fg-2 dark:text-dark-text dark:shadow-dark-material-component dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:text-dark-text-subtle"
         aria-label={label}
       >
         <RadixSelect.Value placeholder={label} />
@@ -25,15 +25,15 @@ export const Select = ({ label, children, ...props }: SelectProps) => {
       <RadixSelect.Portal>
         <RadixSelect.Content
           position="popper"
-          className="font-serif overflow-hidden relative z-50 bg-fg-2 mt-4 max-h-[512px] w-full rounded-12 rounded-t-4 bg-light-fg-2 dark:bg-dark-fg-2 shadow-light-material-component dark:shadow-dark-material-component border border-light-stroke dark:border-dark-stroke data-[state='open']:animate-scale-in"
+          className="bg-fg-2 relative z-50 mt-4 max-h-[512px] w-full overflow-hidden rounded-12 rounded-t-4 border border-light-stroke bg-light-fg-2 font-serif shadow-light-material-component data-[state='open']:animate-scale-in dark:border-dark-stroke dark:bg-dark-fg-2 dark:shadow-dark-material-component"
         >
-          <RadixSelect.ScrollUpButton className="flex justify-center items-center py-2 border-b cursor-default border-light-stroke dark:border-dark-stroke h-fit">
+          <RadixSelect.ScrollUpButton className="py-2 flex h-fit cursor-default items-center justify-center border-b border-light-stroke dark:border-dark-stroke">
             <IconChevronUp />
           </RadixSelect.ScrollUpButton>
           <RadixSelect.Viewport className="flex flex-col gap-12 p-16">
             {children}
           </RadixSelect.Viewport>
-          <RadixSelect.ScrollDownButton className="flex justify-center items-center py-2 border-t cursor-default border-light-stroke dark:border-dark-stroke h-fit">
+          <RadixSelect.ScrollDownButton className="py-2 flex h-fit cursor-default items-center justify-center border-t border-light-stroke dark:border-dark-stroke">
             <IconChevronDown />
           </RadixSelect.ScrollDownButton>
         </RadixSelect.Content>
@@ -49,11 +49,11 @@ export const SelectItem = React.forwardRef<
 >(({ children, ...props }, forwardedRef) => {
   return (
     <RadixSelect.Item
-      className={` body leading-none px-32 text-light-text dark:text-dark-text font-serif flex items-center h-fit relative select-none cursor-pointer data-[disabled]:text-light-text-subtle dark:data-[disabled]:text-dark-text-subtle data-[disabled]:pointer-events-none outline-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-light-accent duration-150 ease-out`}
+      className={`body relative flex h-fit cursor-pointer select-none items-center px-32 font-serif leading-none text-light-text outline-none duration-150 ease-out data-[disabled]:pointer-events-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[disabled]:text-light-text-subtle data-[state='checked']:text-light-accent dark:text-dark-text dark:data-[disabled]:text-dark-text-subtle`}
       {...props}
       ref={forwardedRef}
     >
-      <RadixSelect.ItemIndicator className="inline-flex absolute left-0 justify-center items-center w-24">
+      <RadixSelect.ItemIndicator className="absolute left-0 inline-flex w-24 items-center justify-center">
         <IconCheck />
       </RadixSelect.ItemIndicator>
       <RadixSelect.ItemText>{children}</RadixSelect.ItemText>

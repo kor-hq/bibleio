@@ -42,7 +42,7 @@ Add Tailwind style preset:
 ```ts
 // tailwind.config.ts
 // Snippet of what to add
-import { tailwindCore } from "@bibleio/design"; // Add import
+import { tailwindCore } from '@bibleio/design'; // Add import
 
 const config: Config = {
   presets: [tailwindCore], // Add preset
@@ -52,7 +52,7 @@ const config: Config = {
 Import main styles in your main layout:
 
 ```tsx
-import "@bibleio/design/dist/index.css"; // Import styles
+import '@bibleio/design/dist/index.css'; // Import styles
 ```
 
 ## Setup fonts
@@ -68,35 +68,35 @@ Skip to the next section if you don't need JetBrains Mono.
 Import Google fonts in `layout.tsx`:
 
 ```tsx
-import { Lora, JetBrains_Mono } from "next/font/google"; // Import fonts
+import { Lora, JetBrains_Mono } from 'next/font/google'; // Import fonts
 
-const lora = Lora({ subsets: ["latin"], variable: "--font-lora" });
+const lora = Lora({ subsets: ['latin'], variable: '--font-lora' });
 
 const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
 });
 ```
 
 Set css variables in your main body layout:
 
 ```html
-<body className={`${lora.variable} ${jetBrainsMono.variable}`}></body>
+<body className="{`${lora.variable}" ${jetBrainsMono.variable}`}></body>
 ```
 
 In `tailwind.config.ts` override the default font theme to add variables:
 
 ```ts
-import defaultTheme from "tailwindcss/defaultTheme"; // Add default theme import
+import defaultTheme from 'tailwindcss/defaultTheme'; // Add default theme import
 
 const config: Config = {
   presets: [tailwindCore],
   theme: {
     fontFamily: {
-      serif: ["var(--font-lora)", ...defaultTheme.fontFamily.serif],
-      mono: ["var(--font-jetbrains-mono)", ...defaultTheme.fontFamily.mono],
+      serif: ['var(--font-lora)', ...defaultTheme.fontFamily.serif],
+      mono: ['var(--font-jetbrains-mono)', ...defaultTheme.fontFamily.mono],
     },
-  }
+  },
 };
 ```
 
@@ -105,15 +105,15 @@ const config: Config = {
 Import Google fonts in `layout.tsx`:
 
 ```tsx
-import { Lora } from "next/font/google"; // Import fonts
+import { Lora } from 'next/font/google'; // Import fonts
 
-const lora = Lora({ subsets: ["latin"] });
+const lora = Lora({ subsets: ['latin'] });
 ```
 
 Set main font as Lora in your main layout (layout.tsx):
 
 ```html
-<body className={`${lora.classname}`}></body>
+<body className="{`${lora.classname}`}"></body>
 ```
 
 ### Astro / Any other framework that supports Fontsource

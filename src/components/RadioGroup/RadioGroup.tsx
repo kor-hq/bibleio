@@ -1,9 +1,9 @@
-import * as RadixRadioGroup from "@radix-ui/react-radio-group";
+import * as RadixRadioGroup from '@radix-ui/react-radio-group';
 import type {
   RadioGroupProps as RadixRadioGroupProps,
   RadioGroupItemProps as RadixRadioGroupItemProps,
-} from "@radix-ui/react-radio-group";
-import React, { ReactNode } from "react";
+} from '@radix-ui/react-radio-group';
+import React, { ReactNode } from 'react';
 
 export type RadioGroupProps = RadixRadioGroupProps & { children: ReactNode };
 
@@ -23,14 +23,14 @@ export type RadioGroupItemProps = RadixRadioGroupItemProps & { label: string };
 
 export const RadioGroupItem = ({ label, ...props }: RadioGroupItemProps) => {
   return (
-    <div className="flex gap-8 items-center">
+    <div className="flex items-center gap-8">
       <RadixRadioGroup.Item
-        className="size-[30px] rounded-full bg-light-fg-2 border border-light-stroke shadow-light-material-component dark:bg-dark-fg-2 dark:border-dark-stroke dark:shadow-dark-material-component data-[disabled]:bg-light-fg-disabled dark:data-[disabled]:bg-dark-fg-disabled data-[disabled]:border-light-stroke-disabled dark:data-[disabled]:border-dark-stroke-disabled data-[disabled]:cursor-not-allowed"
+        className="size-[30px] rounded-full border border-light-stroke bg-light-fg-2 shadow-light-material-component data-[disabled]:cursor-not-allowed data-[disabled]:border-light-stroke-disabled data-[disabled]:bg-light-fg-disabled dark:border-dark-stroke dark:bg-dark-fg-2 dark:shadow-dark-material-component dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:bg-dark-fg-disabled"
         {...props}
       >
-        <RadixRadioGroup.Indicator className="flex items-center justify-center size-full relative after:content-[''] after:block after:size-16 after:rounded-full after:bg-light-accent dark:after:bg-dark-accent after:data-[state='checked']:animate-scale-in after:data-[state='unchecked']:animate-scale-out data-[disabled]:opacity-30 " />
+        <RadixRadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-16 after:rounded-full after:bg-light-accent after:content-[''] data-[disabled]:opacity-30 after:data-[state='checked']:animate-scale-in after:data-[state='unchecked']:animate-scale-out dark:after:bg-dark-accent" />
       </RadixRadioGroup.Item>
-      <label className="leading-none text-light-text dark:text-dark-text body">
+      <label className="body leading-none text-light-text dark:text-dark-text">
         {label}
       </label>
     </div>

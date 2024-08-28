@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Slider } from "./Slider";
-import type { SliderProps } from "./Slider";
-import React from "react";
+import { Slider } from './Slider';
+import type { SliderProps } from './Slider';
+import React from 'react';
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
-  title: "Slider",
-  tags: ["autodocs"],
+  title: 'Slider',
+  tags: ['autodocs'],
   argTypes: {
     orientation: {
-      options: ["horizontal", "vertical"],
-      control: "radio",
+      options: ['horizontal', 'vertical'],
+      control: 'radio',
     },
   },
   decorators: [
     (Story) => (
-      <div className="flex p-32 w-[50vw] h-[50vh]">
+      <div className="flex h-[50vh] w-[50vw] p-32">
         <Story />
       </div>
     ),
@@ -31,6 +31,6 @@ export const Default: Story = {
 };
 Default.args = {
   inverted: false,
-  orientation: "horizontal",
+  orientation: 'horizontal',
   disabled: false,
 };
