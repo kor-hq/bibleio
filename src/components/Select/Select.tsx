@@ -4,17 +4,30 @@ import {
   SelectItemProps as RadixSelectItemProps,
   SelectProps as RadixSelectProps,
 } from '@radix-ui/react-select';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 interface CustomSelectProps {
   label: string;
+  className: string;
 }
 
 export type SelectProps = CustomSelectProps & RadixSelectProps;
-export const Select = ({ label, children, ...props }: SelectProps) => {
+export const Select = ({
+  label,
+  children,
+  className,
+  ...props
+}: SelectProps) => {
   return (
     <RadixSelect.Root {...props}>
       <RadixSelect.Trigger
-        className="flex justify-between gap-12 rounded-12 border border-light-stroke bg-light-fg-2 px-16 py-8 font-serif text-light-text shadow-light-material-component outline-1 duration-150 ease-out hover:-translate-y-[2px] focus-visible:outline-light-accent active:translate-y-4 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[state='open']:rounded-b-4 data-[disabled]:border-light-stroke-disabled data-[disabled]:bg-light-fg-disabled data-[disabled]:text-light-text-subtle dark:border-dark-stroke dark:bg-dark-fg-2 dark:text-dark-text dark:shadow-dark-material-component dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:text-dark-text-subtle"
+        className={twMerge(
+          clsx(
+            "flex justify-between gap-12 rounded-12 border border-light-stroke bg-light-fg-2 px-16 py-8 font-serif text-light-text shadow-light-material-component outline-1 duration-150 ease-out hover:-translate-y-[2px] focus-visible:outline-light-accent active:translate-y-4 data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[state='open']:rounded-b-4 data-[disabled]:border-light-stroke-disabled data-[disabled]:bg-light-fg-disabled data-[disabled]:text-light-text-subtle dark:border-dark-stroke dark:bg-dark-fg-2 dark:text-dark-text dark:shadow-dark-material-component dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:bg-dark-fg-disabled dark:data-[disabled]:text-dark-text-subtle",
+            className
+          )
+        )}
         aria-label={label}
       >
         <RadixSelect.Value placeholder={label} />
@@ -95,7 +108,7 @@ const IconChevronDown = () => {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
+      className="text-light-text dark:text-dark-text"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M6 9l6 6l6 -6" />
@@ -114,7 +127,7 @@ const IconChevronUp = () => {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
+      className="text-light-text dark:text-dark-text"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M6 15l6 -6l6 6" />

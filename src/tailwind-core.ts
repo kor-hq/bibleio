@@ -36,6 +36,7 @@ export const tailwindCore = {
     colors: {
       white: '#fff',
       black: '#000',
+      transparent: 'transparent',
       light: {
         'bg-1': 'rgba(204, 204, 204, 1)',
         'fg-1': 'rgba(212, 212, 212, 1)',
@@ -45,7 +46,7 @@ export const tailwindCore = {
         'stroke-disabled': 'rgba(0, 0, 0, 0.25)',
         'stroke-active': 'rgba(0, 80, 124, 1)', // Accent
         accent: 'rgba(0, 80, 124, 1)', // Soon we'll add support for a dynamic theme accent switcher
-        text: 'rgba(0, 0, 0, 1)',
+        text: 'rgba(0, 0, 0, 0.9)',
         'text-subtle': 'rgba(0, 0, 0, 0.33)',
         red: 'rgba(244, 82, 82, 1)',
         yellow: 'rgba(252, 208, 95, 1)',
@@ -63,7 +64,7 @@ export const tailwindCore = {
         'stroke-disabled': 'rgba(255, 255, 255, 0.04)',
         'stroke-active': 'rgba(0, 163, 255, 1)', // Accent
         accent: 'rgba(0, 163, 255, 1)', // Soon we'll add support for a dynamic theme accent switcher
-        text: 'rgba(222, 222, 222, 1)',
+        text: 'rgba(222, 222, 222, 0.9)',
         'text-subtle': 'rgba(222, 222, 222, 0.3)',
         red: 'rgba(128, 37, 37, 1)',
         yellow: 'rgba(141, 120, 32, 1)',
@@ -134,10 +135,15 @@ export const tailwindCore = {
           from: { opacity: '1', transform: 'scale(1)' },
           to: { opacity: '0', transform: 'scale(0.95)' },
         },
+        spin: {
+          from: { rotate: '0deg' },
+          to: { rotate: '360deg' },
+        },
       },
       animation: {
         'scale-in': 'scale-in 150ms ease-out',
         'scale-out': 'scale-out 150ms ease-out',
+        spin: 'spin 2000ms linear infinite',
       },
     },
   },

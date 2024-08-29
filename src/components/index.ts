@@ -8,3 +8,6 @@ export * from './Switch';
 export * from './Brand';
 export * from './ListItem';
 export * from './Progress';
+export * from './Loader';
+export * from './Tooltip';
+export * from './InputOTP';
