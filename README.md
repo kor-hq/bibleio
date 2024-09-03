@@ -22,6 +22,6 @@ It would be cool if we could get our hands on some Christian devonitonals, books
 
 All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license. You can copy, translate, modify, and distribute this resource, without restriction, and without needing to ask permission. Why? For the sake of the gospel (Matt 10:8).
 
-Please consider publishing all of your Bible resources under the same license. Check out why [here](https://copy.church/explain/importance/).
+Check out why you should do the same by clicking this:
 
-![license badge - Freely given, no conditions!](https://copy.church/badges/lcc_alt_pde.png)
+[<img src="https://copy.church/badges/lcc_alt_pde.png" alt="Freely given, no conditions!" width="300"/>](https://copy.church/explain/importance/)
