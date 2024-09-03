@@ -14,15 +14,27 @@ fn parse(html: &str) -> Vec<serde_json::Value> {
 
     let main_selector = Selector::parse("div.main > *").unwrap();
 
+    // to-do
+    // make it so under "p" it gets each span.verse, then all the text contents after that tag, but before the next tag, so inbetween, then map each verse under "contents"
     for elements in document.select(&main_selector) {
         if elements.attr("class").unwrap_or_default() == "s" {
             json_res.push(json!({
                 "type": "header",
                 "contents": elements.inner_html()
             }));
+        } else if elements.attr("class").unwrap_or_default() == "d" {
+            json_res.push(json!({
+                "type": "subheader",
+                "contents": elements.inner_html()
+            }));
         } else if elements.attr("class").unwrap_or_default() == "p" {
             json_res.push(json!({
                 "type": "paragraph",
+                "contents": [elements.inner_html()]
+            }));
+        } else if elements.attr("class").unwrap_or_default() == "q" {
+            json_res.push(json!({
+                "type": "quote",
                 "contents": [elements.inner_html()]
             }));
         }
@@ -48,4 +60,5 @@ fn main() {
     let mut writer = BufWriter::new(file);
     serde_json::to_writer_pretty(&mut writer, &verses).expect("Failed to write to file");
     writer.flush().expect("Failed to flush writer");
+    println!("Written output to OUTPUT.json");
 }

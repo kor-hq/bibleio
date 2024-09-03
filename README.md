@@ -4,7 +4,7 @@ This is the **alpha** Bibleio API. It plans to be a fully accessible, blazingly 
 
 This repo is simply just a Cargo Workspace, with the `converter` script and the `api`.
 
-The API **will be** built with [Axum](), and the actual JSON files are served from a database using [Diesel]().
+The API **will be** built with [Axum](https://github.com/tokio-rs/axum), and the actual JSON files are served from a database using [Diesel](https://diesel.rs/).
 
 Each [BibleJSON]() file was converted from HTML from [eBible.org](https://ebible.org) to JSON using the `converter` script. (huge thanks to eBible.org!)
 
