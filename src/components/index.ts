@@ -11,3 +11,5 @@ export * from './Progress';
 export * from './Loader';
 export * from './Tooltip';
 export * from './InputOTP';
+export * from './Badge';
+export * from './Tabs';
