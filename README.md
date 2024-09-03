@@ -1,8 +1,8 @@
-![Banner](/public/github-cover.png)
+![Banner](https://i.imgur.com/rd1kc35.png)
 
 UI kit for Bibleio, including React components and Tailwind configuration with colour styles.
 
-Built with Radix Primitives, and Tailwind CSS. Built using tsup.
+Built with Radix Primitives, and Tailwind CSS.
 
 See the [Figma file](https://www.figma.com/community/file/1398417551065522372/bibleio-design-kit) for design documentation.
 
@@ -10,19 +10,27 @@ Report issues or suggestions in this GitHub repo or in the [Discord](https://dis
 
 Includes:
 
+- Badge
+- Brand (Bibleio logos)
 - Button
 - Checkbox
 - Input
+- Input OTP
+- List Item & Collapsible variant
+- Loader
+- Progress
 - Radio Group
 - Select
 - Slider
 - Switch
-- Text and Colour Styles
+- Tabs
+- Tooltip
+- Text and colour styles + dark mode
 
 To do:
 
-- Documentation at `dev.bibleio.com/docs/design`
-- More components (dialogs, notes, badges, etc.)
+- Documentation at `dev.bibleio.com/design/docs`
+- More components (dialogs, notes, etc.)
 
 # Installation
 
@@ -146,16 +154,27 @@ import "@fontsource-variable/jetbrains-mono";
 
 No extra Tailwind config is needed for Fontsource.
 
-# Contributing / License
+# Tailwind
 
-Feel free to contribute documentation, components, etc. **Note** - we plan on moving docs to `docs.bibleio.com/docs/design` very soon.
+Each material, colour, and shadow has a light and a dark variant. To implement dark mode, you have to add `dark:` that has the dark material variant. This is tedious, and we hope to implement a better solution soon.
 
-Licensed under `GPL-3.0`.
+The spacing system is literal, so `p-32` means exactly `32px`.
 
-## Development
+# Development
 
 This project uses Storybook for developing components and tsup for building.
 
 Start up Storybook with `pnpm storybook`.
 
 Build the output to `dist` using `pnpm build`.
+
+
+# Contributing / License
+
+Feel free to contribute documentation, components, etc. **Note** - we plan on moving docs to `docs.bibleio.com/docs/design` very soon.
+
+All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license. You can copy, translate, modify, and distribute this resource, without restriction, and without needing to ask permission. Why? For the sake of the gospel (Matt 10:8).
+
+Check out why you should do the same by clicking this:
+
+[<img src="https://copy.church/badges/lcc_alt_pde.png" alt="Freely given, no conditions!" width="300"/>](https://copy.church/explain/importance/)
