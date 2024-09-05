@@ -1,4 +1,4 @@
-export const tailwindCore = {
+export const bibleioTheme = {
   theme: {
     fontFamily: {
       serif: [
@@ -48,7 +48,7 @@ export const tailwindCore = {
         accent: 'rgba(0, 80, 124, 1)', // Soon we'll add support for a dynamic theme accent switcher
         text: 'rgba(0, 0, 0, 0.9)',
         'text-subtle': 'rgba(0, 0, 0, 0.33)',
-        red: 'rgba(244, 82, 82, 1)',
+        red: 'rgba(var(--red), 1)',
         yellow: 'rgba(252, 208, 95, 1)',
         green: 'rgba(78, 217, 125, 1)',
         blue: 'rgba(0, 163, 255, 1)',
@@ -66,7 +66,7 @@ export const tailwindCore = {
         accent: 'rgba(0, 163, 255, 1)', // Soon we'll add support for a dynamic theme accent switcher
         text: 'rgba(222, 222, 222, 0.9)',
         'text-subtle': 'rgba(222, 222, 222, 0.3)',
-        red: 'rgba(128, 37, 37, 1)',
+        red: 'rgba(var(--red), 1)',
         yellow: 'rgba(141, 120, 32, 1)',
         green: 'rgba(38, 130, 69, 1)',
         blue: 'rgba(0, 80, 124, 1)',

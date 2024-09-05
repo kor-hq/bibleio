@@ -1,5 +1,7 @@
 ![Banner](https://i.imgur.com/rd1kc35.png)
 
+Design version `1.1.0` - Package version `2.0.0`
+
 UI kit for Bibleio, including React components and Tailwind configuration with colour styles.
 
 Built with Radix Primitives, and Tailwind CSS.

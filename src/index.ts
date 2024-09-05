@@ -1,3 +1,3 @@
 export * from './components';
-export { tailwindCore } from './tailwind-core';
+export { bibleioTheme } from './tailwind';
 import './index.css';
