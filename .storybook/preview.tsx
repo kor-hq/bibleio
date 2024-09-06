@@ -3,12 +3,14 @@ import React from 'react';
 import '@fontsource-variable/lora';
 import '@fontsource-variable/lora/wght-italic.css';
 import '@fontsource-variable/jetbrains-mono';
-import '../src/index.css';
+import './index.css';
 import BibleioTheme from './bibleio-theme';
 import {
   withThemeByDataAttribute,
   withThemeByClassName,
 } from '@storybook/addon-themes';
+import { ThemeProvider } from '../src/ThemeProvider';
+import { localThemeStorage } from './localstorage';
 
 export const decorators = [
   withThemeByDataAttribute({
@@ -27,9 +29,9 @@ export const decorators = [
     defaultTheme: 'light',
   }),
   (Story) => (
-    <div className="font-serif">
+    <ThemeProvider storage={localThemeStorage}>
       <Story />
-    </div>
+    </ThemeProvider>
   ),
 ];
 

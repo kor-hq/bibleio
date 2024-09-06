@@ -1,38 +1,5 @@
 export const bibleioTheme = {
   theme: {
-    fontFamily: {
-      serif: [
-        "'Lora Variable'",
-        "'Lora'",
-        'ui-serif',
-        'Georgia',
-        'Cambria',
-        "'Times New Roman'",
-        'Times',
-        'serif',
-      ],
-      mono: [
-        "'JetBrains Mono Variable'",
-        "'JetBrains Mono'",
-        'ui-monospace',
-        'SFMono-Regular',
-        'Menlo',
-        'Monaco',
-        'Consolas',
-        "'Liberation Mono'",
-        "'Courier New'",
-        'monospace',
-      ],
-    },
-    fontSize: {
-      sub: '0.75rem',
-      mono: '0.875rem',
-      body: '0.9375rem',
-      h4: '1.1875rem',
-      h3: '1.5625rem',
-      h2: '2rem',
-      h1: '3.125rem',
-    },
     colors: {
       white: '#fff',
       black: '#000',
@@ -119,11 +86,38 @@ export const bibleioTheme = {
       4: '4px',
       0: '0px',
     },
-    transitionDuration: {
-      '150': '150ms',
+    fontFamily: {
+      serif: [
+        "'Lora Variable'",
+        "'Lora'",
+        'ui-serif',
+        'Georgia',
+        'Cambria',
+        "'Times New Roman'",
+        'Times',
+        'serif',
+      ],
+      mono: [
+        "'JetBrains Mono Variable'",
+        "'JetBrains Mono'",
+        'ui-monospace',
+        'SFMono-Regular',
+        'Menlo',
+        'Monaco',
+        'Consolas',
+        "'Liberation Mono'",
+        "'Courier New'",
+        'monospace',
+      ],
     },
-    transitionTimingFunction: {
-      out: 'cubic-bezier(0, 0, 0.2, 1);',
+    fontSize: {
+      sub: '0.75rem',
+      mono: '0.875rem',
+      body: '0.9375rem',
+      h4: '1.1875rem',
+      h3: '1.5625rem',
+      h2: '2rem',
+      h1: '3.125rem',
     },
     extend: {
       keyframes: {
