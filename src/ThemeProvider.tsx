@@ -1,15 +1,25 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { colorMap, themeMap } from './colorThemeMap';
 
-export type Color = 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'purple';
+export type Color =
+  | 'gray'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'lime'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'purple'
+  | 'pink';
 export type Theme = 'light' | 'dark';
 
 // Interface for custom storage methods
 export interface ThemeStorage {
   saveTheme: (data: { theme: Theme; color: Color }) => void;
   getTheme: () => {
-    theme: Theme | 'light';
-    color: Color | 'gray';
+    theme: Theme;
+    color: Color;
   };
 }
 
@@ -23,7 +33,7 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
   toggleTheme: () => {},
-  color: 'red', // Default is red
+  color: 'gray',
   changeColor: () => {},
 });
 
@@ -34,13 +44,43 @@ type ThemeProviderProps = {
   storage: ThemeStorage; // Accepts custom storage implementation
 };
 
-// Function to apply the theme
-function applyThemeWithColor(color: Color) {
-  const sheet = document.styleSheets[0];
-  const { bg1 } = colorMap[color];
+function applyThemeWithColor(color: Color, theme: Theme) {
+  const themeVars = themeMap[theme];
+  const accentVars = colorMap[color][theme];
 
-  // Apply the CSS variables for light or dark mode
-  sheet.insertRule(`:root{--bg-1:${bg1}}`);
+  const styleSheet = document.styleSheets[0];
+
+  const lightModeRules = `:root {
+    ${Object.entries(themeVars)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(' ')}
+    ${Object.entries(accentVars)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(' ')}
+  }`;
+
+  const darkModeRules = `[class='dark'] {
+    ${Object.entries(themeMap.dark)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(' ')}
+    ${Object.entries(colorMap[color].dark)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(' ')}
+  }`;
+
+  clearInsertedRules(styleSheet);
+
+  styleSheet.insertRule(lightModeRules, styleSheet.cssRules.length);
+
+  if (theme === 'dark') {
+    styleSheet.insertRule(darkModeRules, styleSheet.cssRules.length);
+  }
+}
+
+function clearInsertedRules(styleSheet: CSSStyleSheet) {
+  while (styleSheet.cssRules.length > 0) {
+    styleSheet.deleteRule(0);
+  }
 }
 
 function applyDarkMode(theme: Theme) {
@@ -65,7 +105,7 @@ export const ThemeProvider = ({ children, storage }: ThemeProviderProps) => {
 
   const changeColor = (color: Color) => {
     setColor(color);
-    applyThemeWithColor(color);
+    applyThemeWithColor(color, theme);
     storage.saveTheme({ theme, color: color });
   };
 
@@ -79,7 +119,10 @@ export const ThemeProvider = ({ children, storage }: ThemeProviderProps) => {
 
     if (storedColor !== null) {
       setColor(storedColor);
-      applyThemeWithColor(storedColor);
+      applyThemeWithColor(storedColor, storedTheme);
+    } else {
+      setColor('gray');
+      applyThemeWithColor('gray', 'light');
     }
   }, [storage]);
 

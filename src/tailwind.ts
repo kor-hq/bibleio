@@ -4,6 +4,7 @@ export const bibleioTheme = {
       white: '#fff',
       black: '#000',
       transparent: 'transparent',
+      DEFAULT: 'var(--bg)',
       light: {
         'bg-1': 'rgba(204, 204, 204, 1)',
         'fg-1': 'rgba(212, 212, 212, 1)',

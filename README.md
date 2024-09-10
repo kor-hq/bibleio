@@ -1,5 +1,7 @@
 ![Banner](https://i.imgur.com/rd1kc35.png)
 
+Design version `1.3.0` - Library version `2.0.0`
+
 UI kit for Bibleio, including React components and Tailwind configuration with color styles.
 
 Built with Radix Primitives, other accessible React primitives, and Tailwind CSS.
@@ -13,6 +15,14 @@ Report issues or suggestions in this GitHub repo or in the [Discord](https://dis
 See [dev.bibleio.com/design/docs](https://dev.bibleio.com/design/docs) for the library documentation (and design docs too in the future!).
 
 See the [Figma file](https://www.figma.com/community/file/1398417551065522372/bibleio-design-kit) for design documentation.
+
+# Changelog
+
+## 2.0.0
+
+Reworked theming system, Tailwind styles, and added accent color system all via ThemeProvider.
+
+All materials and colors are no longer prefixed by a `light-` or a `dark-`. They are all just simply their name, so instead of `bg-light-fg-2`, use `bg-fg-2`. The Tailwind styles now work of off CSS variables, which is what ThemeProvider changes.
 
 # License
 

@@ -3,7 +3,7 @@ import React from 'react';
 import '@fontsource-variable/lora';
 import '@fontsource-variable/lora/wght-italic.css';
 import '@fontsource-variable/jetbrains-mono';
-import './index.css';
+import '../src/index.css';
 import BibleioTheme from './bibleio-theme';
 import {
   withThemeByDataAttribute,
@@ -30,36 +30,19 @@ export const decorators = [
   }),
   (Story) => (
     <ThemeProvider storage={localThemeStorage}>
-      <Story />
+      <div className="bg flex h-full w-full items-center justify-center">
+        <Story />
+      </div>
     </ThemeProvider>
   ),
 ];
 
 const preview: Preview = {
   parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
     docs: {
       theme: BibleioTheme,
     },
     layout: ['centered'],
-    backgrounds: {
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#CCCCCC',
-        },
-        {
-          name: 'dark',
-          value: '#1B1B1B',
-        },
-      ],
-    },
   },
   decorators: decorators,
 };
