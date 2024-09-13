@@ -7,7 +7,7 @@ UI kit for Bibleio, including React components and Tailwind configuration with c
 Built with Radix Primitives, other accessible React primitives, and Tailwind CSS.
 
 
-[//]: # This library also includes a ThemeProvider which allows you to change between light/dark easily, while still only using 1 Tailwind class for colors, and you're able to change the accent color tint of all the materials. It works by editing the CSS variables in your main stylesheet used by the Tailwind config.
+<!-- This library also includes a ThemeProvider which allows you to change between light/dark easily, while still only using 1 Tailwind class for colors, and you're able to change the accent color tint of all the materials. It works by editing the CSS variables in your main stylesheet used by the Tailwind config. -->
 
 
 Report issues or suggestions in this GitHub repo or in the [Discord](https://discord.gg/7eVCyQ5GGb).
