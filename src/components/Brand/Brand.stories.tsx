@@ -29,5 +29,5 @@ export const Icon: Story = {
 };
 Icon.args = {
   size: 128,
-  reverseColour: true,
+  reverseColor: false,
 };

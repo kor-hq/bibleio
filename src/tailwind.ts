@@ -1,56 +1,49 @@
 export const bibleioTheme = {
   theme: {
     colors: {
-      white: '#fff',
-      black: '#000',
       transparent: 'transparent',
-      DEFAULT: 'var(--bg)',
-      light: {
-        'bg-1': 'rgba(204, 204, 204, 1)',
-        'fg-1': 'rgba(212, 212, 212, 1)',
-        'fg-2': 'rgba(221, 221, 221, 1)',
-        'fg-disabled': 'rgba(212, 212, 212, 0.5)',
-        stroke: 'rgba(0, 0, 0, 1)',
-        'stroke-disabled': 'rgba(0, 0, 0, 0.25)',
-        'stroke-active': 'rgba(0, 80, 124, 1)', // Accent
-        accent: 'rgba(0, 80, 124, 1)', // Soon we'll add support for a dynamic theme accent switcher
-        text: 'rgba(0, 0, 0, 0.9)',
-        'text-subtle': 'rgba(0, 0, 0, 0.33)',
-        red: 'rgba(var(--red), 1)',
-        yellow: 'rgba(252, 208, 95, 1)',
-        green: 'rgba(78, 217, 125, 1)',
-        blue: 'rgba(0, 163, 255, 1)',
-        purple: 'rgba(172, 133, 241, 1)',
-        gray: 'rgba(238, 238, 238, 1)',
-      },
-      dark: {
-        'bg-1': 'rgba(27, 27, 27, 1)',
-        'fg-1': 'rgba(33, 33, 33, 1)',
-        'fg-2': 'rgba(38, 38, 38, 1)',
-        'fg-disabled': 'rgba(33, 33, 33, 0.5)',
-        stroke: 'rgba(255, 255, 255, 0.1)',
-        'stroke-disabled': 'rgba(255, 255, 255, 0.04)',
-        'stroke-active': 'rgba(0, 163, 255, 1)', // Accent
-        accent: 'rgba(0, 163, 255, 1)', // Soon we'll add support for a dynamic theme accent switcher
-        text: 'rgba(222, 222, 222, 0.9)',
-        'text-subtle': 'rgba(222, 222, 222, 0.3)',
-        red: 'rgba(var(--red), 1)',
-        yellow: 'rgba(141, 120, 32, 1)',
-        green: 'rgba(38, 130, 69, 1)',
-        blue: 'rgba(0, 80, 124, 1)',
-        purple: 'rgba(73, 48, 165, 1)',
-        gray: 'rgba(95, 95, 95, 1)',
-      },
+      // materials
+      DEFAULT: 'var(--bg-1)',
+      'bg-1': 'var(--bg-1)',
+      'fg-1': 'var(--fg-1)',
+      'fg-2': 'var(--fg-2)',
+      stroke: 'var(--stroke)',
+      text: 'var(--text)',
+      'text-solid': 'var(--text-solid)',
+      'text-subtle': 'var(--text-subtle)',
+      'text-reversed': 'var(--text-reversed)',
+      'text-reversed-solid': 'var(--text-reversed-solid)',
+      'text-reversed-subtle': 'var(--text-reversed-subtle)',
+      // colors
+      accent: 'var(--accent)',
+      red: 'var(--red)',
+      orange: 'var(--orange)',
+      yellow: 'var(--yellow)',
+      lime: 'var(--lime)',
+      green: 'var(--green)',
+      teal: 'var(--teal)',
+      blue: 'var(--blue)',
+      purple: 'var(--purple)',
+      pink: 'var(--pink)',
+      gray: 'var(--gray)',
+      // reversed colors
+      'accent-reversed': 'var(--accent-reversed)',
+      'red-reversed': 'var(--red-reversed)',
+      'orange-reversed': 'var(--orange-reversed)',
+      'yellow-reversed': 'var(--yellow-reversed)',
+      'lime-reversed': 'var(--lime-reversed)',
+      'green-reversed': 'var(--green-reversed)',
+      'teal-reversed': 'var(--teal-reversed)',
+      'blue-reversed': 'var(--blue-reversed)',
+      'purple-reversed': 'var(--purple-reversed)',
+      'pink-reversed': 'var(--pink-reversed)',
+      'gray-reversed': 'var(--gray-reversed)',
     },
     boxShadow: {
-      'light-coloured-component':
-        '0px -9px 12.2px 0px rgba(255, 255, 255, 0.10) inset, 0px 3px 4.7px 0px rgba(255, 255, 255, 0.10) inset, 0px 0px 3.7px 1px rgba(255, 255, 255, 0.10) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20)',
-      'light-material-component':
-        '0px -6px 8.6px 2px rgba(0, 0, 0, 0.10) inset, 0px 1px 6.3px 0px rgba(0, 0, 0, 0.25) inset, 0px 2px 9.4px 0px rgba(0, 0, 0, 0.10)',
-      'dark-coloured-component':
-        '0px -9px 12.2px 0px rgba(0, 0, 0, 0.20) inset, 0px 3px 4.7px 0px rgba(0, 0, 0, 0.20) inset, 0px 0px 3.7px 1px rgba(0, 0, 0, 0.20) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20);',
-      'dark-material-component':
-        '0px -6px 8.6px 2px rgba(0, 0, 0, 0.10) inset, 0px 1px 6.3px 0px rgba(0, 0, 0, 0.25) inset, 0px 2px 9.4px 0px rgba(0, 0, 0, 0.10)',
+      'colored-component':
+        '0px -9px 12.2px 0px var(--inner-shadow-1) inset, 0px 3px 4.7px 0px var(--inner-shadow-1) inset, 0px 0px 3.7px 1px var(--inner-shadow-1) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20)',
+      'material-component':
+        '0px 0px 10.1px 0px var(--inner-shadow-2) inset, 0px -3px 10.9px 2px var(--inner-shadow-2) inset, 0px 2px 11.9px 2px rgba(0, 0, 0, 0.08)',
     },
     borderRadius: {
       4: '4px',
@@ -89,25 +82,16 @@ export const bibleioTheme = {
     },
     fontFamily: {
       serif: [
-        "'Lora Variable'",
         "'Lora'",
-        'ui-serif',
-        'Georgia',
-        'Cambria',
+        "'Lora Variable'",
         "'Times New Roman'",
         'Times',
         'serif',
       ],
       mono: [
-        "'JetBrains Mono Variable'",
         "'JetBrains Mono'",
+        "'JetBrains Mono Variable'",
         'ui-monospace',
-        'SFMono-Regular',
-        'Menlo',
-        'Monaco',
-        'Consolas',
-        "'Liberation Mono'",
-        "'Courier New'",
         'monospace',
       ],
     },

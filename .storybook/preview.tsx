@@ -29,11 +29,9 @@ export const decorators = [
     defaultTheme: 'light',
   }),
   (Story) => (
-    <ThemeProvider storage={localThemeStorage}>
-      <div className="bg flex h-full w-full items-center justify-center">
-        <Story />
-      </div>
-    </ThemeProvider>
+    <div className="bg p-32 font-serif">
+      <Story />
+    </div>
   ),
 ];
 
@@ -43,6 +41,19 @@ const preview: Preview = {
       theme: BibleioTheme,
     },
     layout: ['centered'],
+    backgrounds: {
+      default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: '#CCCCCC',
+        },
+        {
+          name: 'dark',
+          value: '#1B1B1B',
+        },
+      ],
+    },
   },
   decorators: decorators,
 };

@@ -1,6 +1,6 @@
 ![Banner](https://i.imgur.com/rd1kc35.png)
 
-Design version `1.3.0` - Library version `2.0.0`
+Design version `1.4.0` - Library version `2.0.0`
 
 UI kit for Bibleio, including React components and Tailwind configuration with color styles.
 
@@ -20,9 +20,19 @@ See the [Figma file](https://www.figma.com/community/file/1398417551065522372/bi
 
 ## 2.0.0
 
-Reworked theming system, Tailwind styles, and added accent color system all via ThemeProvider.
+Reworked theming system, Tailwind styles, ~~and added accent color system all via ThemeProvider~~ (coming soon!).
 
-All materials and colors are no longer prefixed by a `light-` or a `dark-`. They are all just simply their name, so instead of `bg-light-fg-2`, use `bg-fg-2`. The Tailwind styles now work of off CSS variables, which is what ThemeProvider changes.
+### Changelog & Migration
+
+- All materials and colors are no longer prefixed by a `light-` or a `dark-`. They are all just simply their name, so instead of `bg-light-fg-2`, use `bg-fg-2`. The Tailwind styles now work of off CSS variables, so you don't have to add a `dark:` selector for each and every class. You'll have to implement your own dark mode switching for now, but we plan to add a component for you to use soon.
+
+- Changed Tailwind preset name `tailwindCore` to `bibleioTheme`.
+
+- Removed `-disabled` and `-active` variants of styles. For disabled pieces, just set the opacity to `33%`. If you need something to be the accent color just use the accent style.
+
+- Every style except materials now have a "reversed" variant. Example: In light mode, `text-text` is black; so the reversed variant would be white.
+
+- Added `orange`, `lime`, `teal`, and `pink` colors, to prepare for more customizable themes and accents.
 
 # License
 

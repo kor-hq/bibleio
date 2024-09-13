@@ -1,3 +1,7 @@
+// this file isn't being used yet, we plan to use this for customizable themes and colors once we got time
+
+'use client';
+
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { colorMap, themeMap } from './colorThemeMap';
 
