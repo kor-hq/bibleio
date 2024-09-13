@@ -21,16 +21,22 @@ export const RadioGroup = ({ children, ...props }: RadioGroupProps) => {
 
 export type RadioGroupItemProps = RadixRadioGroupItemProps & { label: string };
 
-export const RadioGroupItem = ({ label, ...props }: RadioGroupItemProps) => {
+export const RadioGroupItem = ({
+  label,
+  value,
+  ...props
+}: RadioGroupItemProps) => {
   return (
     <div className="flex items-center gap-8">
       <RadixRadioGroup.Item
-        className="size-[30px] rounded-full border border-light-stroke bg-light-fg-2 shadow-light-material-component data-[disabled]:cursor-not-allowed data-[disabled]:border-light-stroke-disabled data-[disabled]:bg-light-fg-disabled dark:border-dark-stroke dark:bg-dark-fg-2 dark:shadow-dark-material-component dark:data-[disabled]:border-dark-stroke-disabled dark:data-[disabled]:bg-dark-fg-disabled"
+        className="size-[30px] rounded-full border border-stroke bg-fg-2 shadow-material-component data-[disabled]:cursor-not-allowed data-[disabled]:opacity-33"
+        id={value}
+        value={value}
         {...props}
       >
-        <RadixRadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-16 after:rounded-full after:bg-light-accent after:content-[''] data-[disabled]:opacity-30 after:data-[state='checked']:animate-scale-in after:data-[state='unchecked']:animate-scale-out dark:after:bg-dark-accent" />
+        <RadixRadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-16 after:rounded-full after:bg-accent-reversed after:content-[''] after:data-[state='checked']:animate-scale-in after:data-[state='unchecked']:animate-scale-out" />
       </RadixRadioGroup.Item>
-      <label className="body leading-none text-light-text dark:text-dark-text">
+      <label className="text-body leading-none text-text" htmlFor={value}>
         {label}
       </label>
     </div>

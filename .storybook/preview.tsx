@@ -9,6 +9,8 @@ import {
   withThemeByDataAttribute,
   withThemeByClassName,
 } from '@storybook/addon-themes';
+import { ThemeProvider } from '../src/ThemeProvider';
+import { localThemeStorage } from './localstorage';
 
 export const decorators = [
   withThemeByDataAttribute({
@@ -27,7 +29,7 @@ export const decorators = [
     defaultTheme: 'light',
   }),
   (Story) => (
-    <div className="font-serif">
+    <div className="bg p-32 font-serif">
       <Story />
     </div>
   ),
@@ -35,12 +37,6 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
     docs: {
       theme: BibleioTheme,
     },

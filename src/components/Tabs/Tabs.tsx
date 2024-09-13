@@ -8,8 +8,15 @@ import {
 import { clsx } from 'clsx';
 
 export type TabsProps = RadixTabsProps & { children: React.ReactNode };
-export const Tabs = ({ children, ...props }: TabsProps) => {
-  return <RadixTabs.Root {...props}>{children}</RadixTabs.Root>;
+export const Tabs = ({ children, className, ...props }: TabsProps) => {
+  return (
+    <RadixTabs.Root
+      {...props}
+      className={clsx(className, 'flex flex-col gap-16')}
+    >
+      {children}
+    </RadixTabs.Root>
+  );
 };
 
 export const TabsList = ({
@@ -33,18 +40,18 @@ export type TabItemProps = RadixTabTriggerProps & {
 export const TabItemText = ({ children, ...props }: TabItemProps) => {
   return (
     <RadixTabs.Trigger
-      className="group flex h-[25px] flex-col gap-4 text-body leading-none text-light-text dark:text-dark-text"
+      className="group flex h-[25px] flex-col gap-4 text-body leading-none text-text data-[disabled]:cursor-not-allowed data-[disabled]:opacity-33"
       {...props}
     >
       {children}
-      <div className="h-6 w-full rounded-full bg-light-accent opacity-0 group-data-[state=active]:opacity-100 dark:bg-dark-accent" />
+      <div className="h-6 w-full rounded-full bg-accent-reversed opacity-0 group-data-[state=active]:opacity-100" />
     </RadixTabs.Trigger>
   );
 };
 export const TabItemPillButton = ({ children, ...props }: TabItemProps) => {
   return (
     <RadixTabs.Trigger
-      className="h-40 rounded-0 rounded-full border border-light-stroke bg-light-fg-2 px-20 py-8 text-black shadow-light-material-component data-[state=active]:bg-light-accent data-[state=active]:text-white data-[state=active]:shadow-light-coloured-component dark:border-dark-stroke dark:bg-dark-fg-2 dark:text-white dark:shadow-dark-material-component dark:data-[state=active]:bg-dark-accent dark:data-[state=active]:text-black dark:data-[state=active]:shadow-dark-coloured-component"
+      className="h-40 rounded-0 rounded-full border border-stroke bg-fg-2 px-20 py-8 text-text shadow-material-component data-[disabled]:cursor-not-allowed data-[state=active]:bg-accent-reversed data-[state=active]:text-text-reversed data-[disabled]:opacity-33 data-[state=active]:shadow-colored-component"
       {...props}
     >
       {children}
@@ -56,7 +63,7 @@ export type TabContentProps = RadixTabContentProps & { className?: string };
 export const TabContent = ({ className, ...props }: TabContentProps) => {
   return (
     <RadixTabs.Content
-      className={clsx(className, 'text-light-text dark:text-dark-text')}
+      className={clsx(className, 'text-text')}
       {...props}
     ></RadixTabs.Content>
   );

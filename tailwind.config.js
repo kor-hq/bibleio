@@ -1,8 +1,8 @@
-import { tailwindCore } from './src/tailwind-core';
+import { bibleioTheme } from './src/tailwind';
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{ts,tsx}'],
-  presets: [tailwindCore],
+  presets: [bibleioTheme],
   darkMode: ['class', '[data-mode="dark"]'],
 };

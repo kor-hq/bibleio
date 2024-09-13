@@ -20,13 +20,10 @@ export const ListItem = ({
       className={
         selected
           ? clsx(
-              'flex w-full items-center rounded-12 border border-light-stroke bg-light-fg-2 px-12 py-8 text-light-text shadow-light-material-component dark:border-dark-stroke dark:bg-dark-fg-2 dark:text-dark-text dark:shadow-dark-material-component',
+              'flex w-full items-center rounded-12 border border-stroke bg-fg-2 px-12 py-8 text-text shadow-material-component',
               className
             )
-          : clsx(
-              'flex w-full items-center px-12 py-8 text-light-text dark:text-dark-text',
-              className
-            )
+          : clsx('flex w-full items-center px-12 py-8 text-text', className)
       }
     >
       {text}
@@ -55,11 +52,11 @@ export const ListItemCollapsible = ({
           className={
             selected
               ? clsx(
-                  'flex w-full items-center justify-between gap-x-8 rounded-12 border border-light-stroke bg-light-fg-2 px-12 py-8 text-light-text shadow-light-material-component dark:border-dark-stroke dark:bg-dark-fg-2 dark:text-dark-text dark:shadow-dark-material-component',
+                  'flex w-full items-center justify-between gap-x-8 rounded-12 border border-stroke bg-fg-2 px-12 py-8 text-text shadow-material-component',
                   className
                 )
               : clsx(
-                  'flex w-full items-center justify-between gap-x-8 px-12 py-8 text-light-text dark:text-dark-text',
+                  'flex w-full items-center justify-between gap-x-8 px-12 py-8 text-text',
                   className
                 )
           }
@@ -84,7 +81,7 @@ const IconChevronDown = () => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
@@ -103,7 +100,7 @@ const IconChevronUp = () => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"

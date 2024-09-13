@@ -1,36 +1,22 @@
 ![Banner](https://i.imgur.com/rd1kc35.png)
 
-UI kit for Bibleio, including React components and Tailwind configuration with colour styles.
+Design version `1.4.0` - Library version `2.0.0`
 
-Built with Radix Primitives, and Tailwind CSS.
+UI kit for Bibleio, including React components and Tailwind configuration with color styles.
 
-See the [Figma file](https://www.figma.com/community/file/1398417551065522372/bibleio-design-kit) for design documentation.
+Built with Radix Primitives, other accessible React primitives, and Tailwind CSS.
+
+
+[//]: # This library also includes a ThemeProvider which allows you to change between light/dark easily, while still only using 1 Tailwind class for colors, and you're able to change the accent color tint of all the materials. It works by editing the CSS variables in your main stylesheet used by the Tailwind config.
+
 
 Report issues or suggestions in this GitHub repo or in the [Discord](https://discord.gg/7eVCyQ5GGb).
 
-Includes:
+# Documentation
 
-- Badge
-- Brand (Bibleio logos)
-- Button
-- Checkbox
-- Input
-- Input OTP
-- List Item & Collapsible variant
-- Loader
-- Progress
-- Radio Group
-- Select
-- Slider
-- Switch
-- Tabs
-- Tooltip
-- Text and colour styles + dark mode
+See the [Figma file](https://www.figma.com/community/file/1398417551065522372/bibleio-design-kit) for design documentation.
 
-To do:
-
-- Documentation at `dev.bibleio.com/design/docs`
-- More components (dialogs, notes, etc.)
+Soon we plan to move docs over to [dev.bibleio.com/design/docs](https://dev.bibleio.com/design/docs).
 
 # Installation
 
@@ -50,10 +36,10 @@ Add Tailwind style preset:
 ```ts
 // tailwind.config.ts
 // Snippet of what to add
-import { tailwindCore } from '@bibleio/design'; // Add import
+import { bibleioTheme } from '@bibleio/design'; // Add import
 
 const config: Config = {
-  presets: [tailwindCore], // Add preset
+  presets: [bibleioTheme], // Add preset
 };
 ```
 
@@ -98,7 +84,7 @@ In `tailwind.config.ts` override the default font theme to add variables:
 import defaultTheme from 'tailwindcss/defaultTheme'; // Add default theme import
 
 const config: Config = {
-  presets: [tailwindCore],
+  presets: [bibleioTheme],
   theme: {
     fontFamily: {
       serif: ['var(--font-lora)', ...defaultTheme.fontFamily.serif],
@@ -156,22 +142,34 @@ No extra Tailwind config is needed for Fontsource.
 
 # Tailwind
 
-Each material, colour, and shadow has a light and a dark variant. To implement dark mode, you have to add `dark:` that has the dark material variant. This is tedious, and we hope to implement a better solution soon.
-
 The spacing system is literal, so `p-32` means exactly `32px`.
 
-# Development
+# Changelog
 
-This project uses Storybook for developing components and tsup for building.
+## 2.0.0
 
-Start up Storybook with `pnpm storybook`.
+Reworked theming system, Tailwind styles, ~~and added accent color system all via ThemeProvider~~ (coming soon!).
 
-Build the output to `dist` using `pnpm build`.
+### Changelog & Migration
 
+- All materials and colors are no longer prefixed by a `light-` or a `dark-`. They are all just simply their name, so instead of `bg-light-fg-2`, use `bg-fg-2`. The Tailwind styles now work of off CSS variables, so you don't have to add a `dark:` selector for each and every class. You'll have to implement your own dark mode switching for now, but we plan to add a component for you to use soon.
 
-# Contributing / License
+- Changed Tailwind preset name `tailwindCore` to `bibleioTheme`.
 
-Feel free to contribute documentation, components, etc. **Note** - we plan on moving docs to `docs.bibleio.com/docs/design` very soon.
+- Removed `-disabled` and `-active` variants of styles. For disabled pieces, just set the opacity to `33%`. If you need something to be the accent color just use the accent style.
+
+- Every style except materials now have a "reversed" variant. Example: In light mode, `text-text` is black; so the reversed variant would be white.
+
+- Added `orange`, `lime`, `teal`, and `pink` colors, to prepare for more customizable themes and accents.
+
+- Switched everything that used to use `colour` to use `color`.
+
+```diff
+- 'bg-dark-blue text-white dark:text-black dark:bg-light-blue shadow-light-coloured-component dark:shadow-dark-coloured-component'
++ 'bg-accent-reversed text-text-reversed shadow-colored-component'
+```
+
+# License
 
 All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license. You can copy, translate, modify, and distribute this resource, without restriction, and without needing to ask permission. Why? For the sake of the gospel (Matt 10:8).
 
