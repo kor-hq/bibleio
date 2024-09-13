@@ -8,7 +8,9 @@ const variants = cva(
   {
     variants: {
       variant: {
-        primary: ['bg-accent text-text-reversed shadow-colored-component'],
+        primary: [
+          'bg-accent-reversed text-text-reversed shadow-colored-component',
+        ],
         secondary: ['bg-fg-2 text-text shadow-material-component'],
         success: [
           'bg-green-reversed text-text-reversed shadow-colored-component',

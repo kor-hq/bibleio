@@ -10,7 +10,7 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
-    <div className="flex flex-col gap-16 text-light-text dark:text-dark-text">
+    <div className="flex flex-col gap-16 text-text">
       <h1 className="text-h1 font-semibold">Heading 1</h1>
       <h2 className="text-h2 font-medium">Heading 2</h2>
       <h3 className="text-h3 font-medium">Heading 3</h3>

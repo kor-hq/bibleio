@@ -14,4 +14,4 @@ type Story = StoryObj<typeof InputOTP>;
 export const Default: Story = {
   render: (args: InputOTPProps) => <InputOTP {...args} />,
 };
-Default.args = { disabled: false };
+Default.args = { disabled: false, maxLength: 6 };

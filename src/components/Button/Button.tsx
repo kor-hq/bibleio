@@ -3,28 +3,24 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 const variants = cva(
   [
-    'text-body px-16 py-8 h-[40px] flex justify-center flex-center rounded-12 border border-light-stroke dark:border-dark-stroke',
-    'hover:-translate-y-[2px] active:translate-y-4 duration-150 ease-out',
-    'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+    'text-body px-16 py-8 h-[40px] flex justify-center flex-center rounded-12 border border-stroke',
+    'enabled:hover:-translate-y-[2px] enabled:active:translate-y-4 duration-150 ease-out',
+    ' disabled:cursor-not-allowed disabled:opacity-33',
   ],
   {
     variants: {
       variant: {
         primary: [
-          'bg-dark-blue text-white dark:text-black dark:bg-light-blue shadow-light-coloured-component dark:shadow-dark-coloured-component',
+          'bg-accent-reversed text-text-reversed shadow-colored-component',
         ],
-        secondary: [
-          'bg-light-fg-2 text-black dark:bg-dark-fg-2 dark:text-white shadow-light-material-component dark:shadow-dark-material-component',
-        ],
+        secondary: ['bg-fg-2 text-text shadow-material-component'],
         success: [
-          'bg-dark-green text-white dark:text-black dark:bg-light-green shadow-light-coloured-component dark:shadow-dark-coloured-component',
+          'bg-green-reversed text-text-reversed shadow-colored-component',
         ],
         warning: [
-          'bg-dark-yellow text-white dark:text-black dark:bg-light-yellow shadow-light-coloured-component dark:shadow-dark-coloured-component',
+          'bg-yellow-reversed text-text-reversed shadow-colored-component',
         ],
-        danger: [
-          'bg-dark-red text-white dark:text-black dark:bg-light-red shadow-light-coloured-component dark:shadow-dark-coloured-component',
-        ],
+        danger: ['bg-red-reversed text-text-reversed shadow-colored-component'],
       },
       fullWidth: {
         true: ['w-full'],

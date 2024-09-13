@@ -12,7 +12,7 @@ export const Loader = () => {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="animate-spin text-light-text dark:text-dark-text"
+      className="animate-spin text-text"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3a9 9 0 1 0 9 9" />

@@ -44,6 +44,7 @@ export const bibleioTheme = {
         '0px -9px 12.2px 0px var(--inner-shadow-1) inset, 0px 3px 4.7px 0px var(--inner-shadow-1) inset, 0px 0px 3.7px 1px var(--inner-shadow-1) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20)',
       'material-component':
         '0px 0px 10.1px 0px var(--inner-shadow-2) inset, 0px -3px 10.9px 2px var(--inner-shadow-2) inset, 0px 2px 11.9px 2px rgba(0, 0, 0, 0.08)',
+      popup: '0px 4px 49.6px 0px rgba(0, 0, 0, 0.15)',
     },
     borderRadius: {
       4: '4px',
@@ -78,6 +79,7 @@ export const bibleioTheme = {
       8: '8px',
       6: '6px',
       4: '4px',
+      2: '2px',
       0: '0px',
     },
     fontFamily: {
@@ -105,6 +107,9 @@ export const bibleioTheme = {
       h1: '3.125rem',
     },
     extend: {
+      opacity: {
+        33: '.33',
+      },
       keyframes: {
         'scale-in': {
           from: { opacity: '0', transform: 'scale(0.95)' },
@@ -118,10 +123,15 @@ export const bibleioTheme = {
           from: { rotate: '0deg' },
           to: { rotate: '360deg' },
         },
+        'caret-blink': {
+          '0%,70%,100%': { opacity: '1' },
+          '20%,50%': { opacity: '0' },
+        },
       },
       animation: {
         'scale-in': 'scale-in 150ms ease-out',
         'scale-out': 'scale-out 150ms ease-out',
+        'caret-blink': 'caret-blink 1.2s ease-out infinite',
         spin: 'spin 2000ms linear infinite',
       },
     },

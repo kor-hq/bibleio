@@ -7,10 +7,10 @@ export type CheckboxProps = RadixCheckboxProps;
 export const Checkbox = ({ ...props }: RadixCheckboxProps) => {
   return (
     <RadixCheckbox.Root
-      className="flex size-[30px] items-center justify-center rounded-8 border border-light-stroke bg-light-fg-2 shadow-light-material-component data-[disabled]:border-light-stroke-disabled data-[disabled]:bg-light-fg-disabled dark:border-dark-stroke dark:bg-dark-fg-2 dark:shadow-dark-material-component"
+      className="flex size-[30px] items-center justify-center rounded-8 border border-stroke bg-fg-2 shadow-material-component data-[disabled]:cursor-not-allowed data-[disabled]:opacity-33"
       {...props}
     >
-      <RadixCheckbox.Indicator className="text-light-accent data-[state='checked']:animate-scale-in data-[state='unchecked']:animate-scale-out data-[disabled]:opacity-30 dark:text-dark-accent">
+      <RadixCheckbox.Indicator className="text-accent-reversed data-[state='checked']:animate-scale-in data-[state='unchecked']:animate-scale-out">
         <IconCheck />
       </RadixCheckbox.Indicator>
     </RadixCheckbox.Root>
@@ -26,7 +26,7 @@ const IconCheck = () => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       className="icon icon-tabler icons-tabler-outline icon-tabler-check"

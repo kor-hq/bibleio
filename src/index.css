@@ -18,7 +18,7 @@
     --inner-shadow-1: #ffffff1a;
     --inner-shadow-2: #0000001f;
     /* colors */
-    --accent: #00507c;
+    --accent: #00a3ff;
     --red: #f45252;
     --orange: #f48b52;
     --yellow: #fcd05f;
@@ -30,7 +30,7 @@
     --pink: #f185e6;
     --gray: #eeeeee;
     /* reversed colors */
-    --accent-reversed: #00a3ff;
+    --accent-reversed: #00507c;
     --red-reversed: #802525;
     --orange-reversed: #804425;
     --yellow-reversed: #8d7820;
@@ -57,7 +57,7 @@
     --inner-shadow-1: #00000015;
     --inner-shadow-2: #ffffff03;
     /* colors */
-    --accent: #00a3ff;
+    --accent: #00507c;
     --red: #802525;
     --orange: #804425;
     --yellow: #8d7820;
@@ -69,7 +69,7 @@
     --pink: #a53099;
     --gray: #5f5f5f;
     /* reversed colors */
-    --accent-reversed: #00507c;
+    --accent-reversed: #00a3ff;
     --red-reversed: #f45252;
     --orange-reversed: #f48b52;
     --yellow-reversed: #fcd05f;
@@ -81,4 +81,14 @@
     --pink-reversed: #f185e6;
     --gray-reversed: #eeeeee;
   }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background: var(--accent);
+  color: var(--text);
 }

@@ -2,19 +2,19 @@ import { OTPInput, SlotProps, OTPInputProps } from 'input-otp';
 import React from 'react';
 
 export type InputOTPProps = OTPInputProps;
-export const InputOTP = ({ ...props }: OTPInputProps) => {
+export const InputOTP = ({ maxLength = 6, ...props }: OTPInputProps) => {
   return (
     // @ts-expect-error idk
     <OTPInput
       {...props}
-      maxLength={6}
-      containerClassName="group flex w-fit h-fit items-center has-[:disabled]:opacity-30 divide-x divide-light-stroke border border-light-stroke rounded-12 overflow-clip"
+      maxLength={maxLength}
+      containerClassName="group flex w-fit h-fit items-center has-[:disabled]:opacity-33 has-[:disabled]:cursor-not-allowed border border-stroke rounded-12 overflow-clip"
       render={({ slots }) => (
-        <>
+        <div className="flex">
           {slots.map((slot, idx) => (
             <Slot key={idx} {...slot} />
           ))}
-        </>
+        </div>
       )}
     />
   );
@@ -23,18 +23,18 @@ export const InputOTP = ({ ...props }: OTPInputProps) => {
 function Slot(props: SlotProps) {
   return (
     <div
-      className={`relative flex h-[40px] w-32 items-center justify-center bg-light-fg-2 p-12 text-light-text shadow-light-material-component`}
+      className={`relative flex h-[40px] w-32 items-center justify-center border-r border-stroke bg-fg-2 p-12 text-text shadow-material-component last:border-none ${{ 'border-accent-reversed': props.isActive }}`}
     >
       {props.char !== null && <div>{props.char}</div>}
-      <FakeCaret />
+      {props.hasFakeCaret && <Caret />}
     </div>
   );
 }
 
-function FakeCaret() {
+function Caret() {
   return (
-    <div className="animate-caret-blink pointer-events-none absolute inset-0 flex items-center justify-center">
-      <div className="w-px h-8 bg-black" />
+    <div className="pointer-events-none absolute inset-0 flex h-[80%] animate-caret-blink items-end justify-center">
+      <div className="h-2 w-12 rounded-full bg-accent-reversed" />
     </div>
   );
 }
