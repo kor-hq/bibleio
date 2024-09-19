@@ -60,12 +60,14 @@ export const Logo = ({ size = 32, subText }: LogoProps) => {
           className="fill-text-solid"
         />
       </svg>
-      <h1
-        style={{ fontSize: svgSize.height / 1.7 }}
-        className="dark:text-white whitespace-nowrap italic text-text-solid"
-      >
-        {subText}
-      </h1>
+      {subText && (
+        <h1
+          style={{ fontSize: svgSize.height / 1.7 }}
+          className="dark:text-white whitespace-nowrap italic text-text-solid"
+        >
+          {subText}
+        </h1>
+      )}
     </div>
   );
 };
