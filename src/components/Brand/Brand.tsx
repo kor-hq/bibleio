@@ -72,12 +72,15 @@ export const Logo = ({ size = 32, subText }: LogoProps) => {
   );
 };
 
-export type IconProps = {
+export type IconLogoProps = {
   size: number;
   reverseColor?: boolean;
 };
 
-export const Icon = ({ size = 32, reverseColor = false }: IconProps) => {
+export const IconLogo = ({
+  size = 32,
+  reverseColor = false,
+}: IconLogoProps) => {
   return (
     <svg
       width={size}

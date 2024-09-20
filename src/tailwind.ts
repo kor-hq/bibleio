@@ -119,6 +119,14 @@ export const bibleioTheme = {
           from: { opacity: '1', transform: 'scale(1)' },
           to: { opacity: '0', transform: 'scale(0.95)' },
         },
+        'fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'fade-out': {
+          from: { opacity: '1' },
+          to: { opacity: '0' },
+        },
         spin: {
           from: { rotate: '0deg' },
           to: { rotate: '360deg' },
@@ -131,8 +139,11 @@ export const bibleioTheme = {
       animation: {
         'scale-in': 'scale-in 150ms ease-out',
         'scale-out': 'scale-out 150ms ease-out',
+        'fade-in': 'fade-in 150ms ease-out',
+        'fade-out': 'fade-out 150ms ease-out',
         'caret-blink': 'caret-blink 1.2s ease-out infinite',
-        spin: 'spin 2000ms linear infinite',
+        spin: 'spin 2s linear infinite',
+        'spin-slow': 'spin 15s linear infinite',
       },
     },
   },
