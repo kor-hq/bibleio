@@ -30,10 +30,9 @@ function renderItems(
         const isOpen = isSelected || isDescendant;
 
         console.log(`isOpen ${item.slug}`, isOpen);
-
-        return (
-          <li key={item.slug} className="w-full">
-            {item.data.directory ? (
+        if (item.data.directory) {
+          return (
+            <li key={item.slug} className="w-full">
               <ListItemCollapsible
                 text={item.data.title}
                 defaultOpen={isOpen}
@@ -47,7 +46,30 @@ function renderItems(
                   isSidebarOpen
                 )}
               </ListItemCollapsible>
-            ) : (
+            </li>
+          );
+        } else if (item.data.section) {
+          return (
+            <>
+              <li key={item.slug} className="flex h-36 w-full items-center">
+                <p className="text-sub leading-none text-text-subtle">
+                  {item.data.title}
+                </p>
+              </li>
+              <li key={item.slug} className="w-full">
+                {renderItems(
+                  items,
+                  projectSlug,
+                  item.slug,
+                  currentSlug,
+                  isSidebarOpen
+                )}
+              </li>
+            </>
+          );
+        } else {
+          return (
+            <li key={item.slug} className="w-full">
               <a href={`/${projectSlug}/docs/${item.slug}`}>
                 <ListItem
                   selected={isSelected}
@@ -55,9 +77,9 @@ function renderItems(
                   text={item.data.title}
                 />
               </a>
-            )}
-          </li>
-        );
+            </li>
+          );
+        }
       })}
     </ul>
   );
