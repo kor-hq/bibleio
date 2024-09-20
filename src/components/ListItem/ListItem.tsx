@@ -43,10 +43,16 @@ export const ListItemCollapsible = ({
   selected = false,
   className,
   children,
+  ...props
 }: ListItemCollapsibleProps) => {
   const [open, setOpen] = React.useState(false);
   return (
-    <RadixCollapsible.Root open={open} onOpenChange={setOpen}>
+    <RadixCollapsible.Root
+      open={open}
+      onOpenChange={setOpen}
+      {...props}
+      className="w-full"
+    >
       <RadixCollapsible.Trigger>
         <div
           className={

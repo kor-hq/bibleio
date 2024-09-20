@@ -83,6 +83,15 @@
   }
 }
 
+@layer utilities {
+  .hover-color {
+    @apply duration-150 ease-out hover:text-accent-reversed active:text-text;
+  }
+  .hover-transform {
+    @apply duration-150 ease-out hover:-translate-y-2 active:translate-y-2;
+  }
+}
+
 ::selection {
   background: var(--accent);
   color: var(--text);

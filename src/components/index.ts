@@ -13,3 +13,7 @@ export * from './Tooltip';
 export * from './InputOTP';
 export * from './Badge';
 export * from './Tabs';
+export * from './Shapes';
+export * from './Dialog';
+export * from './AlertDialog';
+export * from './Note';

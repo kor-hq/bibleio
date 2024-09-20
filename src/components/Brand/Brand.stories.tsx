@@ -4,8 +4,8 @@ import React from 'react';
 import {
   Logo as LogoComponent,
   LogoProps,
-  Icon as IconComponent,
-  IconProps,
+  IconLogo as IconComponent,
+  IconLogoProps,
 } from './Brand';
 
 const meta: Meta<typeof LogoComponent> = {
@@ -25,7 +25,7 @@ Logo.args = {
 };
 
 export const Icon: Story = {
-  render: (args: IconProps) => <IconComponent {...args} />,
+  render: (args: IconLogoProps) => <IconComponent {...args} />,
 };
 Icon.args = {
   size: 128,

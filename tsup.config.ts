@@ -11,5 +11,5 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   skipNodeModulesBundle: true,
   target: 'es2020',
-  minify: false,
+  minify: true,
 });

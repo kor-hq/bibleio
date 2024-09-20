@@ -62,7 +62,7 @@ export const SelectItem = React.forwardRef<
 >(({ children, ...props }, forwardedRef) => {
   return (
     <RadixSelect.Item
-      className="relative flex h-fit cursor-pointer select-none items-center px-32 font-serif text-body leading-none text-text outline-none duration-150 ease-out data-[disabled]:pointer-events-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-accent-reversed"
+      className="relative flex h-fit cursor-pointer select-none items-center px-32 font-serif text-body leading-none text-text outline-none duration-150 ease-out data-[disabled]:pointer-events-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-accent-reversed data-[disabled]:opacity-33"
       {...props}
       ref={forwardedRef}
     >
