@@ -45,4 +45,5 @@ export const Collapsible: Story = {
 Collapsible.args = {
   text: 'List Item',
   selected: false,
+  defaultOpen: false,
 };

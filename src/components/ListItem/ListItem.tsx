@@ -17,14 +17,10 @@ export const ListItem = ({
 }: ListItemProps) => {
   return (
     <div
-      className={
-        selected
-          ? clsx(
-              'flex w-full items-center rounded-12 border border-stroke bg-fg-2 px-12 py-8 text-text shadow-material-component',
-              className
-            )
-          : clsx('flex w-full items-center px-12 py-8 text-text', className)
-      }
+      className={clsx(
+        `flex w-full items-center justify-between gap-x-8 ${selected && 'rounded-12 border border-stroke bg-fg-2 shadow-material-component'} px-12 py-8 text-text`,
+        className
+      )}
     >
       {text}
     </div>
@@ -45,33 +41,19 @@ export const ListItemCollapsible = ({
   children,
   ...props
 }: ListItemCollapsibleProps) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>();
   return (
-    <RadixCollapsible.Root
-      open={open}
-      onOpenChange={setOpen}
-      {...props}
-      className="w-full"
-    >
-      <RadixCollapsible.Trigger>
-        <div
-          className={
-            selected
-              ? clsx(
-                  'flex w-full items-center justify-between gap-x-8 rounded-12 border border-stroke bg-fg-2 px-12 py-8 text-text shadow-material-component',
-                  className
-                )
-              : clsx(
-                  'flex w-full items-center justify-between gap-x-8 px-12 py-8 text-text',
-                  className
-                )
-          }
-        >
-          {text}
-          {open ? <IconChevronUp /> : <IconChevronDown />}
-        </div>
+    <RadixCollapsible.Root open={open} onOpenChange={setOpen} {...props}>
+      <RadixCollapsible.Trigger
+        className={clsx(
+          `flex w-full items-center justify-between gap-x-8 ${selected && 'rounded-12 border border-stroke bg-fg-2 shadow-material-component'} px-12 py-8 text-text`,
+          className
+        )}
+      >
+        {text}
+        {open ? <IconChevronUp /> : <IconChevronDown />}
       </RadixCollapsible.Trigger>
-      <RadixCollapsible.Content className="flex flex-col gap-0 pl-16">
+      <RadixCollapsible.Content className="flex flex-col gap-0 pl-24">
         {children}
       </RadixCollapsible.Content>
     </RadixCollapsible.Root>
