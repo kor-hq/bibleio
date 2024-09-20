@@ -15,7 +15,7 @@
   "private": false,
   "author": "dukc",
   "license": "MIT-0",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "type": "module",
   "scripts": {
     "build": "tsup",

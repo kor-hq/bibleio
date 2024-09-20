@@ -1,6 +1,6 @@
 ![Banner](https://i.imgur.com/rd1kc35.png)
 
-Design version `1.4.0` - Library version `2.1.0`
+Design version `1.4.0` - Library version `2.1.1`
 
 UI kit for Bibleio, including React components and Tailwind configuration with color styles.
 
