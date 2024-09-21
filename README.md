@@ -1,6 +1,6 @@
 ![Banner](https://i.imgur.com/rd1kc35.png)
 
-Design version `1.4.0` - Library version `2.1.1`
+Design version `1.4.0` - Library version `2.2.0`
 
 UI kit for Bibleio, including React components and Tailwind configuration with color styles.
 
@@ -114,14 +114,11 @@ Install Fontsource fonts:
 
 ```bash
 # pnpm
-pnpm add @fontsource-variable/lora
-pnpm add @fontsource-variable/jetbrains-mono
+pnpm add @fontsource/lora @fontsource/jetbrains-mono
 # yarn
-yarn add @fontsource-variable/lora
-yarn add @fontsource-variable/jetbrains-mono
+yarn add @fontsource/lora @fontsource/jetbrains-mono
 # npm
-npm install @fontsource-variable/lora
-npm install @fontsource-variable/jetbrains-mono
+npm install @fontsource/lora @fontsource/jetbrains-mono
 ```
 
 Import in your main layout (Astro as an example):
@@ -129,8 +126,8 @@ Import in your main layout (Astro as an example):
 ```astro
 ---
 // Layout.astro
-import "@fontsource-variable/lora";
-import "@fontsource-variable/jetbrains-mono";
+import "@fontsource/lora/*";
+import "@fontsource/jetbrains-mono/*";
 ---
 ```
 
@@ -140,30 +137,13 @@ No extra Tailwind config is needed for Fontsource.
 
 The spacing system is literal, so `p-32` means exactly `32px`.
 
+## Dark Mode Switcher
+
+We provide a `ThemeSwitcher` component for you, which is ready to use with localStorage right out of the box. Simply just add it to your code somewhere.
+
 # Changelog
 
-## 2.0.0
-
-Reworked theming system, Tailwind styles, ~~and added accent color system all via ThemeProvider~~ (coming soon!).
-
-### Changelog & Migration
-
-- All materials and colors are no longer prefixed by a `light-` or a `dark-`. They are all just simply their name, so instead of `bg-light-fg-2`, use `bg-fg-2`. The Tailwind styles now work of off CSS variables, so you don't have to add a `dark:` selector for each and every class. You'll have to implement your own dark mode switching for now, but we plan to add a component for you to use soon.
-
-- Changed Tailwind preset name `tailwindCore` to `bibleioTheme`.
-
-- Removed `-disabled` and `-active` variants of styles. For disabled pieces, just set the opacity to `33%`. If you need something to be the accent color just use the accent style.
-
-- Every style except materials now have a "reversed" variant. Example: In light mode, `text-text` is black; so the reversed variant would be white.
-
-- Added `orange`, `lime`, `teal`, and `pink` colors, to prepare for more customizable themes and accents.
-
-- Switched everything that used to use `colour` to use `color`.
-
-```diff
-- 'bg-dark-blue text-white dark:text-black dark:bg-light-blue shadow-light-coloured-component dark:shadow-dark-coloured-component'
-+ 'bg-accent-reversed text-text-reversed shadow-colored-component'
-```
+Look at the releases.
 
 # License
 
