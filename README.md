@@ -141,9 +141,14 @@ The spacing system is literal, so `p-32` means exactly `32px`.
 
 We provide a `ThemeSwitcher` component for you, which is ready to use with localStorage right out of the box. Simply just add it to your code somewhere.
 
+**Warning** If you're using the componment some where where the code renders on the server, such as Astro, make sure it runs on the client to make localStorage work, for example:
+```html
+<ThemeSwitcher client:only />
+```
+
 # Changelog
 
-Look at the releases.
+Look at the [releases](https://github.com/bibleio/design/releases).
 
 # License
 
