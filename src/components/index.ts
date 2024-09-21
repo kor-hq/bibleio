@@ -17,3 +17,4 @@ export * from './Shapes';
 export * from './Dialog';
 export * from './AlertDialog';
 export * from './Note';
+export * from './ThemeSwitcher';
