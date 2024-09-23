@@ -23,11 +23,11 @@ function formatSize(
   return { width, height };
 }
 
-export type ShapesProps = { glow?: boolean; fill: Color; size?: number };
+export type ShapesProps = { glow?: boolean; fill?: Color; size?: number };
 export const Cross = ({
   glow = true,
   fill = 'yellow',
-  size = 256,
+  size = 512,
 }: ShapesProps) => {
   const svgSize = formatSize(size, 444 / 689);
   return (
@@ -181,7 +181,7 @@ export const Hexagon = ({
 
 export const Triangle = ({
   glow = true,
-  fill = 'red',
+  fill = 'orange',
   size = 256,
 }: ShapesProps) => {
   const svgSize = formatSize(size, 215 / 193);
