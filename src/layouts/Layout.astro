@@ -6,7 +6,8 @@ import '@fontsource/lora/600.css';
 import '@fontsource/lora/700.css';
 import '@bibleio/design/dist/index.css';
 
-import { Nav } from '../components/Nav';
+import { Nav } from '@/Nav';
+import { Footer } from '@/Footer';
 
 const { title } = Astro.props;
 ---
@@ -19,8 +20,9 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title} - Bibleio</title>
   </head>
-  <body class="bg overflow-x-hidden font-serif">
-    <Nav path="/" client:load />
+  <body class="overflow-x-hidden bg font-serif">
+    <Nav path={Astro.url.pathname} client:load />
     <slot />
+    <Footer client:only="react" />
   </body>
 </html>
