@@ -17,10 +17,15 @@ function renderItems(
   currentSlug: string,
   isSidebarOpen: boolean
 ) {
-  const children = findChildren(items, parentSlug);
+  const children = findChildren(items, parentSlug).sort((a: Item, b: Item) => {
+    const aOrder = a.data.order ?? Infinity; // If no order, assign Infinity to put them at the end
+    const bOrder = b.data.order ?? Infinity;
+
+    return aOrder - bOrder;
+  });
 
   return (
-    <ul className={`flex flex-col gap-8`}>
+    <ul className={`flex flex-col`}>
       {children.map((item: Item) => {
         const isDescendant = currentSlug.startsWith(
           `/${projectSlug}/docs/${item.slug}`
@@ -29,7 +34,6 @@ function renderItems(
         const isSelected = `/${projectSlug}/docs/${item.slug}` === currentSlug;
         const isOpen = isSelected || isDescendant;
 
-        console.log(`isOpen ${item.slug}`, isOpen);
         if (item.data.directory) {
           return (
             <li key={item.slug} className="w-full">
@@ -52,7 +56,7 @@ function renderItems(
           return (
             <>
               <li key={item.slug} className="flex h-36 w-full items-center">
-                <p className="text-sub leading-none text-text-subtle">
+                <p className="text-sub leading-none text-[#000]/60 dark:text-[#fff]/60">
                   {item.data.title}
                 </p>
               </li>

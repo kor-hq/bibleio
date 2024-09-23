@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content';
 import MainLayout from '@layouts/MainLayout.astro';
 import DocsLayout from '@layouts/DocsLayout.astro';
 
-const designDocs = await getCollection('design');
+const apiDocs = await getCollection('apiDocs');
 ---
 
 <MainLayout title="Design Docs">
-  <DocsLayout docs={designDocs} projectSlug="design"> Docs </DocsLayout>
+  <DocsLayout docs={apiDocs} projectSlug="design"> Docs </DocsLayout>
 </MainLayout>

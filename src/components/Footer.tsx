@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Logo } from '@bibleio/design';
+import { Logo, ThemeSwitcher } from '@bibleio/design';
 
 export const Footer = () => {
   return (
@@ -23,16 +25,7 @@ export const Footer = () => {
             By dukc.
           </FooterItem>
         </p>
-        <div className="flex gap-24">
-          <a
-            href="https://dukc.notion.site/Bibleio-781f29eb2433420d8dbd98feaa584237?pvs=74"
-            target="_blank"
-          ></a>
-          <a href="https://www.youtube.com/@bibleio" target="_blank"></a>
-          <a href="https://github.com/bibleio" target="_blank"></a>
-
-          <a href="https://discord.gg/7eVCyQ5GGb" target="_blank"></a>
-        </div>
+        <ThemeSwitcher />
       </div>
       <div className="=items-start flex h-full flex-col gap-16 border-l border-stroke p-32">
         <h2 className="text-h2 font-medium">Developers</h2>
