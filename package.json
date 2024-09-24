@@ -16,7 +16,7 @@
     "@astrojs/check": "^0.9.3",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.1",
-    "@bibleio/design": "^2.2.0",
+    "@bibleio/design": "^2.2.1",
     "@fontsource/lora": "^5.1.0",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",

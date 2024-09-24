@@ -1,11 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {
+  Button,
+  Badge,
+  // shapes
+  Cross,
+  Bible,
+  Hexagon,
+  Star,
+  Circle,
+  Triangle,
+} from '@bibleio/design';
+import { Image } from 'astro:assets';
 ---
 
 <Layout title="Home"
   ><section
     id="landing"
-    class="relative flex h-[94vh] flex-col items-start justify-end gap-24 overflow-clip border-b border-stroke p-32 max-[480px]:p-16"
+    class="relative flex h-screen flex-col items-start justify-end gap-24 overflow-clip border-b border-stroke p-32 max-[480px]:p-16"
   >
     <h1
       class="text-[24rem] italic leading-none text-text max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
@@ -15,11 +27,115 @@ import Layout from '../layouts/Layout.astro';
     <p class="text-body leading-none text-text">
       Innovating the industry of Bible technology.
     </p>
-    <div class="absolute -z-50 h-full w-full">a</div>
+    <div
+      class="animate-scroll-y-reverse absolute left-[30%] -z-50 flex h-full w-full flex-col items-center gap-64"
+    >
+      <Cross />
+      <Bible />
+      <Circle />
+      <Star />
+      <Hexagon />
+      <Triangle />
+    </div>
   </section><section id="main" class="flex flex-col px-256">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
-      <div class="flex w-full items-center justify-center px-32 py-32">
-        <h1 class="text-h1 text-text">Innovation for Christ</h1>c
+      <div id="apps" class="grid grid-cols-2 grid-rows-2">
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48"
+        >
+          <div class="flex items-center justify-between">
+            <h2 class="text-[3.75rem] leading-none text-text">Web</h2>
+            <Badge variant="purple">Alpha</Badge>
+          </div>
+          <p class="text-body leading-none text-text">
+            Simple Bible reading app.
+          </p>
+          <div class="flex gap-12">
+            <a href="https://app.bibleio.com"><Button>Visit</Button></a>
+            <a href="/apps#web"
+              ><Button variant="secondary">Learn More</Button></a
+            >
+          </div>
+          <Image
+            src="/home/web.png"
+            alt="web app ui"
+            width="800"
+            height="368"
+            class="absolute left-[40%] top-[10%] -z-50 aspect-[392.34/561.73] h-auto w-[384px] rounded-16 border border-stroke shadow-popup"
+          />
+        </div>
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48"
+        >
+          <div class="flex items-center justify-between">
+            <h2 class="text-[3.75rem] leading-none text-text">Mobile</h2>
+            <Badge variant="danger">Coming Soon</Badge>
+          </div>
+          <p class="text-body leading-none text-text">
+            Bible study on your phone.
+          </p>
+          <div class="flex gap-12">
+            <a href="/apps#mobile"
+              ><Button variant="secondary">Learn More</Button></a
+            >
+          </div>
+          <Image
+            src="/home/mobile.png"
+            alt="mobile app ui"
+            width="393"
+            height="852"
+            class="absolute bottom-[10%] left-[50%] -z-50 box-border aspect-[393/852] h-auto w-[256px] border border-stroke shadow-popup"
+          />
+        </div>
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48"
+        >
+          <div class="flex items-center justify-between">
+            <h2 class="text-[3.75rem] leading-none text-text">Desktop</h2>
+            <Badge variant="danger">Coming Soon</Badge>
+          </div>
+          <p class="text-body leading-none text-text">
+            The modern & ultimate Bible study app.
+          </p>
+          <div class="flex gap-12">
+            <a href="/apps#desktop"
+              ><Button variant="secondary">Learn More</Button></a
+            >
+          </div>
+          <Image
+            src="/home/desktop.png"
+            alt="desktop app ui"
+            width="700"
+            height="500"
+            class="absolute left-[58%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke shadow-popup"
+          />
+        </div>
+        <div class="flex h-[24rem] flex-col gap-24 border-stroke p-48">
+          <h2 class="text-[3.75rem] leading-none text-text">All Products</h2>
+          <p class="text-body leading-none text-text">
+            Take a look at our free & open-source Bible resources.
+          </p>
+          <a href="/products"><Button>Look</Button></a>
+        </div>
+      </div>
+      <div
+        class="flex w-full items-center justify-center gap-32 overflow-clip px-32 py-32"
+      >
+        <h1
+          class="animate-scroll-x whitespace-nowrap text-h1 leading-none text-text"
+        >
+          Innovation for Christ
+        </h1>
+        <h1
+          class="animate-scroll-x whitespace-nowrap text-h1 leading-none text-text"
+        >
+          Innovation for Christ
+        </h1>
+        <h1
+          class="animate-scroll-x whitespace-nowrap text-h1 leading-none text-text"
+        >
+          Innovation for Christ
+        </h1>
       </div>
     </div>
   </section></Layout

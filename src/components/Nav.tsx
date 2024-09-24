@@ -14,9 +14,9 @@ export function Nav({ path }: { path: string }) {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 flex h-72 w-screen flex-col">
+    <nav className="fixed z-50 flex h-72 w-screen flex-col">
       <div className="flex justify-between p-16">
-        <div className="bg-fg-2 shadow-popup border-stroke flex h-[40px] items-center rounded-full border px-24 py-12">
+        <div className="flex h-[40px] items-center rounded-full border border-stroke bg-fg-2 px-24 py-12 shadow-popup">
           <a
             href="/"
             className="duration-150 ease-out hover:-translate-y-2 active:translate-y-2"
@@ -24,12 +24,12 @@ export function Nav({ path }: { path: string }) {
             <Logo size={26} subText="Website" />
           </a>
         </div>
-        <div className="bg-fg-2 shadow-popup border-stroke flex h-[40px] items-center gap-24 rounded-full border px-24 py-12">
+        <div className="flex h-[40px] items-center gap-24 rounded-full border border-stroke bg-fg-2 px-24 py-12 shadow-popup">
           {navItems.map((item, index) => (
             <a
               key={index}
               href={item.link}
-              className={`text-body text-text hover:text-accent-reversed leading-none duration-150 ease-out max-[680px]:hidden ${path == item.link && 'font-semibold'}`}
+              className={`text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed max-[680px]:hidden ${path == item.link && 'font-semibold'}`}
             >
               {item.text}
             </a>
@@ -58,13 +58,13 @@ export function Nav({ path }: { path: string }) {
         </div>
       </div>
       <div
-        className={`bg-fg-2 shadow-popup border-stroke rounded-16 m-16 mt-0 flex-col items-center gap-36 border p-24 ${navOpen ? 'animate-scale-in flex' : 'hidden'}`}
+        className={`m-16 mt-0 flex-col items-center gap-36 rounded-16 border border-stroke bg-fg-2 p-24 shadow-popup ${navOpen ? 'flex animate-scale-in' : 'hidden'}`}
       >
         {navItems.map((item, index) => (
           <a
             key={index}
             href={item.link}
-            className={`text-h4 text-text leading-none ${path == item.link && 'font-semibold'}`}
+            className={`text-h4 leading-none text-text ${path == item.link && 'font-semibold'}`}
             onClick={() => {
               setNavOpen(false);
             }}

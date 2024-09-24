@@ -19,8 +19,8 @@ export const Footer = () => {
         </div>
         <p className="text-body leading-[220%]">
           Innovating the industry of Bible software.{' '}
-          <FooterItem href="https://dukc.dev" newTab>
-            By dukc.
+          <FooterItem href="https://duckyhq.com" newTab>
+            By DuckyHQ.
           </FooterItem>
         </p>
         <ThemeSwitcher />
@@ -42,8 +42,8 @@ export const Footer = () => {
       <div className="flex h-full flex-col gap-16 border-x border-stroke p-32">
         <h2 className="text-h2 font-medium">About</h2>
         <div className="flex flex-col gap-24">
-          <FooterItem href="https://app.bibleio.com">About</FooterItem>
-          <FooterItem href="https://app.bibleio.com">Media</FooterItem>
+          <FooterItem href="/about">About</FooterItem>
+          <FooterItem href="/media">Media</FooterItem>
         </div>
         <div className="flex gap-24">
           <a

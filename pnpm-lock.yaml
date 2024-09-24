@@ -18,8 +18,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(astro@4.15.9(rollup@4.22.4)(typescript@5.6.2))(tailwindcss@3.4.13)
       '@bibleio/design':
-        specifier: ^2.2.0
-        version: 2.2.0(@types/react-dom@18.3.0)(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^2.2.1
+        version: 2.2.1(@types/react-dom@18.3.0)(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@fontsource/lora':
         specifier: ^5.1.0
         version: 5.1.0
@@ -221,8 +221,8 @@ packages:
     resolution: {integrity: sha512-/l42B1qxpG6RdfYf343Uw1vmDjeNhneUXtzhojE7pDgfpEypmRhI6j1kr17XCVv4Cgl9HdAiQY2x0GwKm7rWCw==}
     engines: {node: '>=6.9.0'}
 
-  '@bibleio/design@2.2.0':
-    resolution: {integrity: sha512-OP2Z3j0Lg+rHBUo8DTL+m0+x4F5a3i8J7AdxMCSG7N9PurqY4VVEqfqyrbaJf70BXQB4vd6iVtyR7LK37p7PrQ==}
+  '@bibleio/design@2.2.1':
+    resolution: {integrity: sha512-ScF6cY/4OiNl6SJBCs6UyV/nXTRGKktkVnHCCc6g/sjRNxnCR3vj4kcxlcHl4IRNADwpDsCUpxLEpSldhV1xQA==}
     peerDependencies:
       react: ^18.3.1
 
@@ -3059,7 +3059,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  '@bibleio/design@2.2.0(@types/react-dom@18.3.0)(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@bibleio/design@2.2.1(@types/react-dom@18.3.0)(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-alert-dialog': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-checkbox': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
