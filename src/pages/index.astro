@@ -14,8 +14,8 @@ import {
 import { Image } from 'astro:assets';
 ---
 
-<Layout title="Home"
-  ><section
+<Layout title="Home">
+  <section
     id="landing"
     class="relative flex h-screen flex-col items-start justify-end gap-24 overflow-clip border-b border-stroke p-32 max-[480px]:p-16"
   >
@@ -56,13 +56,10 @@ import { Image } from 'astro:assets';
               ><Button variant="secondary">Learn More</Button></a
             >
           </div>
-          <Image
-            src="/home/web.png"
-            alt="web app ui"
-            width="800"
-            height="368"
-            class="absolute left-[40%] top-[10%] -z-50 aspect-[392.34/561.73] h-auto w-[384px] rounded-16 border border-stroke shadow-popup"
-          />
+          <div
+            class="absolute left-[40%] top-[10%] -z-50 aspect-[392.34/561.73] h-auto w-[384px] rounded-16 border border-stroke bg-[url('/home/web.png')] bg-cover shadow-popup dark:bg-[url('/home/webDark.png')]"
+          >
+          </div>
         </div>
         <div
           class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48"
@@ -79,14 +76,12 @@ import { Image } from 'astro:assets';
               ><Button variant="secondary">Learn More</Button></a
             >
           </div>
-          <Image
-            src="/home/mobile.png"
-            alt="mobile app ui"
-            width="393"
-            height="852"
-            class="absolute bottom-[10%] left-[50%] -z-50 box-border aspect-[393/852] h-auto w-[256px] border border-stroke shadow-popup"
-          />
+          <div
+            class="absolute bottom-[10%] left-[50%] -z-50 box-border aspect-[393/852] h-auto w-[256px] rounded-[24px] border border-stroke bg-[url('/home/mobile.png')] bg-cover shadow-popup dark:bg-[url('/home/mobileDark.png')]"
+          >
+          </div>
         </div>
+
         <div
           class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48"
         >
@@ -102,18 +97,15 @@ import { Image } from 'astro:assets';
               ><Button variant="secondary">Learn More</Button></a
             >
           </div>
-          <Image
-            src="/home/desktop.png"
-            alt="desktop app ui"
-            width="700"
-            height="500"
-            class="absolute left-[58%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke shadow-popup"
-          />
+          <div
+            class="absolute left-[58%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke bg-[url('/home/desktop.png')] bg-cover shadow-popup dark:bg-[url('/home/desktopDark.png')]"
+          >
+          </div>
         </div>
         <div class="flex h-[24rem] flex-col gap-24 border-stroke p-48">
           <h2 class="text-[3.75rem] leading-none text-text">All Products</h2>
           <p class="text-body leading-none text-text">
-            Take a look at our free & open-source Bible resources.
+            Take a look at our free & open-source Bible software.
           </p>
           <a href="/products"><Button>Look</Button></a>
         </div>

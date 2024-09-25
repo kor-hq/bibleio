@@ -4,6 +4,7 @@ import { bibleioTheme } from '@bibleio/design';
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   presets: [bibleioTheme],
+  darkMode: 'class',
   theme: {
     extend: {
       keyframes: {
