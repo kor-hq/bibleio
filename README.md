@@ -1,22 +1,10 @@
-![Banner](https://i.imgur.com/9LfDHnC.png)
+![banner](https://github.com/user-attachments/assets/7a4b941f-5098-4126-b8ad-bb3c1c492992)
 
-This is the **alpha** Bibleio API. It plans to be a fully accessible, blazingly fast Bible Static REST API written in Rust, which will one day also include major translations, for free (please pray for this to happen).
+The Bibleio API is a multipurpose API for all things Bibleio, and the Bible.
 
-This repo is simply just a Cargo Workspace, with the `converter` script and the `api`.
+Our main focus right now is the `/bible` endpoint, which will serve the Bible in many different translations and languages using BibleJSON.
 
-The API **will be** built with [Axum](https://github.com/tokio-rs/axum), and the actual JSON files are served from a database using [Diesel](https://diesel.rs/).
-
-Each [BibleJSON]() file was converted from HTML from [eBible.org](https://ebible.org) to JSON using the `converter` script. (huge thanks to eBible.org!)
-
-# Status
-
-Currently we're working on the `converter` script to convert the eBible.org HTML files into BibleJSON files. It uses `rust-scraper`, except it's just scraping the data from downloaded HTML files.
-
-We won't start working on the API until we have actual BibleJSON files to serve.
-
-# Plans & Ideas
-
-It would be cool if we could get our hands on some Christian devonitonals, books, etc. and serve them here in the public domain. We also plan to serve Audio Bibles soon. It would also be cool for us to make our own authentication server for Bibleio accounts, but we'll probably use another solution.
+We plan to begin working on this after we get the [BibleJSON](https://github.com/bibleio/biblejson) formatting standard and converter working.
 
 # License
 
