@@ -2,6 +2,10 @@
 
 BibleJSON is a new universal formatting standard for putting biblical texts into JSON.
 
+> [!WARNING]
+> BibleJSON and the converter is very new, in pre-alpha stages. We need your feedback on how the formatting works, and the converter script.
+> There are many bugs with the converter script.
+
 # `converter`
 
 Right now, you are able to convert [eBible.org](https://ebible.org) Bible `.htm` files into BibleJSON, with our converter script written in Rust. Soon, we plan to add support for other file formats.
@@ -38,6 +42,6 @@ Please give feedback on the format, before we decide to deploy it everywhere acc
 
 If you could help make a converter script for another file format, that would be amazing!
 
-[Discord]() - or `bibleio@bibleio.com`
+[Discord](https://discord.gg/7eVCyQ5GGb) - or `bibleio@bibleio.com`
 
 Licensed `MIT-0`. No attribution required.
