@@ -1,4 +1,6 @@
-[workspace]
+[package]
+name = "bibleio-api"
+version = "0.1.0"
+edition = "2021"
 
-members = ["api", "converter"]
-resolver = "2"
+[dependencies]
