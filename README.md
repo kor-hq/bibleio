@@ -1,5 +1,7 @@
 ![banner](https://github.com/user-attachments/assets/34cd22a2-7751-4e24-9f2a-24b66a007362)
 
+`v0.0.1-alpha`
+
 BibleJSON is a new universal formatting standard for putting biblical texts into JSON.
 
 > [!WARNING]
@@ -35,6 +37,11 @@ Soon we plan to move documentation to dev.bibleio.com. Here's a summary of the f
             - or an object literal with extra formatting
                 - `content` - the content string
                 - modifier - boolean - the modifier that the formatting is - `italic` | `red`
+
+## Example
+
+See [EXAMPLE.json](EXAMPLE.json) to see Luke 23 (English Majority Text Version) in BibleJSON formatting.
+File created as of version `v0.0.1-alpha`
 
 # Feedback and contributing
 
