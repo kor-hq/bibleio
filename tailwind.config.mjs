@@ -8,18 +8,18 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        'scroll-y': {
+        scrollY: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(1)' },
         },
-        'scroll-x': {
+        scrollX: {
           '0%, 100%': { transform: 'translateX(0)' },
           '50%': { transform: 'translateX(1)' },
         },
       },
       animation: {
-        'scroll-y': 'scroll-y 25s linear infinite',
-        'scroll-x': 'scroll-x 25s linear infinite',
+        scrollY: 'scrollY 25s linear infinite',
+        scrollX: 'scrollX 25s linear infinite',
       },
     },
   },
