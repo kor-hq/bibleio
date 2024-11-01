@@ -15,27 +15,98 @@ import { Image } from 'astro:assets';
 ---
 
 <Layout title="Home">
+  <script>
+    import { gsap } from 'gsap';
+
+    // Scrolling animations
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrollContainer = document.querySelector('.scroll-container');
+
+      const scrollXItem = document.querySelector('.scroll-x') as HTMLElement;
+      const itemXWidth = scrollXItem?.offsetWidth;
+
+      const scrollYItem = document.querySelector('.scroll-y') as HTMLElement;
+      const itemYHeight = scrollYItem?.offsetHeight;
+
+      gsap.to('.scroll-x', {
+        x: -itemXWidth,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize((value) => parseFloat(value) % itemXWidth),
+        },
+      });
+
+      gsap.to('.scroll-y', {
+        y: -itemYHeight,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          y: gsap.utils.unitize((value) => parseFloat(value) % itemYHeight),
+        },
+      });
+    });
+
+    // "Bibleio" landing text animation
+
+    const text = document.querySelector('.animate-scale-in') as HTMLElement;
+
+    if (text && text.textContent) {
+      text.innerHTML = Array.from(text.textContent)
+        .map((letter) => `<span class="inline-block">${letter}</span>`)
+        .join('');
+
+      // Create the GSAP animation
+      gsap.from('.animate-scale-in span', {
+        opacity: 0,
+        scale: 0,
+        y: 100,
+        rotation: 15,
+        duration: 0.5,
+        ease: 'back.out(.8)',
+        stagger: {
+          amount: 0.3,
+          from: 'start',
+        },
+      });
+    } else {
+      console.warn('Animation target element not found');
+    }
+  </script>
+
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-start justify-end gap-24 overflow-clip border-b border-stroke p-32 max-[480px]:p-16"
+    class="relative flex h-screen flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke p-128 max-[480px]:p-16"
   >
     <h1
-      class="animate-scale-in text-[24rem] italic leading-none text-text max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="animate-scale-in pt-72 text-[20rem] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
     >
       Bibleio
     </h1>
     <p class="animate-scale-in text-body leading-none text-text">
       Innovating the industry of Bible technology.
-    </p>
-    <div
-      class="animate-scrollY absolute left-[30%] -z-50 flex h-full w-full flex-col items-center gap-64"
+    </p><div
+      class="scroll-container absolute right-[20%] -z-50 flex flex-col gap-64"
     >
-      <Cross />
-      <Bible />
-      <Circle />
-      <Star />
-      <Hexagon />
-      <Triangle />
+      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+      </div>
+      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+      </div>
     </div>
   </section><section id="main" class="flex flex-col px-256">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
@@ -90,7 +161,7 @@ import { Image } from 'astro:assets';
             <Badge variant="danger">Coming Soon</Badge>
           </div>
           <p class="text-body leading-none text-text">
-            The modern & ultimate Bible study app.
+            The most feature rich modern Bible study app.
           </p>
           <div class="flex gap-12">
             <a href="/apps#desktop"
@@ -98,7 +169,7 @@ import { Image } from 'astro:assets';
             >
           </div>
           <div
-            class="absolute left-[58%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke bg-[url('/home/desktop.png')] bg-cover shadow-popup dark:bg-[url('/home/desktopDark.png')]"
+            class="absolute left-[68%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke bg-[url('/home/desktop.png')] bg-cover shadow-popup dark:bg-[url('/home/desktopDark.png')]"
           >
           </div>
         </div>
@@ -111,23 +182,32 @@ import { Image } from 'astro:assets';
         </div>
       </div>
       <div
-        class="flex w-full items-center justify-center gap-32 overflow-clip px-32 py-32"
+        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
       >
-        <h1
-          class="animate-scroll-x whitespace-nowrap text-h1 leading-none text-text"
-        >
-          Innovation for Christ
-        </h1>
-        <h1
-          class="animate-scroll-x whitespace-nowrap text-h1 leading-none text-text"
-        >
-          Innovation for Christ
-        </h1>
-        <h1
-          class="animate-scroll-x whitespace-nowrap text-h1 leading-none text-text"
-        >
-          Innovation for Christ
-        </h1>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+        </div>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+        </div>
+      </div>
+      <div
+        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
+      >
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+        </div>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+        </div>
       </div>
     </div>
   </section></Layout
