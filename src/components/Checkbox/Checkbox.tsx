@@ -7,7 +7,7 @@ export type CheckboxProps = RadixCheckboxProps;
 export const Checkbox = ({ ...props }: RadixCheckboxProps) => {
   return (
     <RadixCheckbox.Root
-      className="flex size-[30px] items-center justify-center rounded-8 border border-stroke bg-fg-2 shadow-material-component data-[disabled]:cursor-not-allowed data-[disabled]:opacity-33"
+      className="flex size-[1.875rem] items-center justify-center rounded-8 border border-stroke bg-fg-2 shadow-material-component data-[disabled]:cursor-not-allowed data-[state='checked']:border-accent-reversed data-[disabled]:opacity-33"
       {...props}
     >
       <RadixCheckbox.Indicator className="text-accent-reversed data-[state='checked']:animate-scale-in data-[state='unchecked']:animate-scale-out">
@@ -21,8 +21,8 @@ const IconCheck = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
+      width="1.5rem"
+      height="1.5rem"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

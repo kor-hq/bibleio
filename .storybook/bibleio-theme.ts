@@ -12,8 +12,8 @@ export default create({
   brandUrl: 'https://dev.bibleio.com/design/docs',
 
   //
-  colorPrimary: '#00507C',
-  colorSecondary: '#00507C',
+  colorPrimary: '#006197',
+  colorSecondary: '#006197',
 
   // UI
   appBg: '#CCCCCC',
@@ -28,8 +28,8 @@ export default create({
 
   // Toolbar default and active colors
   barTextColor: '#000000',
-  barSelectedColor: '#00507C',
-  barHoverColor: '#00507C',
+  barSelectedColor: '#006197',
+  barHoverColor: '#006197',
   barBg: '#D4D4D4',
 
   // Form colors

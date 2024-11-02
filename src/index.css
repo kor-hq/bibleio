@@ -15,8 +15,8 @@
     --text-reversed: #f3f3f3e6;
     --text-reversed-solid: #ffffff;
     --text-reversed-subtle: #dedede54;
-    --inner-shadow-1: #ffffff1a;
-    --inner-shadow-2: #0000001f;
+    --inner-shadow-1: #ffffff0d;
+    --inner-shadow-2: #00000026;
     /* colors */
     --accent: #00a3ff;
     --red: #f45252;
@@ -54,8 +54,8 @@
     --text-reversed: #000000e6;
     --text-reversed-solid: #000000;
     --text-reversed-subtle: #000000e6;
-    --inner-shadow-1: #00000015;
-    --inner-shadow-2: #ffffff03;
+    --inner-shadow-1: #ffffff08;
+    --inner-shadow-2: #00000026;
     /* colors */
     --accent: #00507c;
     --red: #802525;
