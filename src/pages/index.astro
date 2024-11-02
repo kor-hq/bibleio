@@ -52,21 +52,35 @@ import { Image } from 'astro:assets';
 
     // "Bibleio" landing text animation
 
-    const text = document.querySelector('.animate-scale-in') as HTMLElement;
+    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
 
     if (text && text.textContent) {
-      text.innerHTML = Array.from(text.textContent)
-        .map((letter) => `<span class="inline-block">${letter}</span>`)
+      const words = text.textContent.split(/(\s+)/);
+      text.innerHTML = words
+        .map((word) => {
+          // If it's just whitespace, wrap it in a span with space class
+          if (/^\s+$/.test(word)) {
+            return `<span class="inline-block space">&nbsp;</span>`;
+          }
+
+          // For actual words, wrap each letter in a span
+          return `<span class="word inline-block">
+            ${Array.from(word)
+              .map(
+                (letter) => `<span class="letter inline-block">${letter}</span>`
+              )
+              .join('')}
+          </span>`;
+        })
         .join('');
 
       // Create the GSAP animation
-      gsap.from('.animate-scale-in span', {
+      gsap.from('.animate-bounce-in span', {
         opacity: 0,
         scale: 0,
         y: 100,
-        rotation: 15,
         duration: 0.5,
-        ease: 'back.out(.8)',
+        ease: 'back.out(.5)',
         stagger: {
           amount: 0.3,
           from: 'start',
@@ -82,7 +96,7 @@ import { Image } from 'astro:assets';
     class="relative flex h-screen flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke p-128 max-[480px]:p-16"
   >
     <h1
-      class="animate-scale-in pt-72 text-[20rem] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="animate-bounce-in pt-72 text-[320px] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
     >
       Bibleio
     </h1>
@@ -108,8 +122,25 @@ import { Image } from 'astro:assets';
         <Triangle />
       </div>
     </div>
-  </section><section id="main" class="flex flex-col px-256">
+  </section>
+  <section id="main" class="flex flex-col px-256">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
+      <div
+        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
+      >
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+        </div>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+        </div>
+      </div>
       <div id="apps" class="grid grid-cols-2 grid-rows-2">
         <div
           class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48"
@@ -185,28 +216,75 @@ import { Image } from 'astro:assets';
         class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
       >
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
         </div>
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+        </div>
+      </div>
+
+      <div id="more" class="grid grid-cols-2 grid-rows-2">
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text">Why Believe?</h2>
+          <p class="text-body leading-[220%] text-text">
+            Why believe in God or Jesus?
+          </p>
+          <a href="/why-believe"><Button>Why?</Button></a>
+        </div>
+        <div
+          id="about"
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text">About</h2>
+          <p class="text-body leading-[220%] text-text">
+            Free & open-source, design, privacy, and performance focused modern
+            Bible software for everyone. The Bible industry is full of
+            copyright, paid software, non-private, or non-modern software. We
+            want to fix that, and comply with Jesus' command in Matthew 10:8,
+            "Freely you have received; freely give."
+          </p>
+        </div>
+
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text">Developers</h2>
+          <p class="text-body leading-[220%] text-text">
+            Take a look at our free & open-source Bible API, our new formatting
+            standard, BibleJSON, and our beautiful design system.
+          </p>
+          <a href="https://dev.bibleio.com"><Button>Look</Button></a>
+        </div>
+        <div class="flex h-[24rem] flex-col gap-24 border-stroke p-48">
+          <h2 class="text-[3.75rem] leading-none text-text">Community</h2>
+          <p class="text-body leading-[220%] text-text">
+            Come talk with us, contribute, and give feedback!
+          </p>
+          <div class="flex gap-12">
+            <a href="https://github.com/bibleio"><Button>GitHub</Button></a>
+            <a href="https://discord.gg/7eVCyQ5GGb"><Button>Discord</Button></a>
+            <a href="/contact"><Button variant="secondary">Contact</Button></a>
+          </div>
         </div>
       </div>
       <div
         class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
       >
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
         </div>
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
         </div>
       </div>
     </div>

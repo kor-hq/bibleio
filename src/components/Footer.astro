@@ -7,7 +7,7 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
   class="relative grid grid-cols-4 items-center border-t border-t-stroke px-[256px] text-text max-[1550px]:px-0 max-[1100px]:grid-cols-1 max-[1100px]:divide-y max-[1100px]:border-none"
 >
   <a
-    class="absolute bottom-[85%] left-1/2 flex size-72 -translate-x-1/2 items-center justify-center rounded-full border border-stroke bg-bg-1 duration-150 ease-out hover:scale-105 max-[1100px]:bottom-[96%]"
+    class="absolute left-1/2 top-[-10%] flex size-72 -translate-x-1/2 items-center justify-center rounded-full border border-stroke bg-bg-1 duration-150 ease-out hover:scale-105 max-[1100px]:bottom-[96%]"
     href="/"
   >
     <Logo size={32} />
@@ -15,7 +15,7 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
   <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
     <div class="flex items-center justify-between">
       <h2 class="text-h2 font-medium">Bibleio</h2>
-      <p class="text-right font-mono text-sub leading-none">MIT-0 2024</p>
+      <p class="text-right font-mono text-sub leading-none">2024 MIT-0</p>
     </div>
     <p class="text-body leading-[220%]">
       Innovating the industry of Bible software.
@@ -46,6 +46,12 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
     <h2 class="text-h2 font-medium">Developers</h2>
     <div class="flex flex-col items-start gap-24">
       <a
+        href="/roadmap#contribute"
+        class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
+      >
+        Contribute
+      </a>
+      <a
         href="https://dev.bibleio.com/api"
         class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
       >
@@ -69,16 +75,28 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
     <h2 class="text-h2 font-medium">About</h2>
     <div class="flex flex-col gap-24">
       <a
-        href="/about"
+        href="/roadmap"
+        class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
+      >
+        Roadmap
+      </a>
+      <a
+        href="/blog"
+        class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
+      >
+        Blog
+      </a>
+      <a
+        href="/#about"
         class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
       >
         About
       </a>
       <a
-        href="/media"
+        href="/contact"
         class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
       >
-        Media
+        Contact
       </a>
     </div>
     <div class="flex gap-24">
@@ -88,8 +106,8 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={24}
-          height={24}
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -110,8 +128,8 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
       <a href="https://www.youtube.com/@bibleio" target="_blank">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={24}
-          height={24}
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -130,8 +148,8 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
       <a href="https://github.com/bibleio" target="_blank">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={24}
-          height={24}
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -150,8 +168,8 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
       <a href="https://discord.gg/7eVCyQ5GGb" target="_blank">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={24}
-          height={24}
+          width="1.5rem"
+          height="1.5rem"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

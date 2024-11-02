@@ -7,10 +7,11 @@ export function Nav({ path }: { path: string }) {
   const navItems = [
     { text: 'Home', link: '/' },
     { text: 'Apps', link: '/apps' },
-    { text: 'Products', link: '/products' },
+    { text: 'Products', link: '/#apps' },
     { text: 'Why Believe?', link: '/why-believe' },
-    { text: 'About', link: '/about' },
-    { text: 'Media', link: '/media' },
+    { text: 'Roadmap', link: '/roadmap' },
+    { text: 'Contribute', link: '/roadmap#contribute' },
+    { text: 'Blog', link: '/blog' },
   ];
 
   return (
@@ -29,12 +30,12 @@ export function Nav({ path }: { path: string }) {
             <a
               key={index}
               href={item.link}
-              className={`text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed max-[680px]:hidden ${path == item.link && 'font-semibold'}`}
+              className={`text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed max-[780px]:hidden ${path == item.link && 'font-semibold'}`}
             >
               {item.text}
             </a>
           ))}
-          <div className="items-center max-[680px]:flex min-[680px]:hidden">
+          <div className="items-center max-[780px]:flex min-[780px]:hidden">
             {navOpen ? (
               <button
                 onClick={() => {
