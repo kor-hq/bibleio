@@ -1,6 +1,6 @@
-![Banner](https://i.imgur.com/rd1kc35.png)
+![Banner](https://github.com/user-attachments/assets/2572f6b0-9d8c-4e08-884d-0202980f7b9d)
 
-Design version `1.4.0` - Library version `2.2.1`
+Design version `1.5.0` - Library version `2.3.0`
 
 UI kit for Bibleio, including React components and Tailwind configuration with color styles.
 
@@ -139,13 +139,7 @@ The spacing system is literal, so `p-32` means exactly `32px`.
 
 ## Dark Mode Switcher
 
-We provide a `ThemeSwitcher` component for you, which is ready to use with localStorage right out of the box. Simply just add it to your code somewhere.
-
-> [!WARNING]  
-> If you're using the componment with Astro or another framework where it renders on the server, make sure the component runs on the client. Astro example:
-> ```html
-> <ThemeSwitcher client:only="react" />
-> ```
+We do not provide a dark mode swticher, because this library could be used with any frame work that accepts React, and some of them could result in a FOUC. 
 
 # Changelog
 
