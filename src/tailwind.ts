@@ -41,19 +41,19 @@ export const bibleioTheme = {
     },
     boxShadow: {
       'colored-component':
-        '0px -9px 12.2px 0px var(--inner-shadow-1) inset, 0px 3px 4.7px 0px var(--inner-shadow-1) inset, 0px 0px 3.7px 1px var(--inner-shadow-1) inset, 0px 2px 7.8px 0px rgba(0, 0, 0, 0.20)',
+        '0px 3px 4.7px 0px var(--inner-shadow-1) inset, 0px -3px 11px 1px var(--inner-shadow-2) inset, 0px 2px 8px 0px rgba(0, 0, 0, 0.05)',
       'material-component':
-        '0px 0px 10.1px 0px var(--inner-shadow-2) inset, 0px -3px 10.9px 2px var(--inner-shadow-2) inset, 0px 2px 11.9px 2px rgba(0, 0, 0, 0.08)',
+        '0px -2px 12px 0px var(--inner-shadow-2) inset, 0px 2px 8px 0px rgba(0, 0, 0, 0.08)',
       popup: '0px 4px 49.6px 0px rgba(0, 0, 0, 0.15)',
     },
     borderRadius: {
-      4: '4px',
-      8: '8px',
-      12: '12px',
-      16: '16px',
-      24: '24px',
-      32: '32px',
-      full: '9999px',
+      4: '0.25rem',
+      8: '0.5rem',
+      12: '0.75rem',
+      16: '1rem',
+      24: '1.5rem',
+      32: '2rem',
+      full: '999rem',
     },
     spacing: {
       256: '256px',
@@ -74,6 +74,7 @@ export const bibleioTheme = {
       20: '20px',
       18: '18px',
       16: '16px',
+      14: '14px',
       12: '12px',
       10: '10px',
       8: '8px',

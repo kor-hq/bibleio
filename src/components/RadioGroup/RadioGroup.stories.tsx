@@ -14,10 +14,10 @@ type Story = StoryObj<typeof RadioGroup>;
 export const Default: Story = {
   render: (args) => (
     <RadioGroup {...args}>
-      <RadioGroupItem label="KJV" value="kjv" />
-      <RadioGroupItem label="ESV" value="esv" />
-      <RadioGroupItem label="NIV" value="niv" />
-      <RadioGroupItem label="CSB" value="csb" />
+      <RadioGroupItem label="Item 1" value="1" />
+      <RadioGroupItem label="Item 2" value="2" />
+      <RadioGroupItem label="Item 3" value="3" />
+      <RadioGroupItem label="Item 4" value="4" />
       <RadioGroupItem label="Disabled item" value="disabled" disabled />
     </RadioGroup>
   ),

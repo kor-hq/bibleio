@@ -43,7 +43,7 @@ export const Select = ({
           <RadixSelect.ScrollUpButton className="flex h-fit cursor-default items-center justify-center py-2">
             <IconChevronUp />
           </RadixSelect.ScrollUpButton>
-          <RadixSelect.Viewport className="flex flex-col gap-12 p-16">
+          <RadixSelect.Viewport className="gap-14 flex flex-col p-16">
             {children}
           </RadixSelect.Viewport>
           <RadixSelect.ScrollDownButton className="flex h-fit cursor-default items-center justify-center py-2">
@@ -62,21 +62,24 @@ export const SelectItem = React.forwardRef<
 >(({ children, ...props }, forwardedRef) => {
   return (
     <RadixSelect.Item
-      className="relative flex h-fit cursor-pointer select-none items-center px-32 font-serif text-body leading-none text-text outline-none duration-150 ease-out data-[disabled]:pointer-events-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-accent-reversed data-[disabled]:opacity-33"
+      className="relative flex h-fit cursor-pointer select-none items-center justify-between font-serif text-body leading-none text-text outline-none duration-150 ease-out data-[disabled]:pointer-events-none data-[highlighted]:translate-x-4 data-[state='checked']:font-semibold data-[state='checked']:text-accent-reversed data-[disabled]:opacity-33"
       {...props}
       ref={forwardedRef}
     >
-      <RadixSelect.ItemIndicator className="absolute left-0 inline-flex w-24 items-center justify-center">
+      <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
+      <RadixSelect.ItemIndicator
+        asChild
+        className="inline-flex w-16 items-center justify-center"
+      >
         <IconCheck />
       </RadixSelect.ItemIndicator>
-      <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
     </RadixSelect.Item>
   );
 });
 
 export const SelectGroup = ({ children }: { children: ReactNode }) => {
   return (
-    <RadixSelect.Group className="flex flex-col gap-16">
+    <RadixSelect.Group className="gap-14 flex flex-col">
       {children}
     </RadixSelect.Group>
   );
@@ -84,7 +87,7 @@ export const SelectGroup = ({ children }: { children: ReactNode }) => {
 
 export const SelectLabel = ({ children }: { children: ReactNode }) => {
   return (
-    <RadixSelect.Label className="px-24 text-sub text-text">
+    <RadixSelect.Label className="text-sub text-text">
       {children}
     </RadixSelect.Label>
   );
@@ -98,8 +101,8 @@ const IconChevronDown = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
+      width="1.5rem"
+      height="1.5rem"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -117,8 +120,8 @@ const IconChevronUp = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
+      width="1.5rem"
+      height="1.5rem"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -137,9 +140,9 @@ const IconCheck = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
+      width="1rem"
+      height="1rem"
+      viewBox="0 0 16 16"
       fill="none"
       stroke="currentColor"
       strokeWidth={1.5}

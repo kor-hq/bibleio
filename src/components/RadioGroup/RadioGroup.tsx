@@ -29,12 +29,12 @@ export const RadioGroupItem = ({
   return (
     <div className="flex items-center gap-8">
       <RadixRadioGroup.Item
-        className="size-[30px] rounded-full border border-stroke bg-fg-2 shadow-material-component data-[disabled]:cursor-not-allowed data-[disabled]:opacity-33"
+        className="size-[1.875rem] rounded-full border border-stroke bg-fg-2 shadow-material-component data-[disabled]:cursor-not-allowed data-[state='checked']:border-accent-reversed data-[disabled]:opacity-33"
         id={value}
         value={value}
         {...props}
       >
-        <RadixRadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-16 after:rounded-full after:bg-accent-reversed after:content-[''] after:data-[state='checked']:animate-scale-in after:data-[state='unchecked']:animate-scale-out" />
+        <RadixRadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-[1rem] after:rounded-full after:bg-accent-reversed after:content-[''] after:data-[state='checked']:animate-scale-in after:data-[state='unchecked']:animate-scale-out" />
       </RadixRadioGroup.Item>
       <label className="text-body leading-none text-text" htmlFor={value}>
         {label}

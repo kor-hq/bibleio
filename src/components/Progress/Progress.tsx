@@ -8,7 +8,7 @@ export const Progress = ({ value = 50, ...props }: ProgressProps) => {
     <RadixProgress.Root
       {...props}
       value={value}
-      className="relative h-[40px] min-w-128 overflow-hidden rounded-12 border border-stroke bg-fg-2 shadow-material-component"
+      className="relative h-[2.5rem] min-w-128 overflow-hidden rounded-12 border border-stroke bg-fg-2 shadow-material-component"
     >
       <RadixProgress.Indicator
         className="h-full w-full bg-accent-reversed shadow-colored-component transition-transform duration-[300ms] ease-out"

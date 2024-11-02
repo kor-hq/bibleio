@@ -35,10 +35,10 @@ export const Star: Story = {
   render: (args: ShapesProps) => <Star2 {...args} />,
 };
 
-export const Hexagon: Story = {
-  render: (args: ShapesProps) => <Hexagon2 {...args} />,
-};
-
 export const Triangle: Story = {
   render: (args: ShapesProps) => <Triangle2 {...args} />,
+};
+
+export const Hexagon: Story = {
+  render: (args: ShapesProps) => <Hexagon2 {...args} />,
 };
