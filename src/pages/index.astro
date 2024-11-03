@@ -58,11 +58,6 @@ import { Image } from 'astro:assets';
       const words = text.textContent.split(/(\s+)/);
       text.innerHTML = words
         .map((word) => {
-          // If it's just whitespace, wrap it in a span with space class
-          if (/^\s+$/.test(word)) {
-            return `<span class="inline-block space">&nbsp;</span>`;
-          }
-
           // For actual words, wrap each letter in a span
           return `<span class="word inline-block">
             ${Array.from(word)
@@ -78,11 +73,11 @@ import { Image } from 'astro:assets';
       gsap.from('.animate-bounce-in span', {
         opacity: 0,
         scale: 0,
-        y: 100,
         duration: 0.5,
-        ease: 'back.out(.5)',
+        y: 75,
+        ease: 'back.out(.1)',
         stagger: {
-          amount: 0.3,
+          amount: 0.35,
           from: 'start',
         },
       });
@@ -243,11 +238,11 @@ import { Image } from 'astro:assets';
         >
           <h2 class="text-[3.75rem] leading-none text-text">About</h2>
           <p class="text-body leading-[220%] text-text">
-            Free & open-source, design, privacy, and performance focused modern
-            Bible software for everyone. The Bible industry is full of
-            copyright, paid software, non-private, or non-modern software. We
-            want to fix that, and comply with Jesus' command in Matthew 10:8,
-            "Freely you have received; freely give."
+            The Bible industry is full of copyright, paid software, non-private,
+            or non-modern software. We want to fix that, and comply with Jesus'
+            command in Matthew 10:8, "Freely you have received; freely give." In
+            the future we also want to help churches and communties with our
+            free software.
           </p>
         </div>
 

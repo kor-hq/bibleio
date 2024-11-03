@@ -78,11 +78,11 @@ import { Image } from 'astro:assets';
       gsap.from('.animate-bounce-in span', {
         opacity: 0,
         scale: 0,
-        y: 100,
         duration: 0.5,
-        ease: 'back.out(.5)',
+        y: 75,
+        ease: 'back.out(.1)',
         stagger: {
-          amount: 0.3,
+          amount: 0.35,
           from: 'start',
         },
       });

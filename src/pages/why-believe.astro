@@ -43,11 +43,11 @@ import { Image } from 'astro:assets';
       gsap.from('.animate-bounce-in span', {
         opacity: 0,
         scale: 0,
-        y: 100,
         duration: 0.5,
-        ease: 'back.out(.5)',
+        y: 75,
+        ease: 'back.out(.1)',
         stagger: {
-          amount: 0.3,
+          amount: 0.35,
           from: 'start',
         },
       });
@@ -84,7 +84,10 @@ import { Image } from 'astro:assets';
     </div>
   </section>
   <section id="main" class="flex flex-col px-256">
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+    <div
+      id="container"
+      class="divide-y divide-stroke border-x border-stroke text-text"
+    >
       <div id="why" class="flex flex-col gap-24 p-48 px-128">
         <Badge variant="warning"
           >Unfinished, no formatting, unedited version</Badge
