@@ -180,7 +180,7 @@ import { Image } from 'astro:assets';
         </div>
 
         <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48"
+          class="relative col-span-2 flex h-[24rem] flex-col gap-24 overflow-clip border-stroke p-48"
         >
           <div class="flex items-center justify-between">
             <h2 class="text-[3.75rem] leading-none text-text">Desktop</h2>
@@ -195,16 +195,9 @@ import { Image } from 'astro:assets';
             >
           </div>
           <div
-            class="absolute left-[68%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke bg-[url('/home/desktop.png')] bg-cover shadow-popup dark:bg-[url('/home/desktopDark.png')]"
+            class="absolute left-[50%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke bg-[url('/home/desktop.png')] bg-cover shadow-popup dark:bg-[url('/home/desktopDark.png')]"
           >
           </div>
-        </div>
-        <div class="flex h-[24rem] flex-col gap-24 border-stroke p-48">
-          <h2 class="text-[3.75rem] leading-none text-text">All Products</h2>
-          <p class="text-body leading-none text-text">
-            Take a look at our free & open-source Bible software.
-          </p>
-          <a href="/products"><Button>Look</Button></a>
         </div>
       </div>
       <div
