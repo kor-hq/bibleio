@@ -18,8 +18,8 @@ function renderItems(
   isSidebarOpen: boolean
 ) {
   const children = findChildren(items, parentSlug).sort((a: Item, b: Item) => {
-    const aOrder = a.data.order ?? Infinity; // If no order, assign Infinity to put them at the end
-    const bOrder = b.data.order ?? Infinity;
+    const aOrder = a.data.order ?? 9999;
+    const bOrder = b.data.order ?? 9999;
 
     return aOrder - bOrder;
   });
@@ -105,41 +105,3 @@ export default function Sidebar({
     </div>
   );
 }
-
-const XIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="size-24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M6 18 18 6M6 6l12 12"
-      />
-    </svg>
-  );
-};
-
-const Bars3Icon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="size-24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-      />
-    </svg>
-  );
-};

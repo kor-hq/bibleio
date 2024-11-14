@@ -4,11 +4,11 @@ import MainLayout from '@layouts/MainLayout.astro';
 import DocsLayout from '@layouts/DocsLayout.astro';
 import Prose from '@/Prose.astro';
 
-const apiDocs = await getCollection('api');
+const bibleJsonDocs = await getCollection('biblejson');
 
 export async function getStaticPaths() {
-  const apiDocs = await getCollection('api');
-  return apiDocs.map((entry) => ({
+  const bibleJsonDocs = await getCollection('biblejson');
+  return bibleJsonDocs.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -18,8 +18,8 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<MainLayout title=`Alive - ${entry.data.title}`>
-  <DocsLayout docs={apiDocs} projectSlug="design">
+<MainLayout title={entry.data.title}>
+  <DocsLayout docs={bibleJsonDocs} projectSlug="biblejson">
     <Prose>
       <h1 class="text-h1">{entry.data.title}</h1>
       <Content /></Prose

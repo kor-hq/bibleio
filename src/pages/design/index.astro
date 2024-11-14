@@ -32,31 +32,41 @@ import { Button } from '@bibleio/design';
   </script>
   <section
     id="landing"
-    class="flex h-[93vh] flex-col items-start justify-center gap-48 overflow-clip px-256 py-32"
+    class="flex h-[93vh] flex-col items-start justify-center gap-48 overflow-clip px-256 py-24 max-[1000px]:px-32"
   >
     <div class="flex flex-col items-start gap-0">
-      <h1 class="text-animate text-center text-[128px] leading-none">
+      <h1
+        class="text-animate text-left text-[8rem] leading-none max-[680px]:text-[4rem]"
+      >
         Bibleio
       </h1>
-      <h1 class="text-animate text-center text-[192px] leading-none">Design</h1>
+      <h1
+        class="text-animate text-left text-[12rem] leading-none max-[680px]:text-[6rem]"
+      >
+        Design
+      </h1>
     </div>
-    <p class="text-animate text-center text-body leading-none">
+    <p class="text-animate text-left text-body leading-[200%]">
       Our beautiful and modern design system for Figma and React.
     </p>
+    <a href="/design/docs"><Button>Docs</Button></a>
     <div
-      class="blob-animate absolute -z-50 h-[75vh] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
+      class="blob-animate absolute -z-50 h-[45vw] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
     >
     </div>
   </section>
-  <section id="products" class="border-t border-stroke px-256">
+  <section
+    id="products"
+    class="border-t border-stroke px-256 max-[1300px]:px-0"
+  >
     <div class="grid grid-rows-5 divide-y divide-stroke border-x border-stroke">
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
         <h2 class="text-h1">Beautiful</h2>
         <p class="text-body leading-[220%]">
           Look at this website. Isn't it pretty?
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
         <h2 class="text-h1">Figma & React</h2>
         <p class="text-body leading-[220%]">
           All components and variables are avaliable freely inside this <a
@@ -68,13 +78,13 @@ import { Button } from '@bibleio/design';
           >.
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
         <h2 class="text-h1">Accessible</h2>
         <p class="text-body leading-[220%]">
           Built with the best React primitives. Mainly Radix.
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
         <h2 class="text-h1">Documented</h2>
         <p class="text-body leading-[220%]">
           Guidelines for color, typography, etc. all are documented in Figma and <a
@@ -84,7 +94,7 @@ import { Button } from '@bibleio/design';
           original primitive.
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24 max-[800px]:pb-72">
         <h2 class="text-h1">Free & open-source</h2>
         <div class="flex gap-12">
           <a href="https://github.com/bibleio/design"><Button>GitHub</Button></a

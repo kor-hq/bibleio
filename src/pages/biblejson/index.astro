@@ -32,50 +32,64 @@ import { Button, Badge } from '@bibleio/design';
   </script>
   <section
     id="landing"
-    class="flex h-[93vh] flex-col items-center justify-center gap-48 overflow-clip px-256 py-32"
+    class="flex h-[93vh] flex-col items-center justify-center gap-48 overflow-clip px-24 py-32"
   >
-    <h1 class="text-animate text-center text-[192px] leading-none">
+    <h1
+      class="text-animate text-center text-[12rem] leading-none max-[1100px]:text-[8rem] max-[680px]:text-[6rem] max-[500px]:text-[4rem]"
+    >
       BibleJSON
     </h1>
-    <p class="text-animate text-center text-body leading-none">
+    <p class="text-animate text-center text-body leading-[200%]">
       Our standard for formating biblical texts with JSON. Includes docs and an
       html2biblejson converter.
     </p>
+    <a href="/biblejson/docs"><Button>Docs</Button></a>
     <div
-      class="blob-animate absolute -z-50 h-[75vh] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
+      class="blob-animate absolute -z-50 h-[50vw] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
     >
     </div>
   </section>
-  <section id="products" class="border-t border-stroke px-256">
-    <div class="grid grid-rows-5 divide-y divide-stroke border-x border-stroke">
-      <div class="flex flex-col gap-24 p-48">
-        <h2 class="text-h1">Thousands of translations</h2>
-        <p class="text-body leading-[220%]">In many langauges.</p>
-      </div>
-      <div class="flex flex-col gap-24 p-48">
-        <h2 class="text-h1">BibleJSON</h2>
+  <section
+    id="products"
+    class="border-t border-stroke px-256 max-[1300px]:px-0"
+  >
+    <div class="flex flex-col divide-y divide-stroke border-x border-stroke">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
+        <h2 class="text-h1">About</h2>
         <p class="text-body leading-[220%]">
-          All of the content is served using the BibleJSON formatting standard.
-          It includes useful metadata, and all the original text formatting such
-          as headers, red lettering, etc.
+          BibleJSON is a formatting standard for storing biblical texts in the
+          JSON format. It aims to be the standard from now own for all Bible
+          technology, for 1 easy universal solution.
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
-        <h2 class="text-h1">Fast</h2>
-        <p class="text-body leading-[220%]">It’s written in Rust btw.</p>
-      </div>
-      <div class="flex flex-col gap-24 p-48">
-        <h2 class="text-h1">Freely hosted & open source</h2>
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
+        <h2 class="text-h1">Formatting</h2>
         <p class="text-body leading-[220%]">
-          No API key, no rate limits, no tracking, all free & open-source.
+          You can store texts with formatting, red lettering, footnotes, or no
+          formatting at all.
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
-        <h2 class="text-h1">Did we mention?</h2>
-        <p class="text-body leading-[220%]">It's written in Rust! Yay!!</p>
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
+        <h2 class="text-h1">Organization</h2>
+        <p class="text-body leading-[220%]">
+          Each chapter JSON file includes metadata about that translation,
+          books, the certain chapter, and more.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24 max-[800px]:pb-72">
+        <h2 class="text-h1">Migrate</h2>
+        <p class="text-body leading-[220%]">
+          Convert thousands of Bible HTML files, into BibleJSON with our
+          converter script written in Rust btw. More formats will be avaliable
+          soon.
+        </p>
         <div class="flex gap-12">
-          <a href="https://github.com/bibleio/api"><Button>GitHub</Button></a>
-          <a href="/api/docs"><Button variant="secondary">Docs</Button></a>
+          <a href="https://github.com/bibleio/api#biblejson"
+            ><Button>GitHub</Button></a
+          >
+          <a href="/biblejson/docs"><Button variant="secondary">Docs</Button></a
+          >
         </div>
       </div>
     </div>

@@ -18,8 +18,8 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<MainLayout title=`Alive - ${entry.data.title}`>
-  <DocsLayout docs={apiDocs} projectSlug="design">
+<MainLayout title={entry.data.title}>
+  <DocsLayout docs={apiDocs} projectSlug="api">
     <Prose>
       <h1 class="text-h1">{entry.data.title}</h1>
       <Content /></Prose

@@ -32,27 +32,38 @@ import { Button } from '@bibleio/design';
   </script>
   <section
     id="landing"
-    class="flex h-[93vh] flex-col items-center justify-center gap-48 overflow-clip px-256 py-32"
+    class="flex h-[93vh] flex-col items-center justify-center gap-48 overflow-clip px-64 py-32"
   >
     <div class="flex flex-col gap-0">
-      <h1 class="text-animate text-center text-[192px] leading-none">
+      <h1
+        class="text-animate text-center text-[12rem] leading-none max-[1200px]:text-[6rem] max-[560px]:text-[4rem]"
+      >
         Bibleio
       </h1>
-      <h1 class="text-animate text-center text-[192px] leading-none">
+      <h1
+        class="text-animate text-center text-[12rem] leading-none max-[1200px]:text-[6rem] max-[560px]:text-[4rem]"
+      >
         Developers
       </h1>
     </div>
-    <p class="text-animate text-center text-body leading-none">
+    <p class="text-animate text-center text-body leading-[200%]">
       Explore our open-source Bible technology, and design system.
     </p>
     <div
-      class="blob-animate absolute -z-50 h-[75vh] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
+      class="blob-animate absolute -z-50 h-[35vw] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
     >
     </div>
   </section>
-  <section id="products" class="border-t border-stroke px-256">
-    <div class="divide grid grid-cols-2 divide-stroke border-x border-stroke">
-      <div class="flex flex-col gap-24 border-b border-r border-stroke p-48">
+  <section
+    id="products"
+    class="border-t border-stroke px-256 max-[1300px]:px-0"
+  >
+    <div
+      class="divide grid grid-cols-2 divide-stroke border-x border-stroke max-[850px]:grid-cols-1"
+    >
+      <div
+        class="flex flex-col gap-24 border-b border-r border-stroke p-48 max-[800px]:p-24"
+      >
         <h2 class="text-h2">API</h2>
         <p class="text-body leading-[220%]">
           A free, open-source, blazingly fast Bible API including many langauges
@@ -62,7 +73,9 @@ import { Button } from '@bibleio/design';
           <a href="/api/docs"><Button>Docs</Button></a>
           <a href="/api"> <Button variant="secondary">Learn More</Button></a>
         </div>
-      </div><div class="flex flex-col gap-24 border-b border-stroke p-48">
+      </div><div
+        class="flex flex-col gap-24 border-b border-stroke p-48 max-[800px]:p-24"
+      >
         <h2 class="text-h2">Design</h2>
         <p class="text-body leading-[220%]">
           A free, open-source, beautiful design system for Figma and React.
@@ -72,7 +85,9 @@ import { Button } from '@bibleio/design';
           <a href="/design/docs"><Button>Docs</Button></a>
           <a href="/design"> <Button variant="secondary">Learn More</Button></a>
         </div>
-      </div><div class="flex flex-col gap-24 border-r border-stroke p-48">
+      </div><div
+        class="flex flex-col gap-24 border-r border-stroke p-48 max-[800px]:p-24 max-[800px]:pb-72"
+      >
         <h2 class="text-h2">BibleJSON</h2>
         <p class="text-body leading-[220%]">
           1000+ translations of the Bible in JSON, with formatting included.

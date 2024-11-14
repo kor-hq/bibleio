@@ -32,30 +32,44 @@ import { Button, Badge } from '@bibleio/design';
   </script>
   <section
     id="landing"
-    class="flex h-[93vh] flex-col items-end justify-center gap-48 overflow-clip px-256 py-32"
+    class="flex h-[93vh] flex-col items-end justify-center gap-48 overflow-clip px-256 py-24 max-[1000px]:px-24"
   >
     <div class="flex flex-col items-end gap-0">
-      <h1 class="text-animate text-center text-[128px] leading-none">
+      <h1
+        class="text-animate text-center text-[8rem] leading-none max-[590px]:text-[5rem]"
+      >
         Bibleio
       </h1>
-      <h1 class="text-animate text-center text-[192px] leading-none">API</h1>
+      <h1
+        class="text-animate text-center text-[12rem] leading-none max-[590px]:text-[8rem]"
+      >
+        API
+      </h1>
     </div>
-    <p class="text-animate text-center text-body leading-none">
+    <p class="text-animate text-right text-body leading-[200%]">
       Our free, fast, accessible Bible API with many translations.
     </p>
-    <Badge variant="purple">Major translations coming soon</Badge>
+    <div class="flex flex-wrap items-center gap-12">
+      <a href="/api/docs"><Button>Docs</Button></a>
+      <Badge variant="purple">Major translations coming soon</Badge>
+    </div>
     <div
-      class="blob-animate absolute -z-50 h-[75vh] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
+      class="blob-animate absolute bottom-0 left-1/2 -z-50 h-[40vw] w-[30vw] animate-spin-slow rounded-full bg-blue blur-[15vmin]"
     >
     </div>
   </section>
-  <section id="products" class="border-t border-stroke px-256">
-    <div class="grid grid-rows-5 divide-y divide-stroke border-x border-stroke">
-      <div class="flex flex-col gap-24 p-48">
-        <h2 class="text-h1">Thousands of translations</h2>
-        <p class="text-body leading-[220%]">In many langauges.</p>
+  <section
+    id="products"
+    class="border-t border-stroke px-256 max-[1300px]:px-0"
+  >
+    <div class="flex flex-col divide-y divide-stroke border-x border-stroke">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
+        <h2 class="text-h1">Translations</h2>
+        <p class="text-body leading-[220%]">
+          1,000+ translations in 1,000+ langauges.
+        </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
         <h2 class="text-h1">BibleJSON</h2>
         <p class="text-body leading-[220%]">
           All of the content is served using the BibleJSON formatting standard.
@@ -63,17 +77,21 @@ import { Button, Badge } from '@bibleio/design';
           as headers, red lettering, etc.
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
         <h2 class="text-h1">Fast</h2>
-        <p class="text-body leading-[220%]">It’s written in Rust btw.</p>
-      </div>
-      <div class="flex flex-col gap-24 p-48">
-        <h2 class="text-h1">Freely hosted & open source</h2>
         <p class="text-body leading-[220%]">
-          No API key, no rate limits, no tracking, all free & open-source.
+          It’s written in Rust btw using Actix-Web, which makes response time
+          really fast.
         </p>
       </div>
-      <div class="flex flex-col gap-24 p-48">
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24">
+        <h2 class="text-h1">Freely hosted & open source</h2>
+        <p class="text-body leading-[220%]">
+          No API key, no rate limits, no tracking, all free & open-source. We
+          will stay this way forever. Matthew 10:8.
+        </p>
+      </div>
+      <div class="flex flex-col gap-24 p-48 max-[800px]:p-24 max-[800px]:pb-72">
         <h2 class="text-h1">Did we mention?</h2>
         <p class="text-body leading-[220%]">It's written in Rust! Yay!!</p>
         <div class="flex gap-12">
