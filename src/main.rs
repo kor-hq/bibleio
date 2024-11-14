@@ -34,9 +34,6 @@ fn parse(html: &str) -> Value {
     let mut verse_parts: Vec<Value> = Vec::new();
     let mut verse_type = "verse";
 
-    // Selectors
-    let div_selector = Selector::parse("div").unwrap();
-
     // Helper function to finalize the current verse
     fn finalize_current_verse(
         current_verse_content: &mut String,
@@ -65,12 +62,20 @@ fn parse(html: &str) -> Value {
     }
 
     // Main loop to process HTML content
-    for div in document.select(&div_selector) {
+    for div in document.select(&Selector::parse("div").unwrap()) {
         let class_name = div.value().attr("class").unwrap_or("");
 
-        // Handle headers, subheaders, whitespace
+        // Handle each div element
         match class_name {
-            "s" => {
+            // Headers and stuff
+            "s" | "d" | "b" => {
+                if class_name == "s" {
+                    verse_type = "header";
+                } else if class_name == "d" {
+                    verse_type = "subheader";
+                } else if class_name == "b" {
+                    verse_type = "whitespace"
+                }
                 finalize_current_verse(
                     &mut current_verse_content,
                     &current_verse_number,
@@ -79,38 +84,12 @@ fn parse(html: &str) -> Value {
                     verse_type,
                 );
                 content_sections.push(json!({
-                    "type": "header",
+                    "type": verse_type,
                     "text": div.text().collect::<Vec<_>>().concat()
                 }));
                 current_verse_number = None;
             }
-            "d" => {
-                finalize_current_verse(
-                    &mut current_verse_content,
-                    &current_verse_number,
-                    &mut verse_parts,
-                    &mut content_sections,
-                    verse_type,
-                );
-                content_sections.push(json!({
-                    "type": "subheader",
-                    "text": div.text().collect::<Vec<_>>().concat()
-                }));
-                current_verse_number = None;
-            }
-            "b" => {
-                finalize_current_verse(
-                    &mut current_verse_content,
-                    &current_verse_number,
-                    &mut verse_parts,
-                    &mut content_sections,
-                    verse_type,
-                );
-                content_sections.push(json!({
-                    "type": "whitespace",
-                }));
-                current_verse_number = None;
-            }
+            // Verse content
             "p" | "q" => {
                 if class_name == "q" {
                     verse_type = "verseQuote";
@@ -118,6 +97,7 @@ fn parse(html: &str) -> Value {
                     verse_type = "verse";
                 }
 
+                // Goes through each div of text
                 for child in div.children() {
                     if let Some(span) = ElementRef::wrap(child) {
                         let span_class = span.value().attr("class").unwrap_or("");
@@ -135,6 +115,7 @@ fn parse(html: &str) -> Value {
                             }
                             current_verse_number =
                                 span.value().attr("id").unwrap_or("0")[1..].parse().ok();
+                        // Formatting stuff
                         } else if span_class == "add" {
                             if !current_verse_content.is_empty() {
                                 verse_parts

@@ -15,8 +15,8 @@ Right now, you are able to convert [eBible.org](https://ebible.org) Bible `.htm`
 ## Usage
 
 - Get source code from the repo
-- Get some HTML content from [eBible.org](https://ebible.org), and put it in some directory. (pick a translation, and download the "Zipped mobile HTML" option!
-- Then run `cargo run path/to/html`
+- Get some HTML content from [eBible.org](https://ebible.org), and put it in a "html" directory at the root. (pick a translation, and download the "Zipped mobile HTML" option!)
+- Then run `cargo run html/GEN01.htm`
 
 # Format
 
