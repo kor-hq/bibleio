@@ -93,14 +93,14 @@ import { Image } from 'astro:assets';
 
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-center justify-center gap-24 overflow-clip border-b border-stroke p-128 max-[480px]:p-16"
+    class="relative flex h-screen flex-col items-center justify-center gap-24 overflow-clip border-b border-stroke p-16"
   >
     <h1
       class="animate-bounce-in pt-72 text-center text-[256px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
     >
       Study the Bible
     </h1>
-    <p class="text-center text-body leading-none text-text">
+    <p class="text-center text-body leading-[150%] text-text">
       With our innovative, cross-platform, performant, beautiful open-source
       apps.
     </p><div
@@ -125,7 +125,7 @@ import { Image } from 'astro:assets';
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256">
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
       <div
         class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
@@ -143,7 +143,7 @@ import { Image } from 'astro:assets';
           <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
         </div>
       </div>
-      <div id="web" class="flex flex-col gap-24 p-48 px-128">
+      <div id="web" class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16">
         <h1 class="text-h1 leading-none text-text">Web App</h1>
         <Badge variant="purple">Alpha</Badge>
         <p class="text-body leading-[220%] text-text">
@@ -157,7 +157,10 @@ import { Image } from 'astro:assets';
           of that in an account.
         </p>
       </div>
-      <div id="mobile" class="flex flex-col gap-24 p-48 px-128">
+      <div
+        id="mobile"
+        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
+      >
         <h1 class="text-h1 leading-none text-text">Mobile App</h1>
         <Badge variant="danger">Coming Soon</Badge>
         <p class="text-body leading-[220%] text-text">
@@ -170,13 +173,16 @@ import { Image } from 'astro:assets';
           into a phone UI.
         </p>
       </div>
-      <div id="desktop" class="flex flex-col gap-24 p-48 px-128">
+      <div
+        id="desktop"
+        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
+      >
         <h1 class="text-h1 leading-none text-text">Desktop App</h1>
         <Badge variant="danger">Coming Soon</Badge>
         <p class="text-body leading-[220%] text-text">
           The Bibleio Desktop App is planned to be a huge study experience on
           your desktop, with more resources, and still access to your Bibleio
-          account content. It's desinged for the extra real estate on the
+          account content. It's designed for the extra real estate on the
           screen, and for focusing, and notetaking.
         </p>
         <p class="text-body leading-[220%] text-text">
@@ -184,7 +190,10 @@ import { Image } from 'astro:assets';
           into a desktop UI.
         </p>
       </div>
-      <div id="roadmap" class="flex flex-col gap-24 p-48 px-128">
+      <div
+        id="roadmap"
+        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
+      >
         <p class="text-body leading-[220%] text-text">
           Basically all this info is from the <a
             href="/roadmap"

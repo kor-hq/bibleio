@@ -15,10 +15,10 @@ import { Image } from 'astro:assets';
 ---
 
 <Layout title="Apps">
-  <section id="main" class="flex flex-col px-256">
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
     <div
       id="container"
-      class="flex flex-col gap-64 border-x border-stroke p-128"
+      class="flex flex-col gap-64 border-x border-stroke p-128 max-[680px]:px-16"
     >
       <code class="font-mono text-body text-text">README.md</code>
       <h1 class="font-mono text-h1 text-text"># About</h1>
@@ -34,7 +34,7 @@ import { Image } from 'astro:assets';
       </p>
       <h1 class="font-mono text-h1 text-text"># Manifesto</h1>
       <p class="text-body leading-[220%] text-text">
-        Jesus tells us in Matthew 10:8, “Freely you recieved; freely give.” And
+        Jesus tells us in Matthew 10:8, “Freely you received; freely give.” And
         no big organization followed that. There is only one big monopoly, who
         has deals, and legal agreements with the big companies who distribute,
         and restrict God’s own word. Individual developers, trying to make a
@@ -47,13 +47,13 @@ import { Image } from 'astro:assets';
         license fees, and let’s let God enpower us through this journey. Let’s
         build tools where anyone can access God’s word, and personalize it, and
         grow with it. Let’s give churches and communities tools to build their
-        online presense so they aren’t stuck with the crappy paid tools, and no
+        online presnce so they aren’t stuck with the crappy paid tools, and no
         professional to help them with social media, branding, audio, etc. Here
         we go again, another person saying they’re gonna change the world. This
         time we’re gonna do it.
       </p>
       <h1 class="font-mono text-h1 text-text"># Team</h1>
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-2 max-[680px]:grid-cols-1">
         <div
           class="flex flex-col gap-16 rounded-12 border border-stroke bg-fg-1 p-32"
         >
@@ -92,7 +92,7 @@ import { Image } from 'astro:assets';
           </p>
         </div>
       </div>
-      <h2 class="font-mono text-h2 text-text">## Open source contributers</h2>
+      <h2 class="font-mono text-h2 text-text">## Open source contributors</h2>
       <p class="font-mono text-body text-red-reversed">
         Error: returned undefined
       </p>

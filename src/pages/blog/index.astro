@@ -112,9 +112,9 @@ const blogs = await getCollection('blog', ({ data }) => {
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256">
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
     <div id="container" class="divide-y divide-stroke border-l border-stroke">
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-2 max-[820px]:grid-cols-1">
         {
           blogs.map((blog) => (
             <a
@@ -128,7 +128,7 @@ const blogs = await getCollection('blog', ({ data }) => {
                 height={600}
                 class="aspect-[16/6] h-auto w-full object-cover"
               />
-              <div class="flex h-fit flex-col gap-12 px-48 py-24">
+              <div class="flex h-fit flex-col gap-12 px-48 py-24 max-[580px]:p-16">
                 <h3 class="text-h3 leading-none">{blog.data.title}</h3>
                 <time
                   class="text-body leading-none"

@@ -229,14 +229,14 @@ const roadmap = [
 
   <section
     id="landing"
-    class="relative flex h-[66vh] flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-16 max-[480px]:p-16"
+    class="relative flex h-[66vh] flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-16 max-[1100px]:px-32 max-[570px]:p-16"
   >
     <h1
-      class="animate-bounce-in pt-72 text-center text-[192px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="animate-bounce-in pt-72 text-left text-[192px] leading-none text-text-solid max-[1400px]:text-[8rem] max-[670px]:text-[4rem]"
     >
       Roadmap
     </h1>
-    <p class="text-center text-body leading-none text-text">
+    <p class="text-left text-body leading-[150%] text-text">
       Our plans and progress. Last updated Oct 28, 2024.
     </p><div
       class="scroll-container absolute right-[30%] -z-50 flex flex-col items-center justify-center gap-64"
@@ -260,9 +260,11 @@ const roadmap = [
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256">
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
-      <div class="grid grid-cols-6 gap-12 p-64">
+      <div
+        class="grid grid-cols-6 gap-12 p-64 max-[1000px]:flex max-[1000px]:flex-col max-[1000px]:p-12"
+      >
         {
           roadmap.map((section) => (
             <>
@@ -316,15 +318,15 @@ const roadmap = [
       </div>
       <div
         id="contribute"
-        class="relative flex flex-col gap-32 overflow-clip p-64"
+        class="relative flex flex-col gap-32 overflow-clip p-64 max-[600px]:p-20 max-[600px]:pb-48"
       >
         <h1 class="text-h1 leading-none text-text">Let's make it happen</h1>
         <p class="text-body leading-[200%] text-text">
-          We need your help to develop Bibleio. Want to be contributer of the
+          We need your help to develop Bibleio. Want to be contributor of the
           new generation of Bible tech? <br /> Learn more on our Notion page. Our
           Notion is more updated and has a full list of tasks.
         </p>
-        <div class="flex gap-12">
+        <div class="flex flex-wrap gap-12">
           <a
             href="https://cat-skate-e91.notion.site/Tasks-102aafe2ea3c8158b203e996e06c9aa7"
             ><Button>Notion</Button></a

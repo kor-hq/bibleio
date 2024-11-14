@@ -11,11 +11,13 @@ import User from '@/components/icons/User.astro';
     class="relative flex h-screen flex-col items-start justify-center gap-48 overflow-clip border-b border-stroke p-128 max-[480px]:p-16"
   >
     <h1
-      class="animate-scale-in pt-72 text-left text-[150px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="animate-scale-in pt-72 text-left text-[150px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
     >
       Give your rights for the gospel
     </h1>
-    <h3 class="animate-scale-in text-h3 leading-none text-text">
+    <h3
+      class="animate-scale-in text-h3 leading-[150%] text-text max-[1000px]:text-body"
+    >
       Do you create Christian resources? Jesus calls us to freely give them.
     </h3>
     <div class="absolute left-0 top-0 -z-50 h-full w-full">
@@ -33,7 +35,7 @@ import User from '@/components/icons/User.astro';
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256">
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
       <div
         class="flex w-full items-center justify-center gap-24 overflow-hidden px-32 py-32"
@@ -41,15 +43,18 @@ import User from '@/components/icons/User.astro';
         <h1 class="text-h1 leading-none text-text">What, why?</h1>
       </div>
 
-      <div id="why" class="grid grid-cols-2 grid-rows-2">
+      <div
+        id="why"
+        class="grid grid-cols-2 grid-rows-2 max-[800px]:grid-cols-1"
+      >
         <div
-          class="relative flex flex-col gap-24 overflow-clip border-b border-r border-stroke p-48"
+          class="relative flex flex-col gap-24 overflow-clip border-b border-r border-stroke p-48 max-[580px]:p-24"
         >
           <h2 class="text-h2 leading-none text-text">Why freely give?</h2>
           <p class="text-body leading-[220%] text-text">
             Jesus says in Mat 10:8, <span class="text-body text-accent-reversed"
               >“Freely you received; freely give.”</span
-            > We freely recieve so much, including our own salvation, so Jesus calls
+            > We freely receive so much, including our own salvation, so Jesus calls
             us to freely give too. The rest of the Bible never tells us we should
             commercialize ministry or restrict it (2 Cor 2:17), it tells us the opposite
             (1 Peter 5:2). Jesus freely gives his gift of salvation, Paul always
@@ -58,7 +63,7 @@ import User from '@/components/icons/User.astro';
           </p>
         </div>
         <div
-          class="relative flex flex-col gap-24 overflow-clip border-b border-stroke p-48"
+          class="relative flex flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
         >
           <h2 class="text-h2 leading-none text-text">The problem</h2>
           <p class="text-body leading-[220%] text-text">
@@ -71,7 +76,7 @@ import User from '@/components/icons/User.astro';
           </p>
         </div>
         <div
-          class="relative flex flex-col gap-24 overflow-clip border-r border-stroke p-48"
+          class="relative flex flex-col gap-24 overflow-clip border-r border-stroke p-48 max-[580px]:p-24"
         >
           <h2 class="text-h2 leading-none text-text">More problems</h2><ul
             class="list-disc"
@@ -105,7 +110,7 @@ import User from '@/components/icons/User.astro';
           </p>
         </div>
         <div
-          class="relative flex flex-col gap-24 overflow-clip border-stroke p-48"
+          class="relative flex flex-col gap-24 overflow-clip border-stroke p-48 max-[580px]:p-24"
         >
           <h2 class="text-h2 leading-none text-text">
             Paywalls block potential users
@@ -116,7 +121,7 @@ import User from '@/components/icons/User.astro';
             methods of funding or publishing.
           </p>
           <div
-            class="grid grid-cols-2 gap-16 rounded-16 border border-stroke bg-fg-1 p-24"
+            class="grid grid-cols-2 gap-16 rounded-16 border border-stroke bg-fg-1 p-24 max-[480px]:p-8"
           >
             <div class="flex flex-col gap-12">
               <div class="grid grid-cols-6 grid-rows-3 gap-10">
@@ -200,22 +205,22 @@ import User from '@/components/icons/User.astro';
                   className="text-green-reversed"
                   aria-label="a donating user"
                 />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
-                <User className="text-text" aria-label="an normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
+                <User className="text-text" aria-label="a normal user" />
               </div>
               <h4 class="text-h4 text-text">10% donate</h4>
               <h4 class="text-h4 text-green-reversed">100% have access</h4>
@@ -226,12 +231,14 @@ import User from '@/components/icons/User.astro';
       <div
         class="flex w-full items-center justify-center gap-24 overflow-hidden px-32 py-32"
       >
-        <h1 class="whitespace-nowrap text-h1 leading-none text-text">
+        <p
+          class="w-full text-center text-h1 leading-none text-text max-[850px]:text-h3"
+        >
           Learn more & free your resource
-        </h1>
+        </p>
       </div>
       <div
-        class="flex w-full flex-col items-center justify-center gap-16 overflow-hidden px-256 py-48"
+        class="flex w-full flex-col items-center justify-center gap-16 overflow-hidden px-256 py-48 max-[900px]:px-24"
       >
         <p class="text-center text-body leading-[220%] text-text">
           Dedicate your work to the public domain, so anyone can use or share it

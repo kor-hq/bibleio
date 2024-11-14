@@ -17,15 +17,21 @@ import { Image } from 'astro:assets';
 <Layout title="Home">
   <section
     id="main"
-    class="flex h-[110vh] flex-col overflow-clip px-256 py-128"
+    class="flex h-[110vh] flex-col overflow-clip px-256 py-128 max-[1000px]:px-16"
   >
     <div
       id="container"
       class="flex flex-col items-start justify-center gap-32 overflow-clip py-96"
     >
-      <h1 class="z-20 text-[10rem] italic text-red-reversed">404</h1>
-      <p class="z-20 text-body text-text">Uh oh. We lost that page.</p>
-      <p class="z-20 text-body text-text">
+      <h1
+        class="z-20 text-[10rem] italic text-red-reversed max-[400px]:text-[6rem]"
+      >
+        404
+      </h1>
+      <p class="z-20 text-body leading-[180%] text-text">
+        Uh oh. We lost that page.
+      </p>
+      <p class="z-20 text-body leading-[180%] text-text">
         Luke 19:10 BSB "For the Son of Man came to seek and to save the lost."
       </p>
       <div class="absolute left-0 top-0 -z-50 h-full w-full">

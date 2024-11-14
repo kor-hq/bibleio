@@ -88,7 +88,7 @@ import { Image } from 'astro:assets';
 
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke p-128 max-[480px]:p-16"
+    class="relative flex h-screen flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke p-128 max-[850px]:p-32 max-[480px]:p-16"
   >
     <h1
       class="animate-bounce-in pt-72 text-[320px] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
@@ -100,7 +100,9 @@ import { Image } from 'astro:assets';
     </p><div
       class="scroll-container absolute right-[20%] -z-50 flex flex-col gap-64"
     >
-      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+      <div
+        class="scroll-y flex size-32 h-full w-full flex-col items-center gap-64"
+      >
         <Cross />
         <Bible />
         <Circle />
@@ -118,30 +120,53 @@ import { Image } from 'astro:assets';
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256">
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
       <div
         class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
       >
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
         </div>
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
         </div>
       </div>
-      <div id="apps" class="grid grid-cols-2 grid-rows-2">
+      <div
+        id="apps"
+        class="grid grid-cols-2 grid-rows-2 max-[950px]:grid-cols-1"
+      >
         <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48"
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48 max-[580px]:p-24"
         >
           <div class="flex items-center justify-between">
-            <h2 class="text-[3.75rem] leading-none text-text">Web</h2>
+            <h2
+              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
+            >
+              Web
+            </h2>
             <Badge variant="purple">Alpha</Badge>
           </div>
           <p class="text-body leading-none text-text">
@@ -159,10 +184,14 @@ import { Image } from 'astro:assets';
           </div>
         </div>
         <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48"
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
         >
           <div class="flex items-center justify-between">
-            <h2 class="text-[3.75rem] leading-none text-text">Mobile</h2>
+            <h2
+              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
+            >
+              Mobile
+            </h2>
             <Badge variant="danger">Coming Soon</Badge>
           </div>
           <p class="text-body leading-none text-text">
@@ -180,10 +209,14 @@ import { Image } from 'astro:assets';
         </div>
 
         <div
-          class="relative col-span-2 flex h-[24rem] flex-col gap-24 overflow-clip border-stroke p-48"
+          class="relative col-span-2 flex h-[24rem] flex-col gap-24 overflow-clip border-stroke p-48 max-[950px]:col-span-1 max-[580px]:p-24"
         >
           <div class="flex items-center justify-between">
-            <h2 class="text-[3.75rem] leading-none text-text">Desktop</h2>
+            <h2
+              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
+            >
+              Desktop
+            </h2>
             <Badge variant="danger">Coming Soon</Badge>
           </div>
           <p class="text-body leading-none text-text">
@@ -204,22 +237,39 @@ import { Image } from 'astro:assets';
         class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
       >
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
         </div>
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
-          <h1 class="text-h1 leading-none text-text">Free & Open Source</h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
         </div>
       </div>
 
-      <div id="more" class="grid grid-cols-2 grid-rows-2">
+      <div
+        id="more"
+        class="grid grid-cols-2 grid-rows-2 max-[950px]:grid-cols-1"
+      >
         <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48"
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48 max-[580px]:p-24"
         >
-          <h2 class="text-[3.75rem] leading-none text-text">Why Believe?</h2>
+          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
+            Why Believe?
+          </h2>
           <p class="text-body leading-[220%] text-text">
             Why believe in God or Jesus?
           </p>
@@ -227,30 +277,36 @@ import { Image } from 'astro:assets';
         </div>
         <div
           id="about"
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48"
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
         >
           <h2 class="text-[3.75rem] leading-none text-text">About</h2>
           <p class="text-body leading-[220%] text-text">
             The Bible industry is full of copyright, paid software, non-private,
             or non-modern software. We want to fix that, and comply with Jesus'
             command in Matthew 10:8, "Freely you have received; freely give." In
-            the future we also want to help churches and communties with our
+            the future we also want to help churches and communities with our
             free software.
           </p>
         </div>
 
         <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48"
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48 max-[580px]:p-24"
         >
-          <h2 class="text-[3.75rem] leading-none text-text">Developers</h2>
+          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
+            Developers
+          </h2>
           <p class="text-body leading-[220%] text-text">
             Take a look at our free & open-source Bible API, our new formatting
             standard, BibleJSON, and our beautiful design system.
           </p>
           <a href="https://dev.bibleio.com"><Button>Look</Button></a>
         </div>
-        <div class="flex h-[24rem] flex-col gap-24 border-stroke p-48">
-          <h2 class="text-[3.75rem] leading-none text-text">Community</h2>
+        <div
+          class="flex h-[24rem] flex-col gap-24 border-stroke p-48 max-[580px]:border-t max-[580px]:p-24 max-[580px]:text-h2"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
+            Community
+          </h2>
           <p class="text-body leading-[220%] text-text">
             Come talk with us, contribute, and give feedback!
           </p>
@@ -265,14 +321,26 @@ import { Image } from 'astro:assets';
         class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
       >
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
         </div>
         <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
-          <h1 class="text-h1 leading-none text-text">Innovation for Christ</h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
         </div>
       </div>
     </div>
