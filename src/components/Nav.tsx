@@ -16,7 +16,7 @@ export function Nav({ path }: { path: string }) {
   ];
 
   return (
-    <nav className="fixed z-50 flex h-72 w-screen flex-col">
+    <nav className="fixed z-50 flex h-72 w-screen flex-col text-text">
       <div className="flex justify-between p-16">
         <div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup">
           <a
@@ -32,7 +32,7 @@ export function Nav({ path }: { path: string }) {
               <NavigationMenu.Item>
                 <NavigationMenu.Link
                   href="/"
-                  className={`text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed ${path == '/' && 'font-semibold'}`}
+                  className={`text-body leading-none duration-150 ease-out hover:text-accent-reversed ${path == '/' && 'font-semibold'}`}
                 >
                   Home
                 </NavigationMenu.Link>
@@ -41,80 +41,80 @@ export function Nav({ path }: { path: string }) {
               <NavigationMenu.Item>
                 <NavigationMenu.Link
                   href="/why-believe"
-                  className={`text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed ${path == '/why-believe' && 'font-semibold'}`}
+                  className={`text-body leading-none duration-150 ease-out hover:text-accent-reversed ${path == '/why-believe' && 'font-semibold'}`}
                 >
                   Why believe?
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
 
               <NavigationMenu.Item>
-                <NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed">
+                <NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none duration-150 ease-out hover:text-accent-reversed">
                   Products <ChevronDown />
                 </NavigationMenu.Trigger>
-                <NavigationMenu.Content className="grid h-[12.5rem] w-[43rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 text-text shadow-popup">
+                <NavigationMenu.Content className="grid h-[12.5rem] w-[43rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 shadow-popup">
                   <NavigationMenu.Link
                     href="/apps#web"
-                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                   >
-                    <h4 className="text-h4 text-text">Web</h4>
-                    <p className="text-body leading-[140%] text-text">
+                    <h4 className="text-h4">Web</h4>
+                    <p className="text-body leading-[140%]">
                       Simple Bible study app in the web
                     </p>
                   </NavigationMenu.Link>
 
                   <NavigationMenu.Link
                     href="/apps#mobile"
-                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                   >
-                    <h4 className="text-h4 text-text">Mobile</h4>
-                    <p className="text-body leading-[140%] text-text">
+                    <h4 className="text-h4">Mobile</h4>
+                    <p className="text-body leading-[140%]">
                       Bible study environment on the go
                     </p>
                   </NavigationMenu.Link>
 
                   <NavigationMenu.Link
                     href="/apps#desktop"
-                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                   >
-                    <h4 className="text-h4 text-text">Desktop</h4>
-                    <p className="text-body leading-[140%] text-text">
-                      Fully featured Bible study envrionment
+                    <h4 className="text-h4">Desktop</h4>
+                    <p className="text-body leading-[140%]">
+                      Fully featured Bible study environment
                     </p>
                   </NavigationMenu.Link>
                 </NavigationMenu.Content>
               </NavigationMenu.Item>
 
               <NavigationMenu.Item>
-                <NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed">
+                <NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none duration-150 ease-out hover:text-accent-reversed">
                   You <ChevronDown />
                 </NavigationMenu.Trigger>
-                <NavigationMenu.Content className="grid h-[12.5rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 text-text shadow-popup">
+                <NavigationMenu.Content className="grid h-[12.5rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 shadow-popup">
                   <NavigationMenu.Link
                     href="https://cat-skate-e91.notion.site/Onboarding-132aafe2ea3c800ab45ddbe0a5db3da8?pvs=4"
-                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                   >
-                    <h4 className="text-h4 text-text">Contribute</h4>
-                    <p className="text-body leading-[140%] text-text">
+                    <h4 className="text-h4">Contribute</h4>
+                    <p className="text-body leading-[140%]">
                       Help us build Bibleio
                     </p>
                   </NavigationMenu.Link>
 
                   <NavigationMenu.Link
                     href="/why-believe"
-                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                   >
-                    <h4 className="text-h4 text-text">Why believe?</h4>
-                    <p className="text-body leading-[140%] text-text">
+                    <h4 className="text-h4">Why believe?</h4>
+                    <p className="text-body leading-[140%]">
                       Why believe in God or Jesus?
                     </p>
                   </NavigationMenu.Link>
 
                   <NavigationMenu.Link
                     href="/give-your-rights"
-                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                    className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                   >
-                    <h4 className="text-h4 text-text">Give your rights</h4>
-                    <p className="text-body leading-[140%] text-text">
+                    <h4 className="text-h4">Give your rights</h4>
+                    <p className="text-body leading-[140%]">
                       For the sake of the gospel
                     </p>
                   </NavigationMenu.Link>
@@ -122,14 +122,14 @@ export function Nav({ path }: { path: string }) {
               </NavigationMenu.Item>
 
               <NavigationMenu.Item>
-                <NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none text-text duration-150 ease-out hover:text-accent-reversed">
+                <NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none duration-150 ease-out hover:text-accent-reversed">
                   Us <ChevronDown />
                 </NavigationMenu.Trigger>
-                <NavigationMenu.Content className="flex h-[18rem] animate-scale-in gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 text-text shadow-popup">
+                <NavigationMenu.Content className="flex h-[18rem] animate-scale-in gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 shadow-popup">
                   <div className="grid h-full min-h-0 w-fit grid-cols-1 grid-rows-5 gap-12">
                     <NavigationMenu.Link
                       href="https://github.com/bibleio"
-                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@ export function Nav({ path }: { path: string }) {
                     </NavigationMenu.Link>
                     <NavigationMenu.Link
                       href="https://x.com/bibleioo"
-                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@ export function Nav({ path }: { path: string }) {
                     </NavigationMenu.Link>
                     <NavigationMenu.Link
                       href="https://mastodon.social/@bibleio"
-                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +191,7 @@ export function Nav({ path }: { path: string }) {
                     </NavigationMenu.Link>
                     <NavigationMenu.Link
                       href="https://discord.gg/7eVCyQ5GGb"
-                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +214,7 @@ export function Nav({ path }: { path: string }) {
                     </NavigationMenu.Link>
                     <NavigationMenu.Link
                       href="https://www.youtube.com/@bibleio"
-                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                      className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -238,19 +238,19 @@ export function Nav({ path }: { path: string }) {
                   <div className="grid h-full min-h-0 grid-cols-1 grid-rows-2 gap-12">
                     <NavigationMenu.Link
                       href="/blog"
-                      className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                      className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                     >
-                      <h4 className="text-h4 text-text">Blog</h4>
-                      <p className="text-body leading-[140%] text-text">
+                      <h4 className="text-h4">Blog</h4>
+                      <p className="text-body leading-[140%]">
                         Updates & Christian content
                       </p>
                     </NavigationMenu.Link>
                     <NavigationMenu.Link
                       href="/roadmap"
-                      className="flex w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                      className="flex w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                     >
-                      <h4 className="text-h4 text-text">Roadmap</h4>
-                      <p className="text-body leading-[140%] text-text">
+                      <h4 className="text-h4">Roadmap</h4>
+                      <p className="text-body leading-[140%]">
                         Our plans & progress
                       </p>
                     </NavigationMenu.Link>
@@ -258,12 +258,10 @@ export function Nav({ path }: { path: string }) {
 
                   <NavigationMenu.Link
                     href="/readme"
-                    className="flex h-full min-h-0 w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed"
+                    className="flex h-full min-h-0 w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
                   >
-                    <h4 className="text-h4 text-text">README</h4>
-                    <p className="text-body leading-[140%] text-text">
-                      About us
-                    </p>
+                    <h4 className="text-h4">README</h4>
+                    <p className="text-body leading-[140%]">About us</p>
                   </NavigationMenu.Link>
                 </NavigationMenu.Content>
               </NavigationMenu.Item>
@@ -286,7 +284,7 @@ export function Nav({ path }: { path: string }) {
           <a
             key={index}
             href={item.link}
-            className={`text-h4 leading-none text-text ${path == item.link && 'font-semibold'}`}
+            className={`text-h4 leading-none ${path == item.link && 'font-semibold'}`}
             onClick={() => {
               setNavOpen(false);
             }}
@@ -310,7 +308,7 @@ const Menu = () => (
     strokeWidth={1.5}
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="text-text"
+    className=""
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <path d="M4 8l16 0" />
@@ -328,7 +326,7 @@ const Close = () => (
     strokeWidth={1.5}
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="text-text"
+    className=""
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <path d="M18 6l-12 12" />
@@ -347,7 +345,7 @@ const ChevronDown = () => (
     strokeWidth={1.5}
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="origin-center text-text duration-150 ease-out group-hover:text-accent-reversed group-data-[state=open]:-rotate-180"
+    className="origin-center duration-150 ease-out group-hover:text-accent-reversed group-data-[state=open]:-rotate-180"
   >
     <path d="M4 6L8 10L12 6" />
   </svg>

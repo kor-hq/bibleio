@@ -1,19 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import {
-  Button,
-  Badge,
-  // shapes
-  Cross,
-  Bible,
-  Hexagon,
-  Star,
-  Circle,
-  Triangle,
-} from '@bibleio/design';
+import { Cross, Bible, Hexagon, Star, Circle, Triangle } from '@bibleio/design';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import { getImage } from 'astro:assets';
 
 const blogs = await getCollection('blog', ({ data }) => {
@@ -124,8 +113,34 @@ const blogs = await getCollection('blog', ({ data }) => {
     </div>
   </section>
   <section id="main" class="flex flex-col px-256">
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
-      <div class="grid grid-cols-6 gap-12 p-64"></div>
+    <div id="container" class="divide-y divide-stroke border-l border-stroke">
+      <div class="grid grid-cols-2">
+        {
+          blogs.map((blog) => (
+            <a
+              href={`/blog/${blog.slug}`}
+              class="flex flex-col border-b border-r border-stroke text-text"
+            >
+              <Image
+                alt={blog.data.title}
+                src={blog.data.image}
+                width={1200}
+                height={600}
+                class="aspect-[16/6] h-auto w-full object-cover"
+              />
+              <div class="flex h-fit flex-col gap-12 px-48 py-24">
+                <h3 class="text-h3 leading-none">{blog.data.title}</h3>
+                <time
+                  class="text-body leading-none"
+                  datetime={blog.data.date.toISOString()}
+                >
+                  {blog.data.date.toDateString()}
+                </time>
+              </div>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 </Layout>
