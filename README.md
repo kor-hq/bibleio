@@ -1,6 +1,6 @@
 ![Banner](.github/assets/gh-org.png)
 
-Innovation for Christ. We focus on making better, free, open-source, modern Bible consumer tech for God's kingdom, preaching the gospel, and to help churches and communites.
+Innovation for Christ. We focus on making better, free, open-source, modern Bible consumer tech for God's kingdom, preaching the gospel, and to help churches and communities.
 
 This is the Bibleio monorepo, all the code that powers Bibleio. Here you can find our apps, websites, and back-end stuff.
 
@@ -32,7 +32,7 @@ Once we get back-end functionality working, we will start rewriting the web app,
 
 # Contributing
 
-We'd love to have you contribute, currently Bibleio is a 1 person project. We have [huge ambitous goals](https://www.bibleio.com/roadmap), and having God's kingdom or anyone else help would be such a blessing.
+We'd love to have you contribute, currently Bibleio is a 1 person project. We have [huge ambitious goals](https://www.bibleio.com/roadmap), and having God's kingdom or anyone else help would be such a blessing.
 
 Our community center page is on [Notion](https://cat-skate-e91.notion.site/Bibleio-102aafe2ea3c8158b203e996e06c9aa7), along with all of our updated tasks.
 
@@ -41,10 +41,10 @@ Read more about developer stuff for contributing at [CONTRIBUTING.md](.github/CO
 # License
 
 
-All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license. 
+All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license.
 
-Matthew 10:8 
-> "Freely you have recieved; freely give"
+Matthew 10:8
+> "Freely you have received; freely give"
 
 Check out why you should do the same by clicking this:
 
