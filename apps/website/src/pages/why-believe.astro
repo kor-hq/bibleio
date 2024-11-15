@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  Button,
+  Badge,
+  // shapes
+  Cross,
+  Bible,
+  Hexagon,
+  Star,
+  Circle,
+  Triangle,
+} from '@bibleio/design';
+import { Image } from 'astro:assets';
+---
+
+<Layout title="Home">
+  <script>
+    import { gsap } from 'gsap';
+
+    // "Bibleio" landing text animation
+
+    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
+
+    if (text && text.textContent) {
+      const words = text.textContent.split(/(\s+)/);
+      text.innerHTML = words
+        .map((word) => {
+          // If it's just whitespace, wrap it in a span with space class
+
+          // For actual words, wrap each letter in a span
+          return `<span class="word inline-block">
+            ${Array.from(word)
+              .map(
+                (letter) => `<span class="letter inline-block">${letter}</span>`
+              )
+              .join('')}
+          </span>`;
+        })
+        .join('');
+
+      // Create the GSAP animation
+      gsap.from('.animate-bounce-in span', {
+        opacity: 0,
+        scale: 0,
+        duration: 0.5,
+        y: 75,
+        ease: 'back.out(.1)',
+        stagger: {
+          amount: 0.35,
+          from: 'start',
+        },
+      });
+    } else {
+      console.warn('Animation target element not found');
+    }
+  </script>
+
+  <section
+    id="landing"
+    class="relative flex h-screen flex-col items-start justify-center gap-32 overflow-clip border-b border-stroke p-128 max-[890px]:p-16"
+  >
+    <h1
+      class="animate-bounce-in pt-72 text-left text-[256px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
+    >
+      Why&numsp;believe?
+    </h1>
+    <h3
+      class="animate-scale-in text-h3 leading-[150%] text-text max-[1000px]:text-body"
+    >
+      Why believe in God, or that Jesus is God?
+    </h3>
+    <div class="absolute left-0 top-0 -z-50 h-full w-full">
+      <div
+        class="absolute -top-1/2 left-[20%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-lime blur-[15vmin]"
+      >
+      </div>
+      <div
+        class="absolute -bottom-1/2 left-[50%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-teal blur-[15vmin]"
+      >
+      </div>
+      <div
+        class="absolute left-[-15%] top-0 h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-purple blur-[15vmin]"
+      >
+      </div>
+    </div>
+  </section>
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
+    <div
+      id="container"
+      class="divide-y divide-stroke border-x border-stroke text-text"
+    >
+      <div id="why" class="flex flex-col gap-24 p-48 px-128 max-[800px]:px-16">
+        <Badge variant="warning"
+          >Unfinished, no formatting, unedited version</Badge
+        >
+        <p class="text-body leading-[220%]">
+          We plan to make this more engaging, and more nice looking.
+        </p>
+        <p class="text-body leading-[220%]">
+          <h4 class="text-h4">How God exists</h4> The universe had a beginning right?
+          Therefore it has to have a creator. If you saw a building, can you prove
+          to be that it had a builder? "well yes, the building is right there, someone
+          had to build it." Exactly, we see the universe, we see that it had a beginning,
+          we see there has to be a creator.
+          <h4 class="text-h4">Sin</h4> In the beginning, humans sinned. We've all
+          sinned. Have you ever told a lie, been disrespectful, swore, etc? Yes,
+          and we all have too, and these are the things God will judge is on, so
+          if he did, would you be innocent or guilty?
+          <h4 class="text-h4">Guilty</h4> We would be guilty, so would we deserve
+          a punishment or reward? Punishment. And does that sound like heaven or
+          hell? Hell. Hell is the most horrible place, full of fire, suffering, constant
+          agony, for eternity, because you have to pay the punishment for your sins.
+          <h4 class="text-h4">There's a Way Out</h4> So, you would need to have someone
+          pay the price of your hell punishment on your behalf, someone willing to
+          sacrifice them selves. Do you get it? That man was Jesus! That's why he
+          was beaten, slapped, mocked, whipped, tortured, forced to cary an 100lb
+          cross, and got hung on a piece of wood with nails in His hands, then ROSE
+          3 days later. Jesus did that for YOU. That is how much he loves you, that
+          he scarified his life for you, so you don't have to go through the suffering
+          of hell. He paid the price!
+          <h4 class="text-h4">Price Paid</h4> Jesus offers that as a free gift, but
+          the thing is you have to accept it. Trust in your mind that Jesus has paid
+          for your sins already, not your good works, not your baptism, not your
+          praying or church going, Jesus paid the price of your punishment, not anything
+          or anyone else.
+          <h4 class="text-h4">Life Changed</h4> Now that He saved you from eternal
+          suffering in hell, would you like to punch Him in the face or serve him?
+          You would want to please him, serve him, and try your best not to sin.
+          We're sinners, but with God we can overcome our sin, He will convict you,
+          and you should repent. Remember if you're trusting in Jesus, you're covered,
+          no sins can take away your salvation. just try your best to get up and
+          repent (turn away).
+
+          <h4 class="text-h4">Grow</h4> To grow as a Christian, read the Bible! Start
+          with the New Testament front to back, and you'll learn a lot! make sure
+          to read it every day, it's like your spiritual food. Also pray, it's simple,
+          it's just talking to God, thank him, give him praise, pray for others,
+          and you can pray for your self to grow, and for your own needs! (but obviously
+          God isn't a genie). Find a good church that teaches from the Bible, if
+          you feel ready. And spread this message around, if you asked your family
+          or friends why they would go to heaven, would would they say? Also listen
+          to Chrisitan videos and stuff, they can teach you too, but stay away from
+          content farms and AI, those have no inspiration from the Holy Spirit.
+        </p>
+
+        <p class="text-body leading-[220%]">
+          <h3 class="text-h3">Common Objections</h3>
+          <h4 class="text-h4">Why does God allow suffering if he's good?</h4> In
+          the beginning God told us to obey him or bad things will happen. And we
+          disobeyed him, so guess what? Bad things happened. Death came into the
+          world, sickness came in, we became sinful, wanting to harm others, etc.
+          We have free will, we choose to do bad things.
+          <h4 class="text-h4">
+            Eternal suffering in hell for some sins is unjust!
+          </h4>That's not just it. "some sins" are a massive offence to God, he
+          is the most holy being ever, and one of the worst sins that you can
+          commit is rejecting Jesus' free gift that is worth infinity, eternal
+          life. If you reject that, you get infinite, eternal punishment. It was
+          your choice, and right now you have the choice to take Jesus instead!
+          You are going to hell. I am going to hell. We all are. But we don't
+          have to! Jesus already paid the price, so please accept His gift!
+        </p>
+
+        <p class="text-body leading-[220%]">
+          Have any questions, comments, objections? Talk with us in the Discord
+          or contact us.
+        </p>
+        <p class="text-body leading-[220%]">
+          Source: The Bible, most trustworthy book ever. Written by dukc.
+        </p>
+        <div class="flex gap-12">
+          <a href="https://discord.gg/7eVCyQ5GGb"> <Button>Discord</Button></a>
+          <a href="/contact"> <Button variant="secondary">Contact</Button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

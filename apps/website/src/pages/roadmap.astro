@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  Button,
+  Badge,
+  // shapes
+  Cross,
+  Bible,
+  Hexagon,
+  Star,
+  Circle,
+  Triangle,
+} from '@bibleio/design';
+import { Image } from 'astro:assets';
+
+// Edit the roadmap here
+const roadmap = [
+  {
+    section: 1,
+    title: 'v0.1-alpha',
+    description: 'init backend & frontend',
+    content: [
+      {
+        title: 'Bibleio Design',
+        description:
+          'Establish a consistent design system with components ready to use',
+      },
+      {
+        title: 'BibleJSON',
+        selected: true,
+        description: 'Develop a new format for storing biblical texts',
+      },
+      {
+        title: 'Bibleio API',
+        description:
+          'Serve Bible translations in BibleJSON through our Rust API',
+      },
+      {
+        title: 'Web App',
+        description: 'Get basic features working for the web app',
+      },
+    ],
+  },
+  {
+    section: 2,
+    title: 'v0.1-beta',
+    description: 'new mandatory features',
+    content: [
+      {
+        title: 'Accounts',
+        description: 'Get auth system to store user stuff',
+      },
+      {
+        title: 'User annotations store system',
+        description:
+          'Store where highlights, bookmarks, and notes are in chapters and organize with labels',
+      },
+      {
+        title: 'Search function',
+        description: 'Search the Bible, or your own notes',
+      },
+      {
+        title: 'Dropdown menu',
+        description:
+          'The place to highlight, notetake, compare translations, save, look up, etc.',
+      },
+      {
+        title: 'Prayer list',
+        description: 'Basically a to do list technically speaking',
+      },
+      {
+        title: 'Big accessibility enhancments',
+        description:
+          'Text/appearance controls, high contrast mode, screen readers, and keyboard navigation.',
+      },
+      {
+        title: 'UI multiple language support',
+        description:
+          'In the UI support multiple languages, and RTL text direction.',
+      },
+      {
+        title: 'Mobile app',
+        description: 'Port the web app into Tauri, new mobile UI',
+      },
+      {
+        title: 'Desktop app',
+        description: 'Port the web app into Tauri, new UI with tabs',
+      },
+    ],
+  },
+  {
+    section: 3,
+    title: 'v1.0-release',
+    description: 'Spring 2025',
+    content: [
+      {
+        title: 'Verse of the day',
+        description:
+          'Implement in API, then widgets, notifications, that stuff',
+      },
+      {
+        title: 'Greek/Hebrew word database',
+        description: 'View the original language word and definition',
+      },
+      {
+        title: 'Audio Bibles',
+        description:
+          'Either serve audio files from API or use text to speech on front-end',
+      },
+      {
+        title: 'Split translation view',
+        description: 'Read/compare 2 translations at once',
+      },
+      {
+        title: 'Sermon note taking',
+        description: 'Notes page, link scripture and take full on notes',
+      },
+      {
+        title: 'Bug catching',
+        description: 'Catch problems and bugs, and polish',
+      },
+      {
+        title: 'Blast off',
+        description: 'Release at DuckyHQ Scene May 2025',
+      },
+    ],
+  },
+  {
+    section: 4,
+    title: 'In the future',
+    description: 'Huge plans',
+    content: [
+      {
+        title: 'Local Community ',
+        description:
+          'Churches can make a community and post updates/sermons to their members',
+      },
+      {
+        title: 'Friend system ',
+        description:
+          'Friend system within local community, publish updates, prayer requests, etc.',
+      },
+      {
+        title: 'Global Community ',
+        description:
+          'Verified users/organizations can post devotionals, plans, worship sheet music/lyrics, and more',
+      },
+      {
+        title: 'Bibleio Studio ',
+        description:
+          'All in one streaming & social media & website solution for small churches',
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Apps">
+  <script>
+    import { gsap } from 'gsap';
+
+    // Scrolling animations
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrollContainer = document.querySelector('.scroll-container');
+
+      const scrollXItem = document.querySelector('.scroll-x') as HTMLElement;
+      const itemXWidth = scrollXItem?.offsetWidth;
+
+      const scrollYItem = document.querySelector('.scroll-y') as HTMLElement;
+      const itemYHeight = scrollYItem?.offsetHeight;
+
+      gsap.to('.scroll-x', {
+        x: -itemXWidth,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize((value) => parseFloat(value) % itemXWidth),
+        },
+      });
+
+      gsap.to('.scroll-y', {
+        y: -itemYHeight,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          y: gsap.utils.unitize((value) => parseFloat(value) % itemYHeight),
+        },
+      });
+    });
+
+    // "Bibleio" landing text animation
+
+    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
+
+    if (text && text.textContent) {
+      const words = text.textContent.split(/(\s+)/);
+      text.innerHTML = words
+        .map((word) => {
+          // For actual words, wrap each letter in a span
+          return `<span class="word inline-block">
+            ${Array.from(word)
+              .map(
+                (letter) => `<span class="letter inline-block">${letter}</span>`
+              )
+              .join('')}
+          </span>`;
+        })
+        .join('');
+
+      // Create the GSAP animation
+      gsap.from('.animate-bounce-in span', {
+        opacity: 0,
+        scale: 0,
+        duration: 0.5,
+        y: 75,
+        ease: 'back.out(.1)',
+        stagger: {
+          amount: 0.35,
+          from: 'start',
+        },
+      });
+    } else {
+      console.warn('Animation target element not found');
+    }
+  </script>
+
+  <section
+    id="landing"
+    class="relative flex h-[66vh] flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-16 max-[1100px]:px-32 max-[570px]:p-16"
+  >
+    <h1
+      class="animate-bounce-in pt-72 text-left text-[192px] leading-none text-text-solid max-[1400px]:text-[8rem] max-[670px]:text-[4rem]"
+    >
+      Roadmap
+    </h1>
+    <p class="text-left text-body leading-[150%] text-text">
+      Our plans and progress. Last updated Oct 28, 2024.
+    </p><div
+      class="scroll-container absolute right-[30%] -z-50 flex flex-col items-center justify-center gap-64"
+    >
+      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+        <Bible />
+      </div>
+      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+      </div>
+    </div>
+  </section>
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
+    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+      <div
+        class="grid grid-cols-6 gap-12 p-64 max-[1000px]:flex max-[1000px]:flex-col max-[1000px]:p-12"
+      >
+        {
+          roadmap.map((section) => (
+            <>
+              <div class="col-span-1">
+                <h4 class="text-h4 text-text">{section.title}</h4>
+                <p class="text-body leading-[180%] text-text">
+                  {section.description}
+                </p>
+              </div>
+              <div class="col-span-5 flex flex-col gap-12">
+                {section.content.map((item) => (
+                  <div
+                    class={`flex flex-col gap-8 rounded-12 border bg-fg-1 p-12 ${item.selected ? 'border-accent-reversed' : 'border-stroke'}`}
+                  >
+                    {item.selected ? (
+                      <div class="flex items-center gap-6">
+                        <svg
+                          width="1.5rem"
+                          height="1.5rem"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12H19M19 12L13 18M19 12L13 6"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="stroke-text"
+                          />
+                        </svg>
+
+                        <h4 class="text-h4 leading-none text-text">
+                          {item.title}
+                        </h4>
+                      </div>
+                    ) : (
+                      <h4 class="text-h4 leading-none text-text">
+                        {item.title}
+                      </h4>
+                    )}
+                    <p class="text-body leading-[180%] text-text">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ))
+        }
+      </div>
+      <div
+        id="contribute"
+        class="relative flex flex-col gap-32 overflow-clip p-64 max-[600px]:p-20 max-[600px]:pb-48"
+      >
+        <h1 class="text-h1 leading-none text-text">Let's make it happen</h1>
+        <p class="text-body leading-[200%] text-text">
+          We need your help to develop Bibleio. Want to be contributor of the
+          new generation of Bible tech? <br /> Learn more on our Notion page. Our
+          Notion is more updated and has a full list of tasks.
+        </p>
+        <div class="flex flex-wrap gap-12">
+          <a
+            href="https://cat-skate-e91.notion.site/Tasks-102aafe2ea3c8158b203e996e06c9aa7"
+            ><Button>Notion</Button></a
+          >
+          <a href="https://discord.gg/7eVCyQ5GGb"
+            ><Button variant="secondary">Discord</Button></a
+          >
+          <a href="https://github.com/bibleio"
+            ><Button variant="secondary">GitHub</Button></a
+          >
+          <a href="/contact"><Button variant="secondary">Contact</Button></a>
+        </div>
+        <div
+          class="absolute -top-1/2 right-0 -z-50 h-[20vw] w-[20vw] bg-teal blur-[20vmin]"
+        >
+        </div>
+        <div
+          class="absolute -bottom-1/2 right-[10%] -z-50 h-[20vw] w-[20vw] bg-orange blur-[20vmin]"
+        >
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
