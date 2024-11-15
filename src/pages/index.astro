@@ -1,127 +1,348 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Landing from "../components/sections/Landing";
-import { Image } from "astro:assets";
-import { Button } from "@bibleio/design";
-import ProductCard from "../components/ui/ProductCard.astro";
+import Layout from '../layouts/Layout.astro';
+import {
+  Button,
+  Badge,
+  // shapes
+  Cross,
+  Bible,
+  Hexagon,
+  Star,
+  Circle,
+  Triangle,
+} from '@bibleio/design';
+import { Image } from 'astro:assets';
 ---
 
-<Layout title="Home - Bibleio">
+<Layout title="Home">
   <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { gsap } from 'gsap';
 
-    gsap.registerPlugin(ScrollTrigger);
+    // Scrolling animations
 
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.from(".shape", {
-        duration: 1.2,
-        delay: 0.1,
-        y: 100,
-        opacity: 0,
-        scale: 0.8,
-        stagger: 0.05,
-        ease: "power4.out",
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrollContainer = document.querySelector('.scroll-container');
+
+      const scrollXItem = document.querySelector('.scroll-x') as HTMLElement;
+      const itemXWidth = scrollXItem?.offsetWidth;
+
+      const scrollYItem = document.querySelector('.scroll-y') as HTMLElement;
+      const itemYHeight = scrollYItem?.offsetHeight;
+
+      gsap.to('.scroll-x', {
+        x: -itemXWidth,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize((value) => parseFloat(value) % itemXWidth),
+        },
       });
-      gsap.from(".product", {
-        duration: 1,
-        scale: 0.75,
-        opacity: 0,
-        stagger: 0.05,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: "#products",
-          start: "center bottom",
+
+      gsap.to('.scroll-y', {
+        y: -itemYHeight,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          y: gsap.utils.unitize((value) => parseFloat(value) % itemYHeight),
         },
       });
     });
-  </script>
-  <Landing client:load>
-    <img
-      src="/shapes/circle.svg"
-      class="fill-light-blue stroke-1 stroke-light-stroke size-[23vmax] absolute bottom-[57%] left-[40%] max-[700px]:bottom-[80%] max-[450px]:left-[20%] shape origin-center"
-    />
-    <img
-      src="/shapes/cross.svg"
-      class="fill-light-yellow stroke-1 stroke-light-stroke size-[30vmax] absolute left-[50%] top-[50%] max-[700px]:top-[25%] max-[450px]:left-[30%] shape origin-center"
-    />
-    <img
-      src="/shapes/bible.svg"
-      class="fill-light-gray stroke-1 stroke-light-stroke size-[27vmax] absolute bottom-[50%] max-[700px]:bottom-[60%] max-[700px]:right-[75%] max-[450px]:right-[85%] shape origin-center"
-    />
-    <img
-      src="/shapes/hexagon.svg"
-      class="fill-light-purple stroke-1 stroke-light-stroke size-[29vmax] absolute top-[60%] left-[80%] shape origin-center"
-    />
-    <img
-      src="/shapes/star.svg"
-      class="fill-light-green stroke-1 stroke-light-stroke size-[27vmax] absolute bottom-[50%] left-[70%] max-[700px]:left-[85%] max-[700px]:bottom-[70%] shape origin-center"
-    /></Landing
-  >
-  <div
-    id="products"
-    class="grid grid-cols-3 max-[1200px]:grid-cols-2 max-[950px]:grid-cols-1 p-32 max-[480px]:p-16 max-[480px]:gap-12 gap-24 border-b border-b-black"
-  >
-    <ProductCard
-      title="Web App"
-      description="A simple web app for viewing the Bible. In alpha."
-    >
-      <a href="https://app.bibleio.com">
-        <Button variant="primary">Visit</Button>
-      </a>
-    </ProductCard>
-    <ProductCard
-      title="Design"
-      description="The design system for Bibleio. With Figma and React components."
-    >
-      <a href="https://github.com/bibleio/design">
-        <Button variant="primary">Use it</Button>
-      </a>
-    </ProductCard>
-  </div>
-  <div
-    id="about"
-    class="flex flex-col gap-24 items-center justify-center p-32 max-[480px]:p-16 max-[480px]:pt-64"
-  >
-    <h1 class="italic text-[128px] max-[460px]:text-[64px] leading-none">
-      About
-    </h1>
-    <h4 class="text-h4 text-center">
-      Bibleio is in alpha. Not feature complete.
-    </h4>
-    <div
-      class="grid grid-cols-2 max-[870px]:grid-cols-1 w-[800px] max-[870px]:w-full gap-24"
-    >
-      <p class="text-body leading-[220%]">
-        Bibleio is a ministry organization based on innovating the industry of
-        Bible technology, with design, and modern features. We want the Bible to
-        be accessible to everyone online, and that includes developers! We want
-        to include accessability features, reading features, and more in the
-        future.
-      </p>
-      <p class="text-body leading-[220%]">
-        All of Bibleio’s products are free, open-source, licensed under GPL-3.
-        We plan to write all of our backends in Rust. We prioritize design,
-        security, privacy, and freedom. And we have so many plans for Bibleio,
-        such as a mobile app, desktop app, Discord bot, CLI, testimony sharing,
-        a free Bible API featuring major translations, and even more! View the
-        full to-do list of ideas on Notion.
-      </p>
-    </div>
-    <div class="flex gap-12 flex-wrap justify-center w-full">
-      <a
-        href="https://dukc.notion.site/Bibleio-781f29eb2433420d8dbd98feaa584237?pvs=74"
-        target="_blank"
-      >
-        <Button variant="primary"> Notion </Button>
-      </a>
-      <a href="https://github.com/bibleio" target="_blank">
-        <Button variant="secondary">GitHub</Button>
-      </a>
 
-      <a href="https://discord.gg/7eVCyQ5GGb" target="_blank">
-        <Button variant="secondary">Discord </Button>
-      </a>
+    // "Bibleio" landing text animation
+
+    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
+
+    if (text && text.textContent) {
+      const words = text.textContent.split(/(\s+)/);
+      text.innerHTML = words
+        .map((word) => {
+          // For actual words, wrap each letter in a span
+          return `<span class="word inline-block">
+            ${Array.from(word)
+              .map(
+                (letter) => `<span class="letter inline-block">${letter}</span>`
+              )
+              .join('')}
+          </span>`;
+        })
+        .join('');
+
+      // Create the GSAP animation
+      gsap.from('.animate-bounce-in span', {
+        opacity: 0,
+        scale: 0,
+        duration: 0.5,
+        y: 75,
+        ease: 'back.out(.1)',
+        stagger: {
+          amount: 0.35,
+          from: 'start',
+        },
+      });
+    } else {
+      console.warn('Animation target element not found');
+    }
+  </script>
+
+  <section
+    id="landing"
+    class="relative flex h-screen flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke p-128 max-[850px]:p-32 max-[480px]:p-16"
+  >
+    <h1
+      class="animate-bounce-in pt-72 text-[320px] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+    >
+      Bibleio
+    </h1>
+    <p class="animate-scale-in text-body leading-none text-text">
+      Innovating the industry of Bible technology.
+    </p><div
+      class="scroll-container absolute right-[20%] -z-50 flex flex-col gap-64"
+    >
+      <div
+        class="scroll-y flex size-32 h-full w-full flex-col items-center gap-64"
+      >
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+      </div>
+      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+      </div>
     </div>
-  </div></Layout
+  </section>
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
+    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+      <div
+        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
+      >
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+        </div>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Pre Alpha
+          </h1>
+        </div>
+      </div>
+      <div
+        id="apps"
+        class="grid grid-cols-2 grid-rows-2 max-[950px]:grid-cols-1"
+      >
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48 max-[580px]:p-24"
+        >
+          <div class="flex items-center justify-between">
+            <h2
+              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
+            >
+              Web
+            </h2>
+            <Badge variant="purple">Alpha</Badge>
+          </div>
+          <p class="text-body leading-none text-text">
+            Simple Bible reading app.
+          </p>
+          <div class="flex gap-12">
+            <a href="https://app.bibleio.com"><Button>Visit</Button></a>
+            <a href="/apps#web"
+              ><Button variant="secondary">Learn More</Button></a
+            >
+          </div>
+          <div
+            class="absolute left-[40%] top-[10%] -z-50 aspect-[392.34/561.73] h-auto w-[384px] rounded-16 border border-stroke bg-[url('/home/web.png')] bg-cover shadow-popup dark:bg-[url('/home/webDark.png')]"
+          >
+          </div>
+        </div>
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
+        >
+          <div class="flex items-center justify-between">
+            <h2
+              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
+            >
+              Mobile
+            </h2>
+            <Badge variant="danger">Coming Soon</Badge>
+          </div>
+          <p class="text-body leading-none text-text">
+            Bible study on your phone.
+          </p>
+          <div class="flex gap-12">
+            <a href="/apps#mobile"
+              ><Button variant="secondary">Learn More</Button></a
+            >
+          </div>
+          <div
+            class="absolute bottom-[10%] left-[50%] -z-50 box-border aspect-[393/852] h-auto w-[256px] rounded-[24px] border border-stroke bg-[url('/home/mobile.png')] bg-cover shadow-popup dark:bg-[url('/home/mobileDark.png')]"
+          >
+          </div>
+        </div>
+
+        <div
+          class="relative col-span-2 flex h-[24rem] flex-col gap-24 overflow-clip border-stroke p-48 max-[950px]:col-span-1 max-[580px]:p-24"
+        >
+          <div class="flex items-center justify-between">
+            <h2
+              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
+            >
+              Desktop
+            </h2>
+            <Badge variant="danger">Coming Soon</Badge>
+          </div>
+          <p class="text-body leading-none text-text">
+            The most feature rich modern Bible study app.
+          </p>
+          <div class="flex gap-12">
+            <a href="/apps#desktop"
+              ><Button variant="secondary">Learn More</Button></a
+            >
+          </div>
+          <div
+            class="absolute left-[50%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke bg-[url('/home/desktop.png')] bg-cover shadow-popup dark:bg-[url('/home/desktopDark.png')]"
+          >
+          </div>
+        </div>
+      </div>
+      <div
+        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
+      >
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+        </div>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Free & Open Source
+          </h1>
+        </div>
+      </div>
+
+      <div
+        id="more"
+        class="grid grid-cols-2 grid-rows-2 max-[950px]:grid-cols-1"
+      >
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48 max-[580px]:p-24"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
+            Why Believe?
+          </h2>
+          <p class="text-body leading-[220%] text-text">
+            Why believe in God or Jesus?
+          </p>
+          <a href="/why-believe"><Button>Why?</Button></a>
+        </div>
+        <div
+          id="about"
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text">About</h2>
+          <p class="text-body leading-[220%] text-text">
+            The Bible industry is full of copyright, paid software, non-private,
+            or non-modern software. We want to fix that, and comply with Jesus'
+            command in Matthew 10:8, "Freely you have received; freely give." In
+            the future we also want to help churches and communities with our
+            free software.
+          </p>
+        </div>
+
+        <div
+          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48 max-[580px]:p-24"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
+            Developers
+          </h2>
+          <p class="text-body leading-[220%] text-text">
+            Take a look at our free & open-source Bible API, our new formatting
+            standard, BibleJSON, and our beautiful design system.
+          </p>
+          <a href="https://dev.bibleio.com"><Button>Look</Button></a>
+        </div>
+        <div
+          class="flex h-[24rem] flex-col gap-24 border-stroke p-48 max-[580px]:border-t max-[580px]:p-24 max-[580px]:text-h2"
+        >
+          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
+            Community
+          </h2>
+          <p class="text-body leading-[220%] text-text">
+            Come talk with us, contribute, and give feedback!
+          </p>
+          <div class="flex gap-12">
+            <a href="https://github.com/bibleio"><Button>GitHub</Button></a>
+            <a href="https://discord.gg/7eVCyQ5GGb"><Button>Discord</Button></a>
+            <a href="/contact"><Button variant="secondary">Contact</Button></a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
+      >
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+        </div>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+          <h1 class="text-h1 leading-none text-text max-[580px]:text-h3">
+            Innovation for Christ
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section></Layout
 >

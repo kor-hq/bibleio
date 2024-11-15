@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  Button,
+  Badge,
+  // shapes
+  Cross,
+  Bible,
+  Hexagon,
+  Star,
+  Circle,
+  Triangle,
+} from '@bibleio/design';
+import { Image } from 'astro:assets';
+---
+
+<Layout title="Apps">
+  <script>
+    import { gsap } from 'gsap';
+
+    // Scrolling animations
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrollContainer = document.querySelector('.scroll-container');
+
+      const scrollXItem = document.querySelector('.scroll-x') as HTMLElement;
+      const itemXWidth = scrollXItem?.offsetWidth;
+
+      const scrollYItem = document.querySelector('.scroll-y') as HTMLElement;
+      const itemYHeight = scrollYItem?.offsetHeight;
+
+      gsap.to('.scroll-x', {
+        x: -itemXWidth,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize((value) => parseFloat(value) % itemXWidth),
+        },
+      });
+
+      gsap.to('.scroll-y', {
+        y: -itemYHeight,
+        ease: 'none',
+        duration: 33,
+        repeat: -1,
+        modifiers: {
+          y: gsap.utils.unitize((value) => parseFloat(value) % itemYHeight),
+        },
+      });
+    });
+
+    // "Bibleio" landing text animation
+
+    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
+
+    if (text && text.textContent) {
+      const words = text.textContent.split(/(\s+)/);
+      text.innerHTML = words
+        .map((word) => {
+          // If it's just whitespace, wrap it in a span with space class
+          if (/^\s+$/.test(word)) {
+            return `<span class="inline-block space">&nbsp;</span>`;
+          }
+
+          // For actual words, wrap each letter in a span
+          return `<span class="word inline-block">
+            ${Array.from(word)
+              .map(
+                (letter) => `<span class="letter inline-block">${letter}</span>`
+              )
+              .join('')}
+          </span>`;
+        })
+        .join('');
+
+      // Create the GSAP animation
+      gsap.from('.animate-bounce-in span', {
+        opacity: 0,
+        scale: 0,
+        duration: 0.5,
+        y: 75,
+        ease: 'back.out(.1)',
+        stagger: {
+          amount: 0.35,
+          from: 'start',
+        },
+      });
+    } else {
+      console.warn('Animation target element not found');
+    }
+  </script>
+
+  <section
+    id="landing"
+    class="relative flex h-screen flex-col items-center justify-center gap-24 overflow-clip border-b border-stroke p-16"
+  >
+    <h1
+      class="animate-bounce-in pt-72 text-center text-[256px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+    >
+      Study the Bible
+    </h1>
+    <p class="text-center text-body leading-[150%] text-text">
+      With our innovative, cross-platform, performant, beautiful open-source
+      apps.
+    </p><div
+      class="scroll-container absolute left-[20%] -z-50 flex flex-col items-center justify-center gap-64"
+    >
+      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+        <Bible />
+      </div>
+      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+        <Cross />
+        <Bible />
+        <Circle />
+        <Star />
+        <Hexagon />
+        <Triangle />
+      </div>
+    </div>
+  </section>
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
+    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+      <div
+        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
+      >
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+        </div>
+        <div class="scroll-x flex gap-24 whitespace-nowrap">
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
+        </div>
+      </div>
+      <div id="web" class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16">
+        <h1 class="text-h1 leading-none text-text">Web App</h1>
+        <Badge variant="purple">Alpha</Badge>
+        <p class="text-body leading-[220%] text-text">
+          The Bibleio Web App is planned to be a simple casual reading
+          experience in a website, while still keeping all Bibleio functionality
+          and account content linking.
+        </p>
+        <p class="text-body leading-[220%] text-text">
+          The plans for v0.1-beta is to have basic highlighting, notes,
+          bookmarks, etc, search function, prayer list, and be able to store all
+          of that in an account.
+        </p>
+      </div>
+      <div
+        id="mobile"
+        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
+      >
+        <h1 class="text-h1 leading-none text-text">Mobile App</h1>
+        <Badge variant="danger">Coming Soon</Badge>
+        <p class="text-body leading-[220%] text-text">
+          The Bibleio Mobile App is planned to be a simple study experience on
+          your phone, with more resources, and still access to your Bibleio
+          account content. And it's all designed specifically for the phone.
+        </p>
+        <p class="text-body leading-[220%] text-text">
+          For v0.0.1-beta, it's basically the same as the web app but ported
+          into a phone UI.
+        </p>
+      </div>
+      <div
+        id="desktop"
+        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
+      >
+        <h1 class="text-h1 leading-none text-text">Desktop App</h1>
+        <Badge variant="danger">Coming Soon</Badge>
+        <p class="text-body leading-[220%] text-text">
+          The Bibleio Desktop App is planned to be a huge study experience on
+          your desktop, with more resources, and still access to your Bibleio
+          account content. It's designed for the extra real estate on the
+          screen, and for focusing, and notetaking.
+        </p>
+        <p class="text-body leading-[220%] text-text">
+          For v0.0.1-beta, it's basically the same as the web app but ported
+          into a desktop UI.
+        </p>
+      </div>
+      <div
+        id="roadmap"
+        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
+      >
+        <p class="text-body leading-[220%] text-text">
+          Basically all this info is from the <a
+            href="/roadmap"
+            class="text-body text-text underline duration-150 ease-out hover:text-accent-reversed"
+            >roadmap</a
+          >, so go check that out for the full plans and details. We plan to
+          have major and popular translations, study resources, Bibleio
+          accounts, notetaking/highlighting/bookmark database, and more. Your
+          prayers, and contributions are appreciated to help.
+        </p>
+        <a href="/roadmap#contribute"> <Button>Contribute</Button></a>
+      </div>
+    </div>
+  </section></Layout
+>

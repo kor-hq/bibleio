@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import Prose from "../../components/Prose.astro";
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import Prose from '../../components/Prose.astro';
 
 // gen paths
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection('blog');
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -20,14 +20,14 @@ const { Content } = await entry.render();
 
 <Layout title={`${entry.data.title} - Bibleio`}>
   <div
-    class="px-256 max-[1180px]:px-64 py-64 max-[800px]:p-16 min-h-screen flex flex-col gap-24 items-center"
+    class="flex min-h-screen flex-col items-center gap-24 px-256 py-96 text-text max-[1180px]:px-64 max-[800px]:p-16"
   >
     <Image
       width={1920}
       height={1080}
       src={entry.data.image}
       alt={entry.data.title}
-      class="aspect-[16/6] w-full h-auto object-cover rounded-16 border border-black"
+      class="aspect-[16/6] h-auto w-full rounded-16 border border-stroke object-cover"
     />
     <div class="flex flex-wrap justify-center gap-32">
       <p class="text-body leading-none">by {entry.data.author}</p>
@@ -37,17 +37,14 @@ const { Content } = await entry.render();
       >
         {entry.data.date.toDateString()}
       </time>
-      {
-        entry.data.tags.map((tag) => (
-          <p class="text-body leading-none">{tag}</p>
-        ))
-      }
     </div>
     <h1
-      class="text-[115px] max-[1350px]:text-[64px] max-[460px]:text-[48px] italic leading-none text-center w-full mb-48"
+      class="mb-48 w-full text-center text-[4rem] italic leading-none max-[1350px]:text-[64px] max-[460px]:text-[48px]"
     >
       {entry.data.title}
     </h1>
-    <Prose><Content class="w-[512px] leading-[220%]" /></Prose>
+    <div class="w-full max-w-[32rem] leading-[220%]">
+      <Prose><Content /></Prose>
+    </div>
   </div>
 </Layout>
