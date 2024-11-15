@@ -1,17 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
-import MainLayout from '@layouts/MainLayout.astro';
-import DocsLayout from '@layouts/DocsLayout.astro';
-import Prose from '@/Prose.astro';
+import { getCollection } from "astro:content";
+import Prose from "@/Prose.astro";
+import DocsLayout from "@layouts/DocsLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 
-const bibleJsonDocs = await getCollection('biblejson');
+const bibleJsonDocs = await getCollection("biblejson");
 
 export async function getStaticPaths() {
-  const bibleJsonDocs = await getCollection('biblejson');
-  return bibleJsonDocs.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+	const bibleJsonDocs = await getCollection("biblejson");
+	return bibleJsonDocs.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
 }
 
 const { entry } = Astro.props;

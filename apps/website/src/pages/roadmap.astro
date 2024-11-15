@@ -1,157 +1,157 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { Image } from "astro:assets";
 import {
-  Button,
-  Badge,
-  // shapes
-  Cross,
-  Bible,
-  Hexagon,
-  Star,
-  Circle,
-  Triangle,
-} from '@bibleio/design';
-import { Image } from 'astro:assets';
+	Badge,
+	Bible,
+	Button,
+	Circle,
+	// shapes
+	Cross,
+	Hexagon,
+	Star,
+	Triangle,
+} from "@bibleio/design";
+import Layout from "../layouts/Layout.astro";
 
 // Edit the roadmap here
 const roadmap = [
-  {
-    section: 1,
-    title: 'v0.1-alpha',
-    description: 'init backend & frontend',
-    content: [
-      {
-        title: 'Bibleio Design',
-        description:
-          'Establish a consistent design system with components ready to use',
-      },
-      {
-        title: 'BibleJSON',
-        selected: true,
-        description: 'Develop a new format for storing biblical texts',
-      },
-      {
-        title: 'Bibleio API',
-        description:
-          'Serve Bible translations in BibleJSON through our Rust API',
-      },
-      {
-        title: 'Web App',
-        description: 'Get basic features working for the web app',
-      },
-    ],
-  },
-  {
-    section: 2,
-    title: 'v0.1-beta',
-    description: 'new mandatory features',
-    content: [
-      {
-        title: 'Accounts',
-        description: 'Get auth system to store user stuff',
-      },
-      {
-        title: 'User annotations store system',
-        description:
-          'Store where highlights, bookmarks, and notes are in chapters and organize with labels',
-      },
-      {
-        title: 'Search function',
-        description: 'Search the Bible, or your own notes',
-      },
-      {
-        title: 'Dropdown menu',
-        description:
-          'The place to highlight, notetake, compare translations, save, look up, etc.',
-      },
-      {
-        title: 'Prayer list',
-        description: 'Basically a to do list technically speaking',
-      },
-      {
-        title: 'Big accessibility enhancments',
-        description:
-          'Text/appearance controls, high contrast mode, screen readers, and keyboard navigation.',
-      },
-      {
-        title: 'UI multiple language support',
-        description:
-          'In the UI support multiple languages, and RTL text direction.',
-      },
-      {
-        title: 'Mobile app',
-        description: 'Port the web app into Tauri, new mobile UI',
-      },
-      {
-        title: 'Desktop app',
-        description: 'Port the web app into Tauri, new UI with tabs',
-      },
-    ],
-  },
-  {
-    section: 3,
-    title: 'v1.0-release',
-    description: 'Spring 2025',
-    content: [
-      {
-        title: 'Verse of the day',
-        description:
-          'Implement in API, then widgets, notifications, that stuff',
-      },
-      {
-        title: 'Greek/Hebrew word database',
-        description: 'View the original language word and definition',
-      },
-      {
-        title: 'Audio Bibles',
-        description:
-          'Either serve audio files from API or use text to speech on front-end',
-      },
-      {
-        title: 'Split translation view',
-        description: 'Read/compare 2 translations at once',
-      },
-      {
-        title: 'Sermon note taking',
-        description: 'Notes page, link scripture and take full on notes',
-      },
-      {
-        title: 'Bug catching',
-        description: 'Catch problems and bugs, and polish',
-      },
-      {
-        title: 'Blast off',
-        description: 'Release at DuckyHQ Scene May 2025',
-      },
-    ],
-  },
-  {
-    section: 4,
-    title: 'In the future',
-    description: 'Huge plans',
-    content: [
-      {
-        title: 'Local Community ',
-        description:
-          'Churches can make a community and post updates/sermons to their members',
-      },
-      {
-        title: 'Friend system ',
-        description:
-          'Friend system within local community, publish updates, prayer requests, etc.',
-      },
-      {
-        title: 'Global Community ',
-        description:
-          'Verified users/organizations can post devotionals, plans, worship sheet music/lyrics, and more',
-      },
-      {
-        title: 'Bibleio Studio ',
-        description:
-          'All in one streaming & social media & website solution for small churches',
-      },
-    ],
-  },
+	{
+		section: 1,
+		title: "v0.1-alpha",
+		description: "init backend & frontend",
+		content: [
+			{
+				title: "Bibleio Design",
+				description:
+					"Establish a consistent design system with components ready to use",
+			},
+			{
+				title: "BibleJSON",
+				selected: true,
+				description: "Develop a new format for storing biblical texts",
+			},
+			{
+				title: "Bibleio API",
+				description:
+					"Serve Bible translations in BibleJSON through our Rust API",
+			},
+			{
+				title: "Web App",
+				description: "Get basic features working for the web app",
+			},
+		],
+	},
+	{
+		section: 2,
+		title: "v0.1-beta",
+		description: "new mandatory features",
+		content: [
+			{
+				title: "Accounts",
+				description: "Get auth system to store user stuff",
+			},
+			{
+				title: "User annotations store system",
+				description:
+					"Store where highlights, bookmarks, and notes are in chapters and organize with labels",
+			},
+			{
+				title: "Search function",
+				description: "Search the Bible, or your own notes",
+			},
+			{
+				title: "Dropdown menu",
+				description:
+					"The place to highlight, notetake, compare translations, save, look up, etc.",
+			},
+			{
+				title: "Prayer list",
+				description: "Basically a to do list technically speaking",
+			},
+			{
+				title: "Big accessibility enhancments",
+				description:
+					"Text/appearance controls, high contrast mode, screen readers, and keyboard navigation.",
+			},
+			{
+				title: "UI multiple language support",
+				description:
+					"In the UI support multiple languages, and RTL text direction.",
+			},
+			{
+				title: "Mobile app",
+				description: "Port the web app into Tauri, new mobile UI",
+			},
+			{
+				title: "Desktop app",
+				description: "Port the web app into Tauri, new UI with tabs",
+			},
+		],
+	},
+	{
+		section: 3,
+		title: "v1.0-release",
+		description: "Spring 2025",
+		content: [
+			{
+				title: "Verse of the day",
+				description:
+					"Implement in API, then widgets, notifications, that stuff",
+			},
+			{
+				title: "Greek/Hebrew word database",
+				description: "View the original language word and definition",
+			},
+			{
+				title: "Audio Bibles",
+				description:
+					"Either serve audio files from API or use text to speech on front-end",
+			},
+			{
+				title: "Split translation view",
+				description: "Read/compare 2 translations at once",
+			},
+			{
+				title: "Sermon note taking",
+				description: "Notes page, link scripture and take full on notes",
+			},
+			{
+				title: "Bug catching",
+				description: "Catch problems and bugs, and polish",
+			},
+			{
+				title: "Blast off",
+				description: "Release at DuckyHQ Scene May 2025",
+			},
+		],
+	},
+	{
+		section: 4,
+		title: "In the future",
+		description: "Huge plans",
+		content: [
+			{
+				title: "Local Community ",
+				description:
+					"Churches can make a community and post updates/sermons to their members",
+			},
+			{
+				title: "Friend system ",
+				description:
+					"Friend system within local community, publish updates, prayer requests, etc.",
+			},
+			{
+				title: "Global Community ",
+				description:
+					"Verified users/organizations can post devotionals, plans, worship sheet music/lyrics, and more",
+			},
+			{
+				title: "Bibleio Studio ",
+				description:
+					"All in one streaming & social media & website solution for small churches",
+			},
+		],
+	},
 ];
 ---
 

@@ -1,16 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import Prose from '../../components/Prose.astro';
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import Prose from "../../components/Prose.astro";
+import Layout from "../../layouts/Layout.astro";
 
 // gen paths
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+	const blogEntries = await getCollection("blog");
+	return blogEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
 }
 
 // gen page content

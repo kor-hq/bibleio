@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Slider } from "./ui/Slider";
+import type React from "react";
+import { useState } from "react";
 import {
   Select,
   SelectGroup,
@@ -7,6 +7,7 @@ import {
   SelectLabel,
   SelectSeparator,
 } from "./ui/Select";
+import { Slider } from "./ui/Slider";
 
 interface TextFormattingMenuProps {
   isOpen: boolean;
@@ -27,11 +28,11 @@ const TextFormattingMenu: React.FC<TextFormattingMenuProps> = ({
 
   function removeFontFamilyClasses() {
     const fontFamilyClasses = Array.from(document.body.classList).filter(
-      (className) => className.startsWith("font-")
+      (className) => className.startsWith("font-"),
     );
-    fontFamilyClasses.forEach((className) =>
-      document.body.classList.remove(className)
-    );
+    for (const className of fontFamilyClasses) {
+      document.body.classList.remove(className);
+    }
   }
 
   function updateFontFamily(fontFamily: string) {

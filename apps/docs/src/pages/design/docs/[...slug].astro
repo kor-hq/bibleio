@@ -1,17 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
-import MainLayout from '@layouts/MainLayout.astro';
-import DocsLayout from '@layouts/DocsLayout.astro';
-import Prose from '@/Prose.astro';
+import { getCollection } from "astro:content";
+import Prose from "@/Prose.astro";
+import DocsLayout from "@layouts/DocsLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 
-const designDocs = await getCollection('design');
+const designDocs = await getCollection("design");
 
 export async function getStaticPaths() {
-  const designDocs = await getCollection('design');
-  return designDocs.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+	const designDocs = await getCollection("design");
+	return designDocs.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
 }
 
 const { entry } = Astro.props;

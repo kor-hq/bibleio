@@ -1,36 +1,36 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
+import { Button } from "../Button";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-  TooltipProps,
-  TooltipProvider,
-} from './Tooltip';
-import { Button } from '../Button';
+	Tooltip,
+	TooltipContent,
+	type TooltipProps,
+	TooltipProvider,
+	TooltipTrigger,
+} from "./Tooltip";
 
 const meta: Meta<typeof Tooltip> = {
-  component: Tooltip,
-  title: 'Tooltip',
-  tags: ['autodocs'],
+	component: Tooltip,
+	title: "Tooltip",
+	tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
-  render: (args: TooltipProps) => (
-    <TooltipProvider>
-      <Tooltip {...args}>
-        <TooltipTrigger>
-          <Button>Hover me</Button>
-        </TooltipTrigger>
-        <TooltipContent>Tooltip</TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  ),
+	render: (args: TooltipProps) => (
+		<TooltipProvider>
+			<Tooltip {...args}>
+				<TooltipTrigger>
+					<Button>Hover me</Button>
+				</TooltipTrigger>
+				<TooltipContent>Tooltip</TooltipContent>
+			</Tooltip>
+		</TooltipProvider>
+	),
 };
 Default.args = {
-  delayDuration: 0,
+	delayDuration: 0,
 };

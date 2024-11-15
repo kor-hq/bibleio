@@ -1,12 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { Cross, Bible, Hexagon, Star, Circle, Triangle } from '@bibleio/design';
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import { getImage } from 'astro:assets';
+import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
+import { getCollection } from "astro:content";
+import { Bible, Circle, Cross, Hexagon, Star, Triangle } from "@bibleio/design";
+import Layout from "../../layouts/Layout.astro";
 
-const blogs = await getCollection('blog', ({ data }) => {
-  return import.meta.env.PROD ? data.draft !== true : true;
+const blogs = await getCollection("blog", ({ data }) => {
+	return import.meta.env.PROD ? data.draft !== true : true;
 });
 ---
 

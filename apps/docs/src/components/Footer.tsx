@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Logo, ThemeSwitcher } from '@bibleio/design';
+import { Logo } from "@bibleio/design";
+import type React from "react";
 
 export const Footer = () => {
   return (
@@ -20,12 +20,11 @@ export const Footer = () => {
           </p>
         </div>
         <p className="text-body leading-[220%]">
-          Innovating the industry of Bible <strong>developer</strong> software.{' '}
+          Innovating the industry of Bible <strong>developer</strong> software.{" "}
           <FooterItem href="https://dukc.dev" newTab>
             By dukc.
           </FooterItem>
         </p>
-        <ThemeSwitcher />
       </div>
       <div className="=items-start flex h-full flex-col gap-16 border-l border-stroke p-32">
         <h2 className="text-h2 font-medium">Developers</h2>
@@ -56,7 +55,7 @@ const FooterItem = ({
 }) => (
   <a
     href={href}
-    target={newTab ? '_blank' : ''}
+    target={newTab ? "_blank" : ""}
     className="duration-150 ease-out hover:text-accent-reversed"
   >
     {children}
