@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import DocsLayout from '@layouts/DocsLayout.astro';
+
+const bibleJsonDocs = await getCollection('biblejson');
+---
+
+<MainLayout title="BibleJSON Docs">
+  <DocsLayout docs={bibleJsonDocs} projectSlug="biblejson"> Docs </DocsLayout>
+</MainLayout>

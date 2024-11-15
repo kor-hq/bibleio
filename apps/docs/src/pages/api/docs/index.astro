@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import DocsLayout from '@layouts/DocsLayout.astro';
+
+const apiDocs = await getCollection('api');
+---
+
+<MainLayout title="API Docs">
+  <DocsLayout docs={apiDocs} projectSlug="api"> Docs </DocsLayout>
+</MainLayout>
