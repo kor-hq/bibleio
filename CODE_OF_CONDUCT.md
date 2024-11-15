@@ -62,7 +62,8 @@ Romans 6:23 "For the wages of sin is death, but the gift of God is eternal life 
 # Report Bad Behavior
 
 Contact our support team here.
-- ADD CONTACT INFO HERE
+- [Discord](https://discord.gg/7eVCyQ5GGb) (forum post or DM a moderator)
+- `support@bibleio.com`
 
 Please include screenshots, evidence, a link, and the type of behavior.
 
