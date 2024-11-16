@@ -1,4 +1,4 @@
-![Banner](https://github.com/user-attachments/assets/2572f6b0-9d8c-4e08-884d-0202980f7b9d)
+![banner](/.github/assets/gh-design.png)
 
 Design version `1.5.0` - Library version `2.3.0`
 
@@ -139,16 +139,4 @@ The spacing system is literal, so `p-32` means exactly `32px`.
 
 ## Dark Mode Switcher
 
-We do not provide a dark mode swticher, because this library could be used with any frame work that accepts React, and some of them could result in a FOUC. 
-
-# Changelog
-
-Look at the [releases](https://github.com/bibleio/design/releases).
-
-# License
-
-All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license. You can copy, translate, modify, and distribute this resource, without restriction, and without needing to ask permission. Why? For the sake of the gospel (Matt 10:8).
-
-Check out why you should do the same by clicking this:
-
-[<img src="https://copy.church/badges/lcc_alt_pde.png" alt="Freely given, no conditions!" width="300"/>](https://copy.church/explain/importance/)
+We do not provide a dark mode switcher, because this library could be used with any framework that accepts React, and some of them could result in a FOUC.

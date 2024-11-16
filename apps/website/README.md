@@ -1,3 +1,12 @@
-![Banner](https://i.imgur.com/1z2iifA.png)
+![banner](/.github/assets/gh-website.png)
 
-The main website for Bibleio. (not the web app!)
+This is our front-facing website which has our Christian resources such as Why Believe, Give your Rights and our blog, along with all our other pages.
+
+# Developing
+
+```bash
+pnpm install
+pnpm site dev
+```
+
+`pnpm site fix` to format and lint and Biome.

@@ -1,3 +1,5 @@
+![banner](/.github/assets/gh-api.png)
+
 The API is the full backend for Bibleio, in the future it will hold accounts, community stuff, and all that.
 
 Right now our focus is the Bible API, which serves the Bible in many translations and languages in the [BibleJSON](https://github.com/bibleio/biblejson) format.

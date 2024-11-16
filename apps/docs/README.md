@@ -1,3 +1,5 @@
+![banner](/.github/assets/gh-docs.png)
+
 Docs is our developer documentation for our API, design system, and BibleJSON.
 
 It will be built with unDocs, which is a primitive library for Astro documentation.
