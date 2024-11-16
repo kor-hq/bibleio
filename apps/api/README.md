@@ -1,15 +1,13 @@
-![banner](https://github.com/user-attachments/assets/7a4b941f-5098-4126-b8ad-bb3c1c492992)
+The API is the full backend for Bibleio, in the future it will hold accounts, community stuff, and all that.
 
-The Bibleio API is a multipurpose API for all things Bibleio, and the Bible.
+Right now our focus is the Bible API, which serves the Bible in many translations and languages in the [BibleJSON](https://github.com/bibleio/biblejson) format.
 
-Our main focus right now is the `/bible` endpoint, which will serve the Bible in many different translations and languages using BibleJSON.
+# Developing
 
-We plan to begin working on this after we get the [BibleJSON](https://github.com/bibleio/biblejson) formatting standard and converter working.
+Turborepo works with Rust via the `package.json`.
 
-# License
+To get started, run `pnpm api install` which will run cargo install in the API dir.
 
-All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license. You can copy, translate, modify, and distribute this resource, without restriction, and without needing to ask permission. Why? For the sake of the gospel (Matt 10:8).
+Then run `pnpm dev` to do cargo run.
 
-Check out why you should do the same by clicking this:
-
-[<img src="https://copy.church/badges/lcc_alt_pde.png" alt="Freely given, no conditions!" width="300"/>](https://copy.church/explain/importance/)
+We use rustfmt and clippy, which can also be accessed via `fix`, so like `pnpm api fix`.
