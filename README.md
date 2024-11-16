@@ -12,6 +12,8 @@ This is the Bibleio monorepo, all the code that powers Bibleio. Here you can fin
 - [`apps/api`](https://github.com/bibleio/bibleio/tree/main/apps/api) Our back-end API, right now mainly a Bible API
 - [`packages/design`](https://github.com/bibleio/bibleio/tree/main/packages/design) Our design system
 
+See more about each project in their README.
+
 ## Developing
 
 We use Turborepo and pnpm for our monorepo. Here's our main commands:
@@ -20,9 +22,9 @@ pnpm web-app:dev # web app dev server
 pnpm site:dev # website dev server
 pnpm docs:dev # docs site dev server
 pnpm storybook:dev # design system storybook dev server
-pnpm fix # format & lint all files, with biome
+pnpm fix # format & lint all files with biome
 ```
-We use [Biome](https://biomejs.dev/) for formatting and linting, please use this when developing, or [setup your editor to use Biome](https://biomejs.dev/guides/editors/first-party-extensions/).
+We use [Biome](https://biomejs.dev/) for formatting and linting, please use `pnpm fix` when developing, or [setup your editor to use Biome](https://biomejs.dev/guides/editors/first-party-extensions/).
 
 # Status
 
@@ -39,7 +41,6 @@ Our community center page is on [Notion](https://cat-skate-e91.notion.site/Bible
 Read more about developer stuff for contributing at [CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 # License
-
 
 All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license.
 

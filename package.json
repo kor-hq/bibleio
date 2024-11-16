@@ -1,21 +1,21 @@
 {
-  "name": "@bibleio/bibleio",
-  "version": "0.0.0",
-  "author": "dukc",
-  "license": "MIT-0",
-  "packageManager": "pnpm@9.12.3",
-  "scripts": {
-    "site:dev": "turbo run dev --filter=@bibleio/website",
-    "site:build": "turbo run build --filter=@bibleio/website",
-    "web-app:dev": "turbo run dev --filter=@bibleio/web-app",
-    "web-app:build": "turbo run build --filter=@bibleio/web-app",
-    "docs:dev": "turbo run dev --filter=@bibleio/docs",
-    "docs:build": "turbo run build --filter=@bibleio/docs",
-    "storybook:dev": "turbo run dev --filter=@bibleio/design",
-    "fix": "biome check . --fix"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "turbo": "^2.3.0"
-  }
+	"name": "@bibleio/bibleio",
+	"version": "0.0.0",
+	"author": "dukc",
+	"license": "MIT-0",
+	"packageManager": "pnpm@9.12.3",
+	"scripts": {
+		"site:dev": "turbo run dev --filter=@bibleio/website",
+		"site:build": "turbo run build --filter=@bibleio/website",
+		"web-app:dev": "turbo run dev --filter=@bibleio/web-app",
+		"web-app:build": "turbo run build --filter=@bibleio/web-app",
+		"docs:dev": "turbo run dev --filter=@bibleio/docs",
+		"docs:build": "turbo run build --filter=@bibleio/docs",
+		"storybook:dev": "turbo run dev --filter=@bibleio/design",
+		"fix": "biome check . --fix"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"turbo": "^2.3.0"
+	}
 }
