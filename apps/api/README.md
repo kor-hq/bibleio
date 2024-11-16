@@ -8,6 +8,6 @@ Turborepo works with Rust via the `package.json`.
 
 To get started, run `pnpm api install` which will run cargo install in the API dir.
 
-Then run `pnpm dev` to do cargo run.
+Then run `pnpm api dev` to do cargo run.
 
 We use rustfmt and clippy, which can also be accessed via `fix`, so like `pnpm api fix`.
