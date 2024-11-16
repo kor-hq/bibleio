@@ -20,13 +20,16 @@ See more about each project in their README.
 
 We use Turborepo and pnpm for our monorepo. Here's our main commands:
 ```bash
-pnpm web-app:dev # web app dev server
+pnpm webapp:dev # web app dev server
 pnpm site:dev # website dev server
 pnpm docs:dev # docs site dev server
-pnpm storybook:dev # design system storybook dev server
-pnpm fix # format & lint all files with biome
+pnpm design:dev # design system storybook dev server
+pnpm api:dev # cargo run
+pnpm fix # format & lint all files with biome (or rustfmt & clippy)
 ```
 We use [Biome](https://biomejs.dev/) for formatting and linting, please use `pnpm fix` when developing, or [setup your editor to use Biome](https://biomejs.dev/guides/editors/first-party-extensions/).
+
+With Rust projects, we use the standard rustfmt and clippy, which can also be accessed via `pnpm fix` with works with Turborepo.
 
 # Status
 

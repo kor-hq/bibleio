@@ -15,6 +15,7 @@
 	"scripts": {
 		"build": "tsup",
 		"dev": "storybook dev -p 6006",
+		"fix": "biome check . --fix",
 		"build-storybook": "storybook build"
 	},
 	"dependencies": {
