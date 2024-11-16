@@ -1,9 +1,12 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
+    "install": {
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "target/release/**"]
     },
     "check-types": {
       "dependsOn": ["^check-types"]
