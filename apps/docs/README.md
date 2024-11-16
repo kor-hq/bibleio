@@ -1,11 +1,14 @@
-![Banner](https://i.imgur.com/ETDDdMG.png)
+Docs is our developer documentation for our API, design system, and BibleJSON.
 
-**Status** we're still building the website, not ready for docs yet
+It will be built with unDocs, which is a primitive library for Astro documentation.
 
-This is developer documentation for Bibleio API, Bibleio Design, and BibleJSON (+downloads).
+We are still building this website, it is not ready for contributing docs, but you can help build the website.
 
-Built with the DuckyHQ docs system, React & Bibleio Design.
+# Developing
 
-Feel free to contribute documentation, fix stuff up, etc. (contributing guides coming soon)
+```bash
+pnpm install
+pnpm docs dev
+```
 
-Licenened under `MIT-0`.
+`pnpm docs fix` to format and lint and Biome.
