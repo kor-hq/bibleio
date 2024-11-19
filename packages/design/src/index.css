@@ -93,11 +93,11 @@
 }
 
 ::selection {
-	background: var(--accent);
-	color: var(--text);
+	background: var(--accent-reversed);
+	color: var(--text-reversed-solid);
 }
 
 ::-moz-selection {
-	background: var(--accent);
-	color: var(--text);
+	background: var(--accent-reversed);
+	color: var(--text-reversed-solid);
 }

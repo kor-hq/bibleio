@@ -16,7 +16,7 @@
 		"@astrojs/react": "^3.6.2",
 		"@astrojs/sitemap": "^3.2.1",
 		"@astrojs/tailwind": "^5.1.2",
-		"@bibleio/design": "^2.3.0",
+		"@bibleio/design": "workspace:*",
 		"@fontsource/jetbrains-mono": "^5.1.1",
 		"@fontsource/lora": "^5.1.0",
 		"@radix-ui/react-navigation-menu": "^1.2.1",

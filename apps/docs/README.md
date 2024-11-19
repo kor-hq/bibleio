@@ -13,4 +13,4 @@ pnpm install
 pnpm docs dev
 ```
 
-`pnpm docs fix` to format and lint and Biome.
+`pnpm docs fix` to format and lint with Biome.

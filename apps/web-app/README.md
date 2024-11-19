@@ -11,4 +11,4 @@ pnpm install
 pnpm webapp dev
 ```
 
-`pnpm webapp fix` to format and lint and Biome.
+`pnpm webapp fix` to format and lint with Biome.

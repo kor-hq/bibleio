@@ -1,5 +1,4 @@
 import { type VariantProps, cva } from "class-variance-authority";
-import type React from "react";
 
 const variants = cva(
 	[
