@@ -167,9 +167,6 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.2
         version: 5.1.2(astro@4.16.12(@types/node@20.17.6)(rollup@4.26.0)(typescript@5.6.3))(tailwindcss@3.4.15)
-      '@bibleio/configs':
-        specifier: workspace:*
-        version: link:../../packages/configs
       '@bibleio/design':
         specifier: workspace:*
         version: link:../../packages/design
@@ -219,8 +216,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.8
         version: 0.6.8(prettier-plugin-astro@0.14.1)(prettier@3.3.3)
-
-  packages/configs: {}
 
   packages/design:
     dependencies:
