@@ -1,19 +1,24 @@
-export * from "./Button";
-export * from "./Checkbox";
-export * from "./Input";
-export * from "./RadioGroup";
-export * from "./Select";
-export * from "./Slider";
-export * from "./Switch";
-export * from "./Brand";
-export * from "./ListItem";
-export * from "./Progress";
-export * from "./Loader";
-export * from "./Tooltip";
-export * from "./InputOTP";
-export * from "./Badge";
-export * from "./Tabs";
-export * from "./Shapes";
-export * from "./Dialog";
-export * from "./AlertDialog";
-export * from "./Note";
+// Base components
+export * from "./base/Button";
+export * from "./base/Checkbox";
+export * from "./base/Input";
+export * from "./base/RadioGroup";
+export * from "./base/Select";
+export * from "./base/Slider";
+export * from "./base/Switch";
+export * from "./base/Brand";
+export * from "./base/ListItem";
+export * from "./base/Progress";
+export * from "./base/Loader";
+export * from "./base/Tooltip";
+export * from "./base/InputOTP";
+export * from "./base/Badge";
+export * from "./base/Tabs";
+export * from "./base/Shapes";
+export * from "./base/Dialog";
+export * from "./base/AlertDialog";
+export * from "./base/Note";
+
+// Reused website components
+export { default as Footer } from "./website/Footer.astro";
+export { default as ThemeSwitcher } from "./website/ThemeSwitcher.astro";

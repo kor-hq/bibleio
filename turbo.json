@@ -15,7 +15,6 @@
 			"outputs": []
 		},
 		"dev": {
-			"dependsOn": ["@bibleio/design#build"],
 			"persistent": true,
 			"cache": false
 		},
