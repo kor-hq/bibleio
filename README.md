@@ -1,9 +1,5 @@
 ![Banner](.github/assets/gh-org.png)
 
-# we still need to fix some of the structure, almost done!
-
-Innovation for Christ. We focus on making better, free, open-source, modern Bible consumer tech for God's kingdom, preaching the gospel, and to help churches and communities.
-
 This is the Bibleio monorepo, all the code that powers Bibleio. Here you can find our apps, websites, and back-end stuff.
 
 # Structure
@@ -27,7 +23,7 @@ pnpm design dev # design system storybook dev server
 pnpm api dev # cargo run
 pnpm fix # format & lint all files with biome (or rustfmt & clippy)
 
-# you can also access any other command via the project name with pnpm
+# can also access other subcommands
 pnpm site build
 ```
 We use [Biome](https://biomejs.dev/) for formatting and linting, please use `pnpm fix` when developing, or [setup your editor to use Biome](https://biomejs.dev/guides/editors/first-party-extensions/).
