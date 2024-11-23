@@ -44,7 +44,7 @@ export const bibleioTheme = {
 				"0px 3px 4.7px 0px var(--inner-shadow-1) inset, 0px -3px 11px 1px var(--inner-shadow-2) inset, 0px 2px 8px 0px rgba(0, 0, 0, 0.05)",
 			"material-component":
 				"0px -2px 12px 0px var(--inner-shadow-2) inset, 0px 2px 8px 0px rgba(0, 0, 0, 0.08)",
-			popup: "0px 4px 49.6px 0px rgba(0, 0, 0, 0.15)",
+			popup: "0px 4px 49.6px 0px rgba(0, 0, 0, 0.09)",
 		},
 		borderRadius: {
 			4: "0.25rem",
@@ -143,7 +143,7 @@ export const bibleioTheme = {
 				"fade-in": "fade-in 150ms ease-out",
 				"fade-out": "fade-out 150ms ease-out",
 				"caret-blink": "caret-blink 1.2s ease-out infinite",
-				spin: "spin 2s linear infinite",
+				spin: "spin 1s linear infinite",
 				"spin-slow": "spin 15s linear infinite",
 			},
 		},
