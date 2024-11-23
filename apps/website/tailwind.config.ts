@@ -9,3 +9,4 @@ export default {
 	presets: [bibleioTheme],
 	darkMode: "class",
 } satisfies Config;
+9;

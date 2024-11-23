@@ -18,14 +18,14 @@
 		--inner-shadow-1: #ffffff0d;
 		--inner-shadow-2: #0000000f;
 		/* colors */
-		--accent: #00a3ff;
+		--accent: #1eaeff;
 		--red: #f45252;
 		--orange: #f48b52;
 		--yellow: #fcd05f;
 		--lime: #a4d94e;
 		--green: #4ed97d;
 		--teal: #00bdd2;
-		--blue: #00a3ff;
+		--blue: #1eaeff;
 		--purple: #ac85f1;
 		--pink: #f185e6;
 		--gray: #eeeeee;
@@ -57,26 +57,26 @@
 		--inner-shadow-1: #ffffff08;
 		--inner-shadow-2: #00000026;
 		/* colors */
-		--accent: #00507c;
+		--accent: #006197;
 		--red: #802525;
 		--orange: #804425;
 		--yellow: #8d7820;
 		--lime: #5f8226;
 		--green: #268245;
 		--teal: #00707c;
-		--blue: #00507c;
+		--blue: #006197;
 		--purple: #4930a5;
 		--pink: #a53099;
 		--gray: #5f5f5f;
 		/* reversed colors */
-		--accent-reversed: #00a3ff;
+		--accent-reversed: #1eaeff;
 		--red-reversed: #f45252;
 		--orange-reversed: #f48b52;
 		--yellow-reversed: #fcd05f;
 		--lime-reversed: #a4d94e;
 		--green-reversed: #4ed97d;
 		--teal-reversed: #00bdd2;
-		--blue-reversed: #00a3ff;
+		--blue-reversed: #1eaeff;
 		--purple-reversed: #ac85f1;
 		--pink-reversed: #f185e6;
 		--gray-reversed: #eeeeee;
