@@ -1,5 +1,5 @@
-import type { Config } from "tailwindcss";
 import { bibleioTheme } from "@bibleio/design/src/tailwind";
+import type { Config } from "tailwindcss";
 
 export default {
 	content: [
