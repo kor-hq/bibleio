@@ -17,10 +17,6 @@
 		"dev": {
 			"persistent": true,
 			"cache": false
-		},
-		"@bibleio/api#dev": {
-			"persistent": true,
-			"cache": false
 		}
 	}
 }
