@@ -9,6 +9,7 @@
 		"webapp": "turbo run --filter=@bibleio/web-app",
 		"docs-site": "turbo run --filter=@bibleio/docs",
 		"api": "turbo run --filter=@bibleio/api",
+		"biblejson": "turbo run --filter=@bibleio/biblejson",
 		"design": "turbo run --filter=@bibleio/design",
 		"fix": "turbo run fix"
 	},
@@ -16,7 +17,7 @@
 		"@biomejs/biome": "1.9.4",
 		"autoprefixer": "^10.4.20",
 		"postcss": "^8.4.49",
-		"tailwindcss": "^3.4.15",
-		"turbo": "^2.3.1"
+		"tailwindcss": "^3.4.16",
+		"turbo": "^2.3.3"
 	}
 }

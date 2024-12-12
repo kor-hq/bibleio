@@ -1,6 +1,6 @@
 ![banner](https://github.com/user-attachments/assets/34cd22a2-7751-4e24-9f2a-24b66a007362)
 
-`v0.0.1-alpha`
+## `v0.0.2-alpha`
 
 BibleJSON is a new universal formatting standard for putting biblical texts into JSON.
 
@@ -8,47 +8,74 @@ BibleJSON is a new universal formatting standard for putting biblical texts into
 > BibleJSON and the converter is very new, in pre-alpha stages. We need your feedback on how the formatting works, and the converter script.
 > There are many bugs with the converter script.
 
+Soon we plan to move docs over to `dev.bibleio.com`. For now our main area of making BibleJSON is at our [Notion](https://cat-skate-e91.notion.site/BibleJSON-12aaafe2ea3c80258e0de366333b6c8a?pvs=4).
+
 # `converter`
 
 Right now, you are able to convert [eBible.org](https://ebible.org) Bible `.htm` files into BibleJSON, with our converter script written in Rust. Soon, we plan to add support for other file formats.
+
+"eBible HTML" is just USFM converted into HTML format, so it has the exact same tags as USFM, they are just in the classes.
 
 ## Usage
 
 - Get source code from the repo
 - Get some HTML content from [eBible.org](https://ebible.org), and put it in a "html" directory at the root. (pick a translation, and download the "Zipped mobile HTML" option!)
-- Then run `cargo run html/GEN01.htm`
+- Then run `pnpm biblejson dev -- html/ROM05.htm`
 
 # Format
 
-Soon we plan to move documentation to dev.bibleio.com. Here's a summary of the format of BibleJSON:
+## USFM → BibleJSON Tags Key
 
-- `details`
-    - `bibleAbbrev` - the abbreviation of the translation that the file is, ex. “BSB”
+| USFM tag name (div class in eBible HTML) | BibleJSON type name | item type | Note |
+| --- | --- | --- | --- |
+| wj | red | text | Words of Jesus |
+| p, po, cls, pmo, pm, pmc, pmr, nb, lh, lf, litl*, lik#, liv#, tr | text | text |  |
+| li#, lim# | listItem | text | |
+| th#, thr# | tableColHeading | text |  |
+| tc#, tcr# | tableCell | text |  |
+| add, bk, sig, qt, sls, tl, it, em | italic | text |  |
+| bd, bdit | bold | text |  |
+| sc, nd | smallCaps | text | nd is smallCapsBold, but we combined them |
+| qd, sup | small | text | like for notes, subtext, etc |
+| rq, pr, qr | rightAligned | text |  |
+| pc, qc, qs | centerAligned | text |  |
+| pi#, mi, pb#, qm | indented | text |  |
+| q# | hangingIndented | text |  |
+| ms, mt1, mt | headingBig | content |  |
+| mr, mt2, s# | heading | content |  |
+| d, r, sr, mt3, sp, cd, ca*, qa | headingSmall | content | like a sub header, with `ca`, it’s an alternate chapter number so the text content will be “or chapter `number`" |
+| b, sd# | whitespace | content |  |
+| v | verse | content | all the content past each span.v turns into a verse object with the formatted text items, which styles are found above |
+
+## Structure
+
+- `details` (**right now details is not implemented, you cannot pass custom data into here**)
+    - `bibleAbrv` - the abbreviation of the translation that the file is, ex. “BSB”
     - `bibleName` - the name of the translation, ex “Berean Standard Bible”
-    - `bookAbbrev` - the short ID of the book that the file is, ex “JHN”
-    - `bookName` - the name of the book, ex “John”
-    - `chapter` - the chapter number
-- `content` - the actual Bible content
-    - item - each item is a JSON object literal
-        - `type` - the type of the item - `header` | `subheader` | `verse` | `verseQuote` | `whitespace`
+    - `bibleCopyright` - the copyright notice of the bible translation
+    - `bookAbrv` - the short ID or abbreviation of the book that the file is, ex. “JHN”
+    - `bookName` - the name of the book, ex. “John”
+    - `chapterNumber` - the chapter number
+    - `verseCount` - the amount of verses in that file
+    - `langEnglish` - the language of the translation in English
+    - `lang` - the language
+    - `langDir` - the language direction (left to right, right to left)
+- `content` - the actual Bible content, an array
+    - content item objects
+        - `type` - the type of the item - see conversion key for `content` types
         - `verse` (only type `verse` ) - the verse number
-        - `text` - array of the text
-            - could be either a normal string
-            - or an object literal with extra formatting
-                - `content` - the content string
-                - modifier - boolean - the modifier that the formatting is - `italic` | `red`
+        - `text` - array of the content
+            - text item objects
+                - `text` - the content string
+                - `type` - the style of the item - see conversion key for `text` types
+                - `footnoteText` (only for footnotes) - the content of the footnote
 
 ## Example
 
-See [EXAMPLE.json](EXAMPLE.json) to see Luke 23 (English Majority Text Version) in BibleJSON formatting.
-File created as of version `v0.0.1-alpha`
+See [EXAMPLE.jsonc](EXAMPLE.jsonc) to see Luke 23 (English Majority Text Version) in BibleJSON formatting.
 
 # Feedback and contributing
 
-Please give feedback on the format, before we decide to deploy it everywhere accross Bibleio. We need feedback on developer experience on actually using it within apps, websites, etc.
+Please give feedback on the format, before we decide to deploy it everywhere across Bibleio. We need feedback on developer experience on actually using it within apps, websites, etc.
 
 If you could help make a converter script for another file format, that would be amazing!
-
-[Discord](https://discord.gg/7eVCyQ5GGb) - or `bibleio@bibleio.com`
-
-Licensed `MIT-0`. No attribution required.
