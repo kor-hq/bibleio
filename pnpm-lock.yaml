@@ -18,10 +18,10 @@ importers:
         specifier: ^8.4.49
         version: 8.4.49
       tailwindcss:
-        specifier: ^3.4.15
+        specifier: ^3.4.17
         version: 3.4.17
       turbo:
-        specifier: ^2.3.1
+        specifier: ^2.3.3
         version: 2.3.3
 
   apps/api: {}
@@ -216,6 +216,8 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.8
         version: 0.6.9(prettier-plugin-astro@0.14.1)(prettier@3.4.2)
+
+  packages/biblejson: {}
 
   packages/design:
     dependencies:
@@ -2442,6 +2444,10 @@ packages:
 
   call-bind-apply-helpers@1.0.1:
     resolution: {integrity: sha512-BhYE+WDaywFg2TBWYNXAE+8B1ATnThNBqXHP5nQu0jWJdVvY2hvkpyB3qOmtmDePiS5/BDQ8wASEWGMWRG148g==}
+    engines: {node: '>= 0.4'}
+
+  call-bind@1.0.8:
+    resolution: {integrity: sha512-oKlSFMcMwpUg2ednkhQ454wfWiU/ul3CkJe/PEHcTKuiX6RpbehUiFMXu13HalGZxfUwCQzZG747YXBn1im9ww==}
     engines: {node: '>= 0.4'}
 
   call-bind@1.0.8:

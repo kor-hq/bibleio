@@ -8,6 +8,10 @@
 **/output
 **/.next
 
+# biblejson
+packages/biblejson/OUTPUT.json
+packages/biblejson/html/**
+
 # dependencies
 node_modules
 
