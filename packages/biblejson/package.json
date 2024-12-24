@@ -3,7 +3,6 @@
 	"license": "MIT-0",
 	"description": "Another new formatting standard for scripture",
 	"scripts": {
-		"install": "cargo install --path=.",
 		"dev": "cargo run",
 		"build": "cargo build --release",
 		"fix": "cargo fmt && cargo clippy --fix --allow-dirty"
