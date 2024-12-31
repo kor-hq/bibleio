@@ -7,8 +7,8 @@ This is the Bibleio monorepo, all the code that powers Bibleio. Here you can fin
 - [`apps/web-app`](https://github.com/bibleio/bibleio/tree/main/apps/web-app) Web app is a lightweight minimalist Bible study app, with all the Bibleio functionality.
 - [`apps/website`](https://github.com/bibleio/bibleio/tree/main/apps/website) The main public facing website
 - [`apps/docs`](https://github.com/bibleio/bibleio/tree/main/apps/docs) Developer docs
-- [`apps/api`](https://github.com/bibleio/bibleio/tree/main/apps/api) Our back-end API, right now mainly a Bible API
-- [`apps/biblejson`](https://github.com/bibleio/bibleio/tree/main/apps/api) Another new formatting standard for scripture
+- [`apps/api`](https://github.com/bibleio/bibleio/tree/main/apps/api) Our backend API, right now mainly a Bible API
+- [`packages/biblejson`](https://github.com/bibleio/bibleio/tree/main/packages/biblejson) Another new formatting standard for scripture
 - [`packages/design`](https://github.com/bibleio/bibleio/tree/main/packages/design) Our design system
 
 See more about each project in their README.
@@ -19,7 +19,7 @@ We use Turborepo and pnpm for our monorepo. Here's our main commands:
 ```bash
 pnpm webapp dev # web app dev server
 pnpm site dev # website dev server
-pnpm docs dev # docs site dev server
+pnpm **run** docs dev # developer website dev server, **you need to add the `run` keyword for this**
 pnpm design dev # design system storybook dev server
 pnpm api dev # cargo run
 pnpm biblejson dev # cargo run

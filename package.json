@@ -7,7 +7,7 @@
 	"scripts": {
 		"site": "turbo run --filter=@bibleio/website",
 		"webapp": "turbo run --filter=@bibleio/web-app",
-		"docs-site": "turbo run --filter=@bibleio/docs",
+		"docs": "turbo run --filter=@bibleio/docs",
 		"api": "turbo run --filter=@bibleio/api",
 		"biblejson": "turbo run --filter=@bibleio/biblejson",
 		"design": "turbo run --filter=@bibleio/design",
