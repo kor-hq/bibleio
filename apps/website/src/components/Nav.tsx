@@ -290,12 +290,12 @@ export function Nav({ path }: { path: string }) {
 									</NavigationMenu.Content>
 								</NavigationMenu.Item>
 							</NavigationMenu.List>
-							<a href="https://app.bibleio.com" className="max-[770px]:hidden">
-								<Button>
-									Web App
-									<ArrowUpRight />
-								</Button>
-							</a>
+							{/* <a href="https://app.bibleio.com" className="max-[770px]:hidden"> */}
+							<Button disabled>
+								Web App
+								<ArrowUpRight />
+							</Button>
+							{/*</a> */}
 						</div>
 
 						<NavigationMenu.Viewport />

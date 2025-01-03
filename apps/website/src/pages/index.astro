@@ -173,7 +173,7 @@ import Layout from "../layouts/Layout.astro";
             Simple Bible reading app.
           </p>
           <div class="flex gap-12">
-            <a href="https://app.bibleio.com"><Button>Visit</Button></a>
+            <Button disabled>Visit</Button>
             <a href="/apps#web"
               ><Button variant="secondary">Learn More</Button></a
             >
@@ -273,7 +273,7 @@ import Layout from "../layouts/Layout.astro";
           <p class="text-body leading-[220%] text-text">
             Why believe in God or Jesus?
           </p>
-          <a href="/why-believe"><Button>Why?</Button></a>
+          <a href="/why-believe" class="w-fit"><Button>Why?</Button></a>
         </div>
         <div
           id="about"
@@ -281,9 +281,9 @@ import Layout from "../layouts/Layout.astro";
         >
           <h2 class="text-[3.75rem] leading-none text-text">About</h2>
           <p class="text-body leading-[220%] text-text">
-             Bibleio is a Christian organization based on making innovative, modern, free and open-source Bible technology. The Bible industry is full of copyright, paid resources, & clunky old software. We want to fix that. 
+             Bibleio is a Christian organization based on making innovative, modern, free and open-source Bible technology. We want to bring incredible design, performance, and an amazing workspace for you to study the Bible in, and in the future other stuff.
           </p>
-          <a href="/readme"><Button>View README</Button></a>
+          <a href="/readme" class="w-fit"><Button>View README</Button></a>
         </div>
 
         <div
@@ -341,5 +341,5 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
     </div>
-  </section></Layout
->
+  </section>
+</Layout>
