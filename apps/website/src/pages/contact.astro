@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactItem from "@/components/contact/ContactItem.astro";
+---
+
+<Layout title="Contact">
+  <section
+    id="landing"
+    class="relative flex h-[110vh] flex-col items-start justify-center gap-24 overflow-clip p-256 max-[1000px]:p-32 max-[480px]:p-16"
+  >
+    <h1
+      class="text-h1 text-text"
+    >
+      Contact
+    </h1>
+    <ContactItem name="Email" linkTitle="contact@bibleio.com" link="mailto:contact@bibleio.com" />
+    <ContactItem name="Support email" linkTitle="support@bibleio.com" link="mailto:support@bibleio.com" />
+    <ContactItem name="Bluesky" linkTitle="@bibleio.com" link="https://bsky.app/profile/bibleio.com" />
+    <ContactItem name="Twitter/X" linkTitle="@bibleioo" link="https://x.com/bibleioo" />
+    <ContactItem name="Instragram" linkTitle="@bibleioo" link="https://www.instagram.com/bibleio/" />
+    <ContactItem name="Mastodon" linkTitle="@bibleio(mastodon.social)" link="https://mastodon.social/@bibleio" />
+    <ContactItem name="Discord username (Founder)" linkTitle="dukkcc" link="#" />
+    <ContactItem name="Discord server" linkTitle="discord.gg/7eVCyQ5GGb" link="https://discord.gg/7eVCyQ5GGb" />
+    <div class="absolute left-0 top-0 -z-50 h-full w-full">
+      <div
+        class="absolute -top-1/2 left-[20%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-lime blur-[15vmin]"
+      >
+      </div>
+      <div
+        class="absolute -bottom-1/2 left-[50%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-teal blur-[15vmin]"
+      >
+      </div>
+    </div>
+  </section>
+</Layout>
