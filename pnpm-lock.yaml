@@ -191,9 +191,6 @@ importers:
       astro:
         specifier: ^4.16.12
         version: 4.16.18(@types/node@20.17.11)(rollup@4.29.1)(typescript@5.7.2)
-      gsap:
-        specifier: ^3.12.5
-        version: 3.12.5
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -216,6 +213,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.8
         version: 0.6.9(prettier-plugin-astro@0.14.1)(prettier@3.4.2)
+      tailwindcss-motion:
+        specifier: ^1.0.1
+        version: 1.0.1(tailwindcss@3.4.17)
 
   packages/biblejson: {}
 
@@ -4310,6 +4310,11 @@ packages:
 
   tailwind-merge@2.6.0:
     resolution: {integrity: sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==}
+
+  tailwindcss-motion@1.0.1:
+    resolution: {integrity: sha512-ZqarvI3XSclT46Dq1wOo9qG9Yx0TIyEtkMfTo8l0JuVKvO1WiSbvAECuTqdYHpC9Ml7abuJIk7u907SBHYprwQ==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
 
   tailwindcss-radix@3.0.5:
     resolution: {integrity: sha512-dy5bIHixuvrmMzljDoteKD1mcLAm76Z1IPkCr7IWUN89zoxfokVepPlxMQkmWEQokYs3N9BOLsXXvn8fLZWoBg==}
@@ -9316,6 +9321,10 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tailwind-merge@2.6.0: {}
+
+  tailwindcss-motion@1.0.1(tailwindcss@3.4.17):
+    dependencies:
+      tailwindcss: 3.4.17
 
   tailwindcss-radix@3.0.5(tailwindcss@3.4.17):
     dependencies:

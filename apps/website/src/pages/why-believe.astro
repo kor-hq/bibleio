@@ -15,58 +15,17 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Home">
-  <script>
-    import { gsap } from 'gsap';
-
-    // "Bibleio" landing text animation
-
-    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
-
-    if (text && text.textContent) {
-      const words = text.textContent.split(/(\s+)/);
-      text.innerHTML = words
-        .map((word) => {
-          // If it's just whitespace, wrap it in a span with space class
-
-          // For actual words, wrap each letter in a span
-          return `<span class="word inline-block">
-            ${Array.from(word)
-              .map(
-                (letter) => `<span class="letter inline-block">${letter}</span>`
-              )
-              .join('')}
-          </span>`;
-        })
-        .join('');
-
-      // Create the GSAP animation
-      gsap.from('.animate-bounce-in span', {
-        opacity: 0,
-        scale: 0,
-        duration: 0.5,
-        y: 75,
-        ease: 'back.out(.1)',
-        stagger: {
-          amount: 0.35,
-          from: 'start',
-        },
-      });
-    } else {
-      console.warn('Animation target element not found');
-    }
-  </script>
-
   <section
     id="landing"
     class="relative flex h-screen flex-col items-start justify-center gap-32 overflow-clip border-b border-stroke p-128 max-[890px]:p-16"
   >
     <h1
-      class="animate-bounce-in pt-72 text-left text-[256px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
+      class="motion-preset-rebound-right pt-72 text-left text-[192px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
     >
-      Why&numsp;believe?
+      Why <br /> believe?
     </h1>
     <h3
-      class="animate-scale-in text-h3 leading-[150%] text-text max-[1000px]:text-body"
+      class="motion-preset-fade-lg text-h3 leading-[150%] text-text max-[1000px]:text-body"
     >
       Why believe in God, or that Jesus is God?
     </h3>

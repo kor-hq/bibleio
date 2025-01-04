@@ -132,6 +132,14 @@ export const bibleioTheme = {
 					from: { rotate: "0deg" },
 					to: { rotate: "360deg" },
 				},
+				"scroll-x": {
+					from: { transform: "translateX(0%)" },
+					to: { rotate: "translateX(100%)" },
+				},
+				"scroll-y": {
+					from: { transform: "translateY(0%)" },
+					to: { rotate: "translateY(100%)" },
+				},
 				"caret-blink": {
 					"0%,70%,100%": { opacity: "1" },
 					"20%,50%": { opacity: "0" },
@@ -144,6 +152,8 @@ export const bibleioTheme = {
 				"fade-out": "fade-out 150ms ease-out",
 				"caret-blink": "caret-blink 1.2s ease-out infinite",
 				spin: "spin 1s linear infinite",
+				"scroll-x": "scroll-x 33s linear infinite",
+				"scroll-y": "scroll-y 33s linear infinite",
 				"spin-slow": "spin 15s linear infinite",
 			},
 		},
