@@ -1,19 +1,27 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Prose from "../../components/Prose.astro";
 import Layout from "../../layouts/Layout.astro";
 
 // gen paths
+
+type blogType = CollectionEntry<"blog">;
+
 export async function getStaticPaths() {
 	const blogEntries = await getCollection("blog");
-	return blogEntries.map((entry) => ({
+	return blogEntries.map((entry: blogType) => ({
 		params: { slug: entry.slug },
 		props: { entry },
 	}));
 }
 
 // gen page content
+
+interface Props {
+	entry: blogType;
+}
+
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
@@ -39,7 +47,7 @@ const { Content } = await entry.render();
       </time>
     </div>
     <h1
-      class="mb-48 w-full text-center text-[4rem] italic leading-none max-[1350px]:text-[64px] max-[460px]:text-[48px]"
+      class="mb-48 w-full text-center text-[4rem]  leading-none max-[1350px]:text-[64px] max-[460px]:text-[48px]"
     >
       {entry.data.title}
     </h1>

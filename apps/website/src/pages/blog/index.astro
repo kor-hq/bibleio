@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import { getImage } from "astro:assets";
-import { getCollection } from "astro:content";
-import { Bible, Circle, Cross, Hexagon, Star, Triangle } from "@bibleio/design";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
-const blogs = await getCollection("blog", ({ data }) => {
+type blogType = CollectionEntry<"blog">;
+
+const blogs = await getCollection("blog", ({ data }: blogType) => {
 	return import.meta.env.PROD ? data.draft !== true : true;
 });
 ---
@@ -13,61 +13,70 @@ const blogs = await getCollection("blog", ({ data }) => {
 <Layout title="Apps">
   <section
     id="landing"
-    class="relative flex h-[66vh] flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-16 max-[480px]:p-16"
+    class="relative flex h-fit  flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-64 pt-[192px] max-[480px]:p-16"
   >
     <h1
-      class="motion-preset-slide-up-sm pt-72 text-center text-[192px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="motion-preset-slide-up-sm pt-72 text-center text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
     >
       Blog
     </h1>
-    <div
-      class="h-full absolute justify-end items-center left-[20%] -z-50 flex flex-col gap-64"
-    >
-      <div class="flex flex-col gap-64 justify-end items-center motion-translate-y-loop-[50%]/reset motion-duration-[20s] motion-ease-linear">
-        <Cross />
-        <Bible />
-        <Circle />
-        <Star />
-        <Hexagon />
-        <Triangle />
-        <Cross />
-        <Bible />
-        <Circle />
-        <Star />
-        <Hexagon />
-        <Triangle />
+    <div class="absolute left-0 top-0 -z-50 h-full w-full">
+      <div
+        class="absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-yellow blur-[50vmin]"
+      >
+      </div>
+      <div
+        class="absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-green blur-[50vmin]"
+      >
+      </div>
+      <div
+        class="absolute bottom-[-50%] left-[20%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-purple blur-[50vmin]"
+      >
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
-    <div id="container" class="divide-y divide-stroke border-l border-stroke">
-      <div class="grid grid-cols-2 max-[820px]:grid-cols-1">
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0 text-text">
+    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+      <div class="grid grid-cols-4 max-[820px]:grid-cols-1">
+      <div class="flex flex-col gap-0 col-span-1 divide-y divide-stroke">
+        <div class="flex flex-col p-24 gap-16">
+          <p class="text-body leading-[200%]">On our blog we post about faith related topics, announcements regarding Bibleio, and our process engineering and making Bibleio.</p>
+        </div>
+        <div class="flex flex-col p-24 gap-16">
+          <h3 class="text-h3">Tags</h3>
+        </div>
+      </div>
+      <div class="flex flex-col gap-0 col-span-3 border-l border-stroke">
         {
-          blogs.map((blog) => (
+          blogs.map((blog: blogType) => (
             <a
               href={`/blog/${blog.slug}`}
-              class="flex flex-col border-b border-r border-stroke text-text"
+              class="grid grid-cols-2 p-24 h-fit gap-24 border-b border-stroke text-text group"
             >
-              <Image
-                alt={blog.data.title}
-                src={blog.data.image}
-                width={1200}
-                height={600}
-                class="aspect-[16/6] h-auto w-full object-cover"
-              />
-              <div class="flex h-fit flex-col gap-12 px-48 py-24 max-[580px]:p-16">
-                <h3 class="text-h3 leading-none">{blog.data.title}</h3>
-                <time
-                  class="text-body leading-none"
-                  datetime={blog.data.date.toISOString()}
-                >
-                  {blog.data.date.toDateString()}
-                </time>
+              <div class="flex flex-col gap-24">
+                <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">{blog.data.title}</h3>
+                <div class="flex gap-24">
+                  <time
+                    class="text-body leading-none"
+                    datetime={blog.data.date.toISOString()}
+                  >
+                    {blog.data.date.toDateString()}
+                  </time>
+                  <p class="text-body leading-none">{blog.data.author}</p>
+                </div>
               </div>
+              <Image
+                  alt={blog.data.title}
+                  src={blog.data.image}
+                  width={1200}
+                  height={600}
+                  class="aspect-[12/6] h-auto object-cover rounded-8 border border-stroke group-hover:border-accent-reversed duration-150 ease-out"
+                />
             </a>
           ))
         }
       </div>
+    </div>
     </div>
   </section>
 </Layout>

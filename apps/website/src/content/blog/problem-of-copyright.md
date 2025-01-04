@@ -2,7 +2,7 @@
   title: "The Problem of Copyright in the Bible Industry"
   date: 2024-08-08
   author: "dukc"
-  image: "/blog/exploiting-jesus.jpg"
+  image: "/home/desktop.png"
   draft: true
 ---
 
