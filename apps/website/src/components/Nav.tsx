@@ -32,7 +32,10 @@ export function Nav({ path }: { path: string }) {
 			section: "Us",
 			items: [
 				{ text: "README", link: "/readme" },
-				{ text: "Roadmap", link: "/roadmap" },
+				{
+					text: "Roadmap",
+					link: "https://github.com/bibleio/bibleio/projects?query=is%3Aopen",
+				},
 				{ text: "Blog", link: "/blog" },
 			],
 		},
@@ -274,7 +277,8 @@ export function Nav({ path }: { path: string }) {
 												</p>
 											</NavigationMenu.Link>
 											<NavigationMenu.Link
-												href="/roadmap"
+												href="https://github.com/bibleio/bibleio/projects?query=is%3Aopen"
+												target="_blank"
 												className="flex w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 											>
 												<h4 className="text-h4">Roadmap</h4>
