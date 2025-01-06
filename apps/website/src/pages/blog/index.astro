@@ -9,7 +9,7 @@ const authors = await getCollection("team");
 type authorsType = CollectionEntry<"team">;
 ---
 
-<Layout title="Apps">
+<Layout title="Contact">
   <section
     id="landing"
     class="relative flex h-fit  flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-64 pt-[192px] max-[480px]:p-16"
@@ -76,7 +76,7 @@ type authorsType = CollectionEntry<"team">;
                   </p>
                 </div>
               </div>
-              <Image class="rounded-8 border border-stroke shadow-popup group-hover:border-accent-reversed duration-150" width={1000} height={1000} alt={"Blog image"} src={blog.data.properties.image.files[0].file.url}/>
+              <Image class="rounded-8 border border-stroke shadow-popup group-hover:border-accent-reversed duration-150" width={1000} height={1000} alt={"Blog image"} src={`/blog/${blog.data.properties.slug.rich_text[0].plain_text}`}/>
             </a>
           ))
         }

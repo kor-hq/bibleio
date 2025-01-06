@@ -14,7 +14,7 @@ export default defineConfig({
 	site: "https://www.bibleio.com",
 	integrations: [
 		react(),
-		tailwind(),
+		tailwind({ applyBaseStyles: false }),
 		yeskunallumami({
 			id: "3f919d73-0804-4662-b4c6-43e1551fe508",
 			endpointUrl: "https://umami.cool.korhq.com",

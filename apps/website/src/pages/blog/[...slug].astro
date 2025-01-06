@@ -1,27 +1,69 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import Prose from "../../components/Prose.astro";
 import Layout from "../../layouts/Layout.astro";
+
+const authors = await getCollection("team");
+type authorsType = CollectionEntry<"team">;
+
+export async function getStaticPaths() {
+	const pages = await getCollection("blog");
+
+	return pages.map((page) => {
+		return {
+			params: {
+				slug: page.data.properties.slug.rich_text[0].plain_text,
+			},
+			props: {
+				page,
+			},
+		};
+	});
+}
+
+export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
+const { page } = Astro.props;
+
+const { Content } = await render(page);
 ---
 
-<Layout title={` - Bibleio`}>
+<Layout title={page.data.properties.Name.title[0].plain_text}>
   <div
     class="flex min-h-screen flex-col items-center gap-24 px-256 py-96 text-text max-[1180px]:px-64 max-[800px]:p-16"
   >
+    <Image
+      width={1280}
+      height={720}
+      src={`/blog/${page.data.properties.slug.rich_text[0].plain_text}`}
+      alt={page.data.properties.Name.title[0].plain_text}
+      class="aspect-[16/6] h-auto w-full rounded-16 border border-stroke object-cover"
+    />
     <div class="flex flex-wrap justify-center gap-32">
-      <p class="text-body leading-none">by </p>
+      <p class="text-body leading-none">
+        by{" "}
+        {page.data.properties.author.people
+          .map((person: { id: string; object: string }) => {
+            const matchedAuthor = authors.find(
+              (author: authorsType) => author.data.notionUserId === person.id
+            );
+            return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+          })
+          .join(", ")}
+      </p>
       <time
         class="text-body leading-none"
       >
+        {(page.data.properties.date.date || {}).start || "Unknown date"}
       </time>
     </div>
     <h1
-      class="mb-48 w-full text-center text-[4rem]  leading-none max-[1350px]:text-[64px] max-[460px]:text-[48px]"
+      class="mb-48 w-full text-center text-h1 leading-none max-[1350px]:text-h1 max-[460px]:text-h2"
     >
+    {page.data.properties.Name.title[0].plain_text}
     </h1>
     <div class="w-full max-w-[32rem] leading-[220%]">
-      <Prose><div /></Prose>
+      <Prose><Content /></Prose>
     </div>
   </div>
 </Layout>
