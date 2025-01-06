@@ -3,56 +3,25 @@ import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Prose from "../../components/Prose.astro";
 import Layout from "../../layouts/Layout.astro";
-
-// gen paths
-
-type blogType = CollectionEntry<"blog">;
-
-export async function getStaticPaths() {
-	const blogEntries = await getCollection("blog");
-	return blogEntries.map((entry: blogType) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
-}
-
-// gen page content
-
-interface Props {
-	entry: blogType;
-}
-
-const { entry } = Astro.props;
-const { Content } = await entry.render();
 ---
 
-<Layout title={`${entry.data.title} - Bibleio`}>
+<Layout title={` - Bibleio`}>
   <div
     class="flex min-h-screen flex-col items-center gap-24 px-256 py-96 text-text max-[1180px]:px-64 max-[800px]:p-16"
   >
-    <Image
-      width={1920}
-      height={1080}
-      src={entry.data.image}
-      alt={entry.data.title}
-      class="aspect-[16/6] h-auto w-full rounded-16 border border-stroke object-cover"
-    />
     <div class="flex flex-wrap justify-center gap-32">
-      <p class="text-body leading-none">by {entry.data.author}</p>
+      <p class="text-body leading-none">by </p>
       <time
         class="text-body leading-none"
-        datetime={entry.data.date.toISOString()}
       >
-        {entry.data.date.toDateString()}
       </time>
     </div>
     <h1
       class="mb-48 w-full text-center text-[4rem]  leading-none max-[1350px]:text-[64px] max-[460px]:text-[48px]"
     >
-      {entry.data.title}
     </h1>
     <div class="w-full max-w-[32rem] leading-[220%]">
-      <Prose><Content /></Prose>
+      <Prose><div /></Prose>
     </div>
   </div>
 </Layout>

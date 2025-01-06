@@ -336,7 +336,7 @@ export function Nav({ path }: { path: string }) {
 			<div
 				className={`m-16 mt-0 h-full min-h-0 flex-col items-start gap-[40px] overflow-y-scroll rounded-16 border border-stroke bg-fg-1 p-24 shadow-popup ${navOpen ? "flex animate-scale-in" : "hidden"}`}
 			>
-				{navItems.map((section, index) => (
+				{navItems.map((section) => (
 					<div key={section.section} className="flex flex-col gap-[28px]">
 						<p className="text-text/50 -mb-12 text-sub">{section.section}</p>
 						{section.items.map((item) => (

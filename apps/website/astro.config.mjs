@@ -24,4 +24,16 @@ export default defineConfig({
 	devToolbar: {
 		enabled: false,
 	},
+	// for loading images from the notion cms
+	image: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "**.amazonaws.com",
+			},
+		],
+	},
+	experimental: {
+		contentLayer: true,
+	},
 });

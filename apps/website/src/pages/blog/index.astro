@@ -3,11 +3,10 @@ import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
+const blogs = await getCollection("blog");
 type blogType = CollectionEntry<"blog">;
-
-const blogs = await getCollection("blog", ({ data }: blogType) => {
-	return import.meta.env.PROD ? data.draft !== true : true;
-});
+const authors = await getCollection("team");
+type authorsType = CollectionEntry<"team">;
 ---
 
 <Layout title="Apps">
@@ -44,34 +43,40 @@ const blogs = await getCollection("blog", ({ data }: blogType) => {
         </div>
         <div class="flex flex-col p-24 gap-16">
           <h3 class="text-h3">Tags</h3>
+          <div class="flex gap-8">
+            <i class="ti ti-check text-[1rem] text-text"></i>
+          </div>
         </div>
       </div>
       <div class="flex flex-col gap-0 col-span-3 border-l border-stroke">
         {
           blogs.map((blog: blogType) => (
             <a
-              href={`/blog/${blog.slug}`}
+              href={`/blog/${blog.data.properties.slug.rich_text[0].plain_text}`}
               class="grid grid-cols-2 p-24 h-fit gap-24 border-b border-stroke text-text group"
             >
               <div class="flex flex-col gap-24">
-                <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">{blog.data.title}</h3>
+                <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">{blog.data.properties.Name.title[0].plain_text}</h3>
                 <div class="flex gap-24">
                   <time
                     class="text-body leading-none"
-                    datetime={blog.data.date.toISOString()}
                   >
-                    {blog.data.date.toDateString()}
+                    {(blog.data.properties.date.date || {}).start || "Unknown date"}
                   </time>
-                  <p class="text-body leading-none">{blog.data.author}</p>
+                  <p class="text-body leading-none">
+                    by{" "}
+                    {blog.data.properties.author.people
+                      .map((person: { id: string; object: string }) => {
+                        const matchedAuthor = authors.find(
+                          (author: authorsType) => author.data.notionUserId === person.id
+                        );
+                        return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+                      })
+                      .join(", ")}
+                  </p>
                 </div>
               </div>
-              <Image
-                  alt={blog.data.title}
-                  src={blog.data.image}
-                  width={1200}
-                  height={600}
-                  class="aspect-[12/6] h-auto object-cover rounded-8 border border-stroke group-hover:border-accent-reversed duration-150 ease-out"
-                />
+              <Image class="rounded-8 border border-stroke shadow-popup group-hover:border-accent-reversed duration-150" width={1000} height={1000} alt={"Blog image"} src={blog.data.properties.image.files[0].file.url}/>
             </a>
           ))
         }
