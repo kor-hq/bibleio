@@ -57,11 +57,11 @@ type authorsType = CollectionEntry<"team">;
             >
               <div class="flex flex-col gap-24">
                 <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">{blog.data.properties.Name.title[0].plain_text}</h3>
-                <div class="flex gap-24">
+                <div class="flex gap-24 flex-wrap gap-y-12">
                   <time
                     class="text-body leading-none"
                   >
-                    {(blog.data.properties.date.date || {}).start || "Unknown date"}
+                    {(new Date((blog.data.properties.date.date || {}).start || "")).toDateString() || "Unknown date"}
                   </time>
                   <p class="text-body leading-none">
                     by{" "}
@@ -76,7 +76,17 @@ type authorsType = CollectionEntry<"team">;
                   </p>
                 </div>
               </div>
-              <Image class="rounded-8 border border-stroke shadow-popup group-hover:border-accent-reversed duration-150" width={1000} height={1000} alt={"Blog image"} src={`/blog/${blog.data.properties.slug.rich_text[0].plain_text}`}/>
+              <Image
+              class="rounded-8 border aspect-video border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
+              width={1000}
+              height={1000}
+              alt={"Blog image"}
+              src={
+                blog.data.properties.image.files[0].type === "file"
+                  ? blog.data.properties.image.files[0].file.url
+                  : blog.data.properties.image.files[0].external.url
+              }
+              />
             </a>
           ))
         }

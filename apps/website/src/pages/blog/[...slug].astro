@@ -35,7 +35,11 @@ const { Content } = await render(page);
     <Image
       width={1280}
       height={720}
-      src={`/blog/${page.data.properties.slug.rich_text[0].plain_text}`}
+      src={
+        page.data.properties.image.files[0].type === "file"
+          ? page.data.properties.image.files[0].file.url
+          : page.data.properties.image.files[0].external.url
+      }
       alt={page.data.properties.Name.title[0].plain_text}
       class="aspect-[16/6] h-auto w-full rounded-16 border border-stroke object-cover"
     />

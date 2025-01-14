@@ -15,9 +15,7 @@ const team = defineCollection({
 		name: z.string(),
 		notionUserId: z.string().optional(), // if you write any content
 		pfp: z.string(),
-		field: z.array(
-			z.enum(["founder", "front-end", "back-end", "design", "marketing"]),
-		),
+		field: z.array(z.string()),
 		description: z.string().optional(),
 		links: z
 			.array(
