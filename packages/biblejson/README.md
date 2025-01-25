@@ -1,4 +1,4 @@
-![banner](https://github.com/user-attachments/assets/34cd22a2-7751-4e24-9f2a-24b66a007362)
+![banner](/.github/assets/gh-biblejson.png)
 
 ## `v0.0.2-alpha`
 

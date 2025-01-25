@@ -1,5 +1,8 @@
 ![banner](/.github/assets/gh-docs.png)
 
+> [!IMPORTANT]
+> This website is unfinished and old, we're planning on rewriting it.
+
 Docs is our developer documentation for our API, design system, and BibleJSON.
 
 It will be built with unDocs, which is a primitive library for Astro documentation.
