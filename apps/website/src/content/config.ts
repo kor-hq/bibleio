@@ -9,6 +9,13 @@ const blog = defineCollection({
 	}),
 });
 
+const handbook = defineCollection({
+	loader: notionLoader({
+		auth: import.meta.env.NOTION_TOKEN,
+		database_id: import.meta.env.NOTION_HANDBOOK_DATABASE_ID,
+	}),
+});
+
 const team = defineCollection({
 	loader: glob({ pattern: "**/*.json", base: "./src/content/team" }),
 	schema: z.object({
@@ -39,4 +46,5 @@ const team = defineCollection({
 export const collections = {
 	blog: blog,
 	team: team,
+	handbook: handbook,
 };

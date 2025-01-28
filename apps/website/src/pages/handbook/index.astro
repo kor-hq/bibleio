@@ -4,103 +4,65 @@ import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 
-const blogs = await getCollection("blog", ({ data }) => {
+const pages = await getCollection("handbook", ({ data }) => {
 	// Exclude drafts in prod
 	return import.meta.env.PROD ? data.properties.draft.checkbox !== true : true;
 });
 const authors = await getCollection("team");
 
-const formattedBlogs = blogs
-	.map((blog: CollectionEntry<"blog">) => ({
-		slug: blog.data.properties.slug.rich_text[0].plain_text,
-		title: blog.data.properties.Name.title[0].plain_text,
-		date: new Date(blog.data.properties.date.date?.start ?? ""),
-		authors: blog.data.properties.author.people
-			.map((person: { id: string }) => {
-				const matchedAuthor = authors.find(
-					(author: CollectionEntry<"team">) =>
-						author.data.notionUserId === person.id,
-				);
-				return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-			})
-			.join(", "),
-		imageUrl:
-			blog.data.properties.image.files[0].type === "file"
-				? blog.data.properties.image.files[0].file.url
-				: blog.data.properties.image.files[0].external.url,
-	}))
-	.sort((a, b) => b.date.getTime() - a.date.getTime());
+const formattedPages = pages.map((blog: CollectionEntry<"handbook">) => ({
+	slug: blog.data.properties.slug.rich_text[0].plain_text,
+	title: blog.data.properties.Name.title[0].plain_text,
+	lastUpdated: new Date(blog.data.properties.lastUpdated.date?.start ?? ""),
+	category: blog.data.properties.category.select?.name,
+	authors: blog.data.properties.author.people.map((person: { id: string }) => {
+		const matchedAuthor = authors.find(
+			(author: CollectionEntry<"team">) =>
+				author.data.notionUserId === person.id,
+		);
+		return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+	}),
+}));
+
+const pagesByCategory = formattedPages.reduce(
+	(acc, page) => {
+		const category = page.category || "Uncategorized";
+		if (!acc[category]) {
+			acc[category] = [];
+		}
+		acc[category].push(page);
+		return acc;
+	},
+	{} as Record<string, typeof formattedPages>,
+);
 ---
 
 <Layout title="Handbook">
-<section
-  id="landing"
-  class="relative flex h-fit  flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-64 pt-[192px] max-[480px]:p-16"
->
-  <h1
-    class="motion-preset-slide-up-sm pt-72 text-center text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
-  >
-    Blog
-  </h1>
-  <div class="absolute left-0 top-0 -z-50 h-full w-full">
-    <div
-      class="absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-yellow blur-[15vmin]"
-    >
-    </div>
-    <div
-      class="absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-green blur-[15vmin]"
-    >
-    </div>
-    <div
-      class="absolute bottom-[-50%] left-[20%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-purple blur-[15vmin]"
-    >
-    </div>
-  </div>
-</section>
-
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0 text-text">
-  <div id="container" class="divide-y divide-stroke border-x border-stroke">
-    <div class="grid grid-cols-4 max-[820px]:grid-cols-1">
-    <div class="flex flex-col gap-0 col-span-1 divide-y divide-stroke">
-      <div class="flex flex-col p-24 gap-16">
-        <p class="text-body leading-[200%]">On our blog we post about faith related topics, announcements regarding Bibleio, and our process engineering and making Bibleio.</p>
-      </div>
-    </div>
-        <div class="flex flex-col gap-0 col-span-3 border-l border-stroke">
-          {formattedBlogs.length > 0 ?
-            formattedBlogs.map((blog) => (
+  <section id="main" class="flex gap-12 px-256 text-text min-h-screen pt-96 pb-64">
+    <div id="sidebar" class="flex flex-col gap-20 w-[16rem]">
+      <Image class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto" alt={"handbook cover"} width={280} height={420} src={"/handbook/handbook-org.png"} />
+      <h2 class="text-h2">Handbook</h2>
+      {Object.entries(pagesByCategory).map(([category, pages]) => (
+        <div class="flex flex-col gap-0 w-full">
+          <div class="flex pl-[14px] pb-6"><p class="text-body text-text opacity-75 capitalize">{category}</p></div>
+          <div class="flex flex-col gap-0">
+            {pages.map((page) => (
               <a
-                href={`/blog/${blog.slug}`}
-                class="grid grid-cols-2 p-24 h-fit gap-24 border-b border-stroke text-text group last:border-b-transparent"
+                href={`/handbook/${page.slug}`}
+                class="px-12 py-8 rounded-12"
               >
-                <div class="flex flex-col gap-24">
-                  <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">
-                    {blog.title}
-                  </h3>
-                  <div class="flex gap-24 flex-wrap gap-y-12">
-                    <time class="text-body leading-none">
-                      {blog.date.toDateString()}
-                    </time>
-                    <p class="text-body leading-none">
-                      by {blog.authors}
-                    </p>
-                  </div>
-                </div>
-                <Image
-                  class="rounded-8 border aspect-video border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
-                  width={720}
-                  height={720}
-                  alt={blog.title}
-                  src={blog.imageUrl}
-                />
+                <p class="text-body">{page.title}</p>
               </a>
-            )) :
-            <div class="p-32 flex flex-col gap-12">
-              <h1 class="text-h1">No blogs</h1>
-              <p class="text-body">Come back later!</p>
-            </div>
-          }
+            ))}
+          </div>
         </div>
+      ))}
+    </div>
+    <div id="content" class="bg-fg-1 border border-stroke rounded-16 w-full h-fit min-h-screen flex flex-col p-32 gap-24 items-center">
+      <div class="max-w-[32rem] w-full">
+      <p class="text-body leading-[200%]">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.
+      </p>
       </div>
     </div>
   </section>
