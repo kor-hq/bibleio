@@ -5,7 +5,6 @@ import Prose from "../../components/Prose.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const authors = await getCollection("team");
-type authorsType = CollectionEntry<"team">;
 
 export async function getStaticPaths() {
 	const pages = await getCollection("blog");
@@ -25,46 +24,52 @@ export async function getStaticPaths() {
 export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
 const { page } = Astro.props;
 
+const pageData = {
+	title: page.data.properties.Name.title[0].plain_text,
+	imageUrl:
+		page.data.properties.image.files[0].type === "file"
+			? page.data.properties.image.files[0].file.url
+			: page.data.properties.image.files[0].external.url,
+	date: new Date(page.data.properties.date.date?.start ?? ""),
+	authors: page.data.properties.author.people
+		.map((person: { id: string; object: string }) => {
+			const matchedAuthor = authors.find(
+				(author: CollectionEntry<"team">) =>
+					author.data.notionUserId === person.id,
+			);
+			return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+		})
+		.join(", "),
+};
+
 const { Content } = await render(page);
 ---
 
-<Layout title={page.data.properties.Name.title[0].plain_text}>
+<Layout title={pageData.title}>
   <div
     class="flex min-h-screen flex-col items-center gap-24 px-256 py-96 text-text max-[1180px]:px-64 max-[800px]:p-16"
   >
     <Image
       width={1280}
       height={720}
-      src={
-        page.data.properties.image.files[0].type === "file"
-          ? page.data.properties.image.files[0].file.url
-          : page.data.properties.image.files[0].external.url
-      }
-      alt={page.data.properties.Name.title[0].plain_text}
+      src={pageData.imageUrl}
+      alt={pageData.title}
       class="aspect-[16/6] h-auto w-full rounded-16 border border-stroke object-cover"
     />
     <div class="flex flex-wrap justify-center gap-32">
       <p class="text-body leading-none">
-        by{" "}
-        {page.data.properties.author.people
-          .map((person: { id: string; object: string }) => {
-            const matchedAuthor = authors.find(
-              (author: authorsType) => author.data.notionUserId === person.id
-            );
-            return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-          })
-          .join(", ")}
+        by {pageData.authors}
       </p>
       <time
         class="text-body leading-none"
       >
-        {(page.data.properties.date.date || {}).start || "Unknown date"}
+        {pageData.date.toDateString() || "Unknown date"}
       </time>
     </div>
     <h1
       class="mb-48 w-full text-center text-h1 leading-none max-[1350px]:text-h1 max-[460px]:text-h2"
     >
-    {page.data.properties.Name.title[0].plain_text}
+      {pageData.title}
     </h1>
     <div class="w-full max-w-[32rem] leading-[220%]">
       <Prose><Content /></Prose>
