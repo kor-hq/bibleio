@@ -15,15 +15,15 @@ const formattedBlogs = blogs
 		slug: blog.data.properties.slug.rich_text[0].plain_text,
 		title: blog.data.properties.Name.title[0].plain_text,
 		date: new Date(blog.data.properties.date.date?.start ?? ""),
-		authors: blog.data.properties.author.people.map(
-			(person: { id: string }) => {
+		authors: blog.data.properties.author.people
+			.map((person: { id: string }) => {
 				const matchedAuthor = authors.find(
 					(author: CollectionEntry<"team">) =>
 						author.data.notionUserId === person.id,
 				);
 				return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-			},
-		),
+			})
+			.join(", "),
 		imageUrl:
 			blog.data.properties.image.files[0].type === "file"
 				? blog.data.properties.image.files[0].file.url
@@ -32,7 +32,7 @@ const formattedBlogs = blogs
 	.sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
-<Layout title="Blog">
+<Layout title="Handbook">
 <section
   id="landing"
   class="relative flex h-fit  flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-64 pt-[192px] max-[480px]:p-16"
@@ -82,7 +82,7 @@ const formattedBlogs = blogs
                       {blog.date.toDateString()}
                     </time>
                     <p class="text-body leading-none">
-                      by {blog.authors.join(", ")}
+                      by {blog.authors}
                     </p>
                   </div>
                 </div>

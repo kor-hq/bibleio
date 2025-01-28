@@ -35,11 +35,16 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
     </div>
     <div class="flex flex-col gap-24">
       <a
-        href={"https://github.com/bibleio/bibleio/projects?query=is%3Aopen"}
+        href={hrefTargetOutside ? "https://bibleio.com/handbook" : "/handbook"}
         target="_blank"
         class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
       >
-        Roadmap
+        Handbook
+      </a>
+      <a
+        href={hrefTargetOutside ? "https://bibleio.com/handbook/about-us" : "/handbook/about-us"}
+        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >About us
       </a>
       <a
         href={hrefTargetOutside ? "https://bibleio.com/blog" : "/blog"}
@@ -47,19 +52,9 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
         >Blog
       </a>
       <a
-        href={hrefTargetOutside ? "https://bibleio.com/readme" : "/readme"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-        >README
-      </a>
-      <a
         href={hrefTargetOutside ? "https://bibleio.com/contact" : "/contact"}
         class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
         >Contact
-      </a>
-      <a
-        href="https://korhq.com"
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-        >By KOR
       </a>
       <div class="flex gap-20">
         <a
@@ -168,6 +163,7 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
           </svg>
         </a>
       </div>
+      <a href="https://korhq.com" class="text-sub text-text hover:opacity-100 ease-out text opacity-75 duration-150">Made with ❤️ by KOR</a>
     </div>
   </div>
   <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
