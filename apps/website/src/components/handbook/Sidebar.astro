@@ -42,9 +42,14 @@ interface Props {
 const { imageCategory } = Astro.props;
 ---
 
-<div id="sidebar" class="flex flex-col gap-20 w-[16rem]">
+<!-- TODO: This sidebar is pretty bad on mobile right now, fix it up with a dropdown menu instead of the entire list at the top
+I just didn't want to change the entire thing to react right now as we're moving away very soon
+-->
+
+<div id="sidebar" class="flex sticky top-96 flex-col gap-20 w-[16rem] self-start
+max-[600px]:relative max-[600px]:p-24 max-[600px]:w-full max-[600px]:top-0 max-[600px]:bg-fg-1 max-[600px]:border-stroke max-[600px]:border max-[600px]:rounded-16">
   <Image
-    class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto"
+    class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto max-[600px]:hidden"
     alt={"handbook cover"}
     width={280}
     height={420}
@@ -54,7 +59,7 @@ const { imageCategory } = Astro.props;
       : imageCategory === "engineering" ? "/handbook/handbook-engineering.png"
       : "/handbook/handbook-org.png"}
   />
-  <h2 class="text-h2">Handbook</h2>
+  <h2 class="text-h2 max-[600px]:hidden">Handbook</h2>
   {Object.entries(pagesByCategory).map(([category, pages]) => (
     <div class="flex flex-col gap-0 w-full">
       <div class="flex pb-6"><p class="text-body text-text opacity-75 capitalize">{category}</p></div>
