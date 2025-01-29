@@ -291,7 +291,7 @@ export function Nav({ path }: { path: string }) {
 										</div>
 
 										<NavigationMenu.Link
-											href="/readme"
+											href="/handbook/about-us"
 											className="flex h-full min-h-0 w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 										>
 											<h4 className="text-h4">Handbook</h4>

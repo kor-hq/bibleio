@@ -22,7 +22,9 @@ const formattedPages = pages.map((blog: CollectionEntry<"handbook">) => ({
 		return matchedAuthor ? matchedAuthor.data.name : "Unknown";
 	}),
 }));
-
+for (const page of formattedPages) {
+	console.log(Astro.url.pathname, "slug:", `/handbook/${page.slug}`);
+}
 const pagesByCategory = formattedPages.reduce(
 	(acc, page) => {
 		const category = page.category || "uncategorized";
