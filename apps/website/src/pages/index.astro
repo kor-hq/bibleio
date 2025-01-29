@@ -24,11 +24,11 @@ import Layout from "../layouts/Layout.astro";
     >
       Bibleio
     </h1>
-    <p class="motion-preset-fade-lg text-body leading-none text-text motion-delay-200">
+    <p class="motion-preset-fade-lg text-body leading-[200%] text-text motion-delay-200">
       Innovating the industry of Bible technology.
     </p>
     <div
-      class="h-full absolute justify-end items-center right-[20%] -z-50 flex flex-col gap-64"
+      class="h-full absolute justify-end items-center right-[20%] max-[850px]:right-[-20%] max-[450px]:right-[-35%] -z-50 flex flex-col gap-64"
     >
       <div class="flex flex-col gap-64 justify-end items-center motion-translate-y-loop-[50%]/reset motion-duration-[40s] motion-ease-linear">
         <Cross />
@@ -157,7 +157,7 @@ import Layout from "../layouts/Layout.astro";
           id="about"
           class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
         >
-          <h2 class="text-[3.75rem] leading-none text-text">About</h2>
+          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">About</h2>
           <p class="text-body leading-[220%] text-text">
              Bibleio is a Christian organization based on making innovative, modern, free and open-source Bible technology. We want to bring incredible design, performance, and an amazing workspace for you to study the Bible in, and in the future other stuff.
           </p>

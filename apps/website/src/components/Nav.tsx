@@ -31,7 +31,7 @@ export function Nav({ path }: { path: string }) {
 		{
 			section: "Us",
 			items: [
-				{ text: "README", link: "/readme" },
+				{ text: "Handbook", link: "/handbook/about-us" },
 				{
 					text: "Roadmap",
 					link: "https://github.com/bibleio/bibleio/projects?query=is%3Aopen",
@@ -42,7 +42,9 @@ export function Nav({ path }: { path: string }) {
 	];
 
 	return (
-		<nav className="fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text">
+		<nav
+			className={`fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
+		>
 			<div className="flex justify-between p-16">
 				<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup">
 					<a
@@ -292,8 +294,10 @@ export function Nav({ path }: { path: string }) {
 											href="/readme"
 											className="flex h-full min-h-0 w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 										>
-											<h4 className="text-h4">README</h4>
-											<p className="text-body leading-[140%]">About us</p>
+											<h4 className="text-h4">Handbook</h4>
+											<p className="text-body leading-[140%]">
+												About what and how we do
+											</p>
 										</NavigationMenu.Link>
 									</NavigationMenu.Content>
 								</NavigationMenu.Item>
