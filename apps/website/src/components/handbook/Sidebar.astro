@@ -36,10 +36,10 @@ const pagesByCategory = formattedPages.reduce(
 );
 
 interface Props {
-	image?: string;
+	imageCategory?: string;
 }
 
-const { image } = Astro.props;
+const { imageCategory } = Astro.props;
 ---
 
 <div id="sidebar" class="flex flex-col gap-20 w-[16rem]">
@@ -48,10 +48,10 @@ const { image } = Astro.props;
     alt={"handbook cover"}
     width={280}
     height={420}
-    src={image === "organization" ? "/handbook/handbook-org.png"
-      : image === "community" ? "/handbook/handbook-community.png"
-      : image === "design" ? "/handbook/handbook-design.png"
-      : image === "engineering" ? "/handbook/handbook-engineering.png"
+    src={imageCategory === "organization" ? "/handbook/handbook-org.png"
+      : imageCategory === "community" ? "/handbook/handbook-community.png"
+      : imageCategory === "design" ? "/handbook/handbook-design.png"
+      : imageCategory === "engineering" ? "/handbook/handbook-engineering.png"
       : "/handbook/handbook-org.png"}
   />
   <h2 class="text-h2">Handbook</h2>
