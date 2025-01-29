@@ -26,7 +26,7 @@ import ContactItem from "@/components/contact/ContactItem.astro";
     </div>
   </section>
   <section id="main" class="flex flex-col px-256 max-[1550px]:px-0 text-text">
-    <div id="container" class="grid grid-cols-2 border-x border-stroke divide divide-stroke">
+    <div id="container" class="grid grid-cols-2 max-[950px]:grid-cols-1 border-x border-stroke divide divide-stroke">
       <div class="p-48 flex flex-col gap-24 border-stroke border-b border-r">
         <h2 class="text-h2">Contact us</h2>
         <ContactItem name="Email" linkTitle="contact@bibleio.com" link="mailto:contact@bibleio.com" />
@@ -46,15 +46,15 @@ import ContactItem from "@/components/contact/ContactItem.astro";
         <ContactItem name="Instragram" linkTitle="@bibleioo" link="https://www.instagram.com/bibleio/" />
         <ContactItem name="Mastodon" linkTitle="@bibleio.mastodon.social" link="https://mastodon.social/@bibleio" />
       </div>
-      <div class="p-48 flex flex-col gap-24 border-stroke">
+      <div class="p-48 flex flex-col gap-24 border-stroke max-[950px]:border-t">
         <h2 class="text-h2">Resources</h2>
-        <a href="/handbook/about-us" class="flex bg-fg-1 hover:border-accent-reversed duration-150 ease-out items-end h-full border border-stroke rounded-16 p-24 justify-between">
+        <a href="/handbook/about-us" class="flex bg-fg-1 max-[500px]:flex-col max-[500px]:items-start gap-12 hover:border-accent-reversed duration-150 ease-out items-end h-full border border-stroke rounded-16 p-24 justify-between">
           <div class="flex flex-col gap-12">
             <p class="text-text text-body font-mono">BIBLEIO</p>
             <h2 class="text-h2">Handbook</h2>
           </div>
           <Image
-            class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto max-[600px]:hidden"
+            class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto"
             alt={"handbook cover"}
             width={280}
             height={420}
