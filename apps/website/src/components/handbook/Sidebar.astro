@@ -70,7 +70,7 @@ max-[600px]:relative max-[600px]:p-24 max-[600px]:w-full max-[600px]:top-0 max-[
           <a
             href={`/handbook/${page.slug}`}
           >
-            <ListItem text={page.title} selected={Astro.url.pathname === `/handbook/${page.slug}`} />
+            <ListItem text={page.title} selected={Astro.url.pathname.endsWith(`/handbook/${page.slug}`) || Astro.url.pathname.endsWith(`/handbook/${page.slug}/`)} />
           </a>
         ))}
       </div>
