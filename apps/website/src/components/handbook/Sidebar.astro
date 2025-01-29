@@ -1,0 +1,72 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { ListItem } from "@bibleio/design";
+import { Image } from "astro:assets";
+
+const pages = await getCollection("handbook", ({ data }) => {
+	// Exclude drafts in prod
+	return import.meta.env.PROD ? data.properties.draft.checkbox !== true : true;
+});
+const authors = await getCollection("team");
+
+const formattedPages = pages.map((blog: CollectionEntry<"handbook">) => ({
+	slug: blog.data.properties.slug.rich_text[0].plain_text,
+	title: blog.data.properties.Name.title[0].plain_text,
+	lastUpdated: new Date(blog.data.properties.lastUpdated.date?.start ?? ""),
+	category: blog.data.properties.category.select?.name,
+	authors: blog.data.properties.author.people.map((person: { id: string }) => {
+		const matchedAuthor = authors.find(
+			(author: CollectionEntry<"team">) =>
+				author.data.notionUserId === person.id,
+		);
+		return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+	}),
+}));
+
+const pagesByCategory = formattedPages.reduce(
+	(acc, page) => {
+		const category = page.category || "uncategorized";
+		if (!acc[category]) {
+			acc[category] = [];
+		}
+		acc[category].push(page);
+		return acc;
+	},
+	{} as Record<string, typeof formattedPages>,
+);
+
+interface Props {
+	image?: string;
+}
+
+const { image } = Astro.props;
+---
+
+<div id="sidebar" class="flex flex-col gap-20 w-[16rem]">
+  <Image
+    class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto"
+    alt={"handbook cover"}
+    width={280}
+    height={420}
+    src={image === "organization" ? "/handbook/handbook-org.png"
+      : image === "community" ? "/handbook/handbook-community.png"
+      : image === "design" ? "/handbook/handbook-design.png"
+      : image === "engineering" ? "/handbook/handbook-engineering.png"
+      : "/handbook/handbook-org.png"}
+  />
+  <h2 class="text-h2">Handbook</h2>
+  {Object.entries(pagesByCategory).map(([category, pages]) => (
+    <div class="flex flex-col gap-0 w-full">
+      <div class="flex pb-6"><p class="text-body text-text opacity-75 capitalize">{category}</p></div>
+      <div class="flex flex-col gap-0">
+        {pages.map((page) => (
+          <a
+            href={`/handbook/${page.slug}`}
+          >
+            <ListItem text={page.title} selected={Astro.url.pathname === `/handbook/${page.slug}`} />
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
