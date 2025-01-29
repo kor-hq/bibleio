@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import ContactItem from "@/components/contact/ContactItem.astro";
 ---
@@ -6,29 +7,60 @@ import ContactItem from "@/components/contact/ContactItem.astro";
 <Layout title="Contact">
   <section
     id="landing"
-    class="relative flex h-[110vh] flex-col items-start justify-center gap-24 overflow-clip p-256 max-[1000px]:p-32 max-[480px]:p-16"
+    class="relative flex h-fit flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-32 pt-[192px] max-[1550px]:px-16"
   >
     <h1
-      class="text-h1 text-text"
+      class="motion-preset-slide-up-sm pt-72 text-center text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
     >
       Contact
     </h1>
-    <ContactItem name="Email" linkTitle="contact@bibleio.com" link="mailto:contact@bibleio.com" />
-    <ContactItem name="Support email" linkTitle="support@bibleio.com" link="mailto:support@bibleio.com" />
-    <ContactItem name="Bluesky" linkTitle="@bibleio.com" link="https://bsky.app/profile/bibleio.com" />
-    <ContactItem name="Twitter/X" linkTitle="@bibleioo" link="https://x.com/bibleioo" />
-    <ContactItem name="Instragram" linkTitle="@bibleioo" link="https://www.instagram.com/bibleio/" />
-    <ContactItem name="Mastodon" linkTitle="@bibleio(mastodon.social)" link="https://mastodon.social/@bibleio" />
-    <ContactItem name="Discord username (Founder)" linkTitle="dukkcc" link="#" />
-    <ContactItem name="Discord server" linkTitle="discord.gg/7eVCyQ5GGb" link="https://discord.gg/7eVCyQ5GGb" />
     <div class="absolute left-0 top-0 -z-50 h-full w-full">
       <div
-        class="absolute -top-1/2 left-[20%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-lime blur-[15vmin]"
+        class="absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-teal blur-[15vmin]"
       >
       </div>
       <div
-        class="absolute -bottom-1/2 left-[50%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-teal blur-[15vmin]"
+        class="absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-green blur-[15vmin]"
       >
+      </div>
+    </div>
+  </section>
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0 text-text">
+    <div id="container" class="grid grid-cols-2 border-x border-stroke divide divide-stroke">
+      <div class="p-48 flex flex-col gap-24 border-stroke border-b border-r">
+        <h2 class="text-h2">Contact us</h2>
+        <ContactItem name="Email" linkTitle="contact@bibleio.com" link="mailto:contact@bibleio.com" />
+        <ContactItem name="Support email" linkTitle="support@bibleio.com" link="mailto:support@bibleio.com" />
+        <ContactItem name="Discord server" linkTitle="discord.gg/7eVCyQ5GGb" link="https://discord.gg/7eVCyQ5GGb" />
+      </div>
+      <div class="p-48 flex flex-col gap-24 border-stroke border-b">
+        <h2 class="text-h2">Report a bug</h2>
+        <ContactItem name="GitHub issues" linkTitle="bibleio/bibleio" link="https://github.com/bibleio/bibleio/issues" />
+        <ContactItem name="Discord server" linkTitle="discord.gg/7eVCyQ5GGb" link="https://discord.gg/7eVCyQ5GGb" />
+        <ContactItem name="Email" linkTitle="contact@bibleio.com" link="mailto:contact@bibleio.com" />
+      </div>
+      <div class="p-48 flex flex-col gap-24 border-stroke border-r">
+        <h2 class="text-h2">Socials</h2>
+        <ContactItem name="Bluesky" linkTitle="@bibleio.com" link="https://bsky.app/profile/bibleio.com" />
+        <ContactItem name="X" linkTitle="@bibleioo" link="https://x.com/bibleioo" />
+        <ContactItem name="Instragram" linkTitle="@bibleioo" link="https://www.instagram.com/bibleio/" />
+        <ContactItem name="Mastodon" linkTitle="@bibleio.mastodon.social" link="https://mastodon.social/@bibleio" />
+      </div>
+      <div class="p-48 flex flex-col gap-24 border-stroke">
+        <h2 class="text-h2">Resources</h2>
+        <a href="/handbook/about-us" class="flex bg-fg-1 hover:border-accent-reversed duration-150 ease-out items-end h-full border border-stroke rounded-16 p-24 justify-between">
+          <div class="flex flex-col gap-12">
+            <p class="text-text text-body font-mono">BIBLEIO</p>
+            <h2 class="text-h2">Handbook</h2>
+          </div>
+          <Image
+            class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto max-[600px]:hidden"
+            alt={"handbook cover"}
+            width={280}
+            height={420}
+            src={"/handbook/handbook-org.png"}
+          />
+        </a>
       </div>
     </div>
   </section>
