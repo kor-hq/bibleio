@@ -1,145 +1,105 @@
+
 ---
 import { Image } from "astro:assets";
-import { getImage } from "astro:assets";
-import { getCollection } from "astro:content";
-import { Bible, Circle, Cross, Hexagon, Star, Triangle } from "@bibleio/design";
-import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
 
 const blogs = await getCollection("blog", ({ data }) => {
-	return import.meta.env.PROD ? data.draft !== true : true;
+	// Exclude drafts in prod
+	return import.meta.env.PROD ? data.properties.draft.checkbox !== true : true;
 });
+const authors = await getCollection("team");
+
+const formattedBlogs = blogs
+	.map((blog: CollectionEntry<"blog">) => ({
+		slug: blog.data.properties.slug.rich_text[0].plain_text,
+		title: blog.data.properties.Name.title[0].plain_text,
+		date: new Date(blog.data.properties.date.date?.start ?? ""),
+		authors: blog.data.properties.author.people.map(
+			(person: { id: string }) => {
+				const matchedAuthor = authors.find(
+					(author: CollectionEntry<"team">) =>
+						author.data.notionUserId === person.id,
+				);
+				return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+			},
+		),
+		imageUrl:
+			blog.data.properties.image.files[0].type === "file"
+				? blog.data.properties.image.files[0].file.url
+				: blog.data.properties.image.files[0].external.url,
+	}))
+	.sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
-<Layout title="Apps">
-  <script>
-    import { gsap } from 'gsap';
-
-    // Scrolling animations
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const scrollContainer = document.querySelector('.scroll-container');
-
-      const scrollXItem = document.querySelector('.scroll-x') as HTMLElement;
-      const itemXWidth = scrollXItem?.offsetWidth;
-
-      const scrollYItem = document.querySelector('.scroll-y') as HTMLElement;
-      const itemYHeight = scrollYItem?.offsetHeight;
-
-      gsap.to('.scroll-x', {
-        x: -itemXWidth,
-        ease: 'none',
-        duration: 33,
-        repeat: -1,
-        modifiers: {
-          x: gsap.utils.unitize((value) => parseFloat(value) % itemXWidth),
-        },
-      });
-
-      gsap.to('.scroll-y', {
-        y: -itemYHeight,
-        ease: 'none',
-        duration: 33,
-        repeat: -1,
-        modifiers: {
-          y: gsap.utils.unitize((value) => parseFloat(value) % itemYHeight),
-        },
-      });
-    });
-
-    // "Bibleio" landing text animation
-
-    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
-
-    if (text && text.textContent) {
-      const words = text.textContent.split(/(\s+)/);
-      text.innerHTML = words
-        .map((word) => {
-          // For actual words, wrap each letter in a span
-          return `<span class="word inline-block">
-            ${Array.from(word)
-              .map(
-                (letter) => `<span class="letter inline-block">${letter}</span>`
-              )
-              .join('')}
-          </span>`;
-        })
-        .join('');
-
-      // Create the GSAP animation
-      gsap.from('.animate-bounce-in span', {
-        opacity: 0,
-        scale: 0,
-        duration: 0.5,
-        y: 75,
-        ease: 'back.out(.1)',
-        stagger: {
-          amount: 0.35,
-          from: 'start',
-        },
-      });
-    } else {
-      console.warn('Animation target element not found');
-    }
-  </script>
-
+<Layout title="Blog">
   <section
     id="landing"
-    class="relative flex h-[66vh] flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-16 max-[480px]:p-16"
+    class="relative flex h-fit flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-32 pt-[192px] max-[1550px]:px-16"
   >
     <h1
-      class="animate-bounce-in pt-72 text-center text-[192px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="motion-preset-slide-up-sm pt-72 text-center text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
     >
       Blog
-    </h1><div
-      class="scroll-container absolute right-[30%] -z-50 flex flex-col items-center justify-center gap-64"
-    >
-      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
-        <Cross />
-        <Bible />
-        <Circle />
-        <Star />
-        <Hexagon />
-        <Triangle />
-        <Bible />
+    </h1>
+    <div class="absolute left-0 top-0 -z-50 h-full w-full">
+      <div
+        class="absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-yellow blur-[15vmin]"
+      >
       </div>
-      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
-        <Cross />
-        <Bible />
-        <Circle />
-        <Star />
-        <Hexagon />
-        <Triangle />
+      <div
+        class="absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-green blur-[15vmin]"
+      >
+      </div>
+      <div
+        class="absolute bottom-[-50%] left-[20%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-purple blur-[15vmin]"
+      >
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
-    <div id="container" class="divide-y divide-stroke border-l border-stroke">
-      <div class="grid grid-cols-2 max-[820px]:grid-cols-1">
-        {
-          blogs.map((blog) => (
-            <a
-              href={`/blog/${blog.slug}`}
-              class="flex flex-col border-b border-r border-stroke text-text"
-            >
-              <Image
-                alt={blog.data.title}
-                src={blog.data.image}
-                width={1200}
-                height={600}
-                class="aspect-[16/6] h-auto w-full object-cover"
-              />
-              <div class="flex h-fit flex-col gap-12 px-48 py-24 max-[580px]:p-16">
-                <h3 class="text-h3 leading-none">{blog.data.title}</h3>
-                <time
-                  class="text-body leading-none"
-                  datetime={blog.data.date.toISOString()}
-                >
-                  {blog.data.date.toDateString()}
-                </time>
-              </div>
-            </a>
-          ))
-        }
+  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0 text-text">
+    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+      <div class="grid grid-cols-4 max-[820px]:grid-cols-1">
+        <div id="SIDEBAR" class="flex flex-col gap-0 col-span-1 divide-y divide-stroke border-stroke max-[820px]:border-b">
+          <div class="flex flex-col p-24 gap-16">
+            <p class="text-body leading-[200%]">On our blog we post about faith related topics, announcements regarding Bibleio, and our process engineering and making Bibleio.</p>
+          </div>
+        </div>
+        <div id="BLOGS" class="flex flex-col gap-0 col-span-3 min-[820px]:border-l border-stroke">
+          {formattedBlogs.length > 0 ?
+            formattedBlogs.map((blog) => (
+              <a
+                href={`/blog/${blog.slug}`}
+                class="grid grid-cols-2 max-[500px]:grid-cols-1 p-24 h-fit gap-24 border-b border-stroke text-text group last:border-b-transparent"
+              >
+                <div class="flex flex-col gap-24">
+                  <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">
+                    {blog.title}
+                  </h3>
+                  <div class="flex gap-24 flex-wrap gap-y-12">
+                    <time class="text-body leading-none">
+                      {blog.date.toDateString()}
+                    </time>
+                    <p class="text-body leading-none">
+                      by {blog.authors.join(", ")}
+                    </p>
+                  </div>
+                </div>
+                <Image
+                  class="rounded-8 border aspect-video border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
+                  width={720}
+                  height={720}
+                  alt={blog.title}
+                  src={blog.imageUrl}
+                />
+              </a>
+            )) :
+            <div class="p-32 flex flex-col gap-12">
+              <h1 class="text-h1">No blogs</h1>
+              <p class="text-body">Come back later!</p>
+            </div>
+          }
+          </div>
       </div>
     </div>
   </section>

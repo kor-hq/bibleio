@@ -1,0 +1,10 @@
+---
+const { name, link, linkTitle } = Astro.props;
+---
+
+<div class="flex gap-8 items-center flex-wrap">
+  <p class="text-body text-text whitespace-nowrap">{name}</p>
+  <a href={link} target="_blank" class="px-12 py-8 bg-fg-1 border border-stroke text-text rounded-12 hover:border-accent-reversed duration-150 ease-out">
+    {linkTitle}
+  </a>
+</div>

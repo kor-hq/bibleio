@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import HorizontalMarquee from "@/components/home/HorizontalMarquee.astro";
 import {
 	Badge,
 	Bible,
@@ -15,107 +15,29 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Apps">
-  <script>
-    import { gsap } from 'gsap';
-
-    // Scrolling animations
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const scrollContainer = document.querySelector('.scroll-container');
-
-      const scrollXItem = document.querySelector('.scroll-x') as HTMLElement;
-      const itemXWidth = scrollXItem?.offsetWidth;
-
-      const scrollYItem = document.querySelector('.scroll-y') as HTMLElement;
-      const itemYHeight = scrollYItem?.offsetHeight;
-
-      gsap.to('.scroll-x', {
-        x: -itemXWidth,
-        ease: 'none',
-        duration: 33,
-        repeat: -1,
-        modifiers: {
-          x: gsap.utils.unitize((value) => parseFloat(value) % itemXWidth),
-        },
-      });
-
-      gsap.to('.scroll-y', {
-        y: -itemYHeight,
-        ease: 'none',
-        duration: 33,
-        repeat: -1,
-        modifiers: {
-          y: gsap.utils.unitize((value) => parseFloat(value) % itemYHeight),
-        },
-      });
-    });
-
-    // "Bibleio" landing text animation
-
-    const text = document.querySelector('.animate-bounce-in') as HTMLElement;
-
-    if (text && text.textContent) {
-      const words = text.textContent.split(/(\s+)/);
-      text.innerHTML = words
-        .map((word) => {
-          // If it's just whitespace, wrap it in a span with space class
-          if (/^\s+$/.test(word)) {
-            return `<span class="inline-block space">&nbsp;</span>`;
-          }
-
-          // For actual words, wrap each letter in a span
-          return `<span class="word inline-block">
-            ${Array.from(word)
-              .map(
-                (letter) => `<span class="letter inline-block">${letter}</span>`
-              )
-              .join('')}
-          </span>`;
-        })
-        .join('');
-
-      // Create the GSAP animation
-      gsap.from('.animate-bounce-in span', {
-        opacity: 0,
-        scale: 0,
-        duration: 0.5,
-        y: 75,
-        ease: 'back.out(.1)',
-        stagger: {
-          amount: 0.35,
-          from: 'start',
-        },
-      });
-    } else {
-      console.warn('Animation target element not found');
-    }
-  </script>
-
   <section
     id="landing"
     class="relative flex h-screen flex-col items-center justify-center gap-24 overflow-clip border-b border-stroke p-16"
   >
     <h1
-      class="animate-bounce-in pt-72 text-center text-[256px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="motion-preset-slide-up-sm pt-72 text-center text-[192px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
     >
-      Study the Bible
+      Study the <br /> Bible
     </h1>
-    <p class="text-center text-body leading-[150%] text-text">
+    <p class="motion-preset-fade-lg text-center text-body leading-[150%] text-text">
       With our innovative, cross-platform, performant, beautiful open-source
       apps.
-    </p><div
-      class="scroll-container absolute left-[20%] -z-50 flex flex-col items-center justify-center gap-64"
+    </p>
+    <div
+      class="h-full absolute justify-end items-center left-[20%] -z-50 flex flex-col gap-64"
     >
-      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
+      <div class="flex flex-col gap-64 justify-end items-center motion-translate-y-loop-[50%]/reset motion-duration-[40s] motion-ease-linear">
         <Cross />
         <Bible />
         <Circle />
         <Star />
         <Hexagon />
         <Triangle />
-        <Bible />
-      </div>
-      <div class="scroll-y flex h-full w-full flex-col items-center gap-64">
         <Cross />
         <Bible />
         <Circle />
@@ -128,20 +50,9 @@ import Layout from "../layouts/Layout.astro";
   <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
     <div id="container" class="divide-y divide-stroke border-x border-stroke">
       <div
-        class="scroll-container flex w-full items-center justify-start gap-24 overflow-hidden px-32 py-32"
+        class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
       >
-        <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-        </div>
-        <div class="scroll-x flex gap-24 whitespace-nowrap">
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-          <h1 class="text-h1 leading-none text-text">Pre Alpha</h1>
-        </div>
+        <HorizontalMarquee text="Pre Alpha" />
       </div>
       <div id="web" class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16">
         <h1 class="text-h1 leading-none text-text">Web App</h1>

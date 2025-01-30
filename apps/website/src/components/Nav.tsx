@@ -31,15 +31,20 @@ export function Nav({ path }: { path: string }) {
 		{
 			section: "Us",
 			items: [
-				{ text: "README", link: "/readme" },
-				{ text: "Roadmap", link: "/roadmap" },
+				{ text: "Handbook", link: "/handbook/about-us" },
+				{
+					text: "Roadmap",
+					link: "https://github.com/bibleio/bibleio/projects?query=is%3Aopen",
+				},
 				{ text: "Blog", link: "/blog" },
 			],
 		},
 	];
 
 	return (
-		<nav className="fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text max-[770px]:h-screen">
+		<nav
+			className={`fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
+		>
 			<div className="flex justify-between p-16">
 				<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup">
 					<a
@@ -153,6 +158,7 @@ export function Nav({ path }: { path: string }) {
 										<div className="grid h-full min-h-0 w-fit grid-cols-1 grid-rows-5 gap-12">
 											<NavigationMenu.Link
 												href="https://github.com/bibleio"
+												target="_blank"
 												className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 											>
 												<svg
@@ -172,7 +178,29 @@ export function Nav({ path }: { path: string }) {
 												</svg>
 											</NavigationMenu.Link>
 											<NavigationMenu.Link
+												href="https://bsky.app/profile/bibleio.com"
+												target="_blank"
+												className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="24"
+													height="24"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													className="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky"
+												>
+													<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+													<path d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856z" />
+												</svg>
+											</NavigationMenu.Link>
+											<NavigationMenu.Link
 												href="https://x.com/bibleioo"
+												target="_blank"
 												className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 											>
 												<svg
@@ -193,28 +221,8 @@ export function Nav({ path }: { path: string }) {
 												</svg>
 											</NavigationMenu.Link>
 											<NavigationMenu.Link
-												href="https://mastodon.social/@bibleio"
-												className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
-											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="1.5rem"
-													height="1.5rem"
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													strokeWidth={1.5}
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													className="icon icon-tabler icons-tabler-outline icon-tabler-brand-mastodon"
-												>
-													<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-													<path d="M18.648 15.254c-1.816 1.763 -6.648 1.626 -6.648 1.626a18.262 18.262 0 0 1 -3.288 -.256c1.127 1.985 4.12 2.81 8.982 2.475c-1.945 2.013 -13.598 5.257 -13.668 -7.636l-.026 -1.154c0 -3.036 .023 -4.115 1.352 -5.633c1.671 -1.91 6.648 -1.666 6.648 -1.666s4.977 -.243 6.648 1.667c1.329 1.518 1.352 2.597 1.352 5.633s-.456 4.074 -1.352 4.944z" />
-													<path d="M12 11.204v-2.926c0 -1.258 -.895 -2.278 -2 -2.278s-2 1.02 -2 2.278v4.722m4 -4.722c0 -1.258 .895 -2.278 2 -2.278s2 1.02 2 2.278v4.722" />
-												</svg>
-											</NavigationMenu.Link>
-											<NavigationMenu.Link
 												href="https://discord.gg/7eVCyQ5GGb"
+												target="_blank"
 												className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 											>
 												<svg
@@ -238,6 +246,7 @@ export function Nav({ path }: { path: string }) {
 											</NavigationMenu.Link>
 											<NavigationMenu.Link
 												href="https://www.youtube.com/@bibleio"
+												target="_blank"
 												className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 											>
 												<svg
@@ -270,7 +279,8 @@ export function Nav({ path }: { path: string }) {
 												</p>
 											</NavigationMenu.Link>
 											<NavigationMenu.Link
-												href="/roadmap"
+												href="https://github.com/bibleio/bibleio/projects?query=is%3Aopen"
+												target="_blank"
 												className="flex w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 											>
 												<h4 className="text-h4">Roadmap</h4>
@@ -281,21 +291,23 @@ export function Nav({ path }: { path: string }) {
 										</div>
 
 										<NavigationMenu.Link
-											href="/readme"
+											href="/handbook/about-us"
 											className="flex h-full min-h-0 w-[15rem] flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 										>
-											<h4 className="text-h4">README</h4>
-											<p className="text-body leading-[140%]">About us</p>
+											<h4 className="text-h4">Handbook</h4>
+											<p className="text-body leading-[140%]">
+												About what and how we do
+											</p>
 										</NavigationMenu.Link>
 									</NavigationMenu.Content>
 								</NavigationMenu.Item>
 							</NavigationMenu.List>
-							<a href="https://app.bibleio.com" className="max-[770px]:hidden">
-								<Button>
-									Web App
-									<ArrowUpRight />
-								</Button>
-							</a>
+							{/* <a href="https://app.bibleio.com" className="max-[770px]:hidden"> */}
+							<Button disabled>
+								Web App
+								<ArrowUpRight />
+							</Button>
+							{/*</a> */}
 						</div>
 
 						<NavigationMenu.Viewport />
@@ -328,7 +340,7 @@ export function Nav({ path }: { path: string }) {
 			<div
 				className={`m-16 mt-0 h-full min-h-0 flex-col items-start gap-[40px] overflow-y-scroll rounded-16 border border-stroke bg-fg-1 p-24 shadow-popup ${navOpen ? "flex animate-scale-in" : "hidden"}`}
 			>
-				{navItems.map((section, index) => (
+				{navItems.map((section) => (
 					<div key={section.section} className="flex flex-col gap-[28px]">
 						<p className="text-text/50 -mb-12 text-sub">{section.section}</p>
 						{section.items.map((item) => (

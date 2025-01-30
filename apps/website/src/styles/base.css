@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* notion callout blocks from cms in prose tag */
+
+.prose > p:empty {
+	height: 10px;
+	line-height: 10px;
+}
+
+.prose > .notion-callout {
+	background: var(--fg-1);
+	padding: 16px;
+	border-radius: 8px;
+	border-width: 1px;
+	border-color: var(--stroke);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	overflow: clip;
+}
+
+.prose > .notion-callout > .notion-callout-content {
+	font-size: 0.9375rem;
+	width: 100%;
+	min-width: 0px;
+	text-wrap: wrap;
+	white-space: normal;
+}
+
+.prose > input[type="checkbox"] {
+	margin-left: 0.25rem;
+}
+
+.prose > pre {
+	background: var(--fg-1);
+	padding: 12px;
+	border-radius: 8px;
+	border-width: 1px;
+	border-color: var(--stroke);
+	color: var(--text);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	overflow: clip;
+}
+
+.prose > table > tbody > tr,
+td,
+th,
+thead {
+	border-color: var(--stroke);
+}

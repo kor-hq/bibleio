@@ -8,5 +8,5 @@ export default {
 	],
 	presets: [bibleioTheme],
 	darkMode: "class",
+	plugins: [require("tailwindcss-motion"), require("@tailwindcss/typography")],
 } satisfies Config;
-9;
