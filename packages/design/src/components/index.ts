@@ -22,5 +22,7 @@ export * from "./brand/Shapes";
 export * from "./brand/Brand";
 
 // Reused website components
+// @ts-ignore astro
 export { default as Footer } from "./website/Footer.astro";
+// @ts-ignore astro
 export { default as ThemeSwitcher } from "./website/ThemeSwitcher.astro";

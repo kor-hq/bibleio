@@ -1,4 +1,4 @@
-import { bibleioTheme } from "@bibleio/design/src/tailwind";
+import { bibleioTheme } from "@bibleio/design";
 import type { Config } from "tailwindcss";
 
 export default {

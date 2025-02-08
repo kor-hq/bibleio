@@ -1,21 +1,13 @@
 {
+	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
-		// Default
-		"target": "ESNext",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
+		"target": "ES2022",
+		"jsx": "react-jsx",
+		"module": "ES2022",
 		"strict": true,
 		"skipLibCheck": true,
-
-		// Added
-		"jsx": "react-jsx",
-		"module": "ESNext",
-		"declaration": true,
-		"declarationDir": "dist",
-		"sourceMap": true,
-		"outDir": "dist",
-		"moduleResolution": "node",
-		"allowSyntheticDefaultImports": true,
-		"emitDeclarationOnly": true
-	}
+		"sourceMap": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
 }
