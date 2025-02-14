@@ -1,4 +1,4 @@
-import { Button, Logo } from "@bibleio/design";
+import { Button, Logo, WarningNote } from "@bibleio/design";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { useState } from "react";
 
@@ -41,18 +41,34 @@ export function Nav({ path }: { path: string }) {
 		},
 	];
 
+	const isPreview =
+		import.meta.env.PROD && import.meta.env.CF_PAGES_BRANCH !== "main";
+	const isDev = import.meta.env.DEV;
+
 	return (
 		<nav
-			className={`sticky top-0 z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
+			className={`fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
 		>
 			<div className="flex justify-between p-16">
-				<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup">
-					<a
-						href="/"
-						className="duration-150 ease-out hover:-translate-y-2 active:translate-y-2"
-					>
-						<Logo size={26} subText="Website" />
-					</a>
+				<div className="flex gap-8">
+					<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup">
+						<a
+							href="/"
+							className="duration-150 ease-out hover:-translate-y-2 active:translate-y-2"
+						>
+							<Logo size={26} subText="Website" />
+						</a>
+					</div>
+					{isPreview && (
+						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 px-12 py-12 shadow-popup">
+							<WarningNote>Preview Deployment</WarningNote>
+						</div>
+					)}
+					{isDev && (
+						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 px-12 py-12 shadow-popup">
+							<WarningNote>Development Mode</WarningNote>
+						</div>
+					)}
 				</div>
 				<div className="custom-nav-class-cause-tailwind-is-broken min-h-0 max-[770px]:hidden max-[770px]:h-full">
 					<NavigationMenu.Root className="flex h-fit w-fit flex-col items-end gap-6 max-[770px]:hidden">
