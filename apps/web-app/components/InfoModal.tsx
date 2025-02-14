@@ -14,7 +14,7 @@ const InfoModal: React.FC = () => {
 			<Dialog.Portal>
 				<Dialog.Overlay className="fixed bg-white/40 z-59 backdrop-blur-sm data-[state=open]:animate-overlayShow inset-0" />
 				<Dialog.Content
-					className="bg-fg-1 p-32 rounded-[24px] border border-stroke-1 z-50 backdrop-blur-3xl data-[state=open]:animate-contentShow
+					className="bg-fg-1 backdrop-blur-popup p-32 rounded-[24px] border border-stroke-1 z-50 backdrop-blur-3xl data-[state=open]:animate-contentShow
         flex flex-col gap-12
       fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
 				>

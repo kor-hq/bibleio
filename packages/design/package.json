@@ -8,8 +8,8 @@
 			"import": "./src/index.ts",
 			"default": "./src/index.ts"
 		},
-		"./src/index.css": {
-			"default": "./src/index.css"
+		"./src/tailwind.css": {
+			"default": "./src/tailwind.css"
 		}
 	},
 	"private": false,

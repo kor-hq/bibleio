@@ -32,9 +32,11 @@
 	--animate-scroll-y: scroll-y 33s linear infinite;
 	--animate-spin-slow: spin 15s linear infinite;
 
+	--blur-popup: 18px;
+
 	/* materials */
 	--color-bg-1: #cccccc;
-	--color-fg-1: #d4d4d4;
+	--color-fg-1: #d4d4d4bf;
 	--color-fg-2: #dddddd;
 	--color-stroke: #00000054;
 	--color-text: #050505e6;
@@ -110,7 +112,7 @@
 [class="dark"] {
 	/* materials */
 	--color-bg-1: #1b1b1b;
-	--color-fg-1: #212121;
+	--color-fg-1: #242424cc;
 	--color-fg-2: #262626;
 	--color-stroke: #ffffff1a;
 	--color-text: #f3f3f3e6;

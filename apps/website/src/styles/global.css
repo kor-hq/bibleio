@@ -1,4 +1,4 @@
-@import "@bibleio/design/src/index.css";
+@import "@bibleio/design/src/tailwind.css";
 
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-motion";

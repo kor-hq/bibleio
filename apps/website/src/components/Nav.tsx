@@ -51,7 +51,7 @@ export function Nav({ path }: { path: string }) {
 		>
 			<div className="flex justify-between p-16">
 				<div className="flex gap-8">
-					<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup">
+					<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 py-12 shadow-popup">
 						<a
 							href="/"
 							className="duration-150 ease-out hover:-translate-y-2 active:translate-y-2"
@@ -60,12 +60,12 @@ export function Nav({ path }: { path: string }) {
 						</a>
 					</div>
 					{isPreview && (
-						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 px-12 py-12 shadow-popup">
+						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 backdrop-blur-popup px-12 py-12 shadow-popup">
 							<WarningNote>Preview Deployment</WarningNote>
 						</div>
 					)}
 					{isDev && (
-						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 px-12 py-12 shadow-popup">
+						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 backdrop-blur-popup px-12 py-12 shadow-popup">
 							<WarningNote>Development Mode</WarningNote>
 						</div>
 					)}
@@ -73,7 +73,7 @@ export function Nav({ path }: { path: string }) {
 				<div className="custom-nav-class-cause-tailwind-is-broken min-h-0 max-[770px]:hidden max-[770px]:h-full">
 					<NavigationMenu.Root className="flex h-fit w-fit flex-col items-end gap-6 max-[770px]:hidden">
 						<div className="flex gap-4 max-[770px]:hidden">
-							<NavigationMenu.List className="flex h-[2.5rem] w-fit items-center gap-24 rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup max-[770px]:hidden">
+							<NavigationMenu.List className="flex h-[2.5rem] w-fit items-center gap-24 rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 py-12 shadow-popup max-[770px]:hidden">
 								<NavigationMenu.Item>
 									<NavigationMenu.Link
 										href="/"
@@ -96,7 +96,7 @@ export function Nav({ path }: { path: string }) {
 									<NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none duration-150 ease-out hover:text-accent-reversed">
 										Products <ChevronDown />
 									</NavigationMenu.Trigger>
-									<NavigationMenu.Content className="grid h-[12.5rem] w-[43rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 shadow-popup">
+									<NavigationMenu.Content className="grid h-[12.5rem] w-[43rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 backdrop-blur-popup p-12 shadow-popup">
 										<NavigationMenu.Link
 											href="/apps#web"
 											className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
@@ -133,7 +133,7 @@ export function Nav({ path }: { path: string }) {
 									<NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none duration-150 ease-out hover:text-accent-reversed">
 										You <ChevronDown />
 									</NavigationMenu.Trigger>
-									<NavigationMenu.Content className="grid h-[12.5rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 shadow-popup">
+									<NavigationMenu.Content className="grid h-[12.5rem] animate-scale-in grid-cols-3 gap-12 rounded-[20px] border border-stroke bg-fg-1 backdrop-blur-popup p-12 shadow-popup">
 										<NavigationMenu.Link
 											href="https://cat-skate-e91.notion.site/Onboarding-132aafe2ea3c800ab45ddbe0a5db3da8?pvs=4"
 											className="flex flex-col justify-end gap-8 rounded-8 border border-stroke bg-fg-2 p-16 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
@@ -170,7 +170,7 @@ export function Nav({ path }: { path: string }) {
 									<NavigationMenu.Trigger className="group flex items-center gap-6 text-body leading-none duration-150 ease-out hover:text-accent-reversed">
 										Us <ChevronDown />
 									</NavigationMenu.Trigger>
-									<NavigationMenu.Content className="flex h-[18rem] animate-scale-in gap-12 rounded-[20px] border border-stroke bg-fg-1 p-12 shadow-popup">
+									<NavigationMenu.Content className="flex h-[18rem] animate-scale-in gap-12 rounded-[20px] border border-stroke bg-fg-1 backdrop-blur-popup p-12 shadow-popup">
 										<div className="grid h-full min-h-0 w-fit grid-cols-1 grid-rows-5 gap-12">
 											<NavigationMenu.Link
 												href="https://github.com/bibleio"
@@ -329,7 +329,7 @@ export function Nav({ path }: { path: string }) {
 						<NavigationMenu.Viewport />
 					</NavigationMenu.Root>
 				</div>
-				<div className="h-[2.5rem] w-fit items-center justify-center gap-24 rounded-full border border-stroke bg-fg-1 px-24 shadow-popup max-[770px]:flex min-[770px]:hidden">
+				<div className="h-[2.5rem] w-fit items-center justify-center gap-24 rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 shadow-popup max-[770px]:flex min-[770px]:hidden">
 					{navOpen ? (
 						<button
 							type="button"
@@ -354,7 +354,7 @@ export function Nav({ path }: { path: string }) {
 				</div>
 			</div>
 			<div
-				className={`m-16 mt-0 h-full min-h-0 flex-col items-start gap-[40px] overflow-y-scroll rounded-16 border border-stroke bg-fg-1 p-24 shadow-popup ${navOpen ? "flex animate-scale-in" : "hidden"}`}
+				className={`m-16 mt-0 h-full min-h-0 flex-col items-start gap-[40px] overflow-y-scroll rounded-16 border border-stroke bg-fg-1 backdrop-blur-popup p-24 shadow-popup ${navOpen ? "flex animate-scale-in" : "hidden"}`}
 			>
 				{navItems.map((section) => (
 					<div key={section.section} className="flex flex-col gap-[28px]">
