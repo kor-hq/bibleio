@@ -43,7 +43,7 @@ export function Nav({ path }: { path: string }) {
 
 	return (
 		<nav
-			className={`fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
+			className={`sticky top-0 z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
 		>
 			<div className="flex justify-between p-16">
 				<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 px-24 py-12 shadow-popup">
