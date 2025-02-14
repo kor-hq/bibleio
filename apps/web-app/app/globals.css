@@ -30,7 +30,7 @@
 }
 
 .component-hover-effect {
-	@apply hover:-translate-y-4 active:translate-y-8 duration-150 ease-out;
+	@apply hover:-translate-y-4 active:translate-y-8 duration-150;
 }
 
 /* API.Bible STYLE CLASSES */

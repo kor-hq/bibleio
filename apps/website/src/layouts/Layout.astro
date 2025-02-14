@@ -1,5 +1,14 @@
 ---
-import "../styles/global.css";
+import "@/styles/global.css";
+import "@bibleio/design/src/index.css";
+import "@fontsource/lora/400.css";
+import "@fontsource/lora/500.css";
+import "@fontsource/lora/600.css";
+import "@fontsource/lora/700.css";
+import "@fontsource/lora/400-italic.css";
+import "@fontsource/lora/500-italic.css";
+import "@fontsource/lora/600-italic.css";
+import "@fontsource/lora/700-italic.css";
 
 import { Nav } from "@/components/Nav.tsx";
 import { Footer } from "@bibleio/design";
@@ -16,7 +25,7 @@ const { title } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title} - Bibleio</title>
   </head>
-  <body class="overflow-x-hidden bg font-serif">
+  <body class="overflow-x-hidden bg-bg-1 font-serif">
     <Nav path={Astro.url.pathname} client:load />
     <slot />
     <Footer devHrefTargetOutside />
