@@ -1,11 +1,8 @@
 ![banner](/.github/assets/gh-docs.png)
 
-> [!IMPORTANT]
-> This website is unfinished and old, we're planning on rewriting it.
+This is our developer site, with docs for our developer stuff, and a component playground preview for our design package.
 
-Docs is our developer documentation for our API, design system, and BibleJSON.
-
-It will be built with unDocs, which is a primitive library for Astro documentation.
+It is built with [unPreview](https://github.com/K0Rhq/ui) and [unDocs](https://github.com/K0Rhq/ui) for the UI.
 
 We are still building this website, it is not ready for contributing docs, but you can help build the website.
 
@@ -13,7 +10,7 @@ We are still building this website, it is not ready for contributing docs, but y
 
 ```bash
 pnpm install
-pnpm docs dev
+pnpm run docs dev
 ```
 
-`pnpm docs fix` to format and lint with Biome.
+`pnpm run docs fix` to format and lint with Biome.

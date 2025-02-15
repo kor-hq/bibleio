@@ -15,22 +15,22 @@ See more about each project in their README.
 
 ## Developing
 
-We use Turborepo and pnpm for our monorepo. Here's our main commands:
+We use Turborepo and pnpm for our codebaase. Here's our main commands:
 ```bash
 pnpm webapp dev # web app dev server
 pnpm site dev # website dev server
-pnpm **run** docs dev # developer website dev server, **you need to add the `run` keyword for this**
+pnpm run docs dev # developer AND design playground website dev server, you need to add the `run` keyword for this
 pnpm design dev # design system storybook dev server
 pnpm api dev # cargo run
 pnpm biblejson dev # cargo run
-pnpm fix # format & lint all files with biome (or rustfmt & clippy)
+pnpm fix # format & lint all files
 
 # can also access other subcommands
 pnpm site build
 ```
 We use [Biome](https://biomejs.dev/) for formatting and linting, please use `pnpm fix` when developing, or [setup your editor to use Biome](https://biomejs.dev/guides/editors/first-party-extensions/).
 
-With Rust projects, we use the standard rustfmt and clippy, which can also be accessed via `pnpm fix` or `pnpm api fix` which works with Turborepo.
+With Rust projects, we use rustfmt and clippy, which can be accessed with the fix command.
 
 # Status
 
@@ -40,7 +40,7 @@ Once we get back-end functionality working, we will start rewriting the web app,
 
 # Contributing
 
-We'd love to have you contribute, currently Bibleio is a 1 person project. We have [huge ambitious goals](https://www.bibleio.com/roadmap), and having God's kingdom or anyone else help would be such a blessing.
+We'd love to have you contribute, currently Bibleio is a 1 person project. We have huge ambitious goals, and having God's kingdom or anyone else help would be such a blessing.
 
 Our community center page is on [Notion](https://cat-skate-e91.notion.site/Bibleio-102aafe2ea3c8158b203e996e06c9aa7), along with all of our updated tasks.
 
