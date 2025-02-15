@@ -50,7 +50,7 @@ export function Nav({ path }: { path: string }) {
 			className={`fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
 		>
 			<div className="flex justify-between p-16">
-				<div className="flex gap-8">
+				<div className="flex gap-8 flex-wrap w-fit min-w-0">
 					<div className="flex h-[2.5rem] items-center rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 py-12 shadow-popup">
 						<a
 							href="/"
@@ -70,7 +70,7 @@ export function Nav({ path }: { path: string }) {
 						</div>
 					)}
 				</div>
-				<div className="custom-nav-class-cause-tailwind-is-broken min-h-0 max-[770px]:hidden max-[770px]:h-full">
+				<div className="w-fit min-w-0 min-h-0 max-[970px]:hidden max-[970px]:h-full">
 					<NavigationMenu.Root className="flex h-fit w-fit flex-col items-end gap-6 max-[770px]:hidden">
 						<div className="flex gap-4 max-[770px]:hidden">
 							<NavigationMenu.List className="flex h-[2.5rem] w-fit items-center gap-24 rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 py-12 shadow-popup max-[770px]:hidden">
@@ -329,7 +329,7 @@ export function Nav({ path }: { path: string }) {
 						<NavigationMenu.Viewport />
 					</NavigationMenu.Root>
 				</div>
-				<div className="h-[2.5rem] w-fit items-center justify-center gap-24 rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 shadow-popup max-[770px]:flex min-[770px]:hidden">
+				<div className="h-[2.5rem] w-fit items-center justify-center gap-24 rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 shadow-popup max-[970px]:flex min-[970px]:hidden">
 					{navOpen ? (
 						<button
 							type="button"
