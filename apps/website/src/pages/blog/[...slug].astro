@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { Prose } from "@bibleio/design";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "~/layouts/Layout.astro";
 
 const authors = await getCollection("team");
 

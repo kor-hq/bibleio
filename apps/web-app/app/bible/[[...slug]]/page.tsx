@@ -1,9 +1,9 @@
 "use client";
 
-import SelectBible from "@/components/SelectBible";
-import { SelectBookChapter } from "@/components/SelectBookChapter";
-import TextFormattingMenu from "@/components/TextFormattingMenu";
-import { useTextFormattingMenuStore } from "@/components/textFormattingMenuStore";
+import SelectBible from "~/components/SelectBible";
+import { SelectBookChapter } from "~/components/SelectBookChapter";
+import TextFormattingMenu from "~/components/TextFormattingMenu";
+import { useTextFormattingMenuStore } from "~/components/textFormattingMenuStore";
 import React, { useEffect, useState, type FC } from "react";
 
 interface ChapterContent {

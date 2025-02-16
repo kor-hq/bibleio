@@ -2,7 +2,7 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "~/layouts/Layout.astro";
 
 const blogs = await getCollection("blog", ({ data }) => {
 	// Exclude drafts in prod

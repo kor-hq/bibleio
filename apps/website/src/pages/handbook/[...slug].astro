@@ -1,9 +1,9 @@
 
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "~/layouts/Layout.astro";
 import { Prose } from "@bibleio/design";
-import Sidebar from "@/components/handbook/Sidebar.astro";
+import Sidebar from "~/components/handbook/Sidebar.astro";
 
 export async function getStaticPaths() {
 	const pages = await getCollection("handbook");

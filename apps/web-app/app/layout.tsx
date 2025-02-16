@@ -6,7 +6,7 @@ import { Inter, Lora, Quicksand, Tinos } from "next/font/google";
 import localFont from "next/font/local";
 
 import "./globals.css";
-import Nav from "@/components/ui/Nav";
+import Nav from "~/components/ui/Nav";
 
 export const viewport: Viewport = {
 	width: "device-width",
