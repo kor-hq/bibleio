@@ -105,7 +105,7 @@
 	--radius-16: 1rem;
 	--radius-24: 1.5rem;
 	--radius-32: 2rem;
-	--radius-full: 999rem;
+	--radius-full: calc(infinity * 1px);
 }
 
 /* ----------------- dark mode variant of the colors above ----------------- */
