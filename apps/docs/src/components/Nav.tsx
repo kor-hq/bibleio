@@ -7,12 +7,12 @@ export function Nav({ path }: { path: string }) {
 	const navItems = [
 		{ text: "Home", link: "/" },
 		{ text: "API", link: "/api" },
-		{ text: "Design", link: "/design" },
+		{ text: "Design Playground", link: "/playground" },
 		{ text: "BibleJSON", link: "/biblejson" },
 	];
 
 	return (
-		<nav className="sticky top-0 z-50 flex h-72 w-screen flex-col">
+		<nav className="fixed z-50 flex h-72 w-screen flex-col">
 			<div className="flex justify-between p-16">
 				<div className="flex h-[40px] items-center rounded-full border border-stroke bg-fg-2 px-24 py-12 shadow-popup">
 					<a
