@@ -30,7 +30,7 @@ const allVariants = generateVariants(preview.data.variants ?? {});
       {
         allVariants.map((variants) => (
           <div>
-            <p class="text-xs text-neutral-400 my-1">{variants.variant}</p>
+            <p class="text-sub font-mono text-text-subtle my-1">{variants.variant}</p>
             <Content {...variants} />
           </div>
         ))

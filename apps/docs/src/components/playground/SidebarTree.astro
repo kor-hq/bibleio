@@ -28,7 +28,7 @@ const currentLevelItems = getCurrentLevelItems(items, parentId);
         <a
           href={`/playground/${item.id}`}
           class={` ${
-            Astro.url.pathname === `/playground/${item.id}` && "text-accent-reversed font-semibold"
+            Astro.url.pathname === `/playground/${item.id}` && "text-accent-reversed"
           }`}
         >
           {item.data.title}
