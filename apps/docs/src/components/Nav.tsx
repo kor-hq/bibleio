@@ -7,14 +7,14 @@ export function Nav({ path }: { path: string }) {
 	const navItems = [
 		{ text: "Home", link: "/" },
 		{ text: "API", link: "/api" },
-		{ text: "Design", link: "/design" },
+		{ text: "Design Playground", link: "/playground" },
 		{ text: "BibleJSON", link: "/biblejson" },
 	];
 
 	return (
-		<nav className="sticky top-0 z-50 flex h-72 w-screen flex-col">
+		<nav className="fixed z-50 flex h-72 w-screen flex-col">
 			<div className="flex justify-between p-16">
-				<div className="flex h-[40px] items-center rounded-full border border-stroke bg-fg-2 px-24 py-12 shadow-popup">
+				<div className="flex h-[40px] items-center rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 py-12 shadow-popup">
 					<a
 						href="/"
 						className="duration-150 ease-out hover:-translate-y-2 active:translate-y-2"
@@ -22,7 +22,7 @@ export function Nav({ path }: { path: string }) {
 						<Logo size={26} subText="Developers" />
 					</a>
 				</div>
-				<div className="flex h-[40px] items-center gap-24 rounded-full border border-stroke bg-fg-2 px-24 py-12 shadow-popup">
+				<div className="flex h-[40px] items-center gap-24 rounded-full border border-stroke bg-fg-1 backdrop-blur-popup px-24 py-12 shadow-popup">
 					{navItems.map((item, index) => (
 						<a
 							key={item.text}
@@ -67,7 +67,7 @@ export function Nav({ path }: { path: string }) {
 				</div>
 			</div>
 			<div
-				className={`m-16 mt-0 flex-col items-center gap-36 rounded-16 border border-stroke bg-fg-2 p-24 shadow-popup ${navOpen ? "flex animate-scale-in" : "hidden"}`}
+				className={`m-16 mt-0 flex-col items-center gap-36 rounded-16 border border-stroke bg-fg-1 backdrop-blur-popup p-24 shadow-popup ${navOpen ? "flex animate-scale-in" : "hidden"}`}
 			>
 				{navItems.map((item, index) => (
 					<a

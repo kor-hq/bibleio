@@ -1,56 +1,18 @@
 ---
-import { Button } from "@bibleio/design";
-import MainLayout from "~/layouts/MainLayout.astro";
+import Layout from "~/layouts/Layout.astro";
+import { WarningNote } from "@bibleio/design";
 ---
 
-<MainLayout title="Home"
-  ><script>
-    import { gsap } from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      gsap.from('.text-animate', {
-        duration: 1.2,
-        delay: 0.1,
-        y: 50,
-        opacity: 0,
-        scale: 0.7,
-        stagger: 0.05,
-        ease: 'power4.out',
-      });
-      gsap.from('.blob-animate', {
-        duration: 1.2,
-        delay: 0.1,
-        y: 50,
-        opacity: 0,
-        scale: 0.4,
-        ease: 'power4.out',
-      });
-    });
-  </script>
+<Layout title="Home">
   <section
     id="landing"
-    class="flex h-[93vh] flex-col items-center justify-center gap-48 overflow-clip px-64 py-32"
+    class="flex h-screen flex-col items-start relative justify-center gap-24 overflow-clip px-256 py-32"
   >
-    <div class="flex flex-col gap-0">
-      <h1
-        class="text-animate text-center text-[12rem] leading-none max-[1200px]:text-[6rem] max-[560px]:text-[4rem]"
-      >
-        Bibleio
-      </h1>
-      <h1
-        class="text-animate text-center text-[12rem] leading-none max-[1200px]:text-[6rem] max-[560px]:text-[4rem]"
-      >
-        Developers
-      </h1>
-    </div>
-    <p class="text-animate text-center text-body leading-[200%]">
-      Explore our open-source Bible technology, and design system.
-    </p>
+    <h1 class="font-mono text-h2">Bibleio Developers</h1>
+    <p class="text-body">Open source tools made by us to build Bible technology.</p>
+    <WarningNote>This site is not ready for prod yet!!!!!!!!!!!!!</WarningNote>
     <div
-      class="blob-animate absolute -z-50 h-[35vw] w-[40vw] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
+      class="blob-animate absolute -z-50 h-[35vw] w-[40vw] bottom-[-40%] animate-spin-slow rounded-full bg-blue blur-[9vmin]"
     >
     </div>
   </section>
@@ -69,10 +31,6 @@ import MainLayout from "~/layouts/MainLayout.astro";
           A free, open-source, blazingly fast Bible API including many langauges
           and translations. Written in Rust, free, no limits.
         </p>
-        <div class="flex gap-12">
-          <a href="/api/docs"><Button>Docs</Button></a>
-          <a href="/api"> <Button variant="secondary">Learn More</Button></a>
-        </div>
       </div><div
         class="flex flex-col gap-24 border-b border-stroke p-48 max-[800px]:p-24"
       >
@@ -81,10 +39,6 @@ import MainLayout from "~/layouts/MainLayout.astro";
           A free, open-source, beautiful design system for Figma and React.
           Fully documented, and a package avaliable on npm.
         </p>
-        <div class="flex gap-12">
-          <a href="/design/docs"><Button>Docs</Button></a>
-          <a href="/design"> <Button variant="secondary">Learn More</Button></a>
-        </div>
       </div><div
         class="flex flex-col gap-24 border-r border-stroke p-48 max-[800px]:p-24 max-[800px]:pb-72"
       >
@@ -92,13 +46,7 @@ import MainLayout from "~/layouts/MainLayout.astro";
         <p class="text-body leading-[220%]">
           1000+ translations of the Bible in JSON, with formatting included.
         </p>
-        <div class="flex gap-12">
-          <a href="/biblejson/docs"><Button>Docs</Button></a>
-          <a href="/biblejson">
-            <Button variant="secondary">Learn More</Button></a
-          >
-        </div>
       </div>
     </div>
   </section>
-</MainLayout>
+</Layout>
