@@ -5,15 +5,17 @@ import mdx from "@astrojs/mdx";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import svelte from "@astrojs/svelte";
+
 // https://astro.build/config
 export default defineConfig({
-	integrations: [react(), mdx()],
+    integrations: [react(), mdx(), svelte()],
 
-	devToolbar: {
-		enabled: false,
-	},
+    devToolbar: {
+        enabled: false,
+    },
 
-	vite: {
-		plugins: [tailwindcss()],
-	},
+    vite: {
+        plugins: [tailwindcss()],
+    },
 });
