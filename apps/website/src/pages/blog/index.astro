@@ -4,12 +4,9 @@ import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 
-const blogs = await getCollection("blog", ({ data }) => {
-	// Exclude drafts in prod
-	return import.meta.env.PROD ? data.properties.draft.checkbox !== true : true;
-});
-const authors = await getCollection("team");
+const blogs = await getCollection("blog");
 console.log(blogs);
+const authors = await getCollection("team");
 
 const formattedBlogs = blogs
 	.map((blog: CollectionEntry<"blog">) => ({
