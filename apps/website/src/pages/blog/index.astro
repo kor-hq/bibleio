@@ -9,6 +9,7 @@ const blogs = await getCollection("blog", ({ data }) => {
 	return import.meta.env.PROD ? data.properties.draft.checkbox !== true : true;
 });
 const authors = await getCollection("team");
+console.log(blogs);
 
 const formattedBlogs = blogs
 	.map((blog: CollectionEntry<"blog">) => ({

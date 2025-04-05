@@ -3,12 +3,12 @@ import { glob } from "astro/loaders";
 import { notionLoader } from "notion-astro-loader";
 
 const hasNotionToken = !!import.meta.env.NOTION_TOKEN;
-
-// Schemas based on your provided data structures:
+console.log("NOTION_TOKEN:", import.meta.env.NOTION_TOKEN); // Check the value
+console.log("hasNotionToken:", hasNotionToken); // Check the boolean
 
 const handbookSchema = z.object({
 	title: z.string(),
-	category: z.string().optional(), // category can be undefined/null
+	category: z.string().optional(),
 	lastUpdated: z.string().transform((str) => new Date(str)),
 	authors: z.array(z.string()),
 });
@@ -27,7 +27,7 @@ const blog = defineCollection({
 				auth: import.meta.env.NOTION_TOKEN,
 				database_id: import.meta.env.NOTION_BLOG_DATABASE_ID,
 			})
-		: glob({ pattern: "**/*.mdx", base: "./src/content/fallback/blog" }),
+		: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/fallback/blog" }),
 	schema: blogSchema,
 });
 
@@ -37,7 +37,10 @@ const handbook = defineCollection({
 				auth: import.meta.env.NOTION_TOKEN,
 				database_id: import.meta.env.NOTION_HANDBOOK_DATABASE_ID,
 			})
-		: glob({ pattern: "**/*.mdx", base: "./src/content/fallback/handbook" }),
+		: glob({
+				pattern: "**/*.{md,mdx}",
+				base: "./src/content/fallback/handbook",
+			}),
 	schema: handbookSchema,
 });
 
