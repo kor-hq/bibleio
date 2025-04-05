@@ -2,18 +2,43 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { notionLoader } from "notion-astro-loader";
 
+const hasNotionToken = !!import.meta.env.NOTION_TOKEN;
+
+// Schemas based on your provided data structures:
+
+const handbookSchema = z.object({
+	title: z.string(),
+	category: z.string().optional(), // category can be undefined/null
+	lastUpdated: z.string().transform((str) => new Date(str)),
+	authors: z.array(z.string()),
+});
+
+const blogSchema = z.object({
+	slug: z.string(),
+	title: z.string(),
+	date: z.string().transform((str) => new Date(str)),
+	authors: z.array(z.string()),
+	imageUrl: z.string(),
+});
+
 const blog = defineCollection({
-	loader: notionLoader({
-		auth: import.meta.env.NOTION_TOKEN,
-		database_id: import.meta.env.NOTION_BLOG_DATABASE_ID,
-	}),
+	loader: hasNotionToken
+		? notionLoader({
+				auth: import.meta.env.NOTION_TOKEN,
+				database_id: import.meta.env.NOTION_BLOG_DATABASE_ID,
+			})
+		: glob({ pattern: "**/*.mdx", base: "./src/content/fallback/blog" }),
+	schema: blogSchema,
 });
 
 const handbook = defineCollection({
-	loader: notionLoader({
-		auth: import.meta.env.NOTION_TOKEN,
-		database_id: import.meta.env.NOTION_HANDBOOK_DATABASE_ID,
-	}),
+	loader: hasNotionToken
+		? notionLoader({
+				auth: import.meta.env.NOTION_TOKEN,
+				database_id: import.meta.env.NOTION_HANDBOOK_DATABASE_ID,
+			})
+		: glob({ pattern: "**/*.mdx", base: "./src/content/fallback/handbook" }),
+	schema: handbookSchema,
 });
 
 const team = defineCollection({
