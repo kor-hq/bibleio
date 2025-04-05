@@ -3,8 +3,6 @@ import { glob } from "astro/loaders";
 import { notionLoader } from "notion-astro-loader";
 
 const hasNotionToken = !!import.meta.env.NOTION_TOKEN;
-console.log("NOTION_TOKEN:", import.meta.env.NOTION_TOKEN); // Check the value
-console.log("hasNotionToken:", hasNotionToken); // Check the boolean
 
 const handbookSchema = z.object({
 	title: z.string(),

@@ -21,7 +21,7 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	devToolbar: {
-		enabled: false,
+		enabled: true,
 	},
 	// for loading images from the notion cms
 	image: {
