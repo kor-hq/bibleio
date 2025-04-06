@@ -3,16 +3,16 @@ import { glob } from "astro/loaders";
 
 const blogSchema = z.object({
 	title: z.string(),
-	slug: z.string(),
+	slug: z.string().optional(),
 	date: z.date(),
 	authors: z.array(z.string()).optional(),
 	imageUrl: z.string().optional(),
 });
 
 const handbookSchema = z.object({
-	slug: z.string(),
 	title: z.string(),
-	category: z.string().optional(),
+	slug: z.string().optional(),
+	category: z.enum(["org", "design", "engineering", "community"]),
 	lastUpdated: z.date(),
 	authors: z.array(z.string()).optional(),
 });
