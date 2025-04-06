@@ -1,98 +1,48 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { Prose } from "@bibleio/design";
 import Layout from "~/layouts/Layout.astro";
-
-const authors = await getCollection("team");
+import { matchAuthorNames } from "~/utils/matchAuthorName";
 
 export async function getStaticPaths() {
-	const pages = await getCollection("blog");
+	const posts = await getCollection("blog");
 
-	return pages.map((page: CollectionEntry<"blog">) => {
-		let slug: string;
-
-		if ("properties" in page.data) {
-			// notion
-			slug = page.data.slug.rich_text[0].plain_text;
-		} else {
-			// fallback
-			slug = page.data.slug;
-		}
-
-		return {
-			params: {
-				slug: slug,
-			},
-			props: {
-				page,
-			},
-		};
-	});
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
 }
 
-export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
-const { page } = Astro.props;
-
-let pageData: Props;
-
-if ("properties" in page.data) {
-	// notion
-	pageData = {
-		title: page.data.Name.title[0].plain_text,
-		imageUrl:
-			page.data.image.files[0].type === "file"
-				? page.data.image.files[0].file.url
-				: page.data.image.files[0].external.url,
-		date: new Date(page.data.date.date?.start ?? ""),
-		authors: page.data.author.relation
-			.map((person: { id: string; object: string }) => {
-				const matchedAuthor = authors.find(
-					(author: CollectionEntry<"team">) =>
-						author.data.notionUserId === person.id,
-				);
-				return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-			})
-			.join(", "),
-	};
-} else {
-	// fallback
-	pageData = {
-		title: page.data.title,
-		imageUrl: page.data.imageUrl || "",
-		date: new Date(page.data.date ?? ""),
-		authors: page.data.authors ? page.data.authors.join(", ") : "",
-	};
-}
-
-const { Content } = await render(page);
+const { post } = Astro.props;
+const { Content } = await render(post);
 ---
 
-<Layout title={pageData.title}>
+<Layout title={post.data.title}>
   <div
     class="flex min-h-screen flex-col items-center gap-24 px-256 py-96 text-text max-[1180px]:px-64 max-[800px]:px-16"
   >
-    <Image
+    {post.data.imageUrl && <Image
       width={1280}
       height={720}
-      src={pageData.imageUrl}
-      alt={pageData.title}
+      src={post.data.imageUrl}
+      alt={post.data.title}
       class="aspect-[16/8] max-[600px]:aspect-square h-auto w-full rounded-16 border border-stroke object-cover"
-    />
+    /> }
     <div class="flex flex-wrap justify-center gap-32">
       <p class="text-body leading-none">
-        by {pageData.authors}
+        by {matchAuthorNames(post.data.authors)}
       </p>
       <time
         class="text-body leading-none"
       >
-        {pageData.date.toDateString() || "Unknown date"}
+        {post.data.date.toDateString() || "Unknown date"}
       </time>
     </div>
     <h1
       class="mb-48 w-full text-center text-h1 leading-none max-[1350px]:text-h1 max-[460px]:text-h2"
     >
-      {pageData.title}
+      {post.data.title}
     </h1>
     <div class="w-full max-w-[32rem] leading-[220%]">
       <Prose><Content /></Prose>
