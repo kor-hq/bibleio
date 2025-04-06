@@ -5,29 +5,66 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 
 const blogs = await getCollection("blog");
-console.log(blogs);
 const authors = await getCollection("team");
 
-const formattedBlogs = blogs
-	.map((blog: CollectionEntry<"blog">) => ({
-		slug: blog.data.properties.slug.rich_text[0].plain_text,
-		title: blog.data.properties.Name.title[0].plain_text,
-		date: new Date(blog.data.properties.date.date?.start ?? ""),
-		authors: blog.data.properties.author.people.map(
-			(person: { id: string }) => {
-				const matchedAuthor = authors.find(
-					(author: CollectionEntry<"team">) =>
-						author.data.notionUserId === person.id,
-				);
-				return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-			},
-		),
-		imageUrl:
-			blog.data.properties.image.files[0].type === "file"
-				? blog.data.properties.image.files[0].file.url
-				: blog.data.properties.image.files[0].external.url,
-	}))
-	.sort((a, b) => b.date.getTime() - a.date.getTime());
+interface FormattedBlog {
+	slug: string;
+	title: string;
+	date: Date;
+	authors: string[];
+	imageUrl?: string; // Optional because frontmatter might not have it
+}
+
+const formattedBlogs: FormattedBlog[] = blogs
+	.map((blog) => {
+		if ("properties" in blog.data) {
+			// notion entry (has the properties key)
+			try {
+				// Function to map Notion authors (relation IDs) to names
+				const mapNotionAuthors = (authorRelations: { id: string }[]) => {
+					return authorRelations.map((person: { id: string }) => {
+						const matchedAuthor = authors.find(
+							(author: CollectionEntry<"team">) =>
+								author.data.notionUserId === person.id,
+						);
+						return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+					});
+				};
+
+				return {
+					slug: blog.data.slug.rich_text[0].plain_text,
+					title: blog.data.Name.title[0].plain_text,
+					date: new Date(blog.data.date.date?.start ?? ""),
+					authors: mapNotionAuthors(blog.data.author.relation), // Map relation IDs to author names
+					imageUrl:
+						blog.data.image.files[0].type === "file"
+							? blog.data.image.files[0].file.url
+							: blog.data.image.files[0].external.url,
+				};
+			} catch (error) {
+				console.error("Error formatting Notion entry:", blog, error);
+				return null;
+			}
+		} else {
+			// fallback entry (doesn't have properties key)
+			try {
+				return {
+					slug: blog.data.slug,
+					title: blog.data.title,
+					date: new Date(blog.data.date ?? ""),
+					authors: blog.data.authors || [],
+					imageUrl: blog.data.imageUrl,
+				};
+			} catch (error) {
+				console.error("Error formatting frontmatter entry:", blog, error);
+				return null; // Or some default/error handling
+			}
+		}
+	})
+	.filter((blog: FormattedBlog): blog is FormattedBlog => blog !== null) // Filter out any null entries from error handling
+	.sort(
+		(a: FormattedBlog, b: FormattedBlog) => b.date.getTime() - a.date.getTime(),
+	);
 ---
 
 <Layout title="Blog">
@@ -78,18 +115,18 @@ const formattedBlogs = blogs
                     <time class="text-body leading-none">
                       {blog.date.toDateString()}
                     </time>
-                    <p class="text-body leading-none">
+                    {blog.authors.length > 0 && <p class="text-body leading-none">
                       by {blog.authors.join(", ")}
-                    </p>
+                    </p>}
                   </div>
                 </div>
-                <Image
-                  class="rounded-8 border aspect-video border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
-                  width={720}
+                {blog.imageUrl && <Image
+                  class="rounded-8 border aspect-video object-cover border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
+                  width={1280}
                   height={720}
                   alt={blog.title}
                   src={blog.imageUrl}
-                />
+                />}
               </a>
             )) :
             <div class="p-32 flex flex-col gap-12">

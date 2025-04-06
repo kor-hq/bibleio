@@ -3,28 +3,67 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { ListItem } from "@bibleio/design";
 import { Image } from "astro:assets";
 
-const pages = await getCollection("handbook", ({ data }) => {
-	// Exclude drafts in prod
-	return import.meta.env.PROD ? data.properties.draft.checkbox !== true : true;
-});
+const pages = await getCollection("handbook");
+
 const authors = await getCollection("team");
 
-const formattedPages = pages.map((blog: CollectionEntry<"handbook">) => ({
-	slug: blog.data.properties.slug.rich_text[0].plain_text,
-	title: blog.data.properties.Name.title[0].plain_text,
-	lastUpdated: new Date(blog.data.properties.lastUpdated.date?.start ?? ""),
-	category: blog.data.properties.category.select?.name,
-	authors: blog.data.properties.author.people.map((person: { id: string }) => {
-		const matchedAuthor = authors.find(
-			(author: CollectionEntry<"team">) =>
-				author.data.notionUserId === person.id,
-		);
-		return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-	}),
-}));
+interface FormattedPage {
+	slug: string;
+	title: string;
+	lastUpdated?: Date;
+	category?: string;
+	authors: string[];
+}
+
+const formattedPages: FormattedPage[] = pages.map(
+	(page: CollectionEntry<"handbook">) => {
+		let slug: string;
+		let title: string;
+		let lastUpdated: Date | undefined;
+		let category: string | undefined;
+		let authors: string[];
+
+		// Type Narrowing: Check if it's a Notion entry or a frontmatter entry
+		if ("properties" in page.data) {
+			// It's a Notion entry
+			slug = page.data.slug.rich_text[0].plain_text;
+			title = page.data.Name.title[0].plain_text;
+			lastUpdated = new Date(page.data.lastUpdated?.date?.start ?? "");
+			category = page.data.category?.select?.name;
+			authors = page.data.author.relation.map((person: { id: string }) => {
+				const matchedAuthor = authors.find(
+					(author: CollectionEntry<"team">) =>
+						author.data.notionUserId === person.id,
+				);
+				if (matchedAuthor) {
+					return matchedAuthor;
+				}
+			});
+		} else {
+			// It's a frontmatter entry
+			slug = page.data.slug;
+			title = page.data.title;
+			lastUpdated = page.data.lastUpdated
+				? new Date(page.data.lastUpdated)
+				: undefined;
+			category = page.data.category;
+			authors = page.data.authors || [];
+		}
+
+		return {
+			slug,
+			title,
+			lastUpdated,
+			category,
+			authors,
+		};
+	},
+);
+
 for (const page of formattedPages) {
 	console.log(Astro.url.pathname, "slug:", `/handbook/${page.slug}`);
 }
+
 const pagesByCategory = formattedPages.reduce(
 	(acc, page) => {
 		const category = page.category || "uncategorized";

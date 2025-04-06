@@ -5,43 +5,64 @@ import Layout from "~/layouts/Layout.astro";
 import { Prose } from "@bibleio/design";
 import Sidebar from "~/components/handbook/Sidebar.astro";
 
+const authors = await getCollection("team");
+
 export async function getStaticPaths() {
 	const pages = await getCollection("handbook");
 
-	return pages
-		.filter((page) =>
-			import.meta.env.PROD
-				? page.data.properties.draft.checkbox !== true
-				: true,
-		)
-		.map((page) => {
-			return {
-				params: {
-					slug: page.data.properties.slug.rich_text[0].plain_text,
-				},
-				props: {
-					page,
-				},
-			};
-		});
+	return pages.map((page: CollectionEntry<"handbook">) => {
+		let slug: string;
+
+		// Check if it's a Notion entry
+		if ("properties" in page.data) {
+			// It's a Notion entry
+			slug = page.data.slug.rich_text[0].plain_text;
+		} else {
+			// It's a frontmatter entry
+			slug = page.data.slug;
+		}
+
+		return {
+			params: {
+				slug: slug,
+			},
+			props: {
+				page,
+			},
+		};
+	});
 }
 
 export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
 const { page } = Astro.props;
+let formattedPage: Props;
 
-const authors = await getCollection("team");
-const formattedPage = {
-	title: page.data.properties.Name.title[0].plain_text,
-	category: page.data.properties.category.select?.name,
-	lastUpdated: new Date(page.data.properties.lastUpdated.date?.start ?? ""),
-	authors: page.data.properties.author.people.map((person: { id: string }) => {
-		const matchedAuthor = authors.find(
-			(author: CollectionEntry<"team">) =>
-				author.data.notionUserId === person.id,
-		);
-		return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-	}),
-};
+// Type Narrowing in the Component
+if ("properties" in page.data) {
+	// It's a Notion entry
+	formattedPage = {
+		title: page.data.Name.title[0].plain_text,
+		category: page.data.category?.select?.name, // Use optional chaining
+		lastUpdated: new Date(page.data.lastUpdated?.date?.start ?? ""), // Use optional chaining
+		authors: page.data.author.relation.map(
+			(person: { id: string; object: string }) => {
+				const matchedAuthor = authors.find(
+					(author: CollectionEntry<"team">) =>
+						author.data.notionUserId === person.id,
+				);
+				return matchedAuthor ? matchedAuthor.data.name : "Unknown";
+			},
+		),
+	};
+} else {
+	// It's a frontmatter entry
+	formattedPage = {
+		title: page.data.title,
+		category: page.data.category,
+		lastUpdated: new Date(page.data.lastUpdated ?? ""),
+		authors: page.data.authors || [],
+	};
+}
 
 const { Content } = await render(page);
 ---
