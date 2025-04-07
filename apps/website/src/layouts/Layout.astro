@@ -22,12 +22,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <!-- @ts-ignore -->
-    <script
-        is:inline
-        crossOrigin="anonymous"
-        src="//unpkg.com/react-scan/dist/auto.global.js"
-    />
+    {import.meta.env.DEV && <script is:inline src="https://unpkg.com/react-scan/dist/auto.global.js" />}
     <title>{title} - Bibleio</title>
   </head>
   <body class="overflow-x-hidden bg-bg-1 font-serif">
