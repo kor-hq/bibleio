@@ -6,7 +6,10 @@ import Layout from "~/layouts/Layout.astro";
 import { matchAuthorNames } from "~/utils/matchAuthorName";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("blog");
+	const posts = await getCollection("blog", ({ data }) => {
+		// hide drafts in prod
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
 	return posts.map((post) => ({
 		params: { id: post.id },
 		props: { post },

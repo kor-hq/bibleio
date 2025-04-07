@@ -3,7 +3,10 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { ListItem } from "@bibleio/design";
 import { Image } from "astro:assets";
 
-const pages = await getCollection("handbook");
+const pages = await getCollection("handbook", ({ data }) => {
+	// hide drafts in prod
+	return import.meta.env.PROD ? data.draft !== true : true;
+});
 
 const categoryOrder = ["organization", "design", "engineering", "community"];
 
