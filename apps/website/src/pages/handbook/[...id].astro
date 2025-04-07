@@ -3,19 +3,51 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import { Prose } from "@bibleio/design";
-import Sidebar from "~/components/handbook/Sidebar.astro";
+import { HandbookSidebar } from "~/components/handbook/Sidebar";
 import { matchAuthorNames } from "~/utils/matchAuthorName";
+
+const pages = await getCollection("handbook", ({ data }) => {
+	// hide drafts in prod
+	return import.meta.env.PROD ? data.draft !== true : true;
+});
 
 export async function getStaticPaths() {
 	const pages = await getCollection("handbook", ({ data }) => {
 		// hide drafts in prod
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
+
 	return pages.map((page) => ({
 		params: { id: page.id },
 		props: { page },
 	}));
 }
+
+const categoryOrder = ["organization", "design", "engineering", "community"];
+
+const pagesByCategory = pages.reduce(
+	(acc, page) => {
+		const category = page.data.category || "uncategorized";
+		if (!acc[category]) {
+			acc[category] = [];
+		}
+		acc[category].push(page);
+
+		const orderedKeys = [...categoryOrder, ...Object.keys(acc)].filter(
+			(key, index, self) => self.indexOf(key) === index,
+		);
+		const orderedAcc: Record<string, CollectionEntry<"handbook">[]> = {};
+
+		for (const key of orderedKeys) {
+			if (acc[key]) {
+				orderedAcc[key] = acc[key];
+			}
+		}
+
+		return orderedAcc;
+	},
+	{} as Record<string, typeof pages>,
+);
 
 const { page } = Astro.props;
 const { Content } = await render(page);
@@ -23,7 +55,7 @@ const { Content } = await render(page);
 
 <Layout title="Handbook">
   <section id="main" class="relative flex max-[600px]:flex-col gap-12 px-256 max-[1290px]:px-16 text-text min-h-screen pt-96 pb-64">
-    <Sidebar imageCategory={page.data.category || "organization"} />
+      <HandbookSidebar client:load pathname={Astro.url.pathname} pagesByCategory={pagesByCategory} imageCategory={page.data.category || "organization"} />
     <div id="content" class="bg-fg-1 backdrop-blur-popup border border-stroke rounded-16 w-full h-fit min-h-screen flex flex-col p-32 max-[600px]:p-12 gap-24 items-center">
       <div class="max-w-[32rem] w-full flex flex-col gap-12">
         <div class="flex gap-24 flex-wrap">
