@@ -12,7 +12,7 @@ const blogSchema = z.object({
 const handbookSchema = z.object({
 	title: z.string(),
 	draft: z.boolean().optional(),
-	category: z.enum(["org", "design", "engineering", "community"]),
+	category: z.enum(["organization", "design", "engineering", "community"]),
 	lastUpdated: z.date(),
 	authors: z.array(z.string()),
 });

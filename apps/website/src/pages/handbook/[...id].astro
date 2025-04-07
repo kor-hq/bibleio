@@ -4,80 +4,31 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import { Prose } from "@bibleio/design";
 import Sidebar from "~/components/handbook/Sidebar.astro";
-
-const authors = await getCollection("team");
+import { matchAuthorNames } from "~/utils/matchAuthorName";
 
 export async function getStaticPaths() {
 	const pages = await getCollection("handbook");
-
-	return pages.map((page: CollectionEntry<"handbook">) => {
-		let slug: string;
-
-		// Check if it's a Notion entry
-		if ("properties" in page.data) {
-			// It's a Notion entry
-			slug = page.data.slug.rich_text[0].plain_text;
-		} else {
-			// It's a frontmatter entry
-			slug = page.data.slug;
-		}
-
-		return {
-			params: {
-				slug: slug,
-			},
-			props: {
-				page,
-			},
-		};
-	});
+	return pages.map((page) => ({
+		params: { id: page.id },
+		props: { page },
+	}));
 }
 
-export type Props = Awaited<ReturnType<typeof getStaticPaths>>[number]["props"];
 const { page } = Astro.props;
-let formattedPage: Props;
-
-// Type Narrowing in the Component
-if ("properties" in page.data) {
-	// It's a Notion entry
-	formattedPage = {
-		title: page.data.Name.title[0].plain_text,
-		category: page.data.category?.select?.name, // Use optional chaining
-		lastUpdated: new Date(page.data.lastUpdated?.date?.start ?? ""), // Use optional chaining
-		authors: page.data.author.relation.map(
-			(person: { id: string; object: string }) => {
-				const matchedAuthor = authors.find(
-					(author: CollectionEntry<"team">) =>
-						author.data.notionUserId === person.id,
-				);
-				return matchedAuthor ? matchedAuthor.data.name : "Unknown";
-			},
-		),
-	};
-} else {
-	// It's a frontmatter entry
-	formattedPage = {
-		title: page.data.title,
-		category: page.data.category,
-		lastUpdated: new Date(page.data.lastUpdated ?? ""),
-		authors: page.data.authors || [],
-	};
-}
-
 const { Content } = await render(page);
 ---
 
 <Layout title="Handbook">
   <section id="main" class="relative flex max-[600px]:flex-col gap-12 px-256 max-[1290px]:px-16 text-text min-h-screen pt-96 pb-64">
-    <Sidebar imageCategory={formattedPage.category || "organization"} />
+    <Sidebar imageCategory={page.data.category || "organization"} />
     <div id="content" class="bg-fg-1 backdrop-blur-popup border border-stroke rounded-16 w-full h-fit min-h-screen flex flex-col p-32 max-[600px]:p-12 gap-24 items-center">
       <div class="max-w-[32rem] w-full flex flex-col gap-12">
         <div class="flex gap-24 flex-wrap">
-          <p class="text-sub">{formattedPage.authors}</p>
-          <p class="text-sub capitalize">{formattedPage.category}</p>
-          <p class="text-sub">{formattedPage.lastUpdated.toDateString()}</p>
+          <p class="text-sub">{matchAuthorNames(page.data.authors)}</p>
+          <p class="text-sub capitalize">{page.data.category}</p>
+          <p class="text-sub">{page.data.lastUpdated.toDateString()}</p>
         </div>
-        <h1 class="text-h1">{formattedPage.title}</h1>
+        <h1 class="text-h1">{page.data.title}</h1>
         <Prose><Content /></Prose>
       </div>
     </div>
