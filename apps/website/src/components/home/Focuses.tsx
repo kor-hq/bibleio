@@ -46,28 +46,28 @@ export function FocusesSection() {
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<line
-					x1="80%"
+					x1="77%"
 					y1="308.473"
 					x2="25%"
 					y2="107.473"
 					className="stroke stroke-stroke"
 				/>
 				<line
-					x1="80%"
+					x1="77%"
 					y1="308.497"
 					x2="25%"
 					y2="241.497"
 					className="stroke stroke-stroke"
 				/>
 				<line
-					x1="80%"
+					x1="77%"
 					y1="308.497"
 					x2="25%"
 					y2="375.497"
 					className="stroke stroke-stroke"
 				/>
 				<line
-					x1="80%"
+					x1="77%"
 					y1="308.473"
 					x2="25%"
 					y2="512.473"

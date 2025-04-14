@@ -1,18 +1,13 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import MainSection from "~/layouts/MainSection.astro";
 ---
 
 <Layout title="Home">
-  <section
-    id="main"
-    class="flex h-[110vh] flex-col overflow-clip px-256 py-128 max-[1000px]:px-16"
-  >
-    <div
-      id="container"
-      class="flex flex-col items-start justify-center gap-32 overflow-clip py-96"
-    >
+  <MainSection>
+    <div class="h-screen flex flex-col justify-center gap-32 p-32">
       <h1
-        class="z-20 text-[10rem] italic text-red-reversed max-[400px]:text-[6rem]"
+        class="z-20 text-[10rem] leading-none italic text-red-reversed max-[400px]:text-[6rem]"
       >
         404
       </h1>
@@ -20,7 +15,7 @@ import Layout from "~/layouts/Layout.astro";
         You seem lost. Here's some good news:
       </p>
       <p class="z-20 text-body leading-[180%] text-text">
-          Luke 19:10 <i>For the Son of Man came to seek and to save the lost.</i>
+        Luke 19:10 <i>For the Son of Man came to seek and to save the lost.</i>
       </p>
       <div class="absolute left-0 top-0 -z-50 h-full w-full">
         <div
@@ -29,5 +24,5 @@ import Layout from "~/layouts/Layout.astro";
         </div>
       </div>
     </div>
-  </section>
+  </MainSection>
 </Layout>

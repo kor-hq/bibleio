@@ -1,23 +1,26 @@
 ---
 import { Badge, Button } from "@bibleio/design";
 import Layout from "~/layouts/Layout.astro";
+import MainSection from "~/layouts/MainSection.astro";
 ---
 
 <Layout title="Home">
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-start justify-center gap-32 overflow-clip border-b border-stroke p-128 max-[890px]:p-16"
+    class="relative h-screen flex flex-col items-center overflow-clip border-b border-stroke"
   >
-    <h1
-      class="motion-preset-slide-up-sm pt-72 text-left text-[192px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
-    >
-      Why <br /> believe?
-    </h1>
-    <h3
-      class="motion-preset-fade-lg text-h3 leading-[150%] text-text max-[1000px]:text-body"
-    >
-      Why believe in God, or that Jesus is God?
-    </h3>
+    <div class="max-w-[100rem] w-full h-full flex flex-col gap-32 justify-center">
+      <h1
+        class="motion-preset-slide-up-sm pt-72 text-left text-[192px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
+      >
+        Why <br /> believe?
+      </h1>
+      <h3
+        class="motion-preset-fade-lg text-h3 leading-[150%] text-text max-[1000px]:text-body"
+      >
+        Why believe in God, or that Jesus is God?
+      </h3>
+    </div>
     <div class="absolute left-0 top-0 -z-50 h-full w-full">
       <div
         class="absolute -top-1/2 left-[20%] motion-preset-fade-lg h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-lime blur-[15vmin]"
@@ -33,11 +36,7 @@ import Layout from "~/layouts/Layout.astro";
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
-    <div
-      id="container"
-      class="divide-y divide-stroke border-x border-stroke text-text"
-    >
+  <MainSection>
       <div id="why" class="flex flex-col gap-24 p-48 px-128 max-[800px]:px-16">
         <Badge variant="warning"
           >Unfinished, no formatting, unedited version</Badge
@@ -122,6 +121,5 @@ import Layout from "~/layouts/Layout.astro";
           <a href="/contact"> <Button variant="secondary">Contact</Button></a>
         </div>
       </div>
-    </div>
-  </section>
+  </MainSection>
 </Layout>

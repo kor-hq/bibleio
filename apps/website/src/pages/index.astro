@@ -19,19 +19,21 @@ import { FocusesSection } from "~/components/home/Focuses";
 <Layout title="Home">
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-start justify-center gap-16 overflow-clip border-b border-stroke p-128 max-[850px]:p-32 max-[480px]:p-16"
+    class="relative h-screen overflow-clip border-b border-stroke flex flex-col items-center"
   >
-    <h4 class="motion-preset-fade-lg motion-delay-[500ms] text-accent-reversed text-h4 font-mono">Coming soon</h4>
-    <h1
-      class="motion-preset-slide-up-md motion-delay-150 text-[220px] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
-    >
-      Bibleio
-    </h1>
-    <p class="motion-preset-fade-lg text-body leading-[200%] text-text motion-delay-200">
-      Building better Christian technology, for disciples, for leaders, for organizations, for Christ.
-    </p>
+    <div class="flex flex-col items-start justify-center gap-16 max-w-[100rem] w-full h-full">
+      <h4 class="motion-preset-fade-lg motion-delay-[500ms] text-accent-reversed text-h4 font-mono">Coming soon</h4>
+      <h1
+        class="motion-preset-slide-up-md motion-delay-150 text-[220px] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      >
+        Bibleio
+      </h1>
+      <p class="motion-preset-fade-lg text-body leading-[200%] text-text motion-delay-200">
+        Building better Christian technology, for disciples, for leaders, for organizations, for Christ.
+      </p>
+    </div>
     <div
-      class="motion-preset-fade-lg h-full absolute justify-end items-center right-[20%] max-[850px]:right-[-20%] max-[450px]:right-[-35%] -z-50 flex flex-col gap-64"
+      class="motion-preset-fade-lg h-full absolute justify-end items-center right-[10vw] max-[850px]:right-[-25%] max-[450px]:right-[-35%] -z-50 flex flex-col gap-64"
     >
       <div class="flex flex-col gap-64 justify-end items-center motion-translate-y-loop-[50%]/reset motion-duration-[40s] motion-ease-linear">
         <Cross />
@@ -50,18 +52,21 @@ import { FocusesSection } from "~/components/home/Focuses";
     </div>
   </section>
   <MainSection>
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
-      <div class="p-32 border-b border-stroke flex flex-col gap-20">
-        <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed ">About us</h4>
-        <h1 class="motion-preset-slide-up text-h1">What we focus on</h1>
-        <p class="motion-preset-fade-lg text-body leading-[200%]">We build better Christian technology empowering disciples, leaders, pastors, and organizations to serve Christ. All free & open source.</p>
-        <FocusesSection client:load />
-      </div>
-      <div
-        class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
-      >
-        <HorizontalMarquee text="Coming Soon" />
-      </div>
+    <div class="p-32 border-b border-stroke flex flex-col gap-20">
+      <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">About us</h4>
+      <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">What we focus on</h1>
+      <p class="motion-preset-fade-lg text-body leading-[200%] intersect:motion-preset-fade-lg">We build better Christian technology empowering disciples, leaders, pastors, and organizations to serve Christ. All free & open source.</p>
+      <FocusesSection client:load />
+    </div>
+    <div
+      class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
+    >
+      <HorizontalMarquee text="Coming Soon" />
     </div>
   </MainSection>
 </Layout>
+
+<script>
+  import { Observer } from 'tailwindcss-intersect';
+  Observer.start();
+</script>

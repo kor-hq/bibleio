@@ -54,18 +54,20 @@ const { Content } = await render(page);
 ---
 
 <Layout title="Handbook">
-  <section id="main" class="relative flex max-[600px]:flex-col max-[500px]:pt-128 gap-12 px-256 max-[1290px]:px-16 text-text min-h-screen pt-96 pb-64">
-    <HandbookSidebar client:load pathname={Astro.url.pathname} pagesByCategory={pagesByCategory} category={page.data.category || "organization"} />
-    <div id="content" class="bg-fg-1 backdrop-blur-popup border border-stroke rounded-16 w-full h-fit max-[500px]:pb-64  min-h-screen flex flex-col p-32 max-[600px]:p-12 gap-24 items-center">
-      <div class="max-w-[32rem] w-full flex flex-col gap-12">
-        <div class="flex gap-24 flex-wrap">
-          <p class="text-sub">{matchAuthorNames(page.data.authors)}</p>
-          <p class="text-sub capitalize max-[600px]:hidden">{page.data.category}</p>
-          <p class="text-sub">{page.data.lastUpdated.toDateString()}</p>
+  <section id="main" class="flex max-[600px]:flex-col justify-center text-text min-h-screen pt-96 pb-64">
+    <section id="main" class="max-w-[85rem] w-full relative flex max-[600px]:flex-col gap-12">
+      <HandbookSidebar client:load pathname={Astro.url.pathname} pagesByCategory={pagesByCategory} category={page.data.category || "organization"} />
+      <div id="content" class="bg-fg-1 backdrop-blur-popup border border-stroke rounded-16 w-full h-fit max-[500px]:pb-64  min-h-screen flex flex-col p-32 max-[600px]:p-12 gap-24 items-center">
+        <div class="max-w-[32rem] w-full flex flex-col gap-12">
+          <div class="flex gap-24 flex-wrap">
+            <p class="text-sub">{matchAuthorNames(page.data.authors)}</p>
+            <p class="text-sub capitalize max-[600px]:hidden">{page.data.category}</p>
+            <p class="text-sub">{page.data.lastUpdated.toDateString()}</p>
+          </div>
+          <h1 class="text-h1">{page.data.title}</h1>
+          <Prose><Content /></Prose>
         </div>
-        <h1 class="text-h1">{page.data.title}</h1>
-        <Prose><Content /></Prose>
       </div>
-    </div>
+    </section>
   </section>
 </Layout>
