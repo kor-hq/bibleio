@@ -14,230 +14,231 @@ interface Props {
 }
 const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
 ---
-
-<footer
-  class="relative grid grid-cols-4 items-center border-t border-b border-stroke px-[256px] text-text max-[1550px]:px-0 max-[1100px]:grid-cols-1 max-[1100px]:divide-y max-[1100px]:border-none"
->
-  <a
-    class="absolute left-1/2 top-[-6%] flex size-48 -translate-x-1/2 items-center justify-center rounded-full border border-stroke bg-bg-1 duration-150 ease-out hover:scale-105 max-[1100px]:top-[-2.2%]"
-    href={hrefTargetOutside ? "https://bibleio.com/" : "/"}
-  >
-    <IconLogo size="2rem" reverseColor />
-  </a>
-  <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-12">
-        <a href="/"><Logo size={32} /></a>
-        <code class="font-mono text-sub">FLOSS MIT-0</code>
-      </div>
-      <ThemeSwitcher />
-    </div>
-    <div class="flex flex-col gap-24">
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/handbook/about-us" : "/handbook/about-us"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Handbook
-      </a>
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/handbook/about-us" : "/handbook/about-us"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-        >About us
-      </a>
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/blog" : "/blog"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-        >Blog
-      </a>
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/contact" : "/contact"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-        >Contact
-      </a>
-      <div class="flex gap-20">
-        <a
-          href="https://github.com/bibleio"
-          class="text-text duration-150 ease-out hover:text-accent-reversed"
-          target="_blank"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5rem"
-            height="1.5rem"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width={1.5}
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
-            ></path>
-          </svg>
-        </a>
-        <a
-          href="https://bsky.app/profile/bibleio.com"
-          class="text-text duration-150 ease-out hover:text-accent-reversed"
-          target="_blank"
-        >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856z" />
-        </svg>
-        </a>
-        <a
-          href="https://x.com/bibleioo"
-          class="text-text duration-150 ease-out hover:text-accent-reversed"
-          target="_blank"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5rem"
-            height="1.5rem"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width={1.5}
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
-            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-          </svg>
-        </a>
-        <a
-          href="https://discord.gg/7eVCyQ5GGb"
-          class="text-text duration-150 ease-out hover:text-accent-reversed"
-          target="_blank"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5rem"
-            height="1.5rem"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width={1.5}
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-discord"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
-            <path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
-            <path
-              d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3"
-            ></path>
-            <path d="M7 16.5c3.5 1 6.5 1 10 0"></path>
-          </svg>
-        </a>
-        <a
-          href="https://www.youtube.com/@bibleio"
-          class="text-text duration-150 ease-out hover:text-accent-reversed"
-          target="_blank"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5rem"
-            height="1.5rem"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width={1.5}
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z"
-            ></path>
-            <path d="M10 9l5 3l-5 3z"></path>
-          </svg>
-        </a>
-      </div>
-      <a href="https://korhq.com" class="w-fit text-sub text-text hover:opacity-100 ease-out text opacity-75 duration-150">Made with ❤️ by KOR</a>
-    </div>
-  </div>
-  <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
-    <h2 class="text-h2">Products</h2>
-    <div class="flex flex-col gap-24">
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/apps#web" : "/apps#web"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Web app
-      </a>
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/apps#mobile" : "/apps#mobile"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Mobile app
-      </a>
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/apps#desktop" : "/apps#desktop"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Desktop app
-      </a>
-    </div>
-  </div>
+<footer class="flex flex-col items-center border-t border-b border-stroke">
   <div
-    class="=items-start flex h-full flex-col gap-16 border-l border-stroke p-32"
+    class="relative grid grid-cols-4 max-w-[85rem] w-full items-center max-[1100px]:grid-cols-1 max-[1100px]:divide-y max-[1100px]:border-none"
   >
-    <h2 class="text-h2">Developers</h2>
-    <div class="flex flex-col items-start gap-24">
-      <a
-        href={devHrefTargetOutside ? "https://dev.bibleio.com/api/docs" : "/api/docs"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        API
-      </a>
-      <a
-        href={devHrefTargetOutside ? "https://dev.bibleio.com/biblejson/docs" : "/biblejson/docs"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        BibleJSON
-      </a>
-      <a
-        href={devHrefTargetOutside ? "https://dev.bibleio.com/design/docs" : "/design/docs"}
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Design
-      </a>
-      <a
-        href="https://cat-skate-e91.notion.site/Onboarding-132aafe2ea3c800ab45ddbe0a5db3da8?pvs=4"
-        class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Contribute
-      </a>
+    <a
+      class="absolute left-1/2 top-[-6%] flex size-48 -translate-x-1/2 items-center justify-center rounded-full border border-stroke bg-bg-1 duration-150 ease-out hover:border-accent-reversed max-[1100px]:top-[-2.2%]"
+      href={hrefTargetOutside ? "https://bibleio.com/" : "/"}
+    >
+      <IconLogo size="2rem" reverseColor />
+    </a>
+    <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-12">
+          <a href="/"><Logo size={32} /></a>
+          <code class="font-mono text-sub">FLOSS MIT-0</code>
+        </div>
+        <ThemeSwitcher />
+      </div>
+      <div class="flex flex-col gap-24">
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/handbook/about-us" : "/handbook/about-us"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Handbook
+        </a>
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/handbook/about-us" : "/handbook/about-us"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          >About us
+        </a>
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/blog" : "/blog"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          >Blog
+        </a>
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/contact" : "/contact"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          >Contact
+        </a>
+        <div class="flex gap-20">
+          <a
+            href="https://github.com/bibleio"
+            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5rem"
+              height="1.5rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width={1.5}
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://bsky.app/profile/bibleio.com"
+            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            target="_blank"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856z" />
+          </svg>
+          </a>
+          <a
+            href="https://x.com/bibleioo"
+            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5rem"
+              height="1.5rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width={1.5}
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+              <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+            </svg>
+          </a>
+          <a
+            href="https://discord.gg/7eVCyQ5GGb"
+            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5rem"
+              height="1.5rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width={1.5}
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-discord"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+              <path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+              <path
+                d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3"
+              ></path>
+              <path d="M7 16.5c3.5 1 6.5 1 10 0"></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.youtube.com/@bibleio"
+            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5rem"
+              height="1.5rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width={1.5}
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z"
+              ></path>
+              <path d="M10 9l5 3l-5 3z"></path>
+            </svg>
+          </a>
+        </div>
+        <a href="https://korhq.com" class="w-fit text-sub text-text hover:opacity-100 ease-out text opacity-75 duration-150">Made with ❤️ by KOR</a>
+      </div>
     </div>
-  </div>
-  <div class="flex h-full flex-col gap-16 border-x border-stroke p-32">
-    <h2 class="text-h2">You</h2>
-    <div class="flex flex-col gap-24">
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/why-believe" : "/why-believe"}
-        class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
-        >Why believe?
-      </a>
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/give-your-rights" : "/give-your-rights"}
-        class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Give your rights
-      </a>
-      <a
-        href={hrefTargetOutside ? "https://bibleio.com/contact" : "/contact"}
-        class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
-      >
-        Support
-      </a>
+    <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
+      <h2 class="text-h2">Products</h2>
+      <div class="flex flex-col gap-24">
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/apps#web" : "/apps#web"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Web app
+        </a>
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/apps#mobile" : "/apps#mobile"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Mobile app
+        </a>
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/apps#desktop" : "/apps#desktop"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Desktop app
+        </a>
+      </div>
+    </div>
+    <div
+      class="=items-start flex h-full flex-col gap-16 border-l border-stroke p-32"
+    >
+      <h2 class="text-h2">Developers</h2>
+      <div class="flex flex-col items-start gap-24">
+        <a
+          href={devHrefTargetOutside ? "https://dev.bibleio.com/api/docs" : "/api/docs"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          API
+        </a>
+        <a
+          href={devHrefTargetOutside ? "https://dev.bibleio.com/biblejson/docs" : "/biblejson/docs"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          BibleJSON
+        </a>
+        <a
+          href={devHrefTargetOutside ? "https://dev.bibleio.com/design/docs" : "/design/docs"}
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Design
+        </a>
+        <a
+          href="https://cat-skate-e91.notion.site/Onboarding-132aafe2ea3c800ab45ddbe0a5db3da8?pvs=4"
+          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Contribute
+        </a>
+      </div>
+    </div>
+    <div class="flex h-full flex-col gap-16 border-x border-stroke p-32">
+      <h2 class="text-h2">You</h2>
+      <div class="flex flex-col gap-24">
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/why-believe" : "/why-believe"}
+          class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          >Why believe?
+        </a>
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/give-your-rights" : "/give-your-rights"}
+          class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Give your rights
+        </a>
+        <a
+          href={hrefTargetOutside ? "https://bibleio.com/contact" : "/contact"}
+          class="text-body text-text duration-150 ease-out hover:text-accent-reversed"
+        >
+          Support
+        </a>
+      </div>
     </div>
   </div>
 </footer>

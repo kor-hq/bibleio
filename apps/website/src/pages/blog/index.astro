@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import { matchAuthorNames } from "~/utils/matchAuthorName";
+import MainSection from "~/layouts/MainSection.astro";
 
 const blogs = await getCollection("blog", ({ data }) => {
 	// hide drafts in prod
@@ -14,10 +15,10 @@ const blogs = await getCollection("blog", ({ data }) => {
 <Layout title="Blog">
   <section
     id="landing"
-    class="relative flex h-fit flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-32 pt-[192px] max-[1550px]:px-16"
+    class="relative flex h-fit flex-col items-center gap-24 overflow-clip border-b border-stroke py-32 pt-[192px] p-32"
   >
     <h1
-      class="motion-preset-slide-up-sm pt-72 text-center text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
+      class="motion-preset-slide-up-sm pt-72 text-[100px] leading-none text-text-solid max-w-[85rem] w-full max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
     >
       Blog
     </h1>
@@ -36,42 +37,43 @@ const blogs = await getCollection("blog", ({ data }) => {
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0 text-text">
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+  <MainSection>
       <div class="grid grid-cols-4 max-[820px]:grid-cols-1">
         <div id="SIDEBAR" class="flex flex-col gap-0 col-span-1 divide-y divide-stroke border-stroke max-[820px]:border-b">
           <div class="flex flex-col p-24 gap-16">
-            <p class="text-body leading-[200%]">On our blog we post about faith related topics, announcements regarding Bibleio, and our process engineering and making Bibleio.</p>
+            <p class="text-body leading-[200%]">Here we will post updates and the behind the scenes of engineering Bibleio.</p>
           </div>
         </div>
         <div id="BLOGS" class="flex flex-col gap-0 col-span-3 min-[820px]:border-l border-stroke">
           {blogs.length > 0 ?
-            blogs.map((blog) => (
-              <a
-                href={`/blog/${blog.id}`}
-                class="grid grid-cols-2 max-[500px]:grid-cols-1 p-24 h-fit gap-24 border-b border-stroke text-text group last:border-b-transparent"
-              >
-                <div class="flex flex-col gap-24">
-                  <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">
-                    {blog.data.title}
-                  </h3>
-                  <div class="flex gap-24 flex-wrap gap-y-12">
-                    <time class="text-body leading-none">
-                      {blog.data.date.toDateString()}
-                    </time>
-                     <p class="text-body leading-none">
-                        by {matchAuthorNames(blog.data.authors)}
-                    </p>
+            blogs
+              .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+              .map((blog) => (
+                <a
+                  href={`/blog/${blog.id}`}
+                  class="grid grid-cols-2 max-[500px]:grid-cols-1 p-24 h-fit gap-24 border-b border-stroke text-text group last:border-b-transparent"
+                >
+                  <div class="flex flex-col gap-24">
+                    <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">
+                      {blog.data.title}
+                    </h3>
+                    <div class="flex gap-24 flex-wrap gap-y-12">
+                      <time class="text-body leading-none">
+                        {blog.data.date.toDateString()}
+                      </time>
+                      <p class="text-body leading-none">
+                          by {matchAuthorNames(blog.data.authors)}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                {blog.data.imageUrl && <Image
-                  class="rounded-8 border aspect-video object-cover border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
-                  width={1280}
-                  height={720}
-                  alt={blog.data.title}
-                  src={blog.data.imageUrl}
-                />}
-              </a>
+                  {blog.data.imageUrl && <Image
+                    class="rounded-8 border aspect-video object-cover border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
+                    width={1280}
+                    height={720}
+                    alt={blog.data.title}
+                    src={blog.data.imageUrl}
+                  />}
+                </a>
             )) :
             <div class="p-32 flex flex-col gap-12">
               <h1 class="text-h1">No blogs</h1>
@@ -80,6 +82,5 @@ const blogs = await getCollection("blog", ({ data }) => {
           }
           </div>
       </div>
-    </div>
-  </section>
+  </MainSection>
 </Layout>

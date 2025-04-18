@@ -6,7 +6,7 @@ const blogSchema = z.object({
 	draft: z.boolean().optional(),
 	date: z.date(),
 	authors: z.array(z.string()),
-	imageUrl: z.string().optional(),
+	imageUrl: z.string(),
 });
 
 const handbookSchema = z.object({
