@@ -47,7 +47,7 @@ const blogs = await getCollection("blog", ({ data }) => {
     <div class="flex flex-col items-start justify-center gap-16 max-w-[100rem] w-full h-full">
       <h4 class="motion-preset-fade-lg motion-delay-[500ms] text-accent-reversed text-h4 font-mono">Coming soon</h4>
       <h1
-        class="motion-preset-slide-up-md text-text-solid motion-delay-150 text-[220px] italic leading-none max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+        class="motion-preset-slide-up-md text-text-solid motion-delay-150 text-[220px] italic leading-none max-[1280px]:text-[8rem] max-[480px]:text-[4.25rem]"
       >
         Bibleio
       </h1>
@@ -75,17 +75,17 @@ const blogs = await getCollection("blog", ({ data }) => {
     </div>
   </section>
   <MainSection>
-    <section class="p-32 border-b border-stroke flex flex-col gap-20">
+    <section class="p-32 max-[500px]:p-12 max-[500px]:gap-8 border-b border-stroke flex flex-col gap-20">
       <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">About us</h4>
-      <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">What we focus on</h1>
+      <h1 class="motion-preset-slide-up text-h1 max-[500px]:text-h2 intersect:motion-preset-fade-lg">What we focus on</h1>
       <p class="motion-preset-fade-lg text-body leading-[200%] intersect:motion-preset-fade-lg">We build better Christian technology empowering disciples, leaders, pastors, and organizations to serve Christ. All free & open source.</p>
       <FocusesSection />
     </section>
 
-    <section class="p-32 border-b border-stroke flex flex-col gap-20">
+    <section class="p-32 max-[500px]:p-12 max-[500px]:gap-8 border-b border-stroke flex flex-col gap-20">
       <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Blog</h4>
-      <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">Update posts</h1>
-      <div class="grid grid-cols-3 gap-16">
+      <h1 class="motion-preset-slide-up text-h1 max-[500px]:text-h2 intersect:motion-preset-fade-lg">Update posts</h1>
+      <div class="grid grid-cols-3 gap-16 max-[1050px]:grid-cols-2 max-[711px]:grid-cols-1">
         {blogs
           .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
           .slice(0, 3)
@@ -105,16 +105,16 @@ const blogs = await getCollection("blog", ({ data }) => {
       </div>
     </section>
 
-    <section class="p-32 pb-48 flex flex-col gap-20 relative overflow-clip">
+    <section class="p-32 max-[500px]:p-12 max-[500px]:gap-8 pb-48 max-[500px]:pb-48 flex flex-col gap-20 relative overflow-clip">
       <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Community</h4>
-      <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">Stay up to date and join us</h1>
+      <h1 class="motion-preset-slide-up text-h1 max-[500px]:text-h2 intersect:motion-preset-fade-lg">Stay up to date and join us</h1>
 
-      <div class="grid grid-cols-3 gap-16">
+      <div class="grid grid-cols-3 gap-16 max-[1050px]:grid-cols-2 max-[711px]:grid-cols-1">
         <div class="bg-fg-1 border border-stroke rounded-32 p-20 gap-6 flex flex-col">
           <IconBuildingCommunity strokeWidth={1.5} className="text-accent-reversed" />
           <h2 class="text-h2">Community</h2>
           <p class="text-body leading-p">Join the community and follow our socials to spread the message.</p>
-          <div class="flex gap-12 items-center">
+          <div class="flex gap-12 items-center flex-wrap">
             <a href="https://discord.gg/7eVCyQ5GGb">
               <Button>Discord</Button>
             </a>
