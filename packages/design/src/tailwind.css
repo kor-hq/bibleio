@@ -14,6 +14,8 @@
 	--text-h2: 2rem;
 	--text-h1: 3.125rem;
 
+	--leading-p: 200%;
+
 	--shadow-colored-component:
 		0px 3px 4.7px 0px var(--color-inner-shadow-1) inset, 0px -3px 11px 1px var(
 			--color-inner-shadow-2

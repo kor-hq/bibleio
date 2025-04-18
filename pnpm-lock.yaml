@@ -182,6 +182,9 @@ importers:
       '@radix-ui/react-navigation-menu':
         specifier: ^1.2.5
         version: 1.2.5(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@tabler/icons-react':
+        specifier: ^2.47.0
+        version: 2.47.0(react@19.1.0)
       '@tabler/icons-webfont':
         specifier: ^3.31.0
         version: 3.31.0
@@ -5844,6 +5847,12 @@ snapshots:
       '@tabler/icons': 2.47.0
       prop-types: 15.8.1
       react: 18.3.1
+
+  '@tabler/icons-react@2.47.0(react@19.1.0)':
+    dependencies:
+      '@tabler/icons': 2.47.0
+      prop-types: 15.8.1
+      react: 19.1.0
 
   '@tabler/icons-webfont@3.31.0':
     dependencies:

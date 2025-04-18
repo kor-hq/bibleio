@@ -8,6 +8,7 @@ import {
 	Circle,
 	Cross,
 	Hexagon,
+	Input,
 	Star,
 	Triangle,
 	WarningNote,
@@ -17,6 +18,16 @@ import FocusesSection from "~/components/home/FocusesSection.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { matchAuthorNames } from "~/utils/matchAuthorName";
+import {
+	IconBuildingCommunity,
+	IconGitPullRequest,
+	IconMailOpened,
+	IconBrandYoutube,
+	IconBrandInstagram,
+	IconBrandBluesky,
+	IconBrandX,
+	IconBrandGithub,
+} from "@tabler/icons-react";
 
 const blogs = await getCollection("blog", ({ data }) => {
 	// hide drafts in prod
@@ -94,16 +105,64 @@ const blogs = await getCollection("blog", ({ data }) => {
       </div>
     </section>
 
-    <section class="p-32 border-b border-stroke flex flex-col gap-20">
+    <section class="p-32 pb-48 flex flex-col gap-20 relative overflow-clip">
       <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Community</h4>
       <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">Stay up to date and join us</h1>
-      <FocusesSection />
-    </section>
 
-    <div
-      class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
-    >
-      <HorizontalMarquee text="Coming Soon" />
-    </div>
+      <div class="grid grid-cols-3 gap-16">
+        <div class="bg-fg-1 border border-stroke rounded-32 p-20 gap-6 flex flex-col">
+          <IconBuildingCommunity strokeWidth={1.5} className="text-accent-reversed" />
+          <h2 class="text-h2">Community</h2>
+          <p class="text-body leading-p">Join the community and follow our socials to spread the message.</p>
+          <div class="flex gap-12 items-center">
+            <a href="https://discord.gg/7eVCyQ5GGb">
+              <Button>Discord</Button>
+            </a>
+            <a href="https://www.youtube.com/@bibleio" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandYoutube strokeWidth={1.5} />
+            </a>
+            <a href="https://www.instagram.com/bibleioo/" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandInstagram strokeWidth={1.5} />
+            </a>
+            <a href="https://bsky.app/profile/bibleio.com" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandBluesky strokeWidth={1.5} />
+            </a>
+            <a href="https://x.com/bibleioo" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandX strokeWidth={1.5} />
+            </a>
+            <a href="https://github.com/bibleio" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandGithub strokeWidth={1.5} />
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-fg-1 border border-stroke rounded-32 p-20 gap-6 flex flex-col">
+          <IconGitPullRequest strokeWidth={1.5} className="text-accent-reversed" />
+          <h2 class="text-h2">Contribute</h2>
+          <p class="text-body leading-p">Help us out by tackling issues or testing and making new ones.</p>
+          <a href="https://github.com/bibleio">
+            <Button>GitHub</Button>
+          </a>
+        </div>
+
+        <div class="bg-fg-1 border border-stroke rounded-32 p-20 gap-6 flex flex-col">
+          <div class="flex items-center gap-8">
+            <IconMailOpened strokeWidth={1.5} className="text-accent-reversed" />
+            <p class="text-body leading-none">Coming soon</p>
+          </div>
+          <h2 class="text-h2">Newsletter</h2>
+          <p class="text-body leading-p">Receive monthly updates about our progress and new features.</p>
+          <div class="flex gap-8 items-center">
+            <Input disabled className="w-full" type="email" placeholder="bob@email.com"/>
+            <Button disabled>Join</Button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-[-30%] right-[-5%] motion-preset-fade-lg h-[29vw] w-[20vw] animate-spin-slow rounded-full bg-accent blur-[15vmin] -z-50"
+      >
+      </div>
+    </section>
   </MainSection>
 </Layout>
