@@ -13,10 +13,22 @@ import {
 	WarningNote,
 } from "@bibleio/design";
 import Layout from "~/layouts/Layout.astro";
-import { FocusesSection } from "~/components/home/Focuses";
+import FocusesSection from "~/components/home/FocusesSection.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { matchAuthorNames } from "~/utils/matchAuthorName";
+
+const blogs = await getCollection("blog", ({ data }) => {
+	// hide drafts in prod
+	return import.meta.env.PROD ? data.draft !== true : true;
+});
 ---
 
 <Layout title="Home">
+  <script>
+    import { Observer } from 'tailwindcss-intersect';
+    Observer.start();
+  </script>
   <section
     id="landing"
     class="relative h-screen overflow-clip border-b border-stroke flex flex-col items-center p-32"
@@ -24,7 +36,7 @@ import { FocusesSection } from "~/components/home/Focuses";
     <div class="flex flex-col items-start justify-center gap-16 max-w-[100rem] w-full h-full">
       <h4 class="motion-preset-fade-lg motion-delay-[500ms] text-accent-reversed text-h4 font-mono">Coming soon</h4>
       <h1
-        class="motion-preset-slide-up-md motion-delay-150 text-[220px] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+        class="motion-preset-slide-up-md text-text-solid motion-delay-150 text-[220px] italic leading-none max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
       >
         Bibleio
       </h1>
@@ -56,7 +68,30 @@ import { FocusesSection } from "~/components/home/Focuses";
       <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">About us</h4>
       <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">What we focus on</h1>
       <p class="motion-preset-fade-lg text-body leading-[200%] intersect:motion-preset-fade-lg">We build better Christian technology empowering disciples, leaders, pastors, and organizations to serve Christ. All free & open source.</p>
-      <FocusesSection client:load />
+      <FocusesSection />
+    </div>
+    <div class="p-32 border-b border-stroke flex flex-col gap-20">
+      <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Blog</h4>
+      <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">Update posts</h1>
+      <div class="grid grid-cols-3 gap-16">
+        {blogs
+          .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+          .slice(0, 3)
+          .map((blog) => (
+            <a href={`/blog/${blog.id}`} class="bg-fg-1 border border-stroke rounded-16 p-8 gap-8 hover:border-accent-reversed duration-150 ease-out">
+              {blog.data.imageUrl && <Image class="aspect-video w-full h-auto object-cover rounded-8" src={blog.data.imageUrl} alt={blog.data.title} width={640} height={480} />}
+              <div class="p-8 flex flex-col gap-12">
+                <h2 class="text-h2">{blog.data.title}</h2>
+                <div class="flex gap-12">
+                  <p class="text-text">{matchAuthorNames(blog.data.authors)}</p>
+                  <p class="text-text">{blog.data.date.toDateString()}</p>
+                </div>
+              </div>
+            </a>
+          )
+        )}
+      </div>
+
     </div>
     <div
       class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
@@ -65,8 +100,3 @@ import { FocusesSection } from "~/components/home/Focuses";
     </div>
   </MainSection>
 </Layout>
-
-<script>
-  import { Observer } from 'tailwindcss-intersect';
-  Observer.start();
-</script>

@@ -46,32 +46,34 @@ const blogs = await getCollection("blog", ({ data }) => {
         </div>
         <div id="BLOGS" class="flex flex-col gap-0 col-span-3 min-[820px]:border-l border-stroke">
           {blogs.length > 0 ?
-            blogs.map((blog) => (
-              <a
-                href={`/blog/${blog.id}`}
-                class="grid grid-cols-2 max-[500px]:grid-cols-1 p-24 h-fit gap-24 border-b border-stroke text-text group last:border-b-transparent"
-              >
-                <div class="flex flex-col gap-24">
-                  <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">
-                    {blog.data.title}
-                  </h3>
-                  <div class="flex gap-24 flex-wrap gap-y-12">
-                    <time class="text-body leading-none">
-                      {blog.data.date.toDateString()}
-                    </time>
-                     <p class="text-body leading-none">
-                        by {matchAuthorNames(blog.data.authors)}
-                    </p>
+            blogs
+              .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+              .map((blog) => (
+                <a
+                  href={`/blog/${blog.id}`}
+                  class="grid grid-cols-2 max-[500px]:grid-cols-1 p-24 h-fit gap-24 border-b border-stroke text-text group last:border-b-transparent"
+                >
+                  <div class="flex flex-col gap-24">
+                    <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">
+                      {blog.data.title}
+                    </h3>
+                    <div class="flex gap-24 flex-wrap gap-y-12">
+                      <time class="text-body leading-none">
+                        {blog.data.date.toDateString()}
+                      </time>
+                      <p class="text-body leading-none">
+                          by {matchAuthorNames(blog.data.authors)}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                {blog.data.imageUrl && <Image
-                  class="rounded-8 border aspect-video object-cover border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
-                  width={1280}
-                  height={720}
-                  alt={blog.data.title}
-                  src={blog.data.imageUrl}
-                />}
-              </a>
+                  {blog.data.imageUrl && <Image
+                    class="rounded-8 border aspect-video object-cover border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
+                    width={1280}
+                    height={720}
+                    alt={blog.data.title}
+                    src={blog.data.imageUrl}
+                  />}
+                </a>
             )) :
             <div class="p-32 flex flex-col gap-12">
               <h1 class="text-h1">No blogs</h1>
