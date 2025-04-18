@@ -90,6 +90,7 @@ function DesktopNavMenuUsContent() {
 				<NavigationMenu.Link
 					href="https://github.com/bibleio"
 					target="_blank"
+					rel="noreferrer"
 					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
 					<IconBrandGithub strokeWidth={1.5} />
@@ -97,6 +98,7 @@ function DesktopNavMenuUsContent() {
 				<NavigationMenu.Link
 					href="https://bsky.app/profile/bibleio.com"
 					target="_blank"
+					rel="noreferrer"
 					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
 					<IconBrandBluesky strokeWidth={1.5} />
@@ -104,6 +106,7 @@ function DesktopNavMenuUsContent() {
 				<NavigationMenu.Link
 					href="https://x.com/bibleioo"
 					target="_blank"
+					rel="noreferrer"
 					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
 					<IconBrandX strokeWidth={1.5} />
@@ -111,6 +114,7 @@ function DesktopNavMenuUsContent() {
 				<NavigationMenu.Link
 					href="https://discord.gg/7eVCyQ5GGb"
 					target="_blank"
+					rel="noreferrer"
 					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
 					<IconBrandDiscord strokeWidth={1.5} />
@@ -118,6 +122,7 @@ function DesktopNavMenuUsContent() {
 				<NavigationMenu.Link
 					href="https://www.youtube.com/@bibleio"
 					target="_blank"
+					rel="noreferrer"
 					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
 					<IconBrandYoutube strokeWidth={1.5} />
@@ -266,7 +271,81 @@ function MobileNavMenu({ value }: { value: boolean }) {
 		<div
 			className={`m-16 mt-0 h-full min-h-0 flex-col items-start gap-[40px] overflow-y-scroll rounded-16 border border-stroke bg-fg-1 backdrop-blur-popup p-24 shadow-popup ${value ? "flex animate-scale-in" : "hidden"}`}
 		>
-			adsasd
+			<section className="flex flex-col gap-[28px]">
+				<p className="text-sub text-text/75">Website</p>
+				<a href="/" className="text-h4">
+					Home
+				</a>
+			</section>
+
+			<section className="flex flex-col gap-[28px]">
+				<p className="text-sub text-text/75">Products</p>
+				<a href="/apps" className="text-h4">
+					App
+				</a>
+			</section>
+
+			<section className="flex flex-col gap-[28px]">
+				<p className="text-sub text-text/75">You</p>
+				<a href="/why-believe" className="text-h4">
+					Why believe?
+				</a>
+				<a href="/give-your-rights" className="text-h4">
+					Give your rights
+				</a>
+			</section>
+
+			<section className="flex flex-col gap-[28px]">
+				<p className="text-sub text-text/75">Us</p>
+				<a href="/handbook" className="text-h4">
+					Handbook
+				</a>
+				<a href="/blog" className="text-h4">
+					Blog
+				</a>
+			</section>
+			<div className="flex gap-32 flex-wrap">
+				<a
+					href="https://github.com/bibleio"
+					target="_blank"
+					rel="noreferrer"
+					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+				>
+					<IconBrandGithub strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://bsky.app/profile/bibleio.com"
+					target="_blank"
+					rel="noreferrer"
+					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+				>
+					<IconBrandBluesky strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://x.com/bibleioo"
+					target="_blank"
+					rel="noreferrer"
+					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+				>
+					<IconBrandX strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://discord.gg/7eVCyQ5GGb"
+					target="_blank"
+					rel="noreferrer"
+					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+				>
+					<IconBrandDiscord strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://www.youtube.com/@bibleio"
+					target="_blank"
+					rel="noreferrer"
+					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+				>
+					<IconBrandYoutube strokeWidth={1.5} />
+				</a>
+			</div>
 		</div>
 	);
 }
