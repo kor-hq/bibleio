@@ -64,13 +64,14 @@ const blogs = await getCollection("blog", ({ data }) => {
     </div>
   </section>
   <MainSection>
-    <div class="p-32 border-b border-stroke flex flex-col gap-20">
+    <section class="p-32 border-b border-stroke flex flex-col gap-20">
       <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">About us</h4>
       <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">What we focus on</h1>
       <p class="motion-preset-fade-lg text-body leading-[200%] intersect:motion-preset-fade-lg">We build better Christian technology empowering disciples, leaders, pastors, and organizations to serve Christ. All free & open source.</p>
       <FocusesSection />
-    </div>
-    <div class="p-32 border-b border-stroke flex flex-col gap-20">
+    </section>
+
+    <section class="p-32 border-b border-stroke flex flex-col gap-20">
       <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Blog</h4>
       <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">Update posts</h1>
       <div class="grid grid-cols-3 gap-16">
@@ -91,8 +92,14 @@ const blogs = await getCollection("blog", ({ data }) => {
           )
         )}
       </div>
+    </section>
 
-    </div>
+    <section class="p-32 border-b border-stroke flex flex-col gap-20">
+      <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Community</h4>
+      <h1 class="motion-preset-slide-up text-h1 intersect:motion-preset-fade-lg">Stay up to date and join us</h1>
+      <FocusesSection />
+    </section>
+
     <div
       class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
     >
