@@ -48,7 +48,7 @@ const team = await getCollection("team");
             <p class="text-sub">{member.data.field.join(", ")}</p>
             <p class="text-body leading-p">{member.data.description}</p>
             <div class="flex gap-8 flex-wrap">
-              {member.data.links.map((link: Link) => (
+              {member.data.links && member.data.links.map((link: Link) => (
                 <a href={link.link} class="text-body underline hover:text-accent-reversed duration-150 ease-out" target="_blank" rel="noreferrer">{link.name}</a>
               ))}
             </div>
