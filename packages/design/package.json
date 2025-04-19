@@ -17,9 +17,19 @@
 	"license": "MIT-0",
 	"version": "0.0.0",
 	"scripts": {
-		"fix": "biome check . --fix"
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"fix": "biome check . --fix",
+		"astro": "astro"
 	},
 	"dependencies": {
+		"@astrojs/mdx": "^4.2.4",
+		"@astrojs/react": "^4.2.4",
+		"@fontsource/jetbrains-mono": "^5.2.5",
+		"@fontsource/lora": "^5.2.5",
+		"@korhq/unpreview": "0.1.2-alpha",
 		"@radix-ui/react-alert-dialog": "^1.1.10",
 		"@radix-ui/react-checkbox": "^1.2.2",
 		"@radix-ui/react-collapsible": "^1.1.7",
@@ -33,6 +43,7 @@
 		"@radix-ui/react-toggle-group": "^1.1.6",
 		"@radix-ui/react-tooltip": "^1.2.3",
 		"@tabler/icons-react": "^3.31.0",
+		"@tailwindcss/vite": "^4.1.4",
 		"astro": "^5.7.4",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
