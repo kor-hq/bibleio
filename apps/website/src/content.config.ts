@@ -1,46 +1,59 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
-import { notionLoader } from "notion-astro-loader";
+
+const blogSchema = z.object({
+	title: z.string(),
+	draft: z.boolean().optional(),
+	date: z.date(),
+	authors: z.array(z.string()),
+	imageUrl: z.string(),
+});
+
+const handbookSchema = z.object({
+	title: z.string(),
+	draft: z.boolean().optional(),
+	category: z.enum(["organization", "design", "engineering", "community"]),
+	lastUpdated: z.date(),
+	authors: z.array(z.string()),
+});
+
+const teamSchema = z.object({
+	name: z.string(),
+	username: z.string(),
+	pfp: z.string(),
+	field: z.array(z.string()),
+	description: z.string().optional(),
+	links: z
+		.array(
+			z.object({
+				name: z.string(),
+				link: z.string(),
+			}),
+		)
+		.optional(),
+});
+
+// ------------------- Collection definitions -------------------
 
 const blog = defineCollection({
-	loader: notionLoader({
-		auth: import.meta.env.NOTION_TOKEN,
-		database_id: import.meta.env.NOTION_BLOG_DATABASE_ID,
+	loader: glob({
+		pattern: "**/*.{md,mdx}",
+		base: "./src/content/blog",
 	}),
+	schema: blogSchema,
 });
 
 const handbook = defineCollection({
-	loader: notionLoader({
-		auth: import.meta.env.NOTION_TOKEN,
-		database_id: import.meta.env.NOTION_HANDBOOK_DATABASE_ID,
+	loader: glob({
+		pattern: "**/*.{md,mdx}",
+		base: "./src/content/handbook",
 	}),
+	schema: handbookSchema,
 });
 
 const team = defineCollection({
 	loader: glob({ pattern: "**/*.json", base: "./src/content/team" }),
-	schema: z.object({
-		name: z.string(),
-		notionUserId: z.string().optional(), // if you write any content
-		pfp: z.string(),
-		field: z.array(z.string()),
-		description: z.string().optional(),
-		links: z
-			.array(
-				z.object({
-					name: z.enum([
-						"website",
-						"github",
-						"linkedin",
-						"mastodon",
-						"x",
-						"bluesky",
-						"instagram",
-					]),
-					link: z.string(),
-				}),
-			)
-			.optional(),
-	}),
+	schema: teamSchema,
 });
 
 export const collections = {

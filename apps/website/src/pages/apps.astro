@@ -11,6 +11,7 @@ import {
 	Triangle,
 } from "@bibleio/design";
 import Layout from "~/layouts/Layout.astro";
+import MainSection from "~/layouts/MainSection.astro";
 ---
 
 <Layout title="Apps">
@@ -46,8 +47,7 @@ import Layout from "~/layouts/Layout.astro";
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+  <MainSection>
       <div
         class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
       >
@@ -116,6 +116,5 @@ import Layout from "~/layouts/Layout.astro";
         </p>
         <a href="/roadmap#contribute"> <Button>Contribute</Button></a>
       </div>
-    </div>
-  </section></Layout
->
+  </MainSection>
+</Layout>

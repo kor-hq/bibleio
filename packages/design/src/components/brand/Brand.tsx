@@ -35,7 +35,7 @@ export const Logo = ({ size = 32, subText }: LogoProps) => {
 			<svg
 				width={`${svgSize.width}rem`}
 				height={`${svgSize.height}rem`}
-				viewBox="0 0 228 128"
+				viewBox="0 0 209 128"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
@@ -74,12 +74,12 @@ export const Logo = ({ size = 32, subText }: LogoProps) => {
 			</svg>
 
 			{subText && (
-				<h1
+				<p
 					style={{ fontSize: `${svgSize.height / 1.9}rem` }}
-					className="dark:text-white whitespace-nowrap align-middle italic text-text-solid"
+					className="ml-2 whitespace-nowrap align-middle italic text-text-solid"
 				>
 					{subText}
-				</h1>
+				</p>
 			)}
 		</div>
 	);

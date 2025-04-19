@@ -2,20 +2,11 @@
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
 		"target": "ES2022",
-		"module": "ESNext",
-		"moduleResolution": "Node",
+		"module": "ES2022",
+		"jsx": "react-jsx",
 		"strict": true,
 		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": true,
-		"baseUrl": ".",
-		"paths": {
-			"~/*": ["src/*"]
-		},
-		"jsx": "preserve",
-		"lib": ["ESNext", "DOM", "DOM.Iterable", "ES2022"],
-		"types": ["svelte"]
+		"sourceMap": true
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "dist"]

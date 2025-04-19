@@ -5,6 +5,7 @@ import react from "@astrojs/react";
 import yeskunallumami from "@yeskunall/astro-umami";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,20 +17,12 @@ export default defineConfig({
 			endpointUrl: "https://umami.cool.korhq.com",
 		}),
 		sitemap(),
+		mdx(),
 	],
 	vite: {
 		plugins: [tailwindcss()],
 	},
 	devToolbar: {
-		enabled: false,
-	},
-	// for loading images from the notion cms
-	image: {
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "**.amazonaws.com",
-			},
-		],
+		enabled: true,
 	},
 });
