@@ -5,7 +5,7 @@
 	"field": ["Founder"],
 	"description": "Jacob, also known as dukc, loves Jesus and making cool software and other stuff",
 	"links": [
-		{ "name": "website", "link": "https://dukc.dev" },
-		{ "name": "github", "link": "https://github.com/dukcc" }
+		{ "name": "Website", "link": "https://dukc.dev" },
+		{ "name": "GitHub", "link": "https://github.com/dukcc" }
 	]
 }
