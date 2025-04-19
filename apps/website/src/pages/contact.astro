@@ -2,15 +2,16 @@
 import { Image } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
 import ContactItem from "~/components/contact/ContactItem.astro";
+import MainSection from "~/layouts/MainSection.astro";
 ---
 
 <Layout title="Contact">
   <section
     id="landing"
-    class="relative flex h-fit flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke px-256 py-32 pt-[192px] max-[1550px]:px-16"
+    class="relative flex h-fit flex-col items-center gap-24 overflow-clip border-b border-stroke py-32 pt-[192px] p-32"
   >
     <h1
-      class="motion-preset-slide-up-sm pt-72 text-center text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
+      class="motion-preset-slide-up-sm pt-72 max-w-[85rem] w-full text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
     >
       Contact
     </h1>
@@ -25,7 +26,7 @@ import ContactItem from "~/components/contact/ContactItem.astro";
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0 text-text">
+  <MainSection>
     <div id="container" class="grid grid-cols-2 max-[950px]:grid-cols-1 border-x border-stroke divide divide-stroke">
       <div class="p-48 flex flex-col gap-24 border-stroke border-b border-r">
         <h2 class="text-h2">Contact us</h2>
@@ -48,8 +49,8 @@ import ContactItem from "~/components/contact/ContactItem.astro";
       </div>
       <div class="p-48 flex flex-col gap-24 border-stroke max-[950px]:border-t">
         <h2 class="text-h2">Resources</h2>
-        <a href="/handbook/about-us" class="flex bg-fg-1 backdrop-blur-popup max-[500px]:flex-col max-[500px]:items-start gap-12 hover:border-accent-reversed duration-150 ease-out items-end h-full border border-stroke rounded-16 p-24 justify-between">
-          <div class="flex flex-col gap-12">
+        <a href="/handbook/about-us" class="flex bg-fg-1 backdrop-blur-popup max-[500px]:flex-col max-[500px]:items-start gap-12 hover:border-accent-reversed duration-150 ease-out items-end h-full border border-stroke rounded-20 p-12 justify-between">
+          <div class="flex flex-col gap-12 p-8">
             <p class="text-text text-body font-mono">BIBLEIO</p>
             <h2 class="text-h2">Handbook</h2>
           </div>
@@ -63,5 +64,5 @@ import ContactItem from "~/components/contact/ContactItem.astro";
         </a>
       </div>
     </div>
-  </section>
+  </MainSection>
 </Layout>
