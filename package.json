@@ -6,10 +6,6 @@
 	"packageManager": "pnpm@10.7.1",
 	"scripts": {
 		"site": "turbo run --filter=@bibleio/website",
-		"webapp": "turbo run --filter=@bibleio/web-app",
-		"docs": "turbo run --filter=@bibleio/docs",
-		"api": "turbo run --filter=@bibleio/api",
-		"biblejson": "turbo run --filter=@bibleio/biblejson",
 		"design": "turbo run --filter=@bibleio/design",
 		"fix": "turbo run fix"
 	},
@@ -17,7 +13,5 @@
 		"@biomejs/biome": "1.9.4",
 		"turbo": "^2.5.0"
 	},
-	"trustedDependencies": [
-		"@biomejs/biome"
-	]
+	"trustedDependencies": ["@biomejs/biome"]
 }

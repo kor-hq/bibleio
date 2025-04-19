@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import { matchAuthorNames } from "~/utils/matchAuthorName";
-import MainSection from "~/layouts/MainSection.astro";
+import { MainSection } from "@bibleio/design";
 
 const blogs = await getCollection("blog", ({ data }) => {
 	// hide drafts in prod
