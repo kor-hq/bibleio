@@ -12,7 +12,7 @@ See more about each project in their README.
 
 ## Developing
 
-We use Turborepo and Bun for our codebaase. Here's our main commands:
+We use Turborepo and pnpm for our codebaase. Here's our main commands:
 ```bash
 pnpm site dev # website dev server
 pnpm run docs dev # developer AND design playground website dev server, you need to add the `run` keyword for this
