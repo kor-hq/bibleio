@@ -4,33 +4,24 @@ This is the Bibleio monorepo, all the code that powers Bibleio. Here you can fin
 
 # Structure
 
-- [`apps/web-app`](https://github.com/bibleio/bibleio/tree/main/apps/web-app) Web app is a lightweight minimalist Bible study app, with all the Bibleio functionality.
 - [`apps/website`](https://github.com/bibleio/bibleio/tree/main/apps/website) The main public facing website
-- [`apps/docs`](https://github.com/bibleio/bibleio/tree/main/apps/docs) Developer docs
-- [`apps/api`](https://github.com/bibleio/bibleio/tree/main/apps/api) Our backend API, right now mainly a Bible API
-- [`packages/biblejson`](https://github.com/bibleio/bibleio/tree/main/packages/biblejson) Another new formatting standard for scripture
+- [`apps/docs`](https://github.com/bibleio/bibleio/tree/main/apps/docs) Developer docs AND design playground
 - [`packages/design`](https://github.com/bibleio/bibleio/tree/main/packages/design) Our design system
 
 See more about each project in their README.
 
 ## Developing
 
-We use Turborepo and pnpm for our codebaase. Here's our main commands:
+We use Turborepo and Bun for our codebaase. Here's our main commands:
 ```bash
-pnpm webapp dev # web app dev server
 pnpm site dev # website dev server
 pnpm run docs dev # developer AND design playground website dev server, you need to add the `run` keyword for this
-pnpm design dev # design system storybook dev server
-pnpm api dev # cargo run
-pnpm biblejson dev # cargo run
 pnpm fix # format & lint all files
 
 # can also access other subcommands
 pnpm site build
 ```
 We use [Biome](https://biomejs.dev/) for formatting and linting, please use `pnpm fix` when developing, or [setup your editor to use Biome](https://biomejs.dev/guides/editors/first-party-extensions/).
-
-With Rust projects, we use rustfmt and clippy, which can be accessed with the fix command.
 
 # Status
 

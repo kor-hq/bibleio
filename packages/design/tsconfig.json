@@ -2,8 +2,8 @@
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
 		"target": "ES2022",
-		"jsx": "react-jsx",
 		"module": "ES2022",
+		"jsx": "react-jsx",
 		"strict": true,
 		"skipLibCheck": true,
 		"sourceMap": true

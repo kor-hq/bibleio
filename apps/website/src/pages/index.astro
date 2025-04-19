@@ -1,8 +1,6 @@
 ---
-import HorizontalMarquee from "~/components/home/HorizontalMarquee.astro";
 import MainSection from "~/layouts/MainSection.astro";
 import {
-	Badge,
 	Bible,
 	Button,
 	Circle,
@@ -36,10 +34,6 @@ const blogs = await getCollection("blog", ({ data }) => {
 ---
 
 <Layout title="Home">
-  <script>
-    import { Observer } from 'tailwindcss-intersect';
-    Observer.start();
-  </script>
   <section
     id="landing"
     class="relative h-screen overflow-clip border-b border-stroke flex flex-col items-center p-32"

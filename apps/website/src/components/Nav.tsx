@@ -9,6 +9,7 @@ import {
 	IconBrandX,
 	IconBrandBluesky,
 	IconBrandGithub,
+	IconBrandInstagram,
 } from "@tabler/icons-react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { useState } from "react";
@@ -85,15 +86,31 @@ function DesktopNavMenuYouContent() {
 
 function DesktopNavMenuUsContent() {
 	return (
-		<NavigationMenu.Content className="flex h-[18rem] animate-scale-in gap-12 rounded-[20px] border border-stroke bg-fg-1 backdrop-blur-popup p-12 shadow-popup">
-			<div className="grid h-full min-h-0 w-fit grid-cols-1 grid-rows-5 gap-12">
+		<NavigationMenu.Content className="flex h-fit relative min-h-0 animate-scale-in gap-12 rounded-[20px] border border-stroke bg-fg-1 backdrop-blur-popup p-12 shadow-popup">
+			<div className="grid h-fit min-h-0 w-fit grid-cols-1 grid-rows-6 gap-12">
 				<NavigationMenu.Link
-					href="https://github.com/bibleio"
+					href="https://discord.gg/7eVCyQ5GGb"
 					target="_blank"
 					rel="noreferrer"
 					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
-					<IconBrandGithub strokeWidth={1.5} />
+					<IconBrandDiscord strokeWidth={1.5} />
+				</NavigationMenu.Link>
+				<NavigationMenu.Link
+					href="https://www.youtube.com/@bibleio"
+					target="_blank"
+					rel="noreferrer"
+					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+				>
+					<IconBrandYoutube strokeWidth={1.5} />
+				</NavigationMenu.Link>
+				<NavigationMenu.Link
+					href="https://www.instagram.com/bibleioo/"
+					target="_blank"
+					rel="noreferrer"
+					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
+				>
+					<IconBrandInstagram strokeWidth={1.5} />
 				</NavigationMenu.Link>
 				<NavigationMenu.Link
 					href="https://bsky.app/profile/bibleio.com"
@@ -112,20 +129,12 @@ function DesktopNavMenuUsContent() {
 					<IconBrandX strokeWidth={1.5} />
 				</NavigationMenu.Link>
 				<NavigationMenu.Link
-					href="https://discord.gg/7eVCyQ5GGb"
+					href="https://github.com/bibleio"
 					target="_blank"
 					rel="noreferrer"
 					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
-					<IconBrandDiscord strokeWidth={1.5} />
-				</NavigationMenu.Link>
-				<NavigationMenu.Link
-					href="https://www.youtube.com/@bibleio"
-					target="_blank"
-					rel="noreferrer"
-					className="flex h-full w-fit items-center gap-8 rounded-8 border border-stroke bg-fg-2 p-8 shadow-material-component duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
-				>
-					<IconBrandYoutube strokeWidth={1.5} />
+					<IconBrandGithub strokeWidth={1.5} />
 				</NavigationMenu.Link>
 			</div>
 
@@ -306,44 +315,52 @@ function MobileNavMenu({ value }: { value: boolean }) {
 			</section>
 			<div className="flex gap-32 flex-wrap">
 				<a
-					href="https://github.com/bibleio"
-					target="_blank"
-					rel="noreferrer"
-					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
-				>
-					<IconBrandGithub strokeWidth={1.5} />
-				</a>
-				<a
-					href="https://bsky.app/profile/bibleio.com"
-					target="_blank"
-					rel="noreferrer"
-					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
-				>
-					<IconBrandBluesky strokeWidth={1.5} />
-				</a>
-				<a
-					href="https://x.com/bibleioo"
-					target="_blank"
-					rel="noreferrer"
-					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
-				>
-					<IconBrandX strokeWidth={1.5} />
-				</a>
-				<a
 					href="https://discord.gg/7eVCyQ5GGb"
+					className="text-text duration-150 ease-out hover:text-accent-reversed"
 					target="_blank"
 					rel="noreferrer"
-					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
 					<IconBrandDiscord strokeWidth={1.5} />
 				</a>
 				<a
 					href="https://www.youtube.com/@bibleio"
+					className="text-text duration-150 ease-out hover:text-accent-reversed"
 					target="_blank"
 					rel="noreferrer"
-					className="duration-150 ease-out hover:border-accent-reversed hover:text-accent-reversed"
 				>
 					<IconBrandYoutube strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://www.instagram.com/bibleioo/"
+					className="text-text duration-150 ease-out hover:text-accent-reversed"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<IconBrandInstagram strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://bsky.app/profile/bibleio.com"
+					className="text-text duration-150 ease-out hover:text-accent-reversed"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<IconBrandBluesky strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://x.com/bibleioo"
+					className="text-text duration-150 ease-out hover:text-accent-reversed"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<IconBrandX strokeWidth={1.5} />
+				</a>
+				<a
+					href="https://github.com/bibleio"
+					className="text-text duration-150 ease-out hover:text-accent-reversed"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<IconBrandGithub strokeWidth={1.5} />
 				</a>
 			</div>
 		</div>
