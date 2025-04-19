@@ -269,7 +269,7 @@ function MobileNavMenuButton({
 function MobileNavMenu({ value }: { value: boolean }) {
 	return (
 		<div
-			className={`m-16 mt-0 h-full min-h-0 flex-col items-start gap-[40px] overflow-y-scroll rounded-16 border border-stroke bg-fg-1 backdrop-blur-popup p-24 shadow-popup ${value ? "flex animate-scale-in" : "hidden"}`}
+			className={`m-16 mt-0 h-full min-h-0 flex-col items-start gap-[40px] overflow-y-scroll rounded-16 border border-stroke bg-fg-1 backdrop-blur-popup p-24 shadow-popup ${value ? "flex motion-scale-in-95 motion-duration-150" : "hidden"}`}
 		>
 			<section className="flex flex-col gap-[28px]">
 				<p className="text-sub text-text/75">Website</p>

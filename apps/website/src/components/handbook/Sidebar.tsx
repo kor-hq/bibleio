@@ -100,7 +100,7 @@ export function HandbookSidebar({
 				<p className="text-text capitalize">{category}</p>
 			</button>
 			<div
-				className={`bg-fg-1 sticky top-[9.625rem] h-fit pb-128 flex-col border backdrop-blur-popup shadow-popup border-stroke rounded-16 p-12 z-30 ${isOpen ? "flex" : "hidden"}`}
+				className={`bg-fg-1 sticky top-[9.625rem] h-fit pb-128 flex-col border backdrop-blur-popup shadow-popup border-stroke rounded-16 p-12 z-30 ${isOpen ? "flex motion-scale-in-95 motion-duration-150" : "hidden"}`}
 			>
 				<HandbookSidebarContent
 					pagesByCategory={pagesByCategory}
