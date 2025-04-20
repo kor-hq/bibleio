@@ -18,7 +18,7 @@ const currentLevelItems = getCurrentLevelItems(items, parentId);
       return (
         <details open>
           <summary>{item.data.title}</summary>
-          <div class="flex flex-col gap-2 pl-8 pt-2">
+          <div class="flex flex-col gap-6 pt-6 w-fit pl-24">
             <Astro.self items={items} parentId={item.id} />
           </div>
         </details>
