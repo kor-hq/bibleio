@@ -1,6 +1,8 @@
 import * as RadixSlider from "@radix-ui/react-slider";
 import type { SliderProps as RadixSliderProps } from "@radix-ui/react-slider";
+import clsx from "clsx";
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 export type SliderProps = RadixSliderProps;
 
@@ -8,7 +10,12 @@ export const Slider = ({ ...props }: RadixSliderProps) => {
 	return (
 		<RadixSlider.Root
 			{...props}
-			className="h-5 relative flex w-full touch-none select-none items-center data-[orientation='vertical']:h-full data-[disabled]:cursor-not-allowed data-[orientation='vertical']:flex-col"
+			className={twMerge(
+				clsx(
+					props.className,
+					"h-5 relative flex w-full touch-none select-none items-center data-[orientation='vertical']:h-full data-[disabled]:cursor-not-allowed data-[orientation='vertical']:flex-col",
+				),
+			)}
 		>
 			<RadixSlider.Track className="relative h-[2px] grow rounded-full bg-stroke data-[orientation='vertical']:h-full data-[orientation='vertical']:w-[2px] data-[disabled]:opacity-33">
 				<RadixSlider.Range className="absolute rounded-full bg-accent-reversed data-[orientation='horizontal']:h-full data-[orientation='vertical']:w-full" />

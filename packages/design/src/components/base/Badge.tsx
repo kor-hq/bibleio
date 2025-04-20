@@ -12,13 +12,18 @@ const variants = cva(
 					"bg-accent-reversed text-text-reversed shadow-colored-component",
 				],
 				secondary: ["bg-fg-2 text-text shadow-material-component"],
-				success: [
-					"bg-green-reversed text-text-reversed shadow-colored-component",
+				red: ["bg-red-reversed text-text-reversed shadow-colored-component"],
+				orange: [
+					"bg-orange-reversed text-text-reversed shadow-colored-component",
 				],
-				warning: [
+				yellow: [
 					"bg-yellow-reversed text-text-reversed shadow-colored-component",
 				],
-				danger: ["bg-red-reversed text-text-reversed shadow-colored-component"],
+				lime: ["bg-lime-reversed text-text-reversed shadow-colored-component"],
+				green: [
+					"bg-green-reversed text-text-reversed shadow-colored-component",
+				],
+				teal: ["bg-teal-reversed text-text-reversed shadow-colored-component"],
 				blue: ["bg-blue-reversed text-text-reversed shadow-colored-component"],
 				purple: [
 					"bg-purple-reversed text-text-reversed shadow-colored-component",
@@ -35,16 +40,7 @@ export type BadgeVariantProps = VariantProps<typeof variants>;
 
 export interface BadgeProps
 	extends React.HTMLAttributes<HTMLDivElement>,
-		VariantProps<typeof variants> {
-	variant?:
-		| "primary"
-		| "secondary"
-		| "success"
-		| "warning"
-		| "danger"
-		| "blue"
-		| "purple";
-}
+		VariantProps<typeof variants> {}
 export const Badge = ({ children, variant }: BadgeProps) => {
 	return <div className={variants({ variant })}>{children}</div>;
 };
