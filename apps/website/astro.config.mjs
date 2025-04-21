@@ -21,9 +21,6 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [tailwindcss()],
-		optimizeDeps: {
-			exclude: ["@tabler/icons-react"],
-		},
 	},
 	devToolbar: {
 		enabled: true,
