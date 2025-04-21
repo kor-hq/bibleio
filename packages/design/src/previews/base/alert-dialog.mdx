@@ -1,0 +1,34 @@
+---
+title: Alert Dialog
+---
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "~/components/index";
+import { Button } from "~/components/index"
+
+<AlertDialog client:load>
+  <AlertDialogTrigger>
+    <Button>Open Alert Dialog</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogTitle> Alert Dialog</AlertDialogTitle>
+    <AlertDialogDescription>
+      ARE YOU SURE?!?!?!?!!?!?!!?!??!?!?!?!??!?!?!?!?
+    </AlertDialogDescription>
+    <div>
+      <AlertDialogAction client:load>
+        <Button variant="danger">Confirm</Button>
+      </AlertDialogAction>
+      <AlertDialogCancel client:load>
+        <Button variant="secondary">Cancel</Button>
+      </AlertDialogCancel>
+    </div>
+  </AlertDialogContent>
+</AlertDialog>

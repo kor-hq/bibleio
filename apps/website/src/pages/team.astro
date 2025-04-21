@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import Layout from "~/layouts/Layout.astro";
+import { MainSection } from "@bibleio/design";
+import { ContributorList } from "starlight-contributor-list";
+
+type Link = {
+	name: string;
+	link: string;
+};
+
+const team = await getCollection("team");
+---
+
+<Layout title="Apps">
+  <section
+    id="landing"
+    class="relative flex h-[50vh] flex-col items-center justify-center gap-24 overflow-clip border-b border-stroke p-16"
+  >
+    <h1
+      class="motion-preset-slide-up-sm pt-72 text-center text-[192px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+    >
+      Team
+    </h1>
+    <p class="motion-preset-fade-lg text-center text-body leading-[150%] text-text">
+      The team behind Bible innovation.
+    </p>
+    <div class="absolute left-0 top-0 -z-50 h-full w-full">
+      <div
+        class="absolute bottom-[-15%] right-[-20%]  motion-preset-fade-lg h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-green blur-[15vmin]"
+      >
+      </div>
+      <div
+        class="absolute bottom-[-50%] left-[-20%] motion-preset-fade-lg h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-teal blur-[15vmin]"
+      >
+      </div>
+    </div>
+  </section>
+  <MainSection>
+    <div class="grid grid-cols-4 gap-24 p-32 max-[640px]:px-16 max-[1100px]:grid-cols-3 max-[780px]:grid-cols-2 max-[550px]:grid-cols-1">
+      {team.map((member) => (
+        <div class="bg-fg-1 border border-stroke p-16 rounded-32">
+          <Image class="object-cover size-72 rounded-16" src={member.data.pfp} alt={member.data.name} width={128} height={128} />
+          <div class="p-4 flex flex-col gap-8">
+            <h1 class="text-h2">{member.data.name}</h1>
+            <p class="text-sub">{member.data.field.join(", ")}</p>
+            <p class="text-body leading-p">{member.data.description}</p>
+            <div class="flex gap-8 flex-wrap">
+              {member.data.links && member.data.links.map((link: Link) => (
+                <a href={link.link} class="text-body underline hover:text-accent-reversed duration-150 ease-out" target="_blank" rel="noreferrer">{link.name}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div><div class="flex flex-col gap-12 p-32 max-[640px]:px-16">
+      <h1 class="text-h1 max-[400px]:text-h2">Contributors</h1>
+      <ContributorList githubRepo="bibleio/bibleio" />
+      <p class="text-body">Want to join this page? Join us on <a href="https://github.com/bibleio" class="underline hover:text-accent-reversed duration-150 ease-out">GitHub</a>.</p>
+    </div>
+  </MainSection>
+</Layout>

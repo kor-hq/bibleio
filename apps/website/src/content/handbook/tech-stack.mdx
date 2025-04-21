@@ -1,0 +1,39 @@
+---
+slug: tech-stack
+title: Tech Stack
+draft: false
+category: engineering
+lastUpdated: 2025-04-18T12:00:00
+authors:
+  - "dukc"
+---
+
+Here is our tech stack focusing on ease of use and performance.
+
+### Front-end
+
+For our apps, we use [Next.js](https://nextjs.org), and for websites, we use [Astro](https://astro.build/) + [React](https://react.dev/).
+
+### Apps
+
+For the mobile & desktop apps, we use [Tauri](https://tauri.app/) combined with our front-end stack. Tauri is performant, secure, and small, since it is powered by Rust.
+
+### Design system
+
+In our design package, we use React [Radix Primitives](https://www.radix-ui.com/primitives) for base components. For styling we use [Tailwind](https://tailwindcss.com/).
+
+### Back-end
+
+We use [Elysia](https://elysiajs.com) powered by [Bun](https://bun.sh), and [Better Auth](https://www.better-auth.com) for authentication.
+
+### Deployments
+
+We use [Cloudflare](https://www.cloudflare.com/developer-platform/products/) Pages and Workers to deploy our websites, web app, and API.
+
+For anything that doesn’t really need to be fast, or isn’t once of our products (such as our analytics), we self host it with [Coolify](https://coolify.io/) on our own server.
+
+### Miscellaneous
+
+- [Biome](https://biomejs.dev/) as our code styler and linter
+- [pnpm](https://pnpm.io/) as our package manager
+- [Umami](https://umami.is/) for lightweight & privacy friendly analytics

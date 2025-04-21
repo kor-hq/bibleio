@@ -1,7 +1,8 @@
 {
-  "formatter": {
-    "language_server": {
-      "name": "biome"
-    }
-  }
+	"formatter": {
+		"language_server": {
+			"name": "biome"
+		}
+	},
+	"tab_size": 2
 }

@@ -1,0 +1,6 @@
+@import "@bibleio/design/src/tailwind.css";
+@source "../../../../packages/design/src/components";
+
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-motion";
+@plugin "tailwindcss-intersect";

@@ -1,34 +1,56 @@
 ---
-import HorizontalMarquee from "@/components/home/HorizontalMarquee.astro";
+import { MainSection } from "@bibleio/design";
 import {
-	Badge,
 	Bible,
 	Button,
 	Circle,
-	// shapes
 	Cross,
 	Hexagon,
+	Input,
 	Star,
 	Triangle,
+	WarningNote,
 } from "@bibleio/design";
-import Layout from "../layouts/Layout.astro";
+import Layout from "~/layouts/Layout.astro";
+import FocusesSection from "~/components/home/FocusesSection.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { matchAuthorNames } from "~/utils/matchAuthorName";
+import {
+	IconBuildingCommunity,
+	IconGitPullRequest,
+	IconMailOpened,
+	IconBrandYoutube,
+	IconBrandInstagram,
+	IconBrandBluesky,
+	IconBrandX,
+	IconBrandGithub,
+} from "@tabler/icons-react";
+
+const blogs = await getCollection("blog", ({ data }) => {
+	// hide drafts in prod
+	return import.meta.env.PROD ? data.draft !== true : true;
+});
 ---
 
 <Layout title="Home">
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-start justify-center gap-24 overflow-clip border-b border-stroke p-128 max-[850px]:p-32 max-[480px]:p-16"
+    class="relative h-screen overflow-clip border-b border-stroke flex flex-col items-center p-32"
   >
-    <h1
-      class="motion-preset-slide-up-md motion-delay-150 pt-72 text-[220px] italic leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
-    >
-      Bibleio
-    </h1>
-    <p class="motion-preset-fade-lg text-body leading-[200%] text-text motion-delay-200">
-      Innovating the industry of Bible technology.
-    </p>
+    <div class="flex flex-col items-start justify-center gap-16 max-w-[100rem] w-full h-full">
+      <h4 class="motion-preset-fade-lg motion-delay-[500ms] text-accent-reversed text-h4 font-mono">Coming soon</h4>
+      <h1
+        class="motion-preset-slide-up-md text-text-solid motion-delay-150 text-[220px] italic leading-none max-[1280px]:text-[8rem] max-[480px]:text-[4.25rem]"
+      >
+        Bibleio
+      </h1>
+      <p class="motion-preset-fade-lg text-body leading-[200%] text-text motion-delay-200">
+        Building better Christian technology, for disciples, for leaders, for organizations, for Christ.
+      </p>
+    </div>
     <div
-      class="h-full absolute justify-end items-center right-[20%] max-[850px]:right-[-20%] max-[450px]:right-[-35%] -z-50 flex flex-col gap-64"
+      class="motion-preset-fade-lg h-full absolute justify-end items-center right-[10vw] max-[850px]:right-[-25%] max-[450px]:right-[-35%] -z-50 flex flex-col gap-64"
     >
       <div class="flex flex-col gap-64 justify-end items-center motion-translate-y-loop-[50%]/reset motion-duration-[40s] motion-ease-linear">
         <Cross />
@@ -46,157 +68,95 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
-      <div
-        class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
-      >
-        <HorizontalMarquee text="Pre Alpha" />
+  <MainSection>
+    <section class="p-32 max-[500px]:p-12 max-[500px]:gap-8 border-b border-stroke flex flex-col gap-20">
+      <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">About us</h4>
+      <h1 class="motion-preset-slide-up text-h1 max-[500px]:text-h2 intersect:motion-preset-fade-lg">What we focus on</h1>
+      <p class="motion-preset-fade-lg text-body leading-[200%] intersect:motion-preset-fade-lg">We build better Christian technology empowering disciples, leaders, pastors, and organizations to serve Christ. All free & open source.</p>
+      <FocusesSection />
+    </section>
+
+    <section class="p-32 max-[500px]:p-12 max-[500px]:gap-8 border-b border-stroke flex flex-col gap-20">
+      <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Blog</h4>
+      <h1 class="motion-preset-slide-up text-h1 max-[500px]:text-h2 intersect:motion-preset-fade-lg">Update posts</h1>
+      <div class="grid grid-cols-3 gap-16 max-[1050px]:grid-cols-2 max-[711px]:grid-cols-1">
+        {blogs
+          .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+          .slice(0, 3)
+          .map((blog) => (
+            <a href={`/blog/${blog.id}`} class="bg-fg-1 border border-stroke rounded-16 p-8 gap-8 hover:border-accent-reversed duration-150 ease-out">
+              {blog.data.imageUrl && <Image class="aspect-video w-full h-auto object-cover rounded-8" src={blog.data.imageUrl} alt={blog.data.title} width={640} height={480} />}
+              <div class="p-8 flex flex-col gap-12">
+                <h2 class="text-h2">{blog.data.title}</h2>
+                <div class="flex gap-12">
+                  <p class="text-text">{matchAuthorNames(blog.data.authors)}</p>
+                  <p class="text-text">{blog.data.date.toDateString()}</p>
+                </div>
+              </div>
+            </a>
+          )
+        )}
       </div>
-      <div
-        id="apps"
-        class="grid grid-cols-2 grid-rows-2 max-[950px]:grid-cols-1"
-      >
-        <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48 max-[580px]:p-24"
-        >
-          <div class="flex items-center justify-between">
-            <h2
-              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
-            >
-              Web
-            </h2>
-            <Badge variant="purple">Alpha</Badge>
-          </div>
-          <p class="text-body leading-none text-text">
-            Simple Bible reading app.
-          </p>
-          <div class="flex gap-12">
-            <Button disabled>Visit</Button>
-            <a href="/apps#web"
-              ><Button variant="secondary">Learn More</Button></a
-            >
-          </div>
-          <div
-            class="absolute left-[40%] top-[10%] -z-50 aspect-[392.34/561.73] h-auto w-[384px] rounded-16 border border-stroke bg-[url('/home/web.png')] bg-cover shadow-popup dark:bg-[url('/home/webDark.png')]"
-          >
-          </div>
-        </div>
-        <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
-        >
-          <div class="flex items-center justify-between">
-            <h2
-              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
-            >
-              Mobile
-            </h2>
-            <Badge variant="danger">Coming Soon</Badge>
-          </div>
-          <p class="text-body leading-none text-text">
-            Bible study on your phone.
-          </p>
-          <div class="flex gap-12">
-            <a href="/apps#mobile"
-              ><Button variant="secondary">Learn More</Button></a
-            >
-          </div>
-          <div
-            class="absolute bottom-[10%] left-[50%] -z-50 box-border aspect-[393/852] h-auto w-[256px] rounded-[24px] border border-stroke bg-[url('/home/mobile.png')] bg-cover shadow-popup dark:bg-[url('/home/mobileDark.png')]"
-          >
+    </section>
+
+    <section class="p-32 max-[500px]:p-12 max-[500px]:gap-8 pb-48 max-[500px]:pb-48 flex flex-col gap-20 relative overflow-clip">
+      <h4 class="motion-preset-fade-lg text-h4 font-mono text-accent-reversed intersect:motion-preset-fade-lg">Community</h4>
+      <h1 class="motion-preset-slide-up text-h1 max-[500px]:text-h2 intersect:motion-preset-fade-lg">Stay up to date and join us</h1>
+
+      <div class="grid grid-cols-3 gap-16 max-[1050px]:grid-cols-2 max-[711px]:grid-cols-1">
+        <div class="bg-fg-1 border border-stroke rounded-32 p-20 gap-6 flex flex-col">
+          <IconBuildingCommunity strokeWidth={1.5} className="text-accent-reversed" />
+          <h2 class="text-h2">Community</h2>
+          <p class="text-body leading-p">Join the community and follow our socials to spread the message.</p>
+          <div class="flex gap-12 items-center flex-wrap">
+            <a href="https://discord.gg/7eVCyQ5GGb" target="_blank" rel="noreferrer">
+              <Button>Discord</Button>
+            </a>
+            <a href="https://www.youtube.com/@bibleio" target="_blank" rel="noreferrer" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandYoutube strokeWidth={1.5} />
+            </a>
+            <a href="https://www.instagram.com/bibleioo/" target="_blank" rel="noreferrer" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandInstagram strokeWidth={1.5} />
+            </a>
+            <a href="https://bsky.app/profile/bibleio.com" target="_blank" rel="noreferrer" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandBluesky strokeWidth={1.5} />
+            </a>
+            <a href="https://x.com/bibleioo"target="_blank" rel="noreferrer" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandX strokeWidth={1.5} />
+            </a>
+            <a href="https://github.com/bibleio" target="_blank" rel="noreferrer" class="text-text hover:text-accent-reversed duration-150 ease-out">
+              <IconBrandGithub strokeWidth={1.5} />
+            </a>
           </div>
         </div>
 
-        <div
-          class="relative col-span-2 flex h-[24rem] flex-col gap-24 overflow-clip border-stroke p-48 max-[950px]:col-span-1 max-[580px]:p-24"
-        >
-          <div class="flex items-center justify-between">
-            <h2
-              class="text-[3.75rem] leading-none text-text max-[580px]:text-h2"
-            >
-              Desktop
-            </h2>
-            <Badge variant="danger">Coming Soon</Badge>
+        <div class="bg-fg-1 border border-stroke rounded-32 p-20 gap-6 flex flex-col">
+          <IconGitPullRequest strokeWidth={1.5} className="text-accent-reversed" />
+          <h2 class="text-h2">Contribute</h2>
+          <p class="text-body leading-p">Help us out by tackling issues or testing and making new ones.</p>
+          <a href="https://github.com/bibleio" target="_blank" rel="noreferrer">
+            <Button>GitHub</Button>
+          </a>
+        </div>
+
+        <div class="bg-fg-1 border border-stroke rounded-32 p-20 gap-6 flex flex-col">
+          <div class="flex items-center gap-8">
+            <IconMailOpened strokeWidth={1.5} className="text-accent-reversed" />
+            <p class="text-body leading-none">Coming soon</p>
           </div>
-          <p class="text-body leading-none text-text">
-            The most feature rich modern Bible study app.
-          </p>
-          <div class="flex gap-12">
-            <a href="/apps#desktop"
-              ><Button variant="secondary">Learn More</Button></a
-            >
-          </div>
-          <div
-            class="absolute left-[50%] top-[5%] -z-50 aspect-[14/10] h-auto w-[512px] rounded-[10px] border border-stroke bg-[url('/home/desktop.png')] bg-cover shadow-popup dark:bg-[url('/home/desktopDark.png')]"
-          >
+          <h2 class="text-h2">Newsletter</h2>
+          <p class="text-body leading-p">Receive monthly updates about our progress and new features.</p>
+          <div class="flex gap-8 items-center">
+            <Input disabled className="w-full" type="email" placeholder="bob@email.com"/>
+            <Button disabled>Join</Button>
           </div>
         </div>
       </div>
-      <div
-          class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
-        >
-          <HorizontalMarquee text="Free & Open Source" speed={60} />
-        </div>
 
       <div
-        id="more"
-        class="grid grid-cols-2 grid-rows-2 max-[950px]:grid-cols-1"
+        class="absolute bottom-[-30%] right-[-5%] motion-preset-fade-lg h-[29vw] w-[20vw] animate-spin-slow rounded-full bg-accent blur-[15vmin] -z-50"
       >
-        <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-r border-stroke p-48 max-[580px]:p-24"
-        >
-          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
-            Why Believe?
-          </h2>
-          <p class="text-body leading-[220%] text-text">
-            Why believe in God or Jesus?
-          </p>
-          <a href="/why-believe" class="w-fit"><Button>Why?</Button></a>
-        </div>
-        <div
-          id="about"
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-b border-stroke p-48 max-[580px]:p-24"
-        >
-          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">About</h2>
-          <p class="text-body leading-[220%] text-text">
-             Bibleio is a Christian organization based on making innovative, modern, free and open-source Bible technology. We want to bring incredible design, performance, and an amazing workspace for you to study the Bible in, and in the future other stuff.
-          </p>
-          <a href="/readme" class="w-fit"><Button>View README</Button></a>
-        </div>
-
-        <div
-          class="relative flex h-[24rem] flex-col gap-24 overflow-clip border-r border-stroke p-48 max-[580px]:p-24"
-        >
-          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
-            Developers
-          </h2>
-          <p class="text-body leading-[220%] text-text">
-            Take a look at our free & open-source Bible API, our new formatting
-            standard, BibleJSON, and our beautiful design system.
-          </p>
-          <Button disabled>Coming soon</Button>
-        </div>
-        <div
-          class="flex h-[24rem] flex-col gap-24 border-stroke p-48 max-[580px]:border-t max-[580px]:p-24 max-[580px]:text-h2"
-        >
-          <h2 class="text-[3.75rem] leading-none text-text max-[580px]:text-h2">
-            Community
-          </h2>
-          <p class="text-body leading-[220%] text-text">
-            Come talk with us, contribute, and give feedback!
-          </p>
-          <div class="flex gap-12">
-            <a href="https://discord.gg/7eVCyQ5GGb"><Button>Discord</Button></a>
-            <a href="https://github.com/bibleio"><Button>GitHub</Button></a>
-            <a href="/contact"><Button variant="secondary">Contact</Button></a>
-          </div>
-        </div>
       </div>
-      <div
-          class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
-        >
-          <HorizontalMarquee text="Innovation for Christ" speed={65} />
-        </div>
-    </div>
-  </section>
+    </section>
+  </MainSection>
 </Layout>
