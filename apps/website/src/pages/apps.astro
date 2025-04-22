@@ -1,17 +1,17 @@
 ---
-import HorizontalMarquee from "@/components/home/HorizontalMarquee.astro";
+import HorizontalMarquee from "~/components/home/HorizontalMarquee.astro";
 import {
 	Badge,
 	Bible,
 	Button,
 	Circle,
-	// shapes
 	Cross,
 	Hexagon,
 	Star,
 	Triangle,
 } from "@bibleio/design";
-import Layout from "../layouts/Layout.astro";
+import Layout from "~/layouts/Layout.astro";
+import { MainSection } from "@bibleio/design";
 ---
 
 <Layout title="Apps">
@@ -47,8 +47,7 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+  <MainSection>
       <div
         class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
       >
@@ -73,7 +72,7 @@ import Layout from "../layouts/Layout.astro";
         class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
       >
         <h1 class="text-h1 leading-none text-text">Mobile App</h1>
-        <Badge variant="danger">Coming Soon</Badge>
+        <Badge variant="red">Coming Soon</Badge>
         <p class="text-body leading-[220%] text-text">
           The Bibleio Mobile App is planned to be a simple study experience on
           your phone, with more resources, and still access to your Bibleio
@@ -89,7 +88,7 @@ import Layout from "../layouts/Layout.astro";
         class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
       >
         <h1 class="text-h1 leading-none text-text">Desktop App</h1>
-        <Badge variant="danger">Coming Soon</Badge>
+        <Badge variant="red">Coming Soon</Badge>
         <p class="text-body leading-[220%] text-text">
           The Bibleio Desktop App is planned to be a huge study experience on
           your desktop, with more resources, and still access to your Bibleio
@@ -117,6 +116,5 @@ import Layout from "../layouts/Layout.astro";
         </p>
         <a href="/roadmap#contribute"> <Button>Contribute</Button></a>
       </div>
-    </div>
-  </section></Layout
->
+  </MainSection>
+</Layout>

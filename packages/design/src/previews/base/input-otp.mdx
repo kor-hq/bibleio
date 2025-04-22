@@ -1,0 +1,13 @@
+---
+title: Input OTP
+variants:
+  disabled:
+    default: false
+    options:
+      - false
+      - true
+---
+
+import { InputOTP } from "~/components/index";
+
+<InputOTP client:load {...props} maxLength={6} />

@@ -1,4 +1,0 @@
-- `/api` - backend api written in Rust
-- `/docs` - developer docs
-- `/web-app` - web app for bibleio
-- `/website` - front facing website

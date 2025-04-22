@@ -1,25 +1,28 @@
 ---
 import { Button } from "@bibleio/design";
-import Layout from "../layouts/Layout.astro";
+import Layout from "~/layouts/Layout.astro";
 
-import User from "@/components/icons/User.astro";
+import User from "~/components/icons/User.astro";
+import { MainSection } from "@bibleio/design";
 ---
 
 <Layout title="Home">
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-start justify-center gap-48 overflow-clip border-b border-stroke p-128 max-[480px]:p-16"
+    class="relative flex h-screen flex-col items-center justify-center overflow-clip border-b border-stroke p-32"
   >
-    <h1
-      class="motion-preset-slide-up-sm pt-72 text-left text-[150px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
-    >
-      Give your rights for the gospel
-    </h1>
-    <h3
-      class="motion-preset-fade-lg text-h3 leading-[150%] text-text max-[1000px]:text-body"
-    >
-      Do you create Christian resources? Jesus calls us to freely give them.
-    </h3>
+    <div class="max-w-[100rem] w-full h-full flex flex-col gap-48 justify-center">
+      <h1
+        class="motion-preset-slide-up-sm pt-72 text-left text-[128px] leading-none text-text-solid max-[1400px]:text-[96px] max-[530px]:text-[48px]"
+      >
+        Give your rights for the gospel
+      </h1>
+      <h3
+        class="motion-preset-fade-lg text-h3 leading-[150%] text-text max-[1000px]:text-body"
+      >
+        Do you create Christian resources? Jesus calls us to freely give them.
+      </h3>
+    </div>
     <div class="absolute left-0 top-0 -z-50 h-full w-full">
       <div
         class="absolute left-1/2 top-[-50%] h-[49vw] motion-preset-fade-lg w-[40vw] animate-spin-slow rounded-full bg-yellow blur-[15vmin]"
@@ -35,8 +38,7 @@ import User from "@/components/icons/User.astro";
       </div>
     </div>
   </section>
-  <section id="main" class="flex flex-col px-256 max-[1550px]:px-0">
-    <div id="container" class="divide-y divide-stroke border-x border-stroke">
+  <MainSection>
       <div
         class="flex w-full items-center justify-center gap-24 overflow-hidden px-32 py-32"
       >
@@ -121,7 +123,7 @@ import User from "@/components/icons/User.astro";
             methods of funding or publishing.
           </p>
           <div
-            class="grid grid-cols-2 gap-16 rounded-16 border border-stroke bg-fg-1 p-24 max-[480px]:p-8"
+            class="grid grid-cols-2 gap-16 rounded-16 border border-stroke bg-fg-1 backdrop-blur-popup p-24 max-[480px]:p-8"
           >
             <div class="flex flex-col gap-12">
               <div class="grid grid-cols-6 grid-rows-3 gap-10">
@@ -265,6 +267,5 @@ import User from "@/components/icons/User.astro";
           <Button variant="success">Free your resource at copy.church</Button>
         </a>
       </div>
-    </div>
-  </section>
+  </MainSection>
 </Layout>

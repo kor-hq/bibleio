@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import { Prose } from "@bibleio/design";
+import Layout from "~/layouts/Layout.astro";
+import { matchAuthorNames } from "~/utils/matchAuthorName";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog", ({ data }) => {
+		// hide drafts in prod
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <div
+    class="flex min-h-screen flex-col items-center gap-24 px-[384px] py-96 text-text max-[1180px]:px-64 max-[800px]:px-16"
+  >
+    {post.data.imageUrl && <Image
+      width={1280}
+      height={720}
+      src={post.data.imageUrl}
+      alt={post.data.title}
+      class="aspect-video h-auto w-full rounded-16 border border-stroke object-cover"
+    /> }
+    <div class="flex flex-wrap justify-center gap-32">
+      <a href={`/team#team`} class="text-body leading-none underline hover:text-accent-reversed duration-150 ease-out">
+        by {matchAuthorNames(post.data.authors)}
+      </a>
+      <time
+        class="text-body leading-none"
+      >
+        {post.data.date.toDateString() || "Unknown date"}
+      </time>
+    </div>
+    <h1
+      class="mb-48 w-full text-center text-h1 leading-none max-[1350px]:text-h1 max-[460px]:text-h2"
+    >
+      {post.data.title}
+    </h1>
+    <div class="w-full max-w-[32rem] leading-[220%]">
+      <Prose><Content /></Prose>
+    </div>
+  </div>
+</Layout>
