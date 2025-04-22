@@ -60,7 +60,7 @@ const { Content } = await render(page);
       <div id="content" class="bg-fg-1 backdrop-blur-popup border border-stroke rounded-16 w-full h-fit max-[500px]:pb-64  min-h-screen flex flex-col p-32 max-[600px]:p-12 gap-24 items-center">
         <div class="max-w-[32rem] w-full flex flex-col gap-12">
           <div class="flex gap-24 flex-wrap">
-            <p class="text-sub">{matchAuthorNames(page.data.authors)}</p>
+            <a href={`/team#team`} class="text-sub underline hover:text-accent-reversed duration-150 ease-out">{matchAuthorNames(page.data.authors)}</a>
             <p class="text-sub capitalize max-[600px]:hidden">{page.data.category}</p>
             <p class="text-sub">{page.data.lastUpdated.toDateString()}</p>
           </div>
