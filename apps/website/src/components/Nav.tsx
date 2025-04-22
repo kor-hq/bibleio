@@ -372,6 +372,10 @@ function MobileNavMenu({ value }: { value: boolean }) {
 export function Nav({ path }: { path: string }) {
 	const [navOpen, setNavOpen] = useState<boolean>(false);
 	const isPreview = import.meta.env.CF_PAGES_BRANCH !== "main";
+
+	console.log("CF_PAGES_BRANCH:", import.meta.env.CF_PAGES_BRANCH);
+	console.log("isPreview:", isPreview);
+	console.log("PROD:", import.meta.env.PROD); // Add this line
 	const isDev = import.meta.env.DEV;
 
 	const handleNavOpenChange = (newValue: boolean) => {
