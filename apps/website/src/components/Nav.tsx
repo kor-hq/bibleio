@@ -392,7 +392,7 @@ export function Nav({ path }: { path: string }) {
 							<Logo size={26} subText="Website" />
 						</a>
 					</div>
-					{isPreview && (
+					{import.meta.env.PROD && isPreview && (
 						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 backdrop-blur-popup px-12 py-12 shadow-popup">
 							<WarningNote>Preview Deployment</WarningNote>
 						</div>
