@@ -31,9 +31,9 @@ const { Content } = await render(post);
       class="aspect-video h-auto w-full rounded-16 border border-stroke object-cover"
     /> }
     <div class="flex flex-wrap justify-center gap-32">
-      <p class="text-body leading-none">
+      <a href={`/team#team`} class="text-body leading-none underline hover:text-accent-reversed duration-150 ease-out">
         by {matchAuthorNames(post.data.authors)}
-      </p>
+      </a>
       <time
         class="text-body leading-none"
       >

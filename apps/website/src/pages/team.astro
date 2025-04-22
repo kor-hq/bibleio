@@ -39,7 +39,7 @@ const team = await getCollection("team");
     </div>
   </section>
   <MainSection>
-    <div class="grid grid-cols-4 gap-24 p-32 max-[640px]:px-16 max-[1100px]:grid-cols-3 max-[780px]:grid-cols-2 max-[550px]:grid-cols-1">
+    <div id="team" class="grid grid-cols-4 gap-24 p-32 max-[640px]:px-16 max-[1100px]:grid-cols-3 max-[780px]:grid-cols-2 max-[550px]:grid-cols-1">
       {team.map((member) => (
         <div class="bg-fg-1 border border-stroke p-16 rounded-32">
           <Image class="object-cover size-72 rounded-16" src={member.data.pfp} alt={member.data.name} width={128} height={128} />

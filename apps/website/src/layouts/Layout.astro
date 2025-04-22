@@ -14,10 +14,6 @@ import { Footer } from "@bibleio/design";
 import ColorLoader from "~/components/ColorLoader.astro";
 
 const { title } = Astro.props;
-
-const isPreview =
-	import.meta.env.PROD && import.meta.env.CF_PAGES_BRANCH !== "main";
-const isDev = import.meta.env.DEV;
 ---
 
 <html lang="en">
@@ -27,8 +23,7 @@ const isDev = import.meta.env.DEV;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    {isDev && <script is:inline src="https://unpkg.com/react-scan/dist/auto.global.js" />}
-    <title>{title} | Bibleio {isDev && "(development)"} {isPreview && "(preview)"}</title>
+    <title>{title} | Bibleio</title>
   </head>
   <body class="overflow-x-hidden bg-bg-1 text-text font-serif">
     <Nav path={Astro.url.pathname} client:load />

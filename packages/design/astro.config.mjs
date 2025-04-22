@@ -8,14 +8,11 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [react(), mdx()],
-	devToolbar: {
-		enabled: true,
-	},
-	vite: {
-		plugins: [tailwindcss()],
-		optimizeDeps: {
-			exclude: ["@tabler/icons-react"],
-		},
-	},
+  integrations: [react(), mdx()],
+  devToolbar: {
+    enabled: true,
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
