@@ -370,12 +370,10 @@ function MobileNavMenu({ value }: { value: boolean }) {
 // ------------------------------ MAIN NAV COMPONENT ------------------------------
 
 export function Nav({ path }: { path: string }) {
-	const [navOpen, setNavOpen] = useState<boolean>(false);
-	const isPreview = import.meta.env.CF_PAGES_BRANCH !== "main";
+	const CF_PAGES_BRANCH = "main";
 
-	console.log("CF_PAGES_BRANCH:", import.meta.env.CF_PAGES_BRANCH);
-	console.log("isPreview:", isPreview);
-	console.log("PROD:", import.meta.env.PROD); // Add this line
+	const [navOpen, setNavOpen] = useState<boolean>(false);
+	const isPreview = import.meta.env.PROD && CF_PAGES_BRANCH !== "main";
 	const isDev = import.meta.env.DEV;
 
 	const handleNavOpenChange = (newValue: boolean) => {
@@ -396,7 +394,7 @@ export function Nav({ path }: { path: string }) {
 							<Logo size={26} subText="Website" />
 						</a>
 					</div>
-					{import.meta.env.PROD && isPreview && (
+					{/** isPreview && (
 						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 backdrop-blur-popup px-12 py-12 shadow-popup">
 							<WarningNote>Preview Deployment</WarningNote>
 						</div>
@@ -405,7 +403,7 @@ export function Nav({ path }: { path: string }) {
 						<div className="flex h-[2.5rem] items-center rounded-full border border-yellow-reversed bg-fg-1 backdrop-blur-popup px-12 py-12 shadow-popup">
 							<WarningNote>Development Mode</WarningNote>
 						</div>
-					)}
+						) */}
 				</div>
 				<DesktopNavMenu path={path} />
 				<MobileNavMenuButton value={navOpen} onChange={handleNavOpenChange} />
