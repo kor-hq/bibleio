@@ -379,6 +379,11 @@ export function Nav({ path }: { path: string }) {
 		setNavOpen(newValue);
 	};
 
+	console.log(
+		"AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+		import.meta.env.CF_PAGES_BRANCH,
+	);
+
 	return (
 		<nav
 			className={`fixed z-50 flex h-fit max-h-screen min-h-0 w-screen flex-col text-text ${navOpen ? "h-screen" : ""}`}
