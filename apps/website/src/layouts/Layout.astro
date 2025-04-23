@@ -25,7 +25,7 @@ const { title } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title} | Bibleio</title>
   </head>
-  <body class="overflow-x-hidden bg-bg-1 text-text font-serif">
+  <body class="bg-bg-1 text-text overflow-x-hidden font-serif">
     <Nav path={Astro.url.pathname} client:load />
     <slot />
     <Footer devHrefTargetOutside />

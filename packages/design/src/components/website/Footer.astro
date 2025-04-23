@@ -2,13 +2,13 @@
 import { IconLogo, Logo } from "../brand/Brand";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 import {
-	IconBrandDiscord,
-	IconBrandYoutube,
-	IconBrandInstagram,
-	IconBrandFacebook,
-	IconBrandBluesky,
-	IconBrandX,
-	IconBrandGithub,
+  IconBrandDiscord,
+  IconBrandYoutube,
+  IconBrandInstagram,
+  IconBrandFacebook,
+  IconBrandBluesky,
+  IconBrandX,
+  IconBrandGithub,
 } from "@tabler/icons-react";
 
 /**
@@ -18,60 +18,65 @@ import {
  * @returns the main bibleio footer
  */
 interface Props {
-	hrefTargetOutside?: boolean;
-	devHrefTargetOutside?: boolean;
+  hrefTargetOutside?: boolean;
+  devHrefTargetOutside?: boolean;
 }
 const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
 ---
-<footer class="flex flex-col items-center border-t border-b border-stroke">
+
+<footer class="border-stroke flex flex-col items-center border-b border-t">
   <div
-    class="relative grid grid-cols-4 max-w-[85rem] w-full items-center max-[1100px]:grid-cols-1 max-[1100px]:divide-y max-[1100px]:border-none"
+    class="relative grid w-full max-w-[85rem] grid-cols-4 items-center max-[1100px]:grid-cols-1 max-[1100px]:divide-y max-[1100px]:border-none"
   >
     <a
-      class="absolute left-1/2 top-[-6%] flex size-48 -translate-x-1/2 items-center justify-center rounded-full border border-stroke bg-bg-1 duration-150 ease-out hover:border-accent-reversed max-[1100px]:top-[-2.2%]"
+      class="border-stroke bg-bg-1 hover:border-accent-reversed absolute left-1/2 top-[-6%] flex size-48 -translate-x-1/2 items-center justify-center rounded-full border duration-150 ease-out max-[1100px]:top-[-2.2%]"
       href={hrefTargetOutside ? "https://bibleio.com/" : "/"}
     >
       <IconLogo size="2rem" reverseColor />
     </a>
-    <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
+    <div class="border-stroke flex h-full flex-col gap-16 border-l p-32">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-12">
           <a href="/"><Logo size={32} /></a>
-          <code class="font-mono text-sub">FLOSS MIT-0</code>
+          <code class="text-sub font-mono">FLOSS MIT-0</code>
         </div>
         <ThemeSwitcher />
       </div>
       <div class="flex flex-col gap-24">
         <a
-          href={hrefTargetOutside ? "https://bibleio.com/handbook/about-us" : "/handbook/about-us"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={hrefTargetOutside
+            ? "https://bibleio.com/handbook/about-us"
+            : "/handbook/about-us"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Handbook
         </a>
         <a
-          href={hrefTargetOutside ? "https://bibleio.com/handbook/about-us" : "/handbook/about-us"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={hrefTargetOutside
+            ? "https://bibleio.com/handbook/about-us"
+            : "/handbook/about-us"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
           >About us
         </a>
         <a
           href={hrefTargetOutside ? "https://bibleio.com/team" : "/team"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
           >Team
         </a>
         <a
           href={hrefTargetOutside ? "https://bibleio.com/blog" : "/blog"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
           >Blog
         </a>
         <a
           href={hrefTargetOutside ? "https://bibleio.com/contact" : "/contact"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
           >Contact
         </a>
-        <div class="flex gap-16 flex-wrap">
+        <div class="flex flex-wrap gap-16">
           <a
             href="https://discord.gg/7eVCyQ5GGb"
-            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            class="text-text hover:text-accent-reversed duration-150 ease-out"
             target="_blank"
             rel="noreferrer"
           >
@@ -79,7 +84,7 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
           </a>
           <a
             href="https://www.youtube.com/@bibleio"
-            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            class="text-text hover:text-accent-reversed duration-150 ease-out"
             target="_blank"
             rel="noreferrer"
           >
@@ -87,7 +92,7 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
           </a>
           <a
             href="https://www.instagram.com/bibleioo/"
-            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            class="text-text hover:text-accent-reversed duration-150 ease-out"
             target="_blank"
             rel="noreferrer"
           >
@@ -95,7 +100,7 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
           </a>
           <a
             href="https://www.facebook.com/profile.php?id=61575695094809"
-            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            class="text-text hover:text-accent-reversed duration-150 ease-out"
             target="_blank"
             rel="noreferrer"
           >
@@ -103,7 +108,7 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
           </a>
           <a
             href="https://bsky.app/profile/bibleio.com"
-            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            class="text-text hover:text-accent-reversed duration-150 ease-out"
             target="_blank"
             rel="noreferrer"
           >
@@ -111,7 +116,7 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
           </a>
           <a
             href="https://x.com/bibleioo"
-            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            class="text-text hover:text-accent-reversed duration-150 ease-out"
             target="_blank"
             rel="noreferrer"
           >
@@ -119,92 +124,112 @@ const { hrefTargetOutside, devHrefTargetOutside } = Astro.props;
           </a>
           <a
             href="https://github.com/bibleio"
-            class="text-text duration-150 ease-out hover:text-accent-reversed"
+            class="text-text hover:text-accent-reversed duration-150 ease-out"
             target="_blank"
             rel="noreferrer"
           >
             <IconBrandGithub strokeWidth={1.5} />
           </a>
         </div>
-        <a href="https://korhq.com" class="w-fit text-sub text-text hover:opacity-100 ease-out text opacity-75 duration-150">Made with ❤️ by KOR</a>
+        <a
+          href="https://korhq.com"
+          class="text-sub text-text text w-fit opacity-75 duration-150 ease-out hover:opacity-100"
+          >Made with ❤️ by KOR</a
+        >
       </div>
     </div>
-    <div class="flex h-full flex-col gap-16 border-l border-stroke p-32">
+    <div class="border-stroke flex h-full flex-col gap-16 border-l p-32">
       <h2 class="text-h2">Products</h2>
       <div class="flex flex-col gap-24">
         <a
           href={hrefTargetOutside ? "https://bibleio.com/roadmap" : "/roadmap"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
           >Roadmap
         </a>
         <a
-          href={hrefTargetOutside ? "https://bibleio.com/apps#web" : "/apps#web"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={hrefTargetOutside
+            ? "https://bibleio.com/apps#web"
+            : "/apps#web"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Web app
         </a>
         <a
-          href={hrefTargetOutside ? "https://bibleio.com/apps#mobile" : "/apps#mobile"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={hrefTargetOutside
+            ? "https://bibleio.com/apps#mobile"
+            : "/apps#mobile"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Mobile app
         </a>
         <a
-          href={hrefTargetOutside ? "https://bibleio.com/apps#desktop" : "/apps#desktop"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={hrefTargetOutside
+            ? "https://bibleio.com/apps#desktop"
+            : "/apps#desktop"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Desktop app
         </a>
       </div>
     </div>
     <div
-      class="=items-start flex h-full flex-col gap-16 border-l border-stroke p-32"
+      class="=items-start border-stroke flex h-full flex-col gap-16 border-l p-32"
     >
       <h2 class="text-h2">Developers</h2>
       <div class="flex flex-col items-start gap-24">
         <a
-          href={devHrefTargetOutside ? "https://dev.bibleio.com/api/docs" : "/api/docs"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={devHrefTargetOutside
+            ? "https://dev.bibleio.com/api/docs"
+            : "/api/docs"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           API
         </a>
         <a
-          href={devHrefTargetOutside ? "https://dev.bibleio.com/biblejson/docs" : "/biblejson/docs"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={devHrefTargetOutside
+            ? "https://dev.bibleio.com/biblejson/docs"
+            : "/biblejson/docs"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           BibleJSON
         </a>
         <a
-          href={devHrefTargetOutside ? "https://dev.bibleio.com/design/docs" : "/design/docs"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={devHrefTargetOutside
+            ? "https://dev.bibleio.com/design/docs"
+            : "/design/docs"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Design
         </a>
         <a
           href="https://cat-skate-e91.notion.site/Onboarding-132aafe2ea3c800ab45ddbe0a5db3da8?pvs=4"
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Contribute
         </a>
       </div>
     </div>
-    <div class="flex h-full flex-col gap-16 border-x border-stroke p-32">
+    <div class="border-stroke flex h-full flex-col gap-16 border-x p-32">
       <h2 class="text-h2">You</h2>
       <div class="flex flex-col gap-24">
         <a
-          href={hrefTargetOutside ? "https://bibleio.com/why-believe" : "/why-believe"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={hrefTargetOutside
+            ? "https://bibleio.com/why-believe"
+            : "/why-believe"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
           >Why believe?
         </a>
         <a
-          href={hrefTargetOutside ? "https://bibleio.com/give-your-rights" : "/give-your-rights"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          href={hrefTargetOutside
+            ? "https://bibleio.com/give-your-rights"
+            : "/give-your-rights"}
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Give your rights
         </a>
         <a
           href={hrefTargetOutside ? "https://bibleio.com/contact" : "/contact"}
-          class="w-fit text-body text-text duration-150 ease-out hover:text-accent-reversed"
+          class="text-body text-text hover:text-accent-reversed w-fit duration-150 ease-out"
         >
           Support
         </a>

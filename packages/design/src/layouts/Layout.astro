@@ -20,10 +20,17 @@ const isDev = import.meta.env.DEV;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    {isDev && <script is:inline src="https://unpkg.com/react-scan/dist/auto.global.js" />}
+    {
+      isDev && (
+        <script
+          is:inline
+          src="https://unpkg.com/react-scan/dist/auto.global.js"
+        />
+      )
+    }
     <title>{title} | Bibleio Design</title>
   </head>
-  <body class="overflow-x-hidden bg-bg-1 text-text font-serif h-screen">
+  <body class="bg-bg-1 text-text h-screen overflow-x-hidden font-serif">
     <slot />
   </body>
 </html>
