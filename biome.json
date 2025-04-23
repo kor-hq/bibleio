@@ -10,7 +10,7 @@
 		"ignore": ["node_modules", ".next", ".astro", ".turbo", "dist"]
 	},
 	"formatter": {
-		"enabled": true,
+		"enabled": false,
 		"indentStyle": "tab",
 		"indentWidth": 2
 	},

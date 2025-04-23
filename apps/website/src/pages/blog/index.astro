@@ -1,4 +1,3 @@
-
 ---
 import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -7,80 +6,98 @@ import { matchAuthorNames } from "~/utils/matchAuthorName";
 import { MainSection } from "@bibleio/design";
 
 const blogs = await getCollection("blog", ({ data }) => {
-	// hide drafts in prod
-	return import.meta.env.PROD ? data.draft !== true : true;
+  // hide drafts in prod
+  return import.meta.env.PROD ? data.draft !== true : true;
 });
 ---
 
 <Layout title="Blog">
   <section
     id="landing"
-    class="relative flex h-fit flex-col items-center gap-24 overflow-clip border-b border-stroke py-32 pt-[192px] p-32"
+    class="border-stroke relative flex h-fit flex-col items-center gap-24 overflow-clip border-b p-32 py-32 pt-[192px]"
   >
     <h1
-      class="motion-preset-slide-up-sm pt-72 text-[100px] leading-none text-text-solid max-w-[85rem] w-full max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
+      class="motion-preset-slide-up-sm text-text-solid w-full max-w-[85rem] pt-72 text-[100px] leading-none max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
     >
       Blog
     </h1>
     <div class="absolute left-0 top-0 -z-50 h-full w-full">
       <div
-        class="absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-yellow blur-[15vmin]"
+        class="animate-spin-slow bg-yellow absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] rounded-full blur-[15vmin]"
       >
       </div>
       <div
-        class="absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-green blur-[15vmin]"
+        class="animate-spin-slow bg-green absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] rounded-full blur-[15vmin]"
       >
       </div>
       <div
-        class="absolute bottom-[-50%] left-[20%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-purple blur-[15vmin]"
+        class="animate-spin-slow bg-purple absolute bottom-[-50%] left-[20%] h-[49vw] w-[40vw] rounded-full blur-[15vmin]"
       >
       </div>
     </div>
   </section>
   <MainSection>
-      <div class="grid grid-cols-4 max-[820px]:grid-cols-1">
-        <div id="SIDEBAR" class="flex flex-col gap-0 col-span-1 divide-y divide-stroke border-stroke max-[820px]:border-b">
-          <div class="flex flex-col p-24 gap-16">
-            <p class="text-body leading-[200%]">Here we will post updates and the behind the scenes of engineering Bibleio.</p>
-          </div>
+    <div class="grid grid-cols-4 max-[820px]:grid-cols-1">
+      <div
+        id="SIDEBAR"
+        class="divide-stroke border-stroke col-span-1 flex flex-col gap-0 divide-y max-[820px]:border-b"
+      >
+        <div class="flex flex-col gap-16 p-24">
+          <p class="text-body leading-[200%]">
+            Here we will post updates and the behind the scenes of engineering
+            Bibleio.
+          </p>
         </div>
-        <div id="BLOGS" class="flex flex-col gap-0 col-span-3 min-[820px]:border-l border-stroke">
-          {blogs.length > 0 ?
+      </div>
+      <div
+        id="BLOGS"
+        class="border-stroke col-span-3 flex flex-col gap-0 min-[820px]:border-l"
+      >
+        {
+          blogs.length > 0 ? (
             blogs
-              .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+              .sort(
+                (a, b) =>
+                  new Date(b.data.date).getTime() -
+                  new Date(a.data.date).getTime()
+              )
               .map((blog) => (
                 <a
                   href={`/blog/${blog.id}`}
-                  class="grid grid-cols-2 max-[500px]:grid-cols-1 p-24 h-fit gap-24 border-b border-stroke text-text group last:border-b-transparent"
+                  class="border-stroke text-text group grid h-fit grid-cols-2 gap-24 border-b p-24 last:border-b-transparent max-[500px]:grid-cols-1"
                 >
                   <div class="flex flex-col gap-24">
-                    <h3 class="text-h3 leading-[150%] group-hover:text-accent-reversed duration-150 ease-out">
+                    <h3 class="text-h3 group-hover:text-accent-reversed leading-[150%] duration-150 ease-out">
                       {blog.data.title}
                     </h3>
-                    <div class="flex gap-24 flex-wrap gap-y-12">
+                    <div class="flex flex-wrap gap-24 gap-y-12">
                       <time class="text-body leading-none">
                         {blog.data.date.toDateString()}
                       </time>
                       <p class="text-body leading-none">
-                          by {matchAuthorNames(blog.data.authors)}
+                        by {matchAuthorNames(blog.data.authors)}
                       </p>
                     </div>
                   </div>
-                  {blog.data.imageUrl && <Image
-                    class="rounded-8 border aspect-video object-cover border-stroke shadow-popup group-hover:border-accent-reversed duration-150"
-                    width={1280}
-                    height={720}
-                    alt={blog.data.title}
-                    src={blog.data.imageUrl}
-                  />}
+                  {blog.data.imageUrl && (
+                    <Image
+                      class="rounded-8 border-stroke shadow-popup group-hover:border-accent-reversed aspect-video border object-cover duration-150"
+                      width={1280}
+                      height={720}
+                      alt={blog.data.title}
+                      src={blog.data.imageUrl}
+                    />
+                  )}
                 </a>
-            )) :
-            <div class="p-32 flex flex-col gap-12">
+              ))
+          ) : (
+            <div class="flex flex-col gap-12 p-32">
               <h1 class="text-h1">No blogs</h1>
               <p class="text-body">Come back later!</p>
             </div>
-          }
-          </div>
+          )
+        }
       </div>
+    </div>
   </MainSection>
 </Layout>

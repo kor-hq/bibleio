@@ -1,11 +1,11 @@
 {
-	"name": "Jacob Ehlert",
-	"username": "dukc",
-	"pfp": "/pfps/dukc.png",
-	"field": ["Founder"],
-	"description": "Jacob, also known as dukc, loves Jesus and making cool software and other stuff",
-	"links": [
-		{ "name": "Website", "link": "https://dukc.dev" },
-		{ "name": "GitHub", "link": "https://github.com/dukcc" }
-	]
+  "name": "Jacob Ehlert",
+  "username": "dukc",
+  "pfp": "/pfps/dukc.png",
+  "field": ["Founder"],
+  "description": "Jacob, also known as dukc, loves Jesus and making cool software and other stuff",
+  "links": [
+    { "name": "Website", "link": "https://dukc.dev" },
+    { "name": "GitHub", "link": "https://github.com/dukcc" }
+  ]
 }

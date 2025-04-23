@@ -8,56 +8,110 @@ import { MainSection } from "@bibleio/design";
 <Layout title="Contact">
   <section
     id="landing"
-    class="relative flex h-fit flex-col items-center gap-24 overflow-clip border-b border-stroke py-32 pt-[192px] p-32"
+    class="border-stroke relative flex h-fit flex-col items-center gap-24 overflow-clip border-b p-32 py-32 pt-[192px]"
   >
     <h1
-      class="motion-preset-slide-up-sm pt-72 max-w-[85rem] w-full text-[100px] leading-none text-text-solid max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
+      class="motion-preset-slide-up-sm text-text-solid w-full max-w-[85rem] pt-72 text-[100px] leading-none max-[1280px]:text-[5rem] max-[480px]:text-[4rem]"
     >
       Contact
     </h1>
     <div class="absolute left-0 top-0 -z-50 h-full w-full">
       <div
-        class="absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] animate-spin-slow rounded-full bg-teal blur-[15vmin]"
+        class="animate-spin-slow bg-teal absolute left-1/2 top-[-50%] h-[49vw] w-[40vw] rounded-full blur-[15vmin]"
       >
       </div>
       <div
-        class="absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] animate-spin-slow rounded-full bg-green blur-[15vmin]"
+        class="animate-spin-slow bg-green absolute bottom-[-15%] right-[-20%] h-[49vw] w-[45vw] rounded-full blur-[15vmin]"
       >
       </div>
     </div>
   </section>
   <MainSection>
-    <div id="container" class="grid grid-cols-2 max-[950px]:grid-cols-1 border-none border-stroke divide divide-stroke">
-      <div class="p-48 flex flex-col gap-24 border-stroke border-b border-r">
+    <div
+      id="container"
+      class="border-stroke divide divide-stroke grid grid-cols-2 border-none max-[950px]:grid-cols-1"
+    >
+      <div class="border-stroke flex flex-col gap-24 border-b border-r p-48">
         <h2 class="text-h2">Contact us</h2>
-        <ContactItem name="Email" linkTitle="contact@bibleio.com" link="mailto:contact@bibleio.com" />
-        <ContactItem name="Support email" linkTitle="support@bibleio.com" link="mailto:support@bibleio.com" />
-        <ContactItem name="Discord server" linkTitle="discord.gg/7eVCyQ5GGb" link="https://discord.gg/7eVCyQ5GGb" />
+        <ContactItem
+          name="Email"
+          linkTitle="contact@bibleio.com"
+          link="mailto:contact@bibleio.com"
+        />
+        <ContactItem
+          name="Support email"
+          linkTitle="support@bibleio.com"
+          link="mailto:support@bibleio.com"
+        />
+        <ContactItem
+          name="Discord server"
+          linkTitle="discord.gg/7eVCyQ5GGb"
+          link="https://discord.gg/7eVCyQ5GGb"
+        />
       </div>
-      <div class="p-48 flex flex-col gap-24 border-stroke border-b">
+      <div class="border-stroke flex flex-col gap-24 border-b p-48">
         <h2 class="text-h2">Report a bug</h2>
-        <ContactItem name="GitHub issues" linkTitle="bibleio/bibleio" link="https://github.com/bibleio/bibleio/issues" />
-        <ContactItem name="Discord server" linkTitle="discord.gg/7eVCyQ5GGb" link="https://discord.gg/7eVCyQ5GGb" />
-        <ContactItem name="Email" linkTitle="contact@bibleio.com" link="mailto:contact@bibleio.com" />
+        <ContactItem
+          name="GitHub issues"
+          linkTitle="bibleio/bibleio"
+          link="https://github.com/bibleio/bibleio/issues"
+        />
+        <ContactItem
+          name="Discord server"
+          linkTitle="discord.gg/7eVCyQ5GGb"
+          link="https://discord.gg/7eVCyQ5GGb"
+        />
+        <ContactItem
+          name="Email"
+          linkTitle="contact@bibleio.com"
+          link="mailto:contact@bibleio.com"
+        />
       </div>
-      <div class="p-48 flex flex-col gap-24 border-stroke border-r">
+      <div class="border-stroke flex flex-col gap-24 border-r p-48">
         <h2 class="text-h2">Socials</h2>
-        <ContactItem name="YouTube" linkTitle="@bibleio" link="https://www.youtube.com/@bibleio" />
-        <ContactItem name="Instragram" linkTitle="@bibleioo" link="https://www.instagram.com/bibleioo/" />
-        <ContactItem name="Facebook" linkTitle="Bibleio" link="https://www.facebook.com/profile.php?id=61575695094809" />
-        <ContactItem name="Bluesky" linkTitle="@bibleio.com" link="https://bsky.app/profile/bibleio.com" />
-        <ContactItem name="X" linkTitle="@bibleioo" link="https://x.com/bibleioo" />
-        <ContactItem name="Mastodon" linkTitle="@bibleio.mastodon.social" link="https://mastodon.social/@bibleio" />
+        <ContactItem
+          name="YouTube"
+          linkTitle="@bibleio"
+          link="https://www.youtube.com/@bibleio"
+        />
+        <ContactItem
+          name="Instragram"
+          linkTitle="@bibleioo"
+          link="https://www.instagram.com/bibleioo/"
+        />
+        <ContactItem
+          name="Facebook"
+          linkTitle="Bibleio"
+          link="https://www.facebook.com/profile.php?id=61575695094809"
+        />
+        <ContactItem
+          name="Bluesky"
+          linkTitle="@bibleio.com"
+          link="https://bsky.app/profile/bibleio.com"
+        />
+        <ContactItem
+          name="X"
+          linkTitle="@bibleioo"
+          link="https://x.com/bibleioo"
+        />
+        <ContactItem
+          name="Mastodon"
+          linkTitle="@bibleio.mastodon.social"
+          link="https://mastodon.social/@bibleio"
+        />
       </div>
-      <div class="p-48 flex flex-col gap-24 border-stroke max-[950px]:border-t">
+      <div class="border-stroke flex flex-col gap-24 p-48 max-[950px]:border-t">
         <h2 class="text-h2">Resources</h2>
-        <a href="/handbook/about-us" class="flex bg-fg-1 backdrop-blur-popup max-[500px]:flex-col max-[500px]:items-start gap-12 hover:border-accent-reversed duration-150 ease-out items-end h-full border border-stroke rounded-20 p-12 justify-between">
+        <a
+          href="/handbook/about-us"
+          class="bg-fg-1 backdrop-blur-popup hover:border-accent-reversed border-stroke rounded-20 flex h-full items-end justify-between gap-12 border p-12 duration-150 ease-out max-[500px]:flex-col max-[500px]:items-start"
+        >
           <div class="flex flex-col gap-12 p-8">
             <p class="text-text text-body font-mono">BIBLEIO</p>
             <h2 class="text-h2">Handbook</h2>
           </div>
           <Image
-            class="rounded-8 border border-stroke aspect-[2/3] w-[8.75rem] h-auto"
+            class="rounded-8 border-stroke aspect-[2/3] h-auto w-[8.75rem] border"
             alt={"handbook cover"}
             width={280}
             height={420}

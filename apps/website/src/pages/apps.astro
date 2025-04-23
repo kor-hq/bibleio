@@ -1,14 +1,14 @@
 ---
 import HorizontalMarquee from "~/components/home/HorizontalMarquee.astro";
 import {
-	Badge,
-	Bible,
-	Button,
-	Circle,
-	Cross,
-	Hexagon,
-	Star,
-	Triangle,
+  Badge,
+  Bible,
+  Button,
+  Circle,
+  Cross,
+  Hexagon,
+  Star,
+  Triangle,
 } from "@bibleio/design";
 import Layout from "~/layouts/Layout.astro";
 import { MainSection } from "@bibleio/design";
@@ -17,21 +17,25 @@ import { MainSection } from "@bibleio/design";
 <Layout title="Apps">
   <section
     id="landing"
-    class="relative flex h-screen flex-col items-center justify-center gap-24 overflow-clip border-b border-stroke p-16"
+    class="border-stroke relative flex h-screen flex-col items-center justify-center gap-24 overflow-clip border-b p-16"
   >
     <h1
-      class="motion-preset-slide-up-sm pt-72 text-center text-[192px] leading-none text-text-solid max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
+      class="motion-preset-slide-up-sm text-text-solid pt-72 text-center text-[192px] leading-none max-[1280px]:text-[8rem] max-[480px]:text-[5.75rem]"
     >
       Study the <br /> Bible
     </h1>
-    <p class="motion-preset-fade-lg text-center text-body leading-[150%] text-text">
+    <p
+      class="motion-preset-fade-lg text-body text-text text-center leading-[150%]"
+    >
       With our innovative, cross-platform, performant, beautiful open-source
       apps.
     </p>
     <div
-      class="h-full absolute justify-end items-center left-[20%] -z-50 flex flex-col gap-64"
+      class="absolute left-[20%] -z-50 flex h-full flex-col items-center justify-end gap-64"
     >
-      <div class="flex flex-col gap-64 justify-end items-center motion-translate-y-loop-[50%]/reset motion-duration-[40s] motion-ease-linear">
+      <div
+        class="motion-translate-y-loop-[50%]/reset motion-duration-[40s] motion-ease-linear flex flex-col items-center justify-end gap-64"
+      >
         <Cross />
         <Bible />
         <Circle />
@@ -48,73 +52,70 @@ import { MainSection } from "@bibleio/design";
     </div>
   </section>
   <MainSection>
-      <div
-        class="flex w-full justify-end items-center gap-24 overflow-hidden px-32 py-32"
-      >
-        <HorizontalMarquee text="Pre Alpha" />
-      </div>
-      <div id="web" class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16">
-        <h1 class="text-h1 leading-none text-text">Web App</h1>
-        <Badge variant="purple">Alpha</Badge>
-        <p class="text-body leading-[220%] text-text">
-          The Bibleio Web App is planned to be a simple casual reading
-          experience in a website, while still keeping all Bibleio functionality
-          and account content linking.
-        </p>
-        <p class="text-body leading-[220%] text-text">
-          The plans for v0.1-beta is to have basic highlighting, notes,
-          bookmarks, etc, search function, prayer list, and be able to store all
-          of that in an account.
-        </p>
-      </div>
-      <div
-        id="mobile"
-        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
-      >
-        <h1 class="text-h1 leading-none text-text">Mobile App</h1>
-        <Badge variant="red">Coming Soon</Badge>
-        <p class="text-body leading-[220%] text-text">
-          The Bibleio Mobile App is planned to be a simple study experience on
-          your phone, with more resources, and still access to your Bibleio
-          account content. And it's all designed specifically for the phone.
-        </p>
-        <p class="text-body leading-[220%] text-text">
-          For v0.0.1-beta, it's basically the same as the web app but ported
-          into a phone UI.
-        </p>
-      </div>
-      <div
-        id="desktop"
-        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
-      >
-        <h1 class="text-h1 leading-none text-text">Desktop App</h1>
-        <Badge variant="red">Coming Soon</Badge>
-        <p class="text-body leading-[220%] text-text">
-          The Bibleio Desktop App is planned to be a huge study experience on
-          your desktop, with more resources, and still access to your Bibleio
-          account content. It's designed for the extra real estate on the
-          screen, and for focusing, and notetaking.
-        </p>
-        <p class="text-body leading-[220%] text-text">
-          For v0.0.1-beta, it's basically the same as the web app but ported
-          into a desktop UI.
-        </p>
-      </div>
-      <div
-        id="roadmap"
-        class="flex flex-col gap-24 p-48 px-128 max-[640px]:px-16"
-      >
-        <p class="text-body leading-[220%] text-text">
-          Basically all this info is from the <a
-            href="/roadmap"
-            class="text-body text-text underline duration-150 ease-out hover:text-accent-reversed"
-            >roadmap</a
-          >, so go check that out for the full plans and details. We plan to
-          have major and popular translations, study resources, Bibleio
-          accounts, notetaking/highlighting/bookmark database, and more. Your
-          prayers, and contributions are appreciated to help.
-        </p>
-        <a href="/roadmap#contribute"> <Button>Contribute</Button></a>
-      </div>
+    <div
+      class="flex w-full items-center justify-end gap-24 overflow-hidden px-32 py-32"
+    >
+      <HorizontalMarquee text="Pre Alpha" />
+    </div>
+    <div id="web" class="px-128 flex flex-col gap-24 p-48 max-[640px]:px-16">
+      <h1 class="text-h1 text-text leading-none">Web App</h1>
+      <Badge variant="purple">Alpha</Badge>
+      <p class="text-body text-text leading-[220%]">
+        The Bibleio Web App is planned to be a simple casual reading experience
+        in a website, while still keeping all Bibleio functionality and account
+        content linking.
+      </p>
+      <p class="text-body text-text leading-[220%]">
+        The plans for v0.1-beta is to have basic highlighting, notes, bookmarks,
+        etc, search function, prayer list, and be able to store all of that in
+        an account.
+      </p>
+    </div>
+    <div id="mobile" class="px-128 flex flex-col gap-24 p-48 max-[640px]:px-16">
+      <h1 class="text-h1 text-text leading-none">Mobile App</h1>
+      <Badge variant="red">Coming Soon</Badge>
+      <p class="text-body text-text leading-[220%]">
+        The Bibleio Mobile App is planned to be a simple study experience on
+        your phone, with more resources, and still access to your Bibleio
+        account content. And it's all designed specifically for the phone.
+      </p>
+      <p class="text-body text-text leading-[220%]">
+        For v0.0.1-beta, it's basically the same as the web app but ported into
+        a phone UI.
+      </p>
+    </div>
+    <div
+      id="desktop"
+      class="px-128 flex flex-col gap-24 p-48 max-[640px]:px-16"
+    >
+      <h1 class="text-h1 text-text leading-none">Desktop App</h1>
+      <Badge variant="red">Coming Soon</Badge>
+      <p class="text-body text-text leading-[220%]">
+        The Bibleio Desktop App is planned to be a huge study experience on your
+        desktop, with more resources, and still access to your Bibleio account
+        content. It's designed for the extra real estate on the screen, and for
+        focusing, and notetaking.
+      </p>
+      <p class="text-body text-text leading-[220%]">
+        For v0.0.1-beta, it's basically the same as the web app but ported into
+        a desktop UI.
+      </p>
+    </div>
+    <div
+      id="roadmap"
+      class="px-128 flex flex-col gap-24 p-48 max-[640px]:px-16"
+    >
+      <p class="text-body text-text leading-[220%]">
+        Basically all this info is from the <a
+          href="/roadmap"
+          class="text-body text-text hover:text-accent-reversed underline duration-150 ease-out"
+          >roadmap</a
+        >, so go check that out for the full plans and details. We plan to have
+        major and popular translations, study resources, Bibleio accounts,
+        notetaking/highlighting/bookmark database, and more. Your prayers, and
+        contributions are appreciated to help.
+      </p>
+      <a href="/roadmap#contribute"> <Button>Contribute</Button></a>
+    </div>
   </MainSection>
 </Layout>

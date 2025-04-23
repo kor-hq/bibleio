@@ -5,17 +5,17 @@ import { twMerge } from "tailwind-merge";
 export type InputProps = React.HTMLAttributes<HTMLInputElement>;
 
 export const Input = ({
-	...props
+  ...props
 }: React.InputHTMLAttributes<HTMLInputElement>) => {
-	return (
-		<input
-			{...props}
-			className={twMerge(
-				clsx(
-					props.className,
-					"flex h-[2.5rem] items-center rounded-12 border border-stroke bg-fg-2 px-16 text-body text-text placeholder-text-subtle shadow-material-component outline-none placeholder:text-body focus:border-accent-reversed disabled:cursor-not-allowed disabled:opacity-33",
-				),
-			)}
-		/>
-	);
+  return (
+    <input
+      {...props}
+      className={twMerge(
+        clsx(
+          props.className,
+          "rounded-12 border-stroke bg-fg-2 text-body text-text placeholder-text-subtle shadow-material-component placeholder:text-body focus:border-accent-reversed disabled:opacity-33 flex h-[2.5rem] items-center border px-16 outline-none disabled:cursor-not-allowed"
+        )
+      )}
+    />
+  );
 };

@@ -2,9 +2,13 @@
 const { name, link, linkTitle } = Astro.props;
 ---
 
-<div class="flex gap-8 items-center flex-wrap">
+<div class="flex flex-wrap items-center gap-8">
   <p class="text-body text-text whitespace-nowrap">{name}</p>
-  <a href={link} target="_blank" class="px-12 py-8 bg-fg-1 backdrop-blur-popup border border-stroke text-text rounded-12 hover:border-accent-reversed duration-150 ease-out">
+  <a
+    href={link}
+    target="_blank"
+    class="bg-fg-1 backdrop-blur-popup border-stroke text-text rounded-12 hover:border-accent-reversed border px-12 py-8 duration-150 ease-out"
+  >
     {linkTitle}
   </a>
 </div>
