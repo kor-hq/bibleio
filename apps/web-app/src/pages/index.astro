@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
 import { IconArrowUpRight, IconBookmarks } from "@tabler/icons-react";
+import { WarningNote } from "@bibleio/design";
 ---
 
 <Layout>
@@ -10,12 +11,17 @@ import { IconArrowUpRight, IconBookmarks } from "@tabler/icons-react";
       id="container"
       class="flex h-full w-full max-w-[64rem] flex-col gap-24"
     >
-      <h1 class="text-h1 leading-none">Welcome to Bibleio</h1>
-      <p class="text-body">
+      <WarningNote
+        >Use with caution, Bibleio is still in development.</WarningNote
+      >
+      <h1 class="text-h1 motion-preset-slide-up-md leading-none">
+        Welcome to your new Bible
+      </h1>
+      <p class="text-body motion-preset-fade-lg motion-delay-100">
         This is our Bible web app, still in development stages.
       </p>
       <section
-        class="border-stroke rounded-28 grid h-[16rem] grid-cols-2 gap-8 border p-8"
+        class="border-stroke rounded-28 motion-preset-fade-lg motion-delay-150 grid h-[16rem] grid-cols-2 gap-8 border p-8"
       >
         <a
           href="/bible"
