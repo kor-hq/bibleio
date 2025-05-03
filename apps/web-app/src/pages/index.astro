@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import Layout from "~/layouts/Layout.astro";
+import { IconArrowUpRight, IconBookmarks } from "@tabler/icons-react";
+---
+
+<Layout>
+  <section id="main" class="flex h-screen flex-col items-center pt-72">
+    <div
+      id="container"
+      class="flex h-full w-full max-w-[64rem] flex-col gap-24"
+    >
+      <h1 class="text-h1 leading-none">Welcome to Bibleio</h1>
+      <p class="text-body">
+        This is our Bible web app, still in development stages.
+      </p>
+      <section
+        class="border-stroke rounded-28 grid h-[16rem] grid-cols-2 gap-8 border p-8"
+      >
+        <a
+          href="/bible"
+          class="bg-fg-1 border-stroke rounded-20 hover:border-accent-reversed group flex items-end justify-between border p-16 duration-150 ease-out"
+        >
+          <div class="flex flex-col gap-8">
+            <Image
+              class="border-stroke rounded-20 border"
+              src="/appicon.png"
+              width={64}
+              height={64}
+              alt="bibleio app icon"
+            />
+            <h3 class="text-h3">Your Bible</h3>
+          </div>
+          <IconArrowUpRight
+            className="text-text group-hover:text-accent-reversed duration-150 ease-out group-hover:rotate-45"
+            stroke={1.5}
+          />
+        </a>
+
+        <div
+          aria-disabled="true"
+          class="bg-fg-1 border-stroke rounded-20 group flex cursor-not-allowed items-end justify-between border p-16 opacity-50 duration-150 ease-out"
+        >
+          <div class="flex flex-col gap-8">
+            <IconBookmarks className="text-text size-48" stroke={1.5} />
+            <h3 class="text-h3">Your Annotations</h3>
+          </div>
+          <IconArrowUpRight
+            className="text-text duration-150 ease-out group-hover:rotate-45"
+            stroke={1.5}
+          />
+        </div>
+      </section>
+    </div>
+  </section>
+  <div
+    class="bg-accent absolute bottom-[-10%] left-1/2 h-[10rem] w-[50rem] -translate-x-1/2 rounded-full blur-[10vmin]"
+  >
+  </div>
+</Layout>

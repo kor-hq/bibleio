@@ -9,4 +9,4 @@ pnpm install
 pnpm site dev
 ```
 
-`pnpm site fix` to format and lint with Biome.
+`pnpm site fix` to format and lint.

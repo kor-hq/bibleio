@@ -1,23 +1,24 @@
 {
-	"name": "@bibleio/bibleio",
-	"version": "0.0.0",
-	"type": "module",
-	"author": "dukc",
-	"license": "MIT-0",
-	"packageManager": "pnpm@10.7.1",
-	"scripts": {
-		"site": "turbo run --filter=@bibleio/website",
-		"design": "turbo run --filter=@bibleio/design",
-		"fix": "turbo run fix"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"prettier": "^3.5.3",
-		"prettier-plugin-astro": "^0.14.1",
-		"prettier-plugin-tailwindcss": "^0.6.11",
-		"turbo": "^2.5.0"
-	},
-	"trustedDependencies": [
-		"@biomejs/biome"
-	]
+  "name": "@bibleio/bibleio",
+  "version": "0.0.0",
+  "type": "module",
+  "author": "dukc",
+  "license": "MIT-0",
+  "packageManager": "pnpm@10.7.1",
+  "scripts": {
+    "site": "turbo run --filter=@bibleio/website",
+    "webapp": "turbo run --filter=@bibleio/web-app",
+    "design": "turbo run --filter=@bibleio/design",
+    "fix": "turbo run fix"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "turbo": "^2.5.2"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }

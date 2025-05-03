@@ -4,22 +4,24 @@ This is the Bibleio monorepo, all the code that powers Bibleio. Here you can fin
 
 # Structure
 
+- [`apps/web-app`](https://github.com/bibleio/bibleio/tree/main/apps/web-app) Our Bible web app (development stage)
 - [`apps/website`](https://github.com/bibleio/bibleio/tree/main/apps/website) The main public facing website
 - [`packages/design`](https://github.com/bibleio/bibleio/tree/main/packages/design) Our design system
 
 See more about each project in their README.
 
-## Developing
+## Commands
 
 We use Turborepo and pnpm for our codebaase. Here's our main commands:
+
 ```bash
+pnpm webapp dev # web app dev server
 pnpm site dev # website dev server
 pnpm fix # format & lint all files
 
 # can also access other subcommands
 pnpm site build
 ```
-We use [Biome](https://biomejs.dev/) for formatting and linting, please use `pnpm fix` when developing, or [setup your editor to use Biome](https://biomejs.dev/guides/editors/first-party-extensions/).
 
 # Status
 
@@ -40,6 +42,7 @@ Read more about developer stuff for contributing at [CONTRIBUTING.md](.github/CO
 All of Bibleio's projects are licensed under the [MIT No Attribution](LICENSE.txt) license.
 
 Matthew 10:8 BSB
+
 > "Freely you have received; freely give"
 
 Check out why you should do the same by clicking this:
