@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge";
 
 interface CustomSelectProps {
   label: string;
-  className: string;
+  className?: string;
 }
 
 export type SelectProps = CustomSelectProps & RadixSelectProps;
@@ -24,7 +24,7 @@ export const Select = ({
       <RadixSelect.Trigger
         className={twMerge(
           clsx(
-            "rounded-12 border-stroke bg-fg-2 text-text shadow-material-component data-[state='open']:rounded-b-4 data-[disabled]:opacity-33 group flex w-fit justify-between gap-12 border px-16 py-8 outline-1 duration-150 ease-out enabled:hover:-translate-y-[2px] enabled:active:translate-y-4 data-[disabled]:cursor-not-allowed",
+            "rounded-12 border-stroke bg-fg-2 text-text shadow-material-component data-[disabled]:opacity-33 group flex w-fit justify-between gap-12 border px-16 py-8 outline-1 duration-150 ease-out enabled:hover:-translate-y-[2px] enabled:active:translate-y-4 data-[disabled]:cursor-not-allowed",
             className
           )
         )}
@@ -41,7 +41,7 @@ export const Select = ({
       <RadixSelect.Portal>
         <RadixSelect.Content
           position="popper"
-          className="rounded-12 rounded-t-4 border-stroke bg-fg-2 shadow-material-component data-[state='open']:animate-scale-in relative z-50 mt-4 max-h-[512px] w-full overflow-hidden border font-serif"
+          className="rounded-12 border-stroke bg-fg-2 shadow-material-component data-[state='open']:animate-scale-in relative z-50 mt-4 max-h-[512px] w-full overflow-hidden border font-serif"
         >
           <RadixSelect.ScrollUpButton className="flex h-fit cursor-default items-center justify-center py-2">
             <IconChevronUp />
