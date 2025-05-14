@@ -1,0 +1,81 @@
+---
+export const prerender = false;
+
+import { ControlBar } from "~/components/bible/ControlBar";
+import Layout from "~/layouts/Layout.astro";
+import type {
+  ChapterContent,
+  TranslationBookChapter,
+  ChapterVerse,
+  FormattedText,
+} from "~/types/chapter";
+
+const bible = Astro.url.searchParams.get("bible");
+const book = Astro.url.searchParams.get("book");
+const chapter = Astro.url.searchParams.get("chapter");
+
+const data: TranslationBookChapter = await fetch(
+  `https://bible.helloao.org/api/${bible}/${book}/${chapter}.json`
+).then((request) => request.json());
+
+const handleVersePart = (versePart: ChapterVerse["content"]): string => {
+  if (typeof versePart === "string") {
+    return versePart;
+  }
+  if (typeof versePart === "object" && versePart !== null) {
+    if ("text" in versePart) {
+      return (versePart as FormattedText).text as string;
+    }
+    if ("heading" in versePart) {
+      return `<span>${versePart.heading}</span>`;
+    }
+    if ("lineBreak" in versePart) {
+      return "<br>";
+    }
+    if ("noteId" in versePart) {
+      return `[${versePart.noteId}]`;
+    }
+  }
+
+  return "unknown"; // fallback for unexpected type
+};
+
+const chapterContent = data.chapter.content.map((item: ChapterContent) => {
+  switch (item.type) {
+    case "heading":
+      if (Array.isArray(item.content)) {
+        return `<h4>${item.content.join("")}</h4>`;
+      }
+      break;
+    case "verse":
+      if (Array.isArray(item.content)) {
+        const verseContent = item.content.map(handleVersePart).join("");
+        return `<p><span class="verseNumber">${item.number}</span> ${verseContent}</p>`;
+      }
+      break;
+    case "line_break":
+      return "<br>";
+    default:
+      break;
+  }
+  return "unknown"; // fallback for unexpected type
+});
+---
+
+<Layout title={`${data.book.name} ${data.chapter.number}`}>
+  <section id="main" class="flex h-screen flex-col items-center pt-72">
+    <div
+      id="container"
+      class="flex h-full w-full max-w-[32rem] flex-col gap-24"
+    >
+      <h3 class="text-h3 motion-preset-fade-lg motion-delay-0">
+        {data.book.name}{" "}{data.chapter.number}
+      </h3>
+      <article
+        class="bible-content motion-preset-fade-lg motion-delay-100"
+        set:html={chapterContent}
+      />
+    </div>
+    <ControlBar client:load />
+  </section>
+</Layout>

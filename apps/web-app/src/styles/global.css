@@ -3,3 +3,40 @@
 
 @plugin "tailwindcss-motion";
 @plugin "tailwindcss-intersect";
+
+@layer components {
+  .bible-content {
+    * {
+      color: var(--color-text);
+    }
+    p {
+      font-size: 0.95rem;
+      line-height: 200%;
+    }
+    h1 {
+      font-size: var(--text-h1);
+      line-height: 150%;
+      margin-top: 1rem;
+    }
+    h2 {
+      font-size: var(--text-h2);
+      line-height: 150%;
+      margin-top: 1rem;
+    }
+    h3 {
+      font-size: var(--text-h3);
+      line-height: 150%;
+      margin-top: 1rem;
+    }
+    h4 {
+      font-size: var(--text-h4);
+      line-height: 150%;
+      margin-top: 1rem;
+    }
+    span.verseNumber {
+      font-size: var(--text-sub);
+      color: --alpha(var(--color-text) / 70%);
+      font-family: var(--font-mono);
+    }
+  }
+}
