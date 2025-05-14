@@ -3,7 +3,7 @@ import { BibleSelect } from "./BibleSelect";
 
 export function ControlBar() {
   return (
-    <div className="mb fixed bottom-20 flex h-[2.5rem] w-full max-w-[32rem] gap-4">
+    <div className="mb fixed bottom-20 z-40 flex h-[2.5rem] w-full max-w-[32rem] gap-4">
       <div className="rounded-4 border-stroke bg-fg-1 shadow-popup backdrop-blur-popup flex h-full w-full items-center justify-between overflow-clip border px-20 first:rounded-l-full last:rounded-r-full">
         <p className="text-body">Genesis 1</p>
         <BibleSelect />

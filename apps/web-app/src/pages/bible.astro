@@ -9,6 +9,7 @@ import type {
   ChapterVerse,
   FormattedText,
 } from "~/types/chapter";
+import { LinearBlur } from "progressive-blur";
 
 const bible = Astro.url.searchParams.get("bible");
 const book = Astro.url.searchParams.get("book");
@@ -77,5 +78,12 @@ const chapterContent = data.chapter.content.map((item: ChapterContent) => {
       />
     </div>
     <ControlBar client:load />
+    <LinearBlur
+      className="fixed bottom-0 z-20 h-[6rem] w-screen"
+      side="bottom"
+      steps={8}
+      strength={2}
+      falloffPercentage={100}
+    />
   </section>
 </Layout>
