@@ -7,12 +7,29 @@ import {
 } from "@bibleio/design";
 import * as RadixSelect from "@radix-ui/react-select";
 import { IconChevronUp, IconChevronDown } from "@tabler/icons-react";
+import { useState } from "react";
 
 export function BibleSelect() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <RadixSelect.Root defaultValue="BSB">
-      <RadixSelect.Trigger className="text-body text-text hover:text-accent-reversed outline-none duration-150 ease-out">
-        <RadixSelect.Value placeholder={"Bible"} />
+    <RadixSelect.Root
+      defaultValue="BSB"
+      onOpenChange={(value) => {
+        setIsOpen(value);
+      }}
+      open={isOpen}
+    >
+      <RadixSelect.Trigger className="text-body text-text hover:text-accent-reversed focus-visible:text-accent-reversed flex items-center gap-4 outline-none duration-150 ease-out">
+        <RadixSelect.Value
+          placeholder={"Bible"}
+          className="duration-150 ease-out"
+        />
+        <RadixSelect.Icon>
+          <IconChevronDown
+            strokeWidth={1.5}
+            className={`size-16 ${isOpen ? "rotate-180" : "rotate-0"} duration-150 ease-out`}
+          />
+        </RadixSelect.Icon>
       </RadixSelect.Trigger>
       <RadixSelect.Portal>
         <RadixSelect.Content
