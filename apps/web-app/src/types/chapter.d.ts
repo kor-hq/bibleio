@@ -1,3 +1,5 @@
+import { TranslationBook } from "./book";
+
 export interface TranslationBookChapter {
   /**
    * The translation information for the book chapter.
