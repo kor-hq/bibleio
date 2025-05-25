@@ -17,7 +17,7 @@ const hasAllParams = urlTranslation && urlBook && urlChapter;
 const urlParams = {
   translation: urlTranslation,
   book: urlBook,
-  chapter: urlChapter
+  chapter: urlChapter,
 };
 
 // Only fetch data if we have all the parameters
@@ -45,7 +45,7 @@ const isInitialLoad = !hasAllParams;
   <section id="main" class="flex h-screen flex-col items-center pt-72">
     <div
       id="container"
-      class="flex h-full w-full max-w-[32rem] flex-col gap-24"
+      class="flex h-full w-full max-w-[32rem] flex-col gap-24 px-12"
     >
       {
         isInitialLoad ? (
@@ -84,9 +84,10 @@ const isInitialLoad = !hasAllParams;
 
 <script>
   // This script runs on the client-side after hydration
-    document.addEventListener("DOMContentLoaded", () => {
-      // Import the store dynamically (only works on client side)
-      import("~/stores/bibleStore").then(({ useBibleStore }) => {
+  document.addEventListener("DOMContentLoaded", () => {
+    // Import the store dynamically (only works on client side)
+    import("~/stores/bibleStore")
+      .then(({ useBibleStore }) => {
         // Get the loading placeholder
         const loadingElement = document.getElementById("loading-placeholder");
 
@@ -95,7 +96,7 @@ const isInitialLoad = !hasAllParams;
         const urlTranslation = url.searchParams.get("translation");
         const urlBook = url.searchParams.get("book");
         const urlChapter = url.searchParams.get("chapter");
-      
+
         // Only proceed if we're in initial loading state (missing parameters)
         if (loadingElement) {
           try {
@@ -135,18 +136,25 @@ const isInitialLoad = !hasAllParams;
           // We have URL parameters - sync them to the store
           if (urlTranslation && urlBook && urlChapter) {
             const bibleStore = useBibleStore.getState();
-          
+
             // Only update store if values are different
-            if (bibleStore.translation !== urlTranslation || 
-                bibleStore.book !== urlBook || 
-                bibleStore.chapter !== urlChapter) {
-              console.log("Updating store with URL parameters:", { urlTranslation, urlBook, urlChapter });
+            if (
+              bibleStore.translation !== urlTranslation ||
+              bibleStore.book !== urlBook ||
+              bibleStore.chapter !== urlChapter
+            ) {
+              console.log("Updating store with URL parameters:", {
+                urlTranslation,
+                urlBook,
+                urlChapter,
+              });
               bibleStore.setAll(urlTranslation, urlBook, urlChapter);
             }
           }
         }
-      }).catch(err => {
+      })
+      .catch((err) => {
         console.error("Error importing store:", err);
       });
-    });
+  });
 </script>
