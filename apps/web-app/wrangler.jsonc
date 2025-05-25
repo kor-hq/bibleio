@@ -7,7 +7,7 @@
   "compatibility_flags": ["nodejs_compat"],
 
   "assets": {
-    "directory": "./dist",
+    "directory": "./dist/_astro",
     "binding": "ASSETS",
   },
 
