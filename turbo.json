@@ -5,10 +5,8 @@
       "cache": false
     },
     "build": {
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "target/release/**"]
-    },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+      "outputs": ["dist/**"],
+      "cache": true
     },
     "fix": {
       "outputs": []
@@ -16,6 +14,21 @@
     "dev": {
       "persistent": true,
       "cache": false
+    },
+    "wrangler:dev": {
+      "persistent": true,
+      "cache": false,
+      "dependsOn": ["build"]
+    },
+    "wrangler:dev:persist": {
+      "persistent": true,
+      "cache": false,
+      "dependsOn": ["build"]
+    },
+    "dev:cf": {
+      "persistent": true,
+      "cache": false,
+      "dependsOn": ["build"]
     }
   }
 }

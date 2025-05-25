@@ -7,7 +7,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "fix": "biome lint . --fix && prettier --write .",
-    "astro": "astro"
+    "astro": "astro",
+    "wrangler:dev": "wrangler dev --port 8788",
+    "wrangler:dev:persist": "wrangler dev --persist --port 8788",
+    "dev:cf": "pnpm run build && pnpm run wrangler:dev"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.5.3",
