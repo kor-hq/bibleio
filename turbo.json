@@ -17,18 +17,15 @@
     },
     "wrangler:dev": {
       "persistent": true,
-      "cache": false,
-      "dependsOn": ["build"]
+      "cache": false
     },
     "wrangler:dev:persist": {
       "persistent": true,
-      "cache": false,
-      "dependsOn": ["build"]
+      "cache": false
     },
     "dev:cf": {
       "persistent": true,
-      "cache": false,
-      "dependsOn": ["build"]
+      "cache": false
     }
   }
 }
