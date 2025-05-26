@@ -13,6 +13,7 @@
     "dev:cf": "pnpm run build && pnpm run wrangler:dev"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.9.2",
     "@astrojs/cloudflare": "^12.5.3",
     "@astrojs/react": "^4.2.7",
     "@bibleio/design": "workspace:*",
