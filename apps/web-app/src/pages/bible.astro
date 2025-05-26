@@ -6,6 +6,7 @@ import Layout from "~/layouts/Layout.astro";
 import type { TranslationBookChapter } from "~/types/chapter";
 import { LinearBlur } from "progressive-blur";
 import { formatChapterContent } from "~/utils/FormatVerses";
+import { IconExclamationCircle } from "@tabler/icons-react";
 
 // Check if all URL parameters are present
 const urlTranslation = Astro.url.searchParams.get("translation");
@@ -65,9 +66,17 @@ const isInitialLoad = !hasAllParams;
             />
           </>
         ) : (
-          <h3 class="text-body text-yellow-reversed">
-            Please select a translation, book, and chapter.
-          </h3>
+          <div id="errorReport" class="flex flex-col gap-12">
+            <IconExclamationCircle
+              className="text-red-reversed size-48 motion-preset-fade-lg motion-delay-50"
+              strokeWidth={1.5}
+            />
+            <p class="text-body motion-preset-fade-lg motion-delay-100">
+              This translation doesn't support this book, or there was a fatal
+              error.
+            </p>
+            <div class="bg-red-reversed motion-preset-fade-lg motion-delay-200 absolute left-1/2 top-[-10%] h-[10rem] w-[30rem] -translate-x-1/2 rounded-full opacity-60 blur-[10vmin]" />
+          </div>
         )
       }
     </div>
