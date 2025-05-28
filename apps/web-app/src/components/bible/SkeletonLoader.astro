@@ -1,0 +1,33 @@
+---
+import { Skeleton } from "@bibleio/design";
+
+// Predefined width classes that Tailwind can generate
+const widthClasses = [
+  "w-[120px]",
+  "w-[140px]",
+  "w-[160px]",
+  "w-[180px]",
+  "w-[200px]",
+  "w-[220px]",
+  "w-[240px]",
+  "w-[260px]",
+];
+
+const skeletons = Array.from({ length: 150 }, (_) => ({
+  widthClass: widthClasses[Math.floor(Math.random() * widthClasses.length)],
+}));
+---
+
+<div id="loading-placeholder" class="flex flex-col gap-24">
+  <div class="flex gap-8">
+    <Skeleton className="w-128 h-32" />
+    <Skeleton className="h-32 w-48" />
+  </div>
+  <div id="content" class="flex flex-wrap gap-8">
+    {
+      skeletons.map((skeleton, index) => (
+        <Skeleton key={index} className={`h-20 ${skeleton.widthClass}`} />
+      ))
+    }
+  </div>
+</div>

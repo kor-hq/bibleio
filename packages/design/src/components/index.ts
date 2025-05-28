@@ -16,6 +16,7 @@ export * from "./base/Tabs";
 export * from "./base/Dialog";
 export * from "./base/AlertDialog";
 export * from "./base/Note";
+export * from "./base/Skeleton";
 
 // Brand stuff
 export * from "./brand/Shapes";
