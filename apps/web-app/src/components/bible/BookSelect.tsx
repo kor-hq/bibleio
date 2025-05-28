@@ -1,17 +1,16 @@
 import { SelectItem } from "@bibleio/design";
 import * as RadixSelect from "@radix-ui/react-select";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
-import { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useBibleStore } from "~/stores/bibleStore";
-import { useEffect } from "react";
 import type { TranslationBooks } from "~/types/book";
 
-export function BookSelect() {
+export const BookSelect = React.memo(() => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [books, setBooks] = useState<TranslationBooks["books"]>([]);
 
   const { translation, book, setBook, setAvailableChapters } = useBibleStore();
-  
+
   // Fetch books for the current translation
   useEffect(() => {
     // Fetch books data
@@ -19,9 +18,11 @@ export function BookSelect() {
       .then((request) => request.json())
       .then((availableBooks) => {
         setBooks(availableBooks.books);
-        
+
         // Initialize availableChapters if we have the current book
-        const currentBook = availableBooks.books.find((b: { id: string }) => b.id === book);
+        const currentBook = availableBooks.books.find(
+          (b: { id: string }) => b.id === book
+        );
         if (currentBook) {
           setAvailableChapters(currentBook.numberOfChapters);
         }
@@ -32,36 +33,37 @@ export function BookSelect() {
   }, [translation, book, setAvailableChapters]);
 
   // Handle book selection
-  const handleBookChange = (value: string) => {
-    // Don't proceed if it's the same book
-    if (value === book) return;
-    
-    // Find the selected book to get its number of chapters
-    const selectedBook = books.find((b) => b.id === value);
-    if (selectedBook) {
-      // Update selected book data in the store (includes availableChapters)
-      setAvailableChapters(selectedBook.numberOfChapters);
-      // Update book in the store
-      setBook(value);
+  const handleBookChange = useCallback(
+    (value: string) => {
+      // Don't proceed if it's the same book
+      if (value === book) return;
 
-      // Update URL with new book value
-      const url = new URL(window.location.href);
-      url.searchParams.set("book", value);
-      // Set chapter to 1 when changing books
-      url.searchParams.set("chapter", "1");
+      // Find the selected book to get its number of chapters
+      const selectedBook = books.find((b) => b.id === value);
+      if (selectedBook) {
+        // Update selected book data in the store (includes availableChapters)
+        setAvailableChapters(selectedBook.numberOfChapters);
+        // Update book in the store
+        setBook(value);
 
-      // Navigate to the new URL
-      window.location.href = url.toString();
-    }
-  };
+        // Update URL with new book value
+        const url = new URL(window.location.href);
+        url.searchParams.set("book", value);
+        // Set chapter to 1 when changing books
+        url.searchParams.set("chapter", "1");
+
+        // Navigate to the new URL
+        window.location.href = url.toString();
+      }
+    },
+    [book, books, setAvailableChapters, setBook]
+  );
 
   if (books.length > 0)
     return (
       <RadixSelect.Root
         value={book}
-        onOpenChange={(value) => {
-          setIsOpen(value);
-        }}
+        onOpenChange={setIsOpen}
         onValueChange={handleBookChange}
         open={isOpen}
       >
@@ -86,9 +88,9 @@ export function BookSelect() {
               <IconChevronUp />
             </RadixSelect.ScrollUpButton>
             <RadixSelect.Viewport className="flex flex-col gap-14 p-16">
-              {books.map((book) => (
-                <SelectItem key={book.id} value={book.id}>
-                  {book.commonName}
+              {books.map((bookItem) => (
+                <SelectItem key={bookItem.id} value={bookItem.id}>
+                  {bookItem.commonName}
                 </SelectItem>
               ))}
             </RadixSelect.Viewport>
@@ -100,4 +102,4 @@ export function BookSelect() {
       </RadixSelect.Root>
     );
   return <div />;
-}
+});

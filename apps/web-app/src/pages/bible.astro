@@ -2,10 +2,10 @@
 export const prerender = false;
 
 import { ControlBar } from "~/components/bible/ControlBar";
+import { ChapterContent } from "~/components/bible/ChapterContent";
 import Layout from "~/layouts/Layout.astro";
 import type { TranslationBookChapter } from "~/types/chapter";
 import { LinearBlur } from "progressive-blur";
-import { formatChapterContent } from "~/utils/FormatVerses";
 import { IconExclamationCircle } from "@tabler/icons-react";
 
 // Check if all URL parameters are present
@@ -23,7 +23,6 @@ const urlParams = {
 
 // Only fetch data if we have all the parameters
 let data: TranslationBookChapter | null = null;
-let chapterContent: string[] = [];
 
 if (hasAllParams) {
   try {
@@ -31,7 +30,6 @@ if (hasAllParams) {
       `https://bible.helloao.org/api/${urlTranslation}/${urlBook}/${urlChapter}.json`
     );
     data = await response.json();
-    chapterContent = formatChapterContent(data);
     console.log("Successfully loaded chapter data");
   } catch (error) {
     console.error("Error loading chapter data:", error);
@@ -42,7 +40,11 @@ if (hasAllParams) {
 const isInitialLoad = !hasAllParams;
 ---
 
-<Layout title="Bible">
+<Layout
+  title={hasAllParams
+    ? `${data?.book?.commonName} ${data?.chapter.number}`
+    : "Bible"}
+>
   <section id="main" class="flex h-screen flex-col items-center pt-72">
     <div
       id="container"
@@ -60,10 +62,7 @@ const isInitialLoad = !hasAllParams;
             <h3 class="text-h3 motion-preset-fade-lg motion-delay-0">
               {data.book.commonName} {data.chapter.number}
             </h3>
-            <article
-              class="bible-content motion-preset-fade-lg motion-delay-100 pb-128"
-              set:html={chapterContent}
-            />
+            <ChapterContent client:load data={data} />
           </>
         ) : (
           <div id="errorReport" class="flex flex-col gap-12">

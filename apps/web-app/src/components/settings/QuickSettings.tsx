@@ -1,12 +1,10 @@
 import { Popover } from "@ark-ui/react/popover";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
-  IconBrandGithub,
   IconHeart,
   IconHome,
   IconMail,
   IconMenu,
-  IconShape3,
   IconX,
 } from "@tabler/icons-react";
 import ThemeSwitcher from "../ThemeSwitcher";
@@ -77,10 +75,12 @@ export function QuickSettings() {
   );
 }
 
-function QuickSettingsSection({ children }: { children: React.ReactNode }) {
-  return (
-    <section className="bg-fg-2 border-stroke/50 first:rounded-t-20 last:rounded-b-20 rounded-4 flex w-full flex-col gap-4 border p-12">
-      {children}
-    </section>
-  );
-}
+const QuickSettingsSection = React.memo(
+  ({ children }: { children: React.ReactNode }) => {
+    return (
+      <section className="bg-fg-2 border-stroke/50 first:rounded-t-20 last:rounded-b-20 rounded-4 flex w-full flex-col gap-4 border p-12">
+        {children}
+      </section>
+    );
+  }
+);

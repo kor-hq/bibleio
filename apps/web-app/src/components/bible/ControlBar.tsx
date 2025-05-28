@@ -1,10 +1,10 @@
 import { TranslationSelect } from "./TranslationSelect";
 import { BookSelect } from "./BookSelect";
 import { ChapterSelect } from "./ChapterSelect";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useBibleStore } from "~/stores/bibleStore";
 
-export function ControlBar({ urlParams }: { urlParams: { translation: string | null, book: string | null, chapter: string | null } }) {
+export const ControlBar = React.memo(({ urlParams }: { urlParams: { translation: string | null, book: string | null, chapter: string | null } }) => {
   const { setAll } = useBibleStore();
   
   // Sync URL parameters with store when they change
@@ -25,4 +25,4 @@ export function ControlBar({ urlParams }: { urlParams: { translation: string | n
       </div>
     </div>
   );
-}
+});

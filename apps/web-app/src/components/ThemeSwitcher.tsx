@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 interface ThemeSwitcherProps {
   className?: string;
 }
 
-const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = "" }) => {
+const ThemeSwitcher: React.FC<ThemeSwitcherProps> = React.memo(({ className = "" }) => {
   // Get the initial theme from document class
   const getThemeFromDocument = (): "light" | "dark" => {
     return document.documentElement.classList.contains("dark")
@@ -30,7 +30,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = "" }) => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  const handleToggleClick = () => {
+  const handleToggleClick = useCallback(() => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
 
@@ -42,11 +42,26 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = "" }) => {
     }
 
     localStorage.setItem("theme", newTheme);
-  };
+  }, [theme]);
+
+  const ariaLabel = useMemo(
+    () => `Switch to ${theme === "light" ? "dark" : "light"} theme`,
+    [theme]
+  );
+
+  const sunClassName = useMemo(
+    () => `sun ${theme === "dark" ? "opacity-100" : "opacity-0"} transition-opacity duration-150`,
+    [theme]
+  );
+
+  const moonClassName = useMemo(
+    () => `moon ${theme === "light" ? "opacity-100" : "opacity-0"} transition-opacity duration-150`,
+    [theme]
+  );
 
   return (
     <button
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+      aria-label={ariaLabel}
       onClick={handleToggleClick}
       className={`hover:stroke-accent-reversed text-text hover:text-accent-reversed size-[1.5rem] duration-150 ${className}`}
     >
@@ -66,7 +81,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = "" }) => {
           strokeLinecap="round"
           strokeLinejoin="round"
           fillRule="evenodd"
-          className={`sun ${theme === "dark" ? "opacity-100" : "opacity-0"} transition-opacity duration-150`}
+          className={sunClassName}
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
@@ -83,7 +98,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = "" }) => {
           strokeLinecap="round"
           strokeLinejoin="round"
           fillRule="evenodd"
-          className={`moon ${theme === "light" ? "opacity-100" : "opacity-0"} transition-opacity duration-150`}
+          className={moonClassName}
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
@@ -91,6 +106,6 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = "" }) => {
       </svg>
     </button>
   );
-};
+});
 
 export default ThemeSwitcher;

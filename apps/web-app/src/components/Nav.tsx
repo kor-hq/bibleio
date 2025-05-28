@@ -1,31 +1,36 @@
-import { Button, Logo, WarningNote } from "@bibleio/design";
-import { IconX, IconMenu } from "@tabler/icons-react";
-import { useState } from "react";
+import { Logo } from "@bibleio/design";
+import React, { useState, useMemo } from "react";
 import { QuickSettings } from "./settings/QuickSettings";
 
 // ------------------------------ DESKTOP NAV MENU ------------------------------
 
-function DesktopNavMenu({ path }: { path: string }) {
+const DesktopNavMenu = React.memo(({ path }: { path: string }) => {
+  const homeClassName = useMemo(
+    () =>
+      `text-body hover:text-accent-reversed focus-visible:text-accent-reversed leading-none outline-none duration-150 ease-out ${path === "/" ? "font-semibold" : ""}`,
+    [path]
+  );
+
+  const bibleClassName = useMemo(
+    () =>
+      `text-body hover:text-accent-reversed focus-visible:text-accent-reversed leading-none outline-none duration-150 ease-out ${path === "/bible" ? "font-semibold" : ""}`,
+    [path]
+  );
+
   return (
     <div className="flex gap-12">
       <div className="border-stroke bg-fg-1 backdrop-blur-popup shadow-popup flex h-[2.5rem] w-fit items-center gap-24 rounded-full border px-24 py-12 max-[770px]:hidden">
-        <a
-          href="/"
-          className={`text-body hover:text-accent-reversed focus-visible:text-accent-reversed leading-none outline-none duration-150 ease-out ${path === "/" && "font-semibold"}`}
-        >
+        <a href="/" className={homeClassName}>
           Home
         </a>
-        <a
-          href="/bible"
-          className={`text-body hover:text-accent-reversed focus-visible:text-accent-reversed leading-none outline-none duration-150 ease-out ${path === "/bible" && "font-semibold"}`}
-        >
+        <a href="/bible" className={bibleClassName}>
           Bible
         </a>
       </div>
       <QuickSettings />
     </div>
   );
-}
+});
 
 export function Nav({ path }: { path: string }) {
   return (

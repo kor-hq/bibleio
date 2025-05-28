@@ -1,11 +1,11 @@
 import { SelectItem } from "@bibleio/design";
 import * as RadixSelect from "@radix-ui/react-select";
 import { IconChevronUp, IconChevronDown } from "@tabler/icons-react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import type { AvailableTranslations } from "~/types/bible";
 import { useBibleStore } from "~/stores/bibleStore";
 
-export function TranslationSelect() {
+export const TranslationSelect = React.memo(() => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [translations, setTranslations] = useState<
     AvailableTranslations["translations"]
@@ -15,7 +15,16 @@ export function TranslationSelect() {
   const { translation, setTranslation } = useBibleStore();
   
   // Find the selected translation object
-  const selectedTranslation = translations.find((t) => t.id === translation);
+  const selectedTranslation = useMemo(
+    () => translations.find((t) => t.id === translation),
+    [translations, translation]
+  );
+
+  // Memoize filtered translations
+  const filteredTranslations = useMemo(
+    () => translations.filter((bible) => bible.language === "eng"),
+    [translations]
+  );
 
   useEffect(() => {
     fetch("https://bible.helloao.org/api/available_translations.json")
@@ -32,7 +41,7 @@ export function TranslationSelect() {
   }, [translation]);
 
   // Handle translation change
-  const handleTranslationChange = (value: string) => {
+  const handleTranslationChange = useCallback((value: string) => {
     // Don't proceed if it's the same translation
     if (value === translation) return;
     
@@ -45,14 +54,18 @@ export function TranslationSelect() {
     
     // Navigate to the new URL, causing a page reload
     window.location.href = url.toString();
-  };
+  }, [translation, setTranslation]);
+
+  // Memoize chevron className
+  const chevronClassName = useMemo(
+    () => `size-16 ${isOpen ? "rotate-180" : "rotate-0"} duration-150 ease-out`,
+    [isOpen]
+  );
 
   return (
     <RadixSelect.Root
       value={translation}
-      onOpenChange={(value) => {
-        setIsOpen(value);
-      }}
+      onOpenChange={setIsOpen}
       onValueChange={handleTranslationChange}
       open={isOpen}
     >
@@ -66,7 +79,7 @@ export function TranslationSelect() {
         <RadixSelect.Icon>
           <IconChevronDown
             strokeWidth={1.5}
-            className={`size-16 ${isOpen ? "rotate-180" : "rotate-0"} duration-150 ease-out`}
+            className={chevronClassName}
           />
         </RadixSelect.Icon>
       </RadixSelect.Trigger>
@@ -79,13 +92,11 @@ export function TranslationSelect() {
             <IconChevronUp />
           </RadixSelect.ScrollUpButton>
           <RadixSelect.Viewport className="flex flex-col gap-14 p-16">
-            {translations
-              .filter((bible) => bible.language === "eng")
-              .map((bible) => (
-                <SelectItem key={bible.id} value={bible.id}>
-                  {bible.name}
-                </SelectItem>
-              ))}
+            {filteredTranslations.map((bible) => (
+              <SelectItem key={bible.id} value={bible.id}>
+                {bible.name}
+              </SelectItem>
+            ))}
           </RadixSelect.Viewport>
           <RadixSelect.ScrollDownButton className="flex h-fit cursor-default items-center justify-center py-2">
             <IconChevronDown />
@@ -94,4 +105,4 @@ export function TranslationSelect() {
       </RadixSelect.Portal>
     </RadixSelect.Root>
   );
-}
+});

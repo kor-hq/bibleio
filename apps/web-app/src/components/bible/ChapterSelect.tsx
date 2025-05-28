@@ -1,37 +1,38 @@
 import { SelectItem } from "@bibleio/design";
 import * as RadixSelect from "@radix-ui/react-select";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
-import { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useBibleStore } from "~/stores/bibleStore";
 
-export function ChapterSelect() {
+export const ChapterSelect = React.memo(() => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { availableChapters, chapter, setChapter } = useBibleStore();
-  
+
   // Handle chapter selection
-  const handleChapterChange = (value: string) => {
-    // Don't proceed if it's the same chapter
-    if (value === chapter) return;
-    
-    // Update chapter in the store
-    setChapter(value);
-    
-    // Update URL with new chapter value
-    const url = new URL(window.location.href);
-    url.searchParams.set("chapter", value);
-    
-    // Navigate to the new URL
-    window.location.href = url.toString();
-  };
-  
+  const handleChapterChange = useCallback(
+    (value: string) => {
+      // Don't proceed if it's the same chapter
+      if (value === chapter) return;
+
+      // Update chapter in the store
+      setChapter(value);
+
+      // Update URL with new chapter value
+      const url = new URL(window.location.href);
+      url.searchParams.set("chapter", value);
+
+      // Navigate to the new URL
+      window.location.href = url.toString();
+    },
+    [chapter, setChapter]
+  );
+
   if (availableChapters)
     return (
       <RadixSelect.Root
         value={chapter}
-        onOpenChange={(value) => {
-          setIsOpen(value);
-        }}
+        onOpenChange={setIsOpen}
         onValueChange={handleChapterChange}
         open={isOpen}
       >
@@ -70,4 +71,4 @@ export function ChapterSelect() {
       </RadixSelect.Root>
     );
   return <div />;
-}
+});
