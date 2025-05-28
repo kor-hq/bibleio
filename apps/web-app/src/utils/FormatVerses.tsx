@@ -40,9 +40,10 @@ const createFootnoteMaps = (footnotes: ChapterFootnote[]) => {
 
   // Pre-calculate auto-generated callers
   autoFootnotes.forEach((footnote, index) => {
-    const caller = index < FOOTNOTE_SYMBOLS.length 
-      ? FOOTNOTE_SYMBOLS[index] 
-      : `(${index + 1})`;
+    const caller =
+      index < FOOTNOTE_SYMBOLS.length
+        ? FOOTNOTE_SYMBOLS[index]
+        : `(${index + 1})`;
     callerCache.set(footnote.noteId, caller);
   });
 
@@ -60,7 +61,18 @@ export const handleVersePart = (
   }
 
   if ("text" in versePart) {
-    return versePart.text;
+    const formattedText = versePart as FormattedText;
+
+    // Handle words of Jesus
+    if (formattedText.wordsOfJesus) {
+      return (
+        <span key={`${partKey}-jesus`} className="text-red-reversed">
+          {formattedText.text}
+        </span>
+      );
+    }
+    // no formatting
+    return formattedText.text;
   }
 
   if ("heading" in versePart) {
@@ -74,9 +86,10 @@ export const handleVersePart = (
   if ("noteId" in versePart) {
     const footnote = footnoteMap.get(versePart.noteId);
     if (footnote) {
-      const caller = footnote.caller === "+" 
-        ? callerCache.get(footnote.noteId)!
-        : footnote.caller || footnote.noteId.toString();
+      const caller =
+        footnote.caller === "+"
+          ? callerCache.get(footnote.noteId)!
+          : footnote.caller || footnote.noteId.toString();
 
       return (
         <TooltipProvider
@@ -86,7 +99,7 @@ export const handleVersePart = (
         >
           <Tooltip>
             <TooltipTrigger asChild>
-              <sup className="text-text/60 sml-2 mr-6 cursor-help text-[0.875rem]">
+              <sup className="text-text/60 mr-2 cursor-help text-[0.875rem]">
                 {caller}
               </sup>
             </TooltipTrigger>
@@ -102,22 +115,24 @@ export const handleVersePart = (
 };
 
 // Memoized component for individual verse parts
-const VersePart = React.memo(({ 
-  part, 
-  footnoteMap, 
-  callerCache, 
-  partKey 
-}: {
-  part: VersePart;
-  footnoteMap: Map<number, ChapterFootnote>;
-  callerCache: Map<number, string>;
-  partKey: string;
-}) => (
-  <span key={partKey}>
-    {handleVersePart(part, footnoteMap, callerCache, partKey)}
-  </span>
-));
-VersePart.displayName = 'VersePart';
+const VersePart = React.memo(
+  ({
+    part,
+    footnoteMap,
+    callerCache,
+    partKey,
+  }: {
+    part: VersePart;
+    footnoteMap: Map<number, ChapterFootnote>;
+    callerCache: Map<number, string>;
+    partKey: string;
+  }) => (
+    <span key={partKey}>
+      {handleVersePart(part, footnoteMap, callerCache, partKey)}
+    </span>
+  )
+);
+VersePart.displayName = "VersePart";
 
 export function formatChapterContent(data: any): React.ReactNode[] {
   return useMemo(() => {
@@ -130,69 +145,73 @@ export function formatChapterContent(data: any): React.ReactNode[] {
     let lineBreakCounter = 0;
     let subtitleCounter = 0;
 
-    return data.chapter.content.map((item: ChapterContent, contentIndex: number) => {
-      const baseKey = `content-${contentIndex}`;
+    return data.chapter.content.map(
+      (item: ChapterContent, contentIndex: number) => {
+        const baseKey = `content-${contentIndex}`;
 
-      switch (item.type) {
-        case "heading":
-          if (Array.isArray(item.content)) {
-            headingCounter++;
-            return (
-              <h4 key={`${baseKey}-heading-${headingCounter}`}>
-                {item.content.join("")}
-              </h4>
-            );
-          }
-          break;
+        switch (item.type) {
+          case "heading":
+            if (Array.isArray(item.content)) {
+              headingCounter++;
+              return (
+                <h4 key={`${baseKey}-heading-${headingCounter}`}>
+                  {item.content.join("")}
+                </h4>
+              );
+            }
+            break;
 
-        case "verse":
-          if (Array.isArray(item.content)) {
-            const verseContent = item.content.map((part, index) => (
-              <VersePart
-                key={`${baseKey}-verse-${item.number}-part-${index}`}
-                part={part}
-                footnoteMap={footnoteMap}
-                callerCache={callerCache}
-                partKey={`${baseKey}-verse-${item.number}-part-${index}`}
-              />
-            ));
-            return (
-              <p key={`${baseKey}-verse-${item.number}`}>
-                <span className="verseNumber">{item.number}</span>{" "}
-                {verseContent}
-              </p>
-            );
-          }
-          break;
+          case "verse":
+            if (Array.isArray(item.content)) {
+              const verseContent = item.content.map((part, index) => (
+                <>
+                  <VersePart
+                    key={`${baseKey}-verse-${item.number}-part-${index}`}
+                    part={part}
+                    footnoteMap={footnoteMap}
+                    callerCache={callerCache}
+                    partKey={`${baseKey}-verse-${item.number}-part-${index}`}
+                  />{" "}
+                </>
+              ));
+              return (
+                <p key={`${baseKey}-verse-${item.number}`}>
+                  <span className="verseNumber">{item.number}</span>{" "}
+                  {verseContent}
+                </p>
+              );
+            }
+            break;
 
-        case "line_break":
-          lineBreakCounter++;
-          return <br key={`${baseKey}-linebreak-${lineBreakCounter}`} />;
+          case "line_break":
+            lineBreakCounter++;
+            return <br key={`${baseKey}-linebreak-${lineBreakCounter}`} />;
 
-        case "hebrew_subtitle":
-          if (Array.isArray(item.content)) {
-            subtitleCounter++;
-            const subtitleContent = item.content.map((part, index) => (
-              <VersePart
-                key={`${baseKey}-subtitle-${subtitleCounter}-part-${index}`}
-                part={part}
-                footnoteMap={footnoteMap}
-                callerCache={callerCache}
-                partKey={`${baseKey}-subtitle-${subtitleCounter}-part-${index}`}
-              />
-            ));
-            return (
-              <h5 key={`${baseKey}-subtitle-${subtitleCounter}`}>
-                {subtitleContent}
-              </h5>
-            );
-          }
-          break;
+          case "hebrew_subtitle":
+            if (Array.isArray(item.content)) {
+              subtitleCounter++;
+              const subtitleContent = item.content.map((part, index) => (
+                <VersePart
+                  key={`${baseKey}-subtitle-${subtitleCounter}-part-${index}`}
+                  part={part}
+                  footnoteMap={footnoteMap}
+                  callerCache={callerCache}
+                  partKey={`${baseKey}-subtitle-${subtitleCounter}-part-${index}`}
+                />
+              ));
+              return (
+                <h5 key={`${baseKey}-subtitle-${subtitleCounter}`}>
+                  {subtitleContent}
+                </h5>
+              );
+            }
+            break;
 
-        default:
-          break;
+          default:
+            break;
+        }
+        return "unknown"; // fallback for unexpected type
       }
-      return "unknown"; // fallback for unexpected type
-    });
+    );
   }, [data?.chapter?.content, data?.chapter?.footnotes]);
 }
