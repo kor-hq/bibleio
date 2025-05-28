@@ -18,7 +18,10 @@ const skeletons = Array.from({ length: 150 }, (_) => ({
 }));
 ---
 
-<div id="loading-placeholder" class="flex flex-col gap-24">
+<div
+  id="loading-placeholder"
+  class="motion-preset-fade-md flex flex-col gap-24"
+>
   <div class="flex gap-8">
     <Skeleton className="w-128 h-32" />
     <Skeleton className="h-32 w-48" />

@@ -175,10 +175,10 @@ export function formatChapterContent(data: any): React.ReactNode[] {
                 </>
               ));
               return (
-                <p key={`${baseKey}-verse-${item.number}`}>
+                <>
                   <span className="verseNumber">{item.number}</span>{" "}
                   {verseContent}
-                </p>
+                </>
               );
             }
             break;

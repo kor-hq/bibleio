@@ -1,13 +1,13 @@
 ---
 export const prerender = false;
 
-import { ControlBar } from "~/components/bible/ControlBar";
+import { ControlBar } from "~/components/bible/controlBar/ControlBar";
 import { ChapterContent } from "~/components/bible/ChapterContent";
 import Layout from "~/layouts/Layout.astro";
 import type { TranslationBookChapter } from "~/types/chapter";
 import { LinearBlur } from "progressive-blur";
-import { IconExclamationCircle } from "@tabler/icons-react";
 import SkeletonLoader from "~/components/bible/SkeletonLoader.astro";
+import BibleError from "~/components/bible/BibleError.astro";
 
 // Check if all URL parameters are present
 const urlTranslation = Astro.url.searchParams.get("translation");
@@ -62,17 +62,7 @@ const isInitialLoad = !hasAllParams;
             <ChapterContent client:load data={data} />
           </>
         ) : (
-          <div id="errorReport" class="flex flex-col gap-12">
-            <IconExclamationCircle
-              className="text-red-reversed size-48 motion-preset-fade-lg motion-delay-50"
-              strokeWidth={1.5}
-            />
-            <p class="text-body motion-preset-fade-lg motion-delay-100">
-              This translation doesn't support this book, or there was a fatal
-              error.
-            </p>
-            <div class="bg-red-reversed motion-preset-fade-lg motion-delay-200 absolute left-1/2 top-[-10%] h-[10rem] w-[30rem] -translate-x-1/2 rounded-full opacity-60 blur-[10vmin]" />
-          </div>
+          <BibleError />
         )
       }
     </div>
@@ -81,7 +71,7 @@ const isInitialLoad = !hasAllParams;
       className="fixed bottom-0 z-20 h-[6rem] w-screen"
       side="bottom"
       steps={8}
-      strength={2}
+      strength={3}
       falloffPercentage={100}
     />
   </section>

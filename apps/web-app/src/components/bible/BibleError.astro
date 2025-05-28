@@ -1,0 +1,17 @@
+---
+import { IconExclamationCircle } from "@tabler/icons-react";
+---
+
+<div id="errorReport" class="flex flex-col gap-12">
+  <IconExclamationCircle
+    className="text-red-reversed motion-preset-fade-lg motion-delay-50 size-48"
+    strokeWidth={1.5}
+  />
+  <p class="text-body motion-preset-fade-lg motion-delay-100">
+    This translation doesn't support this book, or there was a fatal error.
+  </p>
+  <div
+    class="bg-red-reversed motion-preset-fade-lg motion-delay-200 absolute left-1/2 top-[-10%] h-[10rem] w-[30rem] -translate-x-1/2 rounded-full opacity-60 blur-[10vmin]"
+  >
+  </div>
+</div>
