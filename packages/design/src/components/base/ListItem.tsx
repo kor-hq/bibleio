@@ -7,7 +7,7 @@ import type { CollapsibleProps as RadixCollapsibleProps } from "@radix-ui/react-
 export type ListItemProps = {
   selected?: boolean;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   text?: string;
 };
 
