@@ -12,13 +12,13 @@ export function SettingsContent() {
       id="container"
       value={value}
       onValueChange={(e) => setValue(e.value)}
-      className="flex h-full w-full max-w-[64rem] gap-12 px-12"
+      className="flex h-full w-full max-w-[64rem] gap-12 px-12 max-[600px]:flex-col"
     >
       <Tabs.List
         id="sidebar"
-        className="flex w-[16rem] min-w-0 flex-col gap-20"
+        className="max-[600px]:bg-fg-2 max-[600px]:border-stroke rounded-16 flex w-[16rem] min-w-0 flex-col gap-20 border border-transparent max-[600px]:w-full max-[600px]:p-12"
       >
-        <h2 className="text-h2 text-text">Settings</h2>
+        <h2 className="text-h2 text-text max-[600px]:hidden">Settings</h2>
         <div className="flex flex-col gap-0">
           <SidebarLabel>App</SidebarLabel>
           <Tabs.Trigger value="appearance">
@@ -41,6 +41,9 @@ export function SettingsContent() {
   );
 }
 
+const TAB_CONTENT_CLASSNAME =
+  "bg-fg-2 border-stroke rounded-16 px-128 flex h-full w-full flex-col gap-24 overflow-y-auto border p-32 max-[850px]:p-16";
+
 function AppearanceContent() {
   const {
     redWordsOfJesus,
@@ -53,19 +56,16 @@ function AppearanceContent() {
   } = useSettingsStore();
 
   return (
-    <Tabs.Content
-      value="appearance"
-      className="bg-fg-2 border-stroke rounded-16 px-128 flex h-full w-full flex-col gap-24 overflow-y-auto border p-32"
-    >
+    <Tabs.Content value="appearance" className={TAB_CONTENT_CLASSNAME}>
       <h3 className="text-h3 text-text">Theme</h3>
       <div className="flex items-center justify-between">
         <p className="text-body text-text/80">Theme</p>
         <ThemeSwitcher />
       </div>
       <h3 className="text-h3 text-text">Bible</h3>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-6 max-[400px]:flex-col max-[400px]:items-start">
         <p className="text-body text-text/80">Text size</p>
-        <div className="w-[50%]">
+        <div className="w-[50%] max-[400px]:w-full">
           <Slider
             max={100}
             value={[textSize]}
@@ -75,9 +75,9 @@ function AppearanceContent() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-6 max-[400px]:flex-col max-[400px]:items-start">
         <p className="text-body text-text/80">Line height</p>
-        <div className="w-[50%]">
+        <div className="w-[50%] max-[400px]:w-full">
           <Slider
             max={100}
             value={[lineHeight]}
@@ -87,7 +87,7 @@ function AppearanceContent() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-6 max-[400px]:flex-col max-[400px]:items-start">
         <p className="text-body text-text/80">Red words of Jesus</p>
         <Switch
           checked={redWordsOfJesus}
@@ -102,10 +102,7 @@ function AppearanceContent() {
 
 function InfoContent() {
   return (
-    <Tabs.Content
-      value="info"
-      className="bg-fg-2 border-stroke rounded-16 flex h-full w-full flex-col gap-16 overflow-y-auto border p-32"
-    >
+    <Tabs.Content value="info" className={TAB_CONTENT_CLASSNAME}>
       <img
         className="border-stroke rounded-16 size-72 border"
         src="/appicon.png"
