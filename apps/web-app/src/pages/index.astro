@@ -1,7 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
-import { IconArrowUpRight, IconBookmarks } from "@tabler/icons-react";
+import {
+  IconArrowUpRight,
+  IconBookmarks,
+  IconSettings,
+} from "@tabler/icons-react";
 import { WarningNote } from "@bibleio/design";
 ---
 
@@ -44,19 +48,19 @@ import { WarningNote } from "@bibleio/design";
           />
         </a>
 
-        <div
-          aria-disabled="true"
-          class="bg-fg-1 border-stroke rounded-20 group flex cursor-not-allowed items-end justify-between border p-16 opacity-50 duration-150 ease-out"
+        <a
+          href="/settings"
+          class="bg-fg-1 border-stroke rounded-20 hover:border-accent-reversed group flex items-end justify-between border p-16 duration-150 ease-out"
         >
           <div class="flex flex-col gap-8">
-            <IconBookmarks className="text-text size-48" stroke={1.5} />
-            <h3 class="text-h3">Your Annotations</h3>
+            <IconSettings className="text-text size-48" stroke={1.5} />
+            <h3 class="text-h3">Settings</h3>
           </div>
           <IconArrowUpRight
-            className="text-text duration-150 ease-out group-hover:rotate-45"
+            className="text-text group-hover:text-accent-reversed duration-150 ease-out group-hover:rotate-45"
             stroke={1.5}
           />
-        </div>
+        </a>
       </section>
     </div>
   </section>

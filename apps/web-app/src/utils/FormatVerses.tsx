@@ -66,7 +66,7 @@ export const handleVersePart = (
     // Handle words of Jesus
     if (formattedText.wordsOfJesus) {
       return (
-        <span key={`${partKey}-jesus`} className="text-red-reversed">
+        <span key={`${partKey}-jesus`} className="wj">
           {formattedText.text}
         </span>
       );
@@ -99,10 +99,11 @@ export const handleVersePart = (
         >
           <Tooltip>
             <TooltipTrigger asChild>
-              <sup className="text-text/60 mr-2 cursor-help text-[0.875rem]">
+              <sup className="text-text/60 relative mr-2 cursor-help text-[0.875rem] before:absolute before:inset-[-0.375rem] before:cursor-help before:content-['']">
                 {caller}
               </sup>
             </TooltipTrigger>
+
             <TooltipContent>{footnote.text}</TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -154,7 +155,10 @@ export function formatChapterContent(data: any): React.ReactNode[] {
             if (Array.isArray(item.content)) {
               headingCounter++;
               return (
-                <h4 key={`${baseKey}-heading-${headingCounter}`}>
+                <h4
+                  className="heading"
+                  key={`${baseKey}-heading-${headingCounter}`}
+                >
                   {item.content.join("")}
                 </h4>
               );
@@ -200,7 +204,10 @@ export function formatChapterContent(data: any): React.ReactNode[] {
                 />
               ));
               return (
-                <h5 key={`${baseKey}-subtitle-${subtitleCounter}`}>
+                <h5
+                  className="subtitle"
+                  key={`${baseKey}-subtitle-${subtitleCounter}`}
+                >
                   {subtitleContent}
                 </h5>
               );

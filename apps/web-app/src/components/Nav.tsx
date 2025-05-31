@@ -27,7 +27,7 @@ const DesktopNavMenu = React.memo(({ path }: { path: string }) => {
           Bible
         </a>
       </div>
-      <QuickSettings />
+      <QuickSettings pathName={path} />
     </div>
   );
 });

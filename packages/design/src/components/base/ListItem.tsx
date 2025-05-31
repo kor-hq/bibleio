@@ -5,24 +5,26 @@ import * as RadixCollapsible from "@radix-ui/react-collapsible";
 import type { CollapsibleProps as RadixCollapsibleProps } from "@radix-ui/react-collapsible";
 
 export type ListItemProps = {
-  text: string;
   selected?: boolean;
   className?: string;
+  children: React.ReactNode;
+  text?: string;
 };
 
 export const ListItem = ({
-  text = "List Item",
   selected = false,
   className,
+  children,
+  text,
 }: ListItemProps) => {
   return (
     <div
       className={clsx(
-        `flex h-[2.5rem] w-full items-center justify-between gap-x-8 ${selected && "rounded-12 border-stroke bg-fg-2 shadow-material-component border"} text-text px-12 py-8`,
+        `flex h-[2.5rem] w-full items-center gap-8 ${selected && "rounded-12 border-stroke bg-fg-2 shadow-material-component border"} text-text px-12 py-8`,
         className
       )}
     >
-      {text}
+      {children || text}
     </div>
   );
 };

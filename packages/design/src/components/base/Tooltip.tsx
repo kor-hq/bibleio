@@ -48,7 +48,7 @@ export const TooltipContent = ({ children, ...props }: TooltipContentProps) => {
     <RadixTooltip.Portal>
       <RadixTooltip.Content
         {...props}
-        className="rounded-8 border-stroke bg-fg-2 text-body text-text data-[state='closed']:animate-scale-out data-[state='delayed-open']:animate-scale-in data-[state='instant-open']:animate-scale-in m-6 border px-8 py-4 font-serif drop-shadow-md"
+        className="rounded-8 border-stroke bg-fg-2 text-body text-text data-[state='closed']:animate-scale-out data-[state='delayed-open']:animate-scale-in data-[state='instant-open']:animate-scale-in max-[500px]:max-w-screen m-6 max-w-[85vw] border px-8 py-4 text-center font-serif drop-shadow-md"
       >
         {children}
       </RadixTooltip.Content>

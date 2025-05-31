@@ -49,6 +49,36 @@ const { title } = Astro.props;
 
       window.localStorage.setItem("theme", theme);
     </script>
+    <script is:inline>
+      // Apply settings CSS variables immediately
+      try {
+        const settingsData = localStorage.getItem('settings-store');
+        if (settingsData) {
+          const data = JSON.parse(settingsData);
+          if (data && data.state) {
+            const redWordsOfJesus = data.state.redWordsOfJesus ?? true;
+            const textSize = data.state.textSize ?? 25;
+            const lineHeight = data.state.lineHeight ?? 50;
+            
+            if (!redWordsOfJesus) {
+              document.documentElement.style.setProperty('--words-of-jesus-color', 'var(--color-text)');
+            }
+            
+            // Apply text size
+            const multiplier = 0.8 + (textSize / 100) * 0.7;
+            document.documentElement.style.setProperty('--bible-text-size', `${0.95 * multiplier}rem`);
+            document.documentElement.style.setProperty('--bible-heading-size', `${1.1875 * multiplier}rem`);
+            document.documentElement.style.setProperty('--bible-subtitle-size', `${0.875 * multiplier}rem`);
+            
+            // Apply line height
+            const lineHeightPercent = 150 + (lineHeight / 100) * 140;
+            document.documentElement.style.setProperty('--bible-line-height', `${lineHeightPercent}%`);
+          }
+        }
+      } catch (e) {
+        // Ignore errors
+      }
+    </script>
   </head>
   <body class="bg-bg-1 text-text overflow-x-hidden font-serif">
     <Nav path={Astro.url.pathname} client:load client:only="react" />

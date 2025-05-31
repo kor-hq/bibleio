@@ -1,5 +1,4 @@
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
-import { useBibleStore } from "~/stores/bibleStore";
 import type { TranslationBookChapter } from "~/types/chapter";
 
 interface ControlButtonsProps {
@@ -7,36 +6,34 @@ interface ControlButtonsProps {
 }
 
 export function ControlButtons({ chapterData }: ControlButtonsProps) {
-  const { setChapter, setBook } = useBibleStore();
-  
   const canGoToPrevious = chapterData?.previousChapterApiLink !== null;
   const canGoToNext = chapterData?.nextChapterApiLink !== null;
-  
+
   // Parse API link to extract book and chapter
   const parseApiLink = (apiLink: string | null) => {
     if (!apiLink) return null;
-    
+
     // Format: /api/{translation}/{book}/{chapter}.json
-    const parts = apiLink.split('/');
+    const parts = apiLink.split("/");
     if (parts.length >= 5) {
       const book = parts[3];
       const chapterWithExtension = parts[4];
-      const chapter = chapterWithExtension.replace('.json', '');
-      console.log('Parsed API link:', { apiLink, book, chapter });
+      const chapter = chapterWithExtension.replace(".json", "");
+      console.log("Parsed API link:", { apiLink, book, chapter });
       return { book, chapter };
     }
-    console.warn('Failed to parse API link:', apiLink);
+    console.warn("Failed to parse API link:", apiLink);
     return null;
   };
 
   const handlePrevious = () => {
     if (!canGoToPrevious || !chapterData?.previousChapterApiLink) return;
-    
+
     const parsed = parseApiLink(chapterData.previousChapterApiLink);
     if (!parsed) return;
-    
+
     const { book, chapter } = parsed;
-    
+
     // Update URL
     const url = new URL(window.location.href);
     url.searchParams.set("book", book);
@@ -46,12 +43,12 @@ export function ControlButtons({ chapterData }: ControlButtonsProps) {
 
   const handleNext = () => {
     if (!canGoToNext || !chapterData?.nextChapterApiLink) return;
-    
+
     const parsed = parseApiLink(chapterData.nextChapterApiLink);
     if (!parsed) return;
-    
+
     const { book, chapter } = parsed;
-    
+
     // Update URL
     const url = new URL(window.location.href);
     url.searchParams.set("book", book);
@@ -67,7 +64,7 @@ export function ControlButtons({ chapterData }: ControlButtonsProps) {
           className={`size-24 duration-150 ease-out ${
             canGoToPrevious
               ? "text-text hover:text-accent-reversed cursor-pointer"
-              : "text-text-subtle cursor-not-allowed opacity-50"
+              : "cursor-not-allowed opacity-50"
           }`}
           onClick={handlePrevious}
           disabled={!canGoToPrevious}
@@ -79,7 +76,7 @@ export function ControlButtons({ chapterData }: ControlButtonsProps) {
           className={`size-24 duration-150 ease-out ${
             canGoToNext
               ? "text-text hover:text-accent-reversed cursor-pointer"
-              : "text-text-subtle cursor-not-allowed opacity-50"
+              : "cursor-not-allowed opacity-50"
           }`}
           onClick={handleNext}
           disabled={!canGoToNext}

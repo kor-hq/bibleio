@@ -6,35 +6,19 @@
 
 @layer components {
   .bible-content {
-    * {
-      color: var(--color-text);
+    line-height: var(--bible-line-height, 220%);
+    color: var(--color-text);
+
+    span {
+      font-size: var(--bible-text-size, 0.95rem);
     }
-    p {
-      font-size: 0.95rem;
-      line-height: 200%;
-    }
-    h1 {
-      font-size: var(--text-h1);
+    .heading {
+      font-size: var(--bible-heading-size, 1.1875rem);
       line-height: 150%;
       margin-top: 1rem;
     }
-    h2 {
-      font-size: var(--text-h2);
-      line-height: 150%;
-      margin-top: 1rem;
-    }
-    h3 {
-      font-size: var(--text-h3);
-      line-height: 150%;
-      margin-top: 1rem;
-    }
-    h4 {
-      font-size: var(--text-h4);
-      line-height: 150%;
-      margin-top: 1rem;
-    }
-    h5 {
-      font-size: var(--text-mono);
+    .subtitle {
+      font-size: var(--bible-subtitle-size, 0.875rem);
       line-height: 150%;
       margin-top: 1rem;
     }
@@ -42,6 +26,9 @@
       font-size: var(--text-sub);
       color: --alpha(var(--color-text) / 70%);
       font-family: var(--font-mono);
+    }
+    span.wj {
+      color: var(--words-of-jesus-color, var(--color-red-reversed));
     }
   }
 }

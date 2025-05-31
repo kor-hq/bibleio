@@ -1,0 +1,10 @@
+---
+import { SettingsContent } from "~/components/settings/SettingsContent";
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout title="Home">
+  <section id="main" class="flex h-screen flex-col items-center pb-16 pt-72">
+    <SettingsContent client:load client:only="react" />
+  </section>
+</Layout>

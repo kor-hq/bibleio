@@ -5,11 +5,12 @@ import {
   IconHome,
   IconMail,
   IconMenu,
+  IconSettings,
   IconX,
 } from "@tabler/icons-react";
 import ThemeSwitcher from "../ThemeSwitcher";
 
-export function QuickSettings() {
+export function QuickSettings({ pathName }: { pathName: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Popover.Root
@@ -33,15 +34,15 @@ export function QuickSettings() {
         <Popover.Content className="focus-visible:border-accent-reversed border-stroke bg-fg-1 backdrop-blur-popup shadow-popup rounded-28 motion-preset-slide-up-sm motion-duration-150 flex h-fit w-[16rem] flex-col items-center gap-4 border p-8 outline-none">
           <QuickSettingsSection>
             <a
-              href="https://bibleio.com"
+              href="/settings"
               rel="noreferrer"
               className="group flex items-center gap-8 px-12 py-8"
             >
-              <IconHome
+              <IconSettings
                 className="group-hover:text-accent-reversed duration-150 ease-out"
                 strokeWidth={1.5}
               />
-              <p className="text-body">Homepage</p>
+              <p className="text-body">Settings</p>
             </a>
             <a
               href="https://bibleio.com/contact"
@@ -55,12 +56,14 @@ export function QuickSettings() {
               <p className="text-body">Community & support</p>
             </a>
           </QuickSettingsSection>
-          <QuickSettingsSection>
-            <div className="flex items-center justify-between px-12 py-8">
-              <p className="text-body">Theme</p>
-              <ThemeSwitcher />
-            </div>
-          </QuickSettingsSection>
+          {pathName !== "/settings" && (
+            <QuickSettingsSection>
+              <div className="flex items-center justify-between px-12 py-8">
+                <p className="text-body">Theme</p>
+                <ThemeSwitcher />
+              </div>
+            </QuickSettingsSection>
+          )}
           <QuickSettingsSection>
             <div className="flex items-center gap-8 px-12 py-8">
               <IconHeart strokeWidth={1.5} />
