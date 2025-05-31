@@ -52,31 +52,66 @@ const { title } = Astro.props;
     <script is:inline>
       // Apply settings CSS variables immediately
       try {
+        if (typeof localStorage === 'undefined') {
+          console.warn('localStorage not available, skipping settings initialization');
+          return;
+        }
+
         const settingsData = localStorage.getItem('settings-store');
-        if (settingsData) {
-          const data = JSON.parse(settingsData);
-          if (data && data.state) {
-            const redWordsOfJesus = data.state.redWordsOfJesus ?? true;
-            const textSize = data.state.textSize ?? 25;
-            const lineHeight = data.state.lineHeight ?? 50;
-            
-            if (!redWordsOfJesus) {
-              document.documentElement.style.setProperty('--words-of-jesus-color', 'var(--color-text)');
-            }
-            
-            // Apply text size
-            const multiplier = 0.8 + (textSize / 100) * 0.7;
-            document.documentElement.style.setProperty('--bible-text-size', `${0.95 * multiplier}rem`);
-            document.documentElement.style.setProperty('--bible-heading-size', `${1.1875 * multiplier}rem`);
-            document.documentElement.style.setProperty('--bible-subtitle-size', `${0.875 * multiplier}rem`);
-            
-            // Apply line height
-            const lineHeightPercent = 150 + (lineHeight / 100) * 140;
-            document.documentElement.style.setProperty('--bible-line-height', `${lineHeightPercent}%`);
+        if (!settingsData) {
+          console.info('No settings found in localStorage, using defaults');
+          return;
+        }
+
+        const data = JSON.parse(settingsData);
+        if (!data || !data.state) {
+          console.warn('Invalid settings data structure:', data);
+          return;
+        }
+
+        const redWordsOfJesus = data.state.redWordsOfJesus ?? true;
+        const textSize = data.state.textSize ?? 25;
+        const lineHeight = data.state.lineHeight ?? 50;
+
+        // Validate settings values
+        if (typeof redWordsOfJesus !== 'boolean') {
+          console.warn('Invalid redWordsOfJesus value:', redWordsOfJesus);
+        }
+        if (typeof textSize !== 'number' || textSize < 0 || textSize > 100) {
+          console.warn('Invalid textSize value:', textSize);
+        }
+        if (typeof lineHeight !== 'number' || lineHeight < 0 || lineHeight > 100) {
+          console.warn('Invalid lineHeight value:', lineHeight);
+        }
+
+        // Apply red words of Jesus setting
+        if (!redWordsOfJesus) {
+          document.documentElement.style.setProperty('--words-of-jesus-color', 'var(--color-text)');
+        }
+
+        // Apply text size
+        const multiplier = 0.8 + (Math.min(Math.max(textSize, 0), 100) / 100) * 0.7;
+        document.documentElement.style.setProperty('--bible-text-size', `${0.95 * multiplier}rem`);
+        document.documentElement.style.setProperty('--bible-heading-size', `${1.1875 * multiplier}rem`);
+        document.documentElement.style.setProperty('--bible-subtitle-size', `${0.875 * multiplier}rem`);
+
+        // Apply line height
+        const clampedLineHeight = Math.min(Math.max(lineHeight, 0), 100);
+        const lineHeightPercent = 150 + (clampedLineHeight / 100) * 140;
+        document.documentElement.style.setProperty('--bible-line-height', `${lineHeightPercent}%`);
+
+        console.info('Settings applied:', { redWordsOfJesus, textSize, lineHeight });
+
+      } catch (e) {
+        console.error('Failed to initialize settings:', e);
+        if (e instanceof SyntaxError) {
+          console.error('Invalid JSON in settings-store, clearing corrupt data');
+          try {
+            localStorage.removeItem('settings-store');
+          } catch (clearError) {
+            console.error('Failed to clear corrupt settings:', clearError);
           }
         }
-      } catch (e) {
-        // Ignore errors
       }
     </script>
   </head>
