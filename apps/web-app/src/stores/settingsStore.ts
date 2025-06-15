@@ -18,36 +18,69 @@ export interface SettingsState {
 
 // Helper to safely access localStorage (works in SSR context)
 const getLocalStorage = () => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     return localStorage;
   }
   // Return a mock storage for SSR
   return {
     getItem: () => null,
     setItem: () => {},
-    removeItem: () => {}
+    removeItem: () => {},
   };
+};
+
+// Utility function to apply all CSS variables based on current state
+export const applyAllCssVariables = (state: SettingsState) => {
+  if (typeof window !== "undefined") {
+    const root = document.documentElement;
+
+    // Apply red words of Jesus setting
+    if (state.redWordsOfJesus) {
+      root.style.removeProperty("--words-of-jesus-color");
+    } else {
+      root.style.setProperty("--words-of-jesus-color", "var(--color-text)");
+    }
+
+    // Apply text size setting
+    const sizeMultiplier = 0.8 + (state.textSize / 100) * 0.7;
+    root.style.setProperty("--bible-text-size", `${0.95 * sizeMultiplier}rem`);
+    root.style.setProperty(
+      "--bible-heading-size",
+      `${1.1875 * sizeMultiplier}rem`
+    );
+    root.style.setProperty(
+      "--bible-subtitle-size",
+      `${0.875 * sizeMultiplier}rem`
+    );
+
+    // Apply line height setting
+    const lineHeightPercent = 150 + (state.lineHeight / 100) * 140;
+    root.style.setProperty("--bible-line-height", `${lineHeightPercent}%`);
+  }
 };
 
 // Attempt to read initial values from localStorage
 let initialValues = {
   redWordsOfJesus: true,
   textSize: 25,
-  lineHeight: 50
+  lineHeight: 50,
 };
 
 try {
-  if (typeof window !== 'undefined') {
-    const stored = localStorage.getItem('settings-store');
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("settings-store");
     if (stored) {
       const data = JSON.parse(stored);
-      if (data && data.state) {
+      if (data || data.state) {
         initialValues = {
           redWordsOfJesus: data.state.redWordsOfJesus ?? true,
           textSize: data.state.textSize ?? 25,
-          lineHeight: data.state.lineHeight ?? 50
+          lineHeight: data.state.lineHeight ?? 50,
         };
-        console.log("Loaded initial settings from localStorage:", initialValues);
+        console.log(
+          "Loaded initial settings from localStorage:",
+          initialValues
+        );
       }
     }
   }
@@ -67,40 +100,30 @@ export const useSettingsStore = create<SettingsState>()(
       // Actions
       setRedWordsOfJesus: (enabled) => {
         set({ redWordsOfJesus: enabled });
-        
-        // Apply CSS variable immediately when setting changes
-        if (typeof window !== 'undefined') {
-          const root = document.documentElement;
-          if (enabled) {
-            root.style.removeProperty("--words-of-jesus-color");
-          } else {
-            root.style.setProperty("--words-of-jesus-color", "var(--color-text)");
-          }
-        }
+
+        // Apply CSS variables immediately when setting changes
+        applyAllCssVariables({
+          ...useSettingsStore.getState(),
+          redWordsOfJesus: enabled,
+        });
       },
       setTextSize: (size) => {
         set({ textSize: size });
-        
+
         // Apply CSS variables immediately when setting changes
-        if (typeof window !== 'undefined') {
-          const root = document.documentElement;
-          // Map 0-100 to font size multipliers (0.8x to 1.5x at 25% default)
-          const multiplier = 0.8 + (size / 100) * 0.7;
-          root.style.setProperty("--bible-text-size", `${0.95 * multiplier}rem`);
-          root.style.setProperty("--bible-heading-size", `${1.1875 * multiplier}rem`);
-          root.style.setProperty("--bible-subtitle-size", `${0.875 * multiplier}rem`);
-        }
+        applyAllCssVariables({
+          ...useSettingsStore.getState(),
+          textSize: size,
+        });
       },
       setLineHeight: (height) => {
         set({ lineHeight: height });
-        
+
         // Apply CSS variables immediately when setting changes
-        if (typeof window !== 'undefined') {
-          const root = document.documentElement;
-          // Map 0-100 to line heights (150% to 290%, with 220% at 50%)
-          const lineHeightPercent = 150 + (height / 100) * 140;
-          root.style.setProperty("--bible-line-height", `${lineHeightPercent}%`);
-        }
+        applyAllCssVariables({
+          ...useSettingsStore.getState(),
+          lineHeight: height,
+        });
       },
       setHydrated: (hydrated) => set({ hydrated }),
     }),
@@ -110,10 +133,14 @@ export const useSettingsStore = create<SettingsState>()(
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.setHydrated(true);
+
+          // Apply CSS variables based on hydrated state
+          applyAllCssVariables(state);
+
           console.log("Settings store hydrated with:", {
             redWordsOfJesus: state.redWordsOfJesus,
             textSize: state.textSize,
-            lineHeight: state.lineHeight
+            lineHeight: state.lineHeight,
           });
         }
       },

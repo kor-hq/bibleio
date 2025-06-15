@@ -78,6 +78,22 @@ const isInitialLoad = !hasAllParams;
 </Layout>
 
 <script>
+  // Apply settings CSS variables immediately to prevent FOUC
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Dynamic import for client-side code
+    const { useSettingsStore, applyAllCssVariables } = await import("~/stores/settingsStore");
+    
+    // Apply CSS variables as soon as possible
+    applyAllCssVariables(useSettingsStore.getState());
+    
+    // Also subscribe to settings changes to update variables when they change
+    useSettingsStore.subscribe((state) => {
+      applyAllCssVariables(state);
+    });
+  });
+</script>
+
+<script>
   // This script runs on the client-side after hydration
   document.addEventListener("DOMContentLoaded", () => {
     // Import the store dynamically (only works on client side)

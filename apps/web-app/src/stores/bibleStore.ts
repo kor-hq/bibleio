@@ -24,14 +24,14 @@ export interface BibleState {
 
 // Helper to safely access localStorage (works in SSR context)
 const getLocalStorage = () => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     return localStorage;
   }
   // Return a mock storage for SSR
   return {
     getItem: () => null,
     setItem: () => {},
-    removeItem: () => {}
+    removeItem: () => {},
   };
 };
 
@@ -39,19 +39,19 @@ const getLocalStorage = () => {
 let initialValues = {
   translation: "BSB",
   book: "MAT",
-  chapter: "1"
+  chapter: "1",
 };
 
 try {
-  if (typeof window !== 'undefined') {
-    const stored = localStorage.getItem('bible-store');
+  if (typeof window !== "undefined") {
+    const stored = localStorage.getItem("bible-store");
     if (stored) {
       const data = JSON.parse(stored);
-      if (data && data.state) {
+      if (data || data.state) {
         initialValues = {
           translation: data.state.translation || "BSB",
           book: data.state.book || "MAT",
-          chapter: data.state.chapter || "1"
+          chapter: data.state.chapter || "1",
         };
         console.log("Loaded initial values from localStorage:", initialValues);
       }
@@ -95,7 +95,7 @@ export const useBibleStore = create<BibleState>()(
           console.log("Store hydrated with:", {
             translation: state.translation,
             book: state.book,
-            chapter: state.chapter
+            chapter: state.chapter,
           });
         }
       },
