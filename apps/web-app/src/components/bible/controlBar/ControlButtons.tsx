@@ -58,7 +58,7 @@ export function ControlButtons({ chapterData }: ControlButtonsProps) {
 
   return (
     <div className="rounded-4 border-stroke bg-fg-1 shadow-popup backdrop-blur-popup flex h-full w-fit items-center justify-between overflow-clip border pl-16 pr-24 first:rounded-l-full last:rounded-r-full">
-      <div className="flex">
+      <div className="flex max-[700px]:gap-8">
         <button
           id="prev"
           className={`size-24 duration-150 ease-out ${

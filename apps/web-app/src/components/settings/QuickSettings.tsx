@@ -6,9 +6,11 @@ import {
   IconMail,
   IconMenu,
   IconSettings,
+  IconBook,
   IconX,
 } from "@tabler/icons-react";
 import ThemeSwitcher from "../ThemeSwitcher";
+import { clsx } from "clsx";
 
 export function QuickSettings({ pathName }: { pathName: string }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +34,30 @@ export function QuickSettings({ pathName }: { pathName: string }) {
       </Popover.Trigger>
       <Popover.Positioner>
         <Popover.Content className="focus-visible:border-accent-reversed border-stroke bg-fg-1 backdrop-blur-popup shadow-popup rounded-28 motion-preset-slide-up-sm motion-duration-150 flex h-fit w-[16rem] flex-col items-center gap-4 border p-8 outline-none">
+          <QuickSettingsSection className="min-[770px]:hidden">
+            <a
+              href="/"
+              rel="noreferrer"
+              className="group flex items-center gap-8 px-12 py-8"
+            >
+              <IconHome
+                className="group-hover:text-accent-reversed duration-150 ease-out"
+                strokeWidth={1.5}
+              />
+              <p className="text-body">Home</p>
+            </a>
+            <a
+              href="/bible"
+              rel="noreferrer"
+              className="group flex items-center gap-8 px-12 py-8"
+            >
+              <IconBook
+                className="group-hover:text-accent-reversed duration-150 ease-out"
+                strokeWidth={1.5}
+              />
+              <p className="text-body">Bible</p>
+            </a>
+          </QuickSettingsSection>
           <QuickSettingsSection>
             <a
               href="/settings"
@@ -79,9 +105,20 @@ export function QuickSettings({ pathName }: { pathName: string }) {
 }
 
 const QuickSettingsSection = React.memo(
-  ({ children }: { children: React.ReactNode }) => {
+  ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => {
     return (
-      <section className="bg-fg-2 border-stroke/50 first:rounded-t-20 last:rounded-b-20 rounded-4 flex w-full flex-col gap-4 border p-12">
+      <section
+        className={clsx(
+          "bg-fg-2 border-stroke/50 first:rounded-t-20 last:rounded-b-20 rounded-4 flex w-full flex-col gap-4 border p-12",
+          className
+        )}
+      >
         {children}
       </section>
     );

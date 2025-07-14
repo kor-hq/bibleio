@@ -30,7 +30,7 @@ export type TooltipTriggerProps = RadixTooltipTriggerProps & {
 };
 export const TooltipTrigger = ({
   children,
-  className,
+  className,  
   ...props
 }: TooltipTriggerProps) => {
   return (

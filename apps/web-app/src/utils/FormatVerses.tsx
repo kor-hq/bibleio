@@ -99,9 +99,12 @@ export const handleVersePart = (
         >
           <Tooltip>
             <TooltipTrigger asChild>
-              <sup className="text-text/60 relative mr-2 cursor-help text-[0.875rem] before:absolute before:inset-[-0.375rem] before:cursor-help before:content-['']">
+              <button
+                type="button"
+                className="text-text/60 ml-2 mr-4 inline-flex cursor-help touch-manipulation items-center justify-center align-super text-[0.875rem] leading-none"
+              >
                 {caller}
-              </sup>
+              </button>
             </TooltipTrigger>
 
             <TooltipContent>{footnote.text}</TooltipContent>

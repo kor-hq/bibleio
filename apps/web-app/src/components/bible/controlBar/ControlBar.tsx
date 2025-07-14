@@ -27,7 +27,7 @@ export const ControlBar = React.memo(
       }
     }, [urlParams.translation, urlParams.book, urlParams.chapter, setAll]);
     return (
-      <div className="mb fixed bottom-20 z-40 flex h-[2.5rem] w-full max-w-[32rem] gap-4">
+      <div className="mb fixed bottom-20 z-40 flex h-[2.5rem] w-full max-w-[32rem] gap-4 px-12">
         <div className="rounded-4 border-stroke bg-fg-1 shadow-popup backdrop-blur-popup flex h-full w-full items-center justify-between overflow-clip border px-20 first:rounded-l-full last:rounded-r-full">
           <div className="flex gap-8">
             <BookSelect />
